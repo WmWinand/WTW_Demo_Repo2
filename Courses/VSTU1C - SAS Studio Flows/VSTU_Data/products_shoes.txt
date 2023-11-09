@@ -1,0 +1,362 @@
+﻿Product_ID|Line_Name|Product_Category|Product_Name|Supplier_ID|Supplier_Name|Supplier_Country|MSRP
+210200400002|Children|Children Sports|Deschutes Boys Outdoors Training Shoes|1303|Eclipse Inc|US|$69.00
+210200400005|Children|Children Sports|Kid Air Terra Grande Running Shoes|1303|Eclipse Inc|US|$73.00
+210200400007|Children|Children Sports|Kid Equivalent Street Shoes|1303|Eclipse Inc|US|$79.00
+210200400009|Children|Children Sports|Kid Impeccably Strong(Bg) Basket Shoes|1303|Eclipse Inc|US|$114.00
+210200400012|Children|Children Sports|Kid Trainer Lite V(Bp) Street Shoes|1303|Eclipse Inc|US|$54.00
+210200400014|Children|Children Sports|Kid Trainer Lite(Bp) Street Shoes|1303|Eclipse Inc|US|$58.00
+210200400018|Children|Children Sports|Kiddy.summit  90 F.G.Rbr (Bg) Children's Shoe|1303|Eclipse Inc|US|$75.00
+210200400019|Children|Children Sports|Kiddy.turbo Premier F.G Children's Shoes|1303|Eclipse Inc|US|$83.00
+210200400020|Children|Children Sports|Kids Baby Edge Max Shoes|1303|Eclipse Inc|US|$59.00
+210200400025|Children|Children Sports|Toddle Children's Air Align(Bg) Shoes|1303|Eclipse Inc|US|$94.00
+210200400027|Children|Children Sports|Toddle Children's Air Mantra (3) (Bg) Shoes|1303|Eclipse Inc|US|$92.00
+210200400029|Children|Children Sports|Toddle Children's Air Terra Grande Shoes|1303|Eclipse Inc|US|$79.00
+210200400030|Children|Children Sports|Toddle Children's Air Terra Humara(Bg) Shoes|1303|Eclipse Inc|US|$130.00
+210200400031|Children|Children Sports|Toddle Children's Air Tuco(Bg) Shoes|1303|Eclipse Inc|US|$81.00
+210200400032|Children|Children Sports|Toddle Children's Align(Bp) Shoes|1303|Eclipse Inc|US|$73.00
+210200400033|Children|Children Sports|Toddle Children's Baby Fit Shoes|1303|Eclipse Inc|US|$46.00
+210200400034|Children|Children Sports|Toddle Children's Edge Max(Bp) Shoes|1303|Eclipse Inc|US|$71.00
+210200400037|Children|Children Sports|Toddle Children's Perish Nubuck Shoes|1303|Eclipse Inc|US|$72.00
+210200400039|Children|Children Sports|Toddle Children's Quokka V (Bp) Shoes|1303|Eclipse Inc|US|$57.00
+210200400040|Children|Children Sports|Toddle Children's Tuco(Bp) Shoes|1303|Eclipse Inc|US|$80.00
+210200400041|Children|Children Sports|Toddle Children's Understudy(Bg) Shoes|1303|Eclipse Inc|US|$66.00
+210200400042|Children|Children Sports|Toddle Children's Understudy(Bp) Shoes|1303|Eclipse Inc|US|$73.00
+210200400043|Children|Children Sports|Toddler Children's Shoes|1303|Eclipse Inc|US|$61.00
+210200400047|Children|Children Sports|Toddler Fit Shoes|1303|Eclipse Inc|US|$49.00
+210200400069|Children|Children Sports|Tony's Children's Classic Basket (Bg) Shoes|1303|Eclipse Inc|US|$66.00
+210200400070|Children|Children Sports|Tony's Children's Deschutz (Bg) Shoes|1303|Eclipse Inc|US|$67.00
+210200400072|Children|Children Sports|Tony's Children's Golden (Bp) Shoes|1303|Eclipse Inc|US|$66.00
+210200400073|Children|Children Sports|Tony's Children's Payoff Trainer (Bp) Shoes|1303|Eclipse Inc|US|$71.00
+210200400075|Children|Children Sports|Tony's Children's Rockskipper Shoes|1303|Eclipse Inc|US|$114.00
+210200400076|Children|Children Sports|Tony's Children's Terra Reach(Bg) Shoes|1303|Eclipse Inc|US|$117.00
+210200400077|Children|Children Sports|Tony's Children's Terra Sebec(Bg) Shoes|1303|Eclipse Inc|US|$60.00
+210200400078|Children|Children Sports|Tony's Children's Trainer Lite (Bg) Shoes|1303|Eclipse Inc|US|$68.00
+210200400097|Children|Children Sports|Tony's Extra Children's Multicourt(Bg) Shoes|1303|Eclipse Inc|US|$68.00
+210200600015|Children|Children Sports|Hardcore Kids Street Shoes|14682|Greenline Sports Ltd|GB|$64.00
+210200600032|Children|Children Sports|Atx 7500 Ch Children's Shoes|16733|Fuller Trading Co.|CA|$74.00
+210200600048|Children|Children Sports|Big Kid Children's Shoes|2963|3Top Sports|US|$68.00
+210200600064|Children|Children Sports|Children's Canvas Shoes|4742|Luna sastreria S.A.|ES|$67.00
+210200700013|Children|Children Sports|Slomo Balance Children's Shoes|798|Sportico|ES|$17.00
+210200700014|Children|Children Sports|Slomo Children's Hop Shoes|798|Sportico|ES|$27.00
+210200700015|Children|Children Sports|Slomo Turner Children's Gym Shoes|798|Sportico|ES|$40.00
+210200700020|Children|Children Sports|Upright Shoe Balance Shoes|798|Sportico|ES|$19.00
+210200900027|Children|Children Sports|Osprey Cuda Lo Jr. Shoes Synthetic|3664|Triple Sportswear Inc|US|$43.00
+210201000166|Children|Children Sports|Children's Shoes Pleva|2963|3Top Sports|US|$106.00
+210201000167|Children|Children Sports|Children's Shoes Stratosphere|2963|3Top Sports|US|$56.00
+210201000168|Children|Children Sports|Children's Shoes Wilcox|2963|3Top Sports|US|$53.00
+210201000169|Children|Children Sports|Children's Street Shoes|2963|3Top Sports|US|$40.00
+210201000174|Children|Children Sports|Freestyle Children's Leather Street Shoes|2963|3Top Sports|US|$57.00
+210201000175|Children|Children Sports|Freestyle Children's Velcro Shoes|2963|3Top Sports|US|$67.00
+210201000178|Children|Children Sports|Infant Children's Shoes|2963|3Top Sports|US|$84.00
+210201000179|Children|Children Sports|K Street Shoes|2963|3Top Sports|US|$62.00
+210201000182|Children|Children Sports|Kola Cf Velcro Children's Shoes|2963|3Top Sports|US|$72.00
+210201000183|Children|Children Sports|Kola Children's Shoes|2963|3Top Sports|US|$64.00
+210201000187|Children|Children Sports|Mona  C- Children's Street Shoes|2963|3Top Sports|US|$77.00
+210201000189|Children|Children Sports|Mona  J- Children's Street Shoes|2963|3Top Sports|US|$95.00
+210201000193|Children|Children Sports|South Peak Children's Shoes J|2963|3Top Sports|US|$113.00
+210201000195|Children|Children Sports|South Peak Children's Shoes C|2963|3Top Sports|US|$87.00
+210201000196|Children|Children Sports|South Peak Children's Training Shoes|2963|3Top Sports|US|$83.00
+210201000197|Children|Children Sports|South Peak Infant Training Shoes|2963|3Top Sports|US|$70.00
+210201000198|Children|Children Sports|South Peak Junior Training Shoes|2963|3Top Sports|US|$109.00
+210201000199|Children|Children Sports|Starlite Baby Shoes|2963|3Top Sports|US|$67.00
+210201000201|Children|Children Sports|Suède Kid Allround Shoes|2963|3Top Sports|US|$64.00
+210201000202|Children|Children Sports|T&l Children's Shoes|2963|3Top Sports|US|$57.00
+210201000205|Children|Children Sports|Torino 2000 K Street Shoes|2963|3Top Sports|US|$56.00
+210201000206|Children|Children Sports|Trainer Children's Shoes|2963|3Top Sports|US|$69.00
+210201000207|Children|Children Sports|Training Kid Shoes|2963|3Top Sports|US|$68.00
+210201000209|Children|Children Sports|Universe 4 Children's Running Shoes|2963|3Top Sports|US|$94.00
+220100100123|Clothes & Shoes|Clothes|Big Guy Men's Dome Shorts Shoes|1303|Eclipse Inc|US|$92.00
+220100400007|Clothes & Shoes|Clothes|Big Guy Men's Cortez Nb-Street Shoes|1303|Eclipse Inc|US|$141.00
+220100400010|Clothes & Shoes|Clothes|Bill London Calling Shoes|109|Petterson AB|SE|$130.00
+220100400012|Clothes & Shoes|Clothes|Bill V-3-London Calling Shoes|109|Petterson AB|SE|$140.00
+220100400013|Clothes & Shoes|Clothes|Cross Nubuck Women's Street Shoes|2963|3Top Sports|US|$144.00
+220100400017|Clothes & Shoes|Clothes|Cruise Roadstar Leather Shoes|109|Petterson AB|SE|$125.00
+220100400018|Clothes & Shoes|Clothes|Osprey Men's Street Cat Nubuck Street Shoes|3664|Triple Sportswear Inc|US|$162.00
+220100400019|Clothes & Shoes|Clothes|Osprey Men's Streetcat Leather Street Shoes|3664|Triple Sportswear Inc|US|$132.00
+220100400020|Clothes & Shoes|Clothes|Ultra M802 All Terrain Men's Shoes|5503|Ultra Sporting Goods Inc|US|$160.00
+220100400022|Clothes & Shoes|Clothes|Ultra M803 Ng Men's Street Shoes|5503|Ultra Sporting Goods Inc|US|$187.00
+220100400023|Clothes & Shoes|Clothes|Ultra W802 All Terrain Women's Shoes|5503|Ultra Sporting Goods Inc|US|$168.00
+220100400024|Clothes & Shoes|Clothes|Ultra W803 At Women's Street Shoes|5503|Ultra Sporting Goods Inc|US|$174.00
+220100400026|Clothes & Shoes|Clothes|Vector Low Men's Shoes|109|Petterson AB|SE|$215.00
+220100400027|Clothes & Shoes|Clothes|Wa.lbc Street Shoes|16733|Fuller Trading Co.|CA|$172.00
+220100400028|Clothes & Shoes|Clothes|Wa.leather Street Shoes|16733|Fuller Trading Co.|CA|$130.00
+220100700001|Clothes & Shoes|Clothes|Classic Men's Leisure Shoes|16733|Fuller Trading Co.|CA|$138.00
+220100700002|Clothes & Shoes|Clothes|Dmx 10 Women's Aerobic Shoes|16733|Fuller Trading Co.|CA|$345.00
+220100700003|Clothes & Shoes|Clothes|Dmx 6 Shoes|16733|Fuller Trading Co.|CA|$224.00
+220100700005|Clothes & Shoes|Clothes|Dmx Lite Women's Aerobic Shoes|16733|Fuller Trading Co.|CA|$318.00
+220100700009|Clothes & Shoes|Clothes|Mc Shoes|16733|Fuller Trading Co.|CA|$202.00
+220100700010|Clothes & Shoes|Clothes|Men's Running Shoes Burn|16733|Fuller Trading Co.|CA|$93.00
+220100700013|Clothes & Shoes|Clothes|Rugged Men's Walking Shoes|16733|Fuller Trading Co.|CA|$136.00
+220100700014|Clothes & Shoes|Clothes|Rugged Women's Walking Shoes|16733|Fuller Trading Co.|CA|$99.00
+220100700016|Clothes & Shoes|Clothes|Shoes Sphinx|14682|Greenline Sports Ltd|GB|$170.00
+220100700017|Clothes & Shoes|Clothes|Trainer Women's Aerobic Shoes|16733|Fuller Trading Co.|CA|$174.00
+220100700018|Clothes & Shoes|Clothes|Women's Aerobic Shoes Leggera|2963|3Top Sports|US|$175.00
+220100700019|Clothes & Shoes|Clothes|Women's Running Shoes Brevard|2963|3Top Sports|US|$92.00
+220100700020|Clothes & Shoes|Clothes|Women's Trainer Aerobic Shoes|16733|Fuller Trading Co.|CA|$202.00
+220100700021|Clothes & Shoes|Clothes|Alexis Women's Classic Shoes Large|16733|Fuller Trading Co.|CA|$88.00
+220100700022|Clothes & Shoes|Clothes|Alexis Women's Classic Shoes|16733|Fuller Trading Co.|CA|$93.00
+220100700023|Clothes & Shoes|Clothes|Armadillo Road Dmx Men's Running Shoes|16733|Fuller Trading Co.|CA|$173.00
+220100700024|Clothes & Shoes|Clothes|Armadillo Road Dmx Women's Running Shoes|16733|Fuller Trading Co.|CA|$192.00
+220100700026|Clothes & Shoes|Clothes|Del Sol Women's  Aerobic Shoes|16733|Fuller Trading Co.|CA|$161.00
+220100700027|Clothes & Shoes|Clothes|Duration Women's Trainer Aerobic Shoes|16733|Fuller Trading Co.|CA|$98.00
+220100700028|Clothes & Shoes|Clothes|H Ignitor Women's Aerobic Shoes|16733|Fuller Trading Co.|CA|$244.00
+220100700031|Clothes & Shoes|Clothes|Jog Dmx 6 Iii Shoes|16733|Fuller Trading Co.|CA|$238.00
+220100700037|Clothes & Shoes|Clothes|Original Women's Nylon Street Shoes|16733|Fuller Trading Co.|CA|$90.00
+220100700038|Clothes & Shoes|Clothes|Power Dmx Wide Shoes|16733|Fuller Trading Co.|CA|$196.00
+220100700039|Clothes & Shoes|Clothes|Power Men's Dmx Wide, Walking Shoes|16733|Fuller Trading Co.|CA|$90.00
+220100700042|Clothes & Shoes|Clothes|Power Women's Dmx Wide, Walking Shoes|16733|Fuller Trading Co.|CA|$153.00
+220100700045|Clothes & Shoes|Clothes|Quickstyle Dmx Women's Running Shoes|16733|Fuller Trading Co.|CA|$216.00
+220100700046|Clothes & Shoes|Clothes|Tcp 6 Men's Running Shoes|16733|Fuller Trading Co.|CA|$277.00
+220100700047|Clothes & Shoes|Clothes|Tcp 6 Women's Running Shoes|16733|Fuller Trading Co.|CA|$241.00
+220100700050|Clothes & Shoes|Clothes|Trailblaze Dmx Lite Shoes|16733|Fuller Trading Co.|CA|$340.00
+220100700051|Clothes & Shoes|Clothes|Trailblaze Dmx Lite Women's Running Shoes|16733|Fuller Trading Co.|CA|$336.00
+220100700052|Clothes & Shoes|Clothes|Trooper Ii Dmx-2x Men's Walking Shoes|16733|Fuller Trading Co.|CA|$216.00
+220100700053|Clothes & Shoes|Clothes|Trooper Ii Dmx-2x Women's Walking Shoes|16733|Fuller Trading Co.|CA|$225.00
+220100900004|Clothes & Shoes|Clothes|Osprey Bermuda Canvas Shoes|3664|Triple Sportswear Inc|US|$34.00
+220200100004|Clothes & Shoes|Shoes|Mercurail F.G. Shoes|1303|Eclipse Inc|US|$318.00
+220200100005|Clothes & Shoes|Shoes|4men Men's Air Golden Shoes|1303|Eclipse Inc|US|$125.00
+220200100007|Clothes & Shoes|Shoes|Atmosphere Acma Men's Running Shoes|1303|Eclipse Inc|US|$85.00
+220200100008|Clothes & Shoes|Shoes|Atmosphere Deschutz Shoes|1303|Eclipse Inc|US|$98.00
+220200100009|Clothes & Shoes|Shoes|Atmosphere Imara Women's Running Shoes|1303|Eclipse Inc|US|$121.00
+220200100010|Clothes & Shoes|Shoes|Atmosphere Mickey Shoes|1303|Eclipse Inc|US|$346.00
+220200100011|Clothes & Shoes|Shoes|Atmosphere Mic Plus.Men's Running Shoe|1303|Eclipse Inc|US|$191.00
+220200100012|Clothes & Shoes|Shoes|Atmosphere Shatter Mid Shoes|1303|Eclipse Inc|US|$96.00
+220200100014|Clothes & Shoes|Shoes|Atmosphere Terra Grande Shoes|1303|Eclipse Inc|US|$131.00
+220200100021|Clothes & Shoes|Shoes|Big Guy Men's Air 120 Soccer Shoes|1303|Eclipse Inc|US|$294.00
+220200100023|Clothes & Shoes|Shoes|Big Guy Men's Air 45 Trainer Shoes|1303|Eclipse Inc|US|$144.00
+220200100025|Clothes & Shoes|Shoes|Big Guy  Men's Air Ace 4 Plus Low-Tennis Shoe|1303|Eclipse Inc|US|$166.00
+220200100026|Clothes & Shoes|Shoes|Big Guy Men's Air Align Shoes|1303|Eclipse Inc|US|$130.00
+220200100027|Clothes & Shoes|Shoes|Big Guy Men's Air Aragon Shoes|1303|Eclipse Inc|US|$152.00
+220200100029|Clothes & Shoes|Shoes|Big Guy Men's Air Baltoro Shoes|1303|Eclipse Inc|US|$201.00
+220200100030|Clothes & Shoes|Shoes|Big Guy Men's Air Cortez Shoes|1303|Eclipse Inc|US|$144.00
+220200100033|Clothes & Shoes|Shoes|Big Guy Men's Air Croos Trainer Iii Shoes|1303|Eclipse Inc|US|$213.00
+220200100034|Clothes & Shoes|Shoes|Big Guy Men's Air Deschutz Shoes|1303|Eclipse Inc|US|$95.00
+220200100035|Clothes & Shoes|Shoes|Big Guy Men's Air Deschutz Viii Shoes|1303|Eclipse Inc|US|$121.00
+220200100037|Clothes & Shoes|Shoes|Big Guy Men's Air Escape Mid Shoes|1303|Eclipse Inc|US|$201.00
+220200100038|Clothes & Shoes|Shoes|Big Guy Men's Air Exploraid Shoes|1303|Eclipse Inc|US|$210.00
+220200100039|Clothes & Shoes|Shoes|Big Guy Men's Air Famished Shoes|1303|Eclipse Inc|US|$168.00
+220200100041|Clothes & Shoes|Shoes|Big Guy Men's Air Flight Determination Shoes|1303|Eclipse Inc|US|$337.00
+220200100042|Clothes & Shoes|Shoes|Big Guy Men's Air Flyer Plus Shoes|1303|Eclipse Inc|US|$117.00
+220200100044|Clothes & Shoes|Shoes|Big Guy Men's Air Force Strong Shoes|1303|Eclipse Inc|US|$201.00
+220200100045|Clothes & Shoes|Shoes|Big Guy Men's Air Humara Shoes|1303|Eclipse Inc|US|$207.00
+220200100047|Clothes & Shoes|Shoes|Big Guy Men's Air International Shoes|1303|Eclipse Inc|US|$146.00
+220200100048|Clothes & Shoes|Shoes|Big Guy Men's Air International Triax Shoes|1303|Eclipse Inc|US|$225.00
+220200100050|Clothes & Shoes|Shoes|Big Guy Men's Air Mantra Shoes|1303|Eclipse Inc|US|$147.00
+220200100051|Clothes & Shoes|Shoes|Big Guy Men's Air Masai Shoes|1303|Eclipse Inc|US|$236.00
+220200100052|Clothes & Shoes|Shoes|Big Guy Men's Air Mickey 95 Running Shoes|1303|Eclipse Inc|US|$385.00
+220200100053|Clothes & Shoes|Shoes|Big Guy Men's Air Mickey Shoes|1303|Eclipse Inc|US|$359.00
+220200100056|Clothes & Shoes|Shoes|Big Guy Men's Air MickeyTailwind Shoes|1303|Eclipse Inc|US|$279.00
+220200100057|Clothes & Shoes|Shoes|Big Guy Men's Air Mickey Willy Shoes|1303|Eclipse Inc|US|$246.00
+220200100058|Clothes & Shoes|Shoes|Big Guy Men's Air Metal Mickey Shoes|1303|Eclipse Inc|US|$335.00
+220200100059|Clothes & Shoes|Shoes|Big Guy Men's Air Metal Mickey Shoes VI|1303|Eclipse Inc|US|$277.00
+220200100060|Clothes & Shoes|Shoes|Big Guy Men's Air One Eighty  Shoes|1303|Eclipse Inc|US|$96.00
+220200100061|Clothes & Shoes|Shoes|Big Guy Men's Air Orchestrate Shoes|1303|Eclipse Inc|US|$147.00
+220200100062|Clothes & Shoes|Shoes|Big Guy Men's Air Outland Shoes|1303|Eclipse Inc|US|$179.00
+220200100063|Clothes & Shoes|Shoes|Big Guy Men's Air Perish Nb Shoes|1303|Eclipse Inc|US|$129.00
+220200100065|Clothes & Shoes|Shoes|Big Guy Men's Air Pro I.C Indoor Shoes|1303|Eclipse Inc|US|$138.00
+220200100066|Clothes & Shoes|Shoes|Big Guy Men's Air Quest Shoes|1303|Eclipse Inc|US|$170.00
+220200100067|Clothes & Shoes|Shoes|Big Guy Men's Air Quintessential Tw-W Shoes|1303|Eclipse Inc|US|$200.00
+220200100069|Clothes & Shoes|Shoes|Big Guy Men's Air Reckoning Ii Shoes|1303|Eclipse Inc|US|$150.00
+220200100070|Clothes & Shoes|Shoes|Big Guy Men's Air Reckoning Ii-Tennis Shoes|1303|Eclipse Inc|US|$143.00
+220200100071|Clothes & Shoes|Shoes|Big Guy Men's Air Rekoning Iii Shoes|1303|Eclipse Inc|US|$137.00
+220200100072|Clothes & Shoes|Shoes|Big Guy Men's Air Skylon Triax Shoes|1303|Eclipse Inc|US|$197.00
+220200100077|Clothes & Shoes|Shoes|Big Guy Men's Air Span Triax Shoes|1303|Eclipse Inc|US|$191.00
+220200100078|Clothes & Shoes|Shoes|Big Guy Men's Air Stormy Skylon Shoes|1303|Eclipse Inc|US|$215.00
+220200100079|Clothes & Shoes|Shoes|Big Guy Men's Air Structure Triax Shoes|1303|Eclipse Inc|US|$240.00
+220200100082|Clothes & Shoes|Shoes|Big Guy Men's Air Tailwind Iv Shoes|1303|Eclipse Inc|US|$318.00
+220200100083|Clothes & Shoes|Shoes|Big Guy Men's Air Tailwind  Shoes|1303|Eclipse Inc|US|$307.00
+220200100084|Clothes & Shoes|Shoes|Big Guy Men's Air Tailwind Shoes|1303|Eclipse Inc|US|$202.00
+220200100086|Clothes & Shoes|Shoes|Big Guy Men's Air Terra Central Shoes|1303|Eclipse Inc|US|$225.00
+220200100087|Clothes & Shoes|Shoes|Big Guy Men's Air Terra Clay-Tennis Shoes|1303|Eclipse Inc|US|$221.00
+220200100089|Clothes & Shoes|Shoes|Big Guy Men's Air Terra Humara Nb Shoes|1303|Eclipse Inc|US|$268.00
+220200100090|Clothes & Shoes|Shoes|Big Guy Men's Air Terra Reach Shoes|1303|Eclipse Inc|US|$171.00
+220200100091|Clothes & Shoes|Shoes|Big Guy Men's Air Terra Rise Shoes|1303|Eclipse Inc|US|$169.00
+220200100092|Clothes & Shoes|Shoes|Big Guy Men's Air Terra Sebec Shoes|1303|Eclipse Inc|US|$161.00
+220200100093|Clothes & Shoes|Shoes|Big Guy Men's Air Terra Train Shoes|1303|Eclipse Inc|US|$195.00
+220200100094|Clothes & Shoes|Shoes|Big Guy Men's Air Terra Triax Shoes|1303|Eclipse Inc|US|$232.00
+220200100096|Clothes & Shoes|Shoes|Big Guy Men's Air Tiempo Pro Ic Shoes|1303|Eclipse Inc|US|$143.00
+220200100097|Clothes & Shoes|Shoes|Big Guy  Men's Air Trainer Structure Plu Shoe|1303|Eclipse Inc|US|$175.00
+220200100098|Clothes & Shoes|Shoes|Big Guy Men's Air Tuned Max Shoes|1303|Eclipse Inc|US|$252.00
+220200100099|Clothes & Shoes|Shoes|Big Guy Men's Air Tuned Sirocco Shoes|1303|Eclipse Inc|US|$307.00
+220200100100|Clothes & Shoes|Shoes|Big Guy Men's Air Turbino F.G. Shoes|1303|Eclipse Inc|US|$168.00
+220200100101|Clothes & Shoes|Shoes|Big Guy Men's Air Turbulence Shoes|1303|Eclipse Inc|US|$115.00
+220200100104|Clothes & Shoes|Shoes|Big Guy Men's Air Zoom 90 I.C. Shoes|1303|Eclipse Inc|US|$185.00
+220200100105|Clothes & Shoes|Shoes|Big Guy Men's Air Zoom Beyond-Tennis Shoes|1303|Eclipse Inc|US|$346.00
+220200100107|Clothes & Shoes|Shoes|Big Guy Men's Air Zoom Citizen Shoes|1303|Eclipse Inc|US|$346.00
+220200100108|Clothes & Shoes|Shoes|Big Guy Men's Air Zoom Drive Shoes|1303|Eclipse Inc|US|$260.00
+220200100110|Clothes & Shoes|Shoes|Big Guy Men's Air Zoom Italia F.G Shoes|1303|Eclipse Inc|US|$355.00
+220200100113|Clothes & Shoes|Shoes|Big Guy Men's Air Zoom Pivot Mid Ii Shoes|1303|Eclipse Inc|US|$268.00
+220200100116|Clothes & Shoes|Shoes|Big Guy Men's Air Zoom Total 90 F.G Shoes|1303|Eclipse Inc|US|$354.00
+220200100120|Clothes & Shoes|Shoes|Big Guy Men's Cortez Iii Leather Shoes|1303|Eclipse Inc|US|$130.00
+220200100121|Clothes & Shoes|Shoes|Big Guy Men's Cortez Leather Street Shoes|1303|Eclipse Inc|US|$134.00
+220200100122|Clothes & Shoes|Shoes|Big Guy Men's Cortez Nbuck-Street Shoes|1303|Eclipse Inc|US|$165.00
+220200100123|Clothes & Shoes|Shoes|Big Guy Men's Deschutz Slide Shoes|1303|Eclipse Inc|US|$56.00
+220200100124|Clothes & Shoes|Shoes|Big Guy Men's First Set-Tennis Shoes|1303|Eclipse Inc|US|$122.00
+220200100126|Clothes & Shoes|Shoes|Big Guy Men's Gts Canvas Plus Shoes|1303|Eclipse Inc|US|$57.00
+220200100128|Clothes & Shoes|Shoes|Big Guy Men's Hermosa Shoes|1303|Eclipse Inc|US|$94.00
+220200100129|Clothes & Shoes|Shoes|Big Guy Men's International Triax Shoes|1303|Eclipse Inc|US|$152.00
+220200100132|Clothes & Shoes|Shoes|Big Guy Men's Klickitat Mid Shoes|1303|Eclipse Inc|US|$176.00
+220200100134|Clothes & Shoes|Shoes|Big Guy Men's Maniacal Shoes|1303|Eclipse Inc|US|$95.00
+220200100137|Clothes & Shoes|Shoes|Big Guy Men's Multicourt Ii Shoes|1303|Eclipse Inc|US|$89.00
+220200100139|Clothes & Shoes|Shoes|Big Guy Men's Payoff Trainer Shoes|1303|Eclipse Inc|US|$97.00
+220200100142|Clothes & Shoes|Shoes|Big Guy Men's Span Triax Shoes|1303|Eclipse Inc|US|$205.00
+220200100143|Clothes & Shoes|Shoes|Big Guy Men's Speedy Flight Plus Shoes|1303|Eclipse Inc|US|$140.00
+220200100144|Clothes & Shoes|Shoes|Big Guy Men's Strap Runner Shoes|1303|Eclipse Inc|US|$87.00
+220200100145|Clothes & Shoes|Shoes|Big Guy Men's Structure Triax Shoes|1303|Eclipse Inc|US|$215.00
+220200100146|Clothes & Shoes|Shoes|Big Guy Men's Tennis Classic Shoes|1303|Eclipse Inc|US|$87.00
+220200100147|Clothes & Shoes|Shoes|Big Guy Men's Terra Humara Shoes|1303|Eclipse Inc|US|$224.00
+220200100149|Clothes & Shoes|Shoes|Big Guy Men's Ultraccel 2 F.G. Soccer Shoes|1303|Eclipse Inc|US|$91.00
+220200100153|Clothes & Shoes|Shoes|Big Guy Men's Understudy Cross Train. Shoes|1303|Eclipse Inc|US|$79.00
+220200100155|Clothes & Shoes|Shoes|Big Guy Men's Zoom Explorage Shoes|1303|Eclipse Inc|US|$247.00
+220200100156|Clothes & Shoes|Shoes|Big Guy Men'sAir Duration Shoes|1303|Eclipse Inc|US|$219.00
+220200100158|Clothes & Shoes|Shoes|Delicate Distance Shoes|1303|Eclipse Inc|US|$13.00
+220200100160|Clothes & Shoes|Shoes|Eclipse Mens Off Court Tennis Shoes|1303|Eclipse Inc|US|$60.00
+220200100161|Clothes & Shoes|Shoes|Eclipse Women's Off Court Canvas Shoes|1303|Eclipse Inc|US|$68.00
+220200100165|Clothes & Shoes|Shoes|Sire Air Max-Running Shoes|1303|Eclipse Inc|US|$334.00
+220200100166|Clothes & Shoes|Shoes|Sire Air Tailwind 1v Running Shoes|1303|Eclipse Inc|US|$279.00
+220200100173|Clothes & Shoes|Shoes|Woman's Air Athena Triax-Running Shoes|1303|Eclipse Inc|US|$212.00
+220200100235|Clothes & Shoes|Shoes|Woman's Cortez Nubuck-Street Shoes|1303|Eclipse Inc|US|$164.00
+220200200002|Clothes & Shoes|Shoes|Men's Nubuck-Retro Running Shoes Roadster|109|Petterson AB|SE|$124.00
+220200200004|Clothes & Shoes|Shoes|Allinall Star 2000 Women's Canvas Shoes|109|Petterson AB|SE|$115.00
+220200200005|Clothes & Shoes|Shoes|Allinall Star Men's Canvas Shoes|109|Petterson AB|SE|$78.00
+220200200009|Clothes & Shoes|Shoes|Cruise 1984 Men's Street Shoes|109|Petterson AB|SE|$109.00
+220200200010|Clothes & Shoes|Shoes|Cruise Men's Road Chunk Street Shoes|109|Petterson AB|SE|$121.00
+220200200011|Clothes & Shoes|Shoes|Cruise Platypus Men's Street Shoes|109|Petterson AB|SE|$158.00
+220200200014|Clothes & Shoes|Shoes|Dubby Low Men's Street Shoes|109|Petterson AB|SE|$165.00
+220200200015|Clothes & Shoes|Shoes|Dubby Low Men's Street Shoes Large|109|Petterson AB|SE|$191.00
+220200200018|Clothes & Shoes|Shoes|Lulu Men's Street Shoes|109|Petterson AB|SE|$121.00
+220200200021|Clothes & Shoes|Shoes|Pro Fit  Gel Ds Trainer Iv Men's Running Shoe|1747|Pro Sportswear Inc|US|$141.00
+220200200022|Clothes & Shoes|Shoes|Pro Fit Gel Ds Trainer Women's Running Shoes|1747|Pro Sportswear Inc|US|$100.00
+220200200024|Clothes & Shoes|Shoes|Pro Fit Gel Gt 2030 Women's Running Shoes|1747|Pro Sportswear Inc|US|$127.00
+220200200027|Clothes & Shoes|Shoes|Salida Low Men's Outdoor Shoes|13198|Twain Inc|US|$173.00
+220200200031|Clothes & Shoes|Shoes|Soft 1040 Women's Running Shoes|1747|Pro Sportswear Inc|US|$78.00
+220200200032|Clothes & Shoes|Shoes|Soft 140 Men's Running Shoes|1747|Pro Sportswear Inc|US|$178.00
+220200200034|Clothes & Shoes|Shoes|Soft Alta Plus Men's Indoor Shoes|1747|Pro Sportswear Inc|US|$193.00
+220200200035|Clothes & Shoes|Shoes|Soft Alta Plus Women's Indoor Shoes|1747|Pro Sportswear Inc|US|$183.00
+220200200036|Clothes & Shoes|Shoes|Soft Astro Men's Running Shoes|1747|Pro Sportswear Inc|US|$110.00
+220200200037|Clothes & Shoes|Shoes|Soft Astro Women's Running Shoes|1747|Pro Sportswear Inc|US|$128.00
+220200200038|Clothes & Shoes|Shoes|Soft Court Women's Indoor Shoes|1747|Pro Sportswear Inc|US|$64.00
+220200200039|Clothes & Shoes|Shoes|Soft Cumulus Men's Running Shoes|1747|Pro Sportswear Inc|US|$175.00
+220200200041|Clothes & Shoes|Shoes|Soft Ds Trainer Men's Running Shoes|1747|Pro Sportswear Inc|US|$208.00
+220200200042|Clothes & Shoes|Shoes|Soft Ds Trainer Women's Running Shoes|1747|Pro Sportswear Inc|US|$233.00
+220200200043|Clothes & Shoes|Shoes|Soft Gel Court Men's Indoor Shoes|1747|Pro Sportswear Inc|US|$63.00
+220200200045|Clothes & Shoes|Shoes|Soft Gt 2040 Women's Running Shoes|1747|Pro Sportswear Inc|US|$207.00
+220200200047|Clothes & Shoes|Shoes|Soft Gt 2050 Women's Running Shoes|1747|Pro Sportswear Inc|US|$263.00
+220200200050|Clothes & Shoes|Shoes|Soft Integral Men's Running Shoes|1747|Pro Sportswear Inc|US|$213.00
+220200200052|Clothes & Shoes|Shoes|Soft Kayano Men's Running Shoes VI|1747|Pro Sportswear Inc|US|$363.00
+220200200054|Clothes & Shoes|Shoes|Soft Kayano Men's Running Shoes|1747|Pro Sportswear Inc|US|$379.00
+220200200055|Clothes & Shoes|Shoes|Soft Kayano Women's Running Shoes|1747|Pro Sportswear Inc|US|$354.00
+220200200057|Clothes & Shoes|Shoes|Soft Modesto Women's Indoor Shoes|1747|Pro Sportswear Inc|US|$114.00
+220200200059|Clothes & Shoes|Shoes|Soft Nimbus Men's Running Shoes|1747|Pro Sportswear Inc|US|$248.00
+220200200060|Clothes & Shoes|Shoes|Soft The Move Women's Running Shoes|1747|Pro Sportswear Inc|US|$109.00
+220200200062|Clothes & Shoes|Shoes|Top C-Tech 6000 Tennis Shoes|755|Top Sports|DK|$158.00
+220200200066|Clothes & Shoes|Shoes|Twain Inco Men's Street Shoes|13198|Twain Inc|US|$163.00
+220200200067|Clothes & Shoes|Shoes|Twain Inco Women's Street Shoes|13198|Twain Inc|US|$152.00
+220200200068|Clothes & Shoes|Shoes|Twain Men's Exentric Ii X-Hiking Shoes|13198|Twain Inc|US|$188.00
+220200200069|Clothes & Shoes|Shoes|Twain Men's Exit Ii Low X-Hiking Shoes|13198|Twain Inc|US|$191.00
+220200200070|Clothes & Shoes|Shoes|Twain Men's Exit Iii Mid Cd X-Hiking Shoes|13198|Twain Inc|US|$222.00
+220200200071|Clothes & Shoes|Shoes|Twain Men's Exit Low 2000 Street Shoes|13198|Twain Inc|US|$184.00
+220200200072|Clothes & Shoes|Shoes|Twain Men's Expresso X-Hiking Shoes|13198|Twain Inc|US|$241.00
+220200200077|Clothes & Shoes|Shoes|Twain Women's Exit Iii Mid Cd X-Hiking Shoes|13198|Twain Inc|US|$245.00
+220200200078|Clothes & Shoes|Shoes|Twain Women's Exit Low 2000 Street Shoes|13198|Twain Inc|US|$205.00
+220200200079|Clothes & Shoes|Shoes|Twain Women's Expresso X-Hiking Shoes|13198|Twain Inc|US|$246.00
+220200200080|Clothes & Shoes|Shoes|Ultra M1210 Men's Running Shoes|5503|Ultra Sporting Goods Inc|US|$337.00
+220200200081|Clothes & Shoes|Shoes|Ultra M878 Men's Running Shoes|5503|Ultra Sporting Goods Inc|US|$210.00
+220200300007|Clothes & Shoes|Shoes|Low Women's Aerobic Shoes|2963|3Top Sports|US|$117.00
+220200300009|Clothes & Shoes|Shoes|Men's Indoor Shoes Uproar|2963|3Top Sports|US|$94.00
+220200300012|Clothes & Shoes|Shoes|Men's Mountain Shoes|2963|3Top Sports|US|$156.00
+220200300013|Clothes & Shoes|Shoes|Men's Running Shoes Estes|2963|3Top Sports|US|$115.00
+220200300014|Clothes & Shoes|Shoes|Men's Running Shoes Ozweego|2963|3Top Sports|US|$156.00
+220200300015|Clothes & Shoes|Shoes|Men's Running Shoes Piedmmont|2963|3Top Sports|US|$210.00
+220200300016|Clothes & Shoes|Shoes|Men's Running Shoes Supernova|2963|3Top Sports|US|$186.00
+220200300017|Clothes & Shoes|Shoes|Men's Shoes Solace|2963|3Top Sports|US|$178.00
+220200300018|Clothes & Shoes|Shoes|Men's Shoes Tegern|2963|3Top Sports|US|$114.00
+220200300020|Clothes & Shoes|Shoes|Men's Skate Shoes Revel|2963|3Top Sports|US|$135.00
+220200300021|Clothes & Shoes|Shoes|Men's Street Shoes Cou|2963|3Top Sports|US|$117.00
+220200300022|Clothes & Shoes|Shoes|Men's Street Shoes Gazelle|2963|3Top Sports|US|$131.00
+220200300025|Clothes & Shoes|Shoes|Mid Women's Aerobic Shoes X|2963|3Top Sports|US|$151.00
+220200300027|Clothes & Shoes|Shoes|Smith Men's Street Shoes|2963|3Top Sports|US|$116.00
+220200300032|Clothes & Shoes|Shoes|Vigil Women's Tennis Shoes|2963|3Top Sports|US|$134.00
+220200300033|Clothes & Shoes|Shoes|Women's Aerobic Shoes Psych|16733|Fuller Trading Co.|CA|$138.00
+220200300035|Clothes & Shoes|Shoes|Women's Aerobic Shoes Speedster|16733|Fuller Trading Co.|CA|$87.00
+220200300036|Clothes & Shoes|Shoes|Women's Crosstraining Shoes|2963|3Top Sports|US|$171.00
+220200300040|Clothes & Shoes|Shoes|Women's Running Shoes Piedmont|2963|3Top Sports|US|$199.00
+220200300051|Clothes & Shoes|Shoes|Armadillo Men's Running Shoes|2963|3Top Sports|US|$109.00
+220200300052|Clothes & Shoes|Shoes|Armadillo Women's Running Shoes|2963|3Top Sports|US|$124.00
+220200300056|Clothes & Shoes|Shoes|Banto Light Men's Shoes|2963|3Top Sports|US|$172.00
+220200300060|Clothes & Shoes|Shoes|Cross Ripple Women's Street Shoes|2963|3Top Sports|US|$147.00
+220200300061|Clothes & Shoes|Shoes|Damaskus Men's Running Shoes|2963|3Top Sports|US|$196.00
+220200300062|Clothes & Shoes|Shoes|Damaskus Women's Running Shoes|2963|3Top Sports|US|$190.00
+220200300066|Clothes & Shoes|Shoes|Hawk Logo Women's Tennis Shoes|2963|3Top Sports|US|$63.00
+220200300069|Clothes & Shoes|Shoes|Hgf Incentive Men's Tennis Shoes|2963|3Top Sports|US|$197.00
+220200300070|Clothes & Shoes|Shoes|Hgf Low Men's Indoor Shoes|2963|3Top Sports|US|$184.00
+220200300071|Clothes & Shoes|Shoes|Hgf  Low Women's Indoor Shoes|2963|3Top Sports|US|$190.00
+220200300072|Clothes & Shoes|Shoes|Hgf Tarantula Men's Indoor Shoes|2963|3Top Sports|US|$181.00
+220200300073|Clothes & Shoes|Shoes|Hi Resolution Men's Tennis Shoes|2963|3Top Sports|US|$144.00
+220200300076|Clothes & Shoes|Shoes|Hi Response Women's Aerobic Shoes Large|2963|3Top Sports|US|$157.00
+220200300077|Clothes & Shoes|Shoes|Hilly Men's Crosstrainer Shoes|2963|3Top Sports|US|$94.00
+220200300078|Clothes & Shoes|Shoes|Hilly Women's Crosstrainer Shoes Large|2963|3Top Sports|US|$89.00
+220200300079|Clothes & Shoes|Shoes|Hilly Women's Crosstrainer Shoes|2963|3Top Sports|US|$117.00
+220200300080|Clothes & Shoes|Shoes|Hilo Mid Iii Women's Aerobic Shoes|2963|3Top Sports|US|$123.00
+220200300081|Clothes & Shoes|Shoes|Hilo Mid Women's Aerobic Shoes|2963|3Top Sports|US|$110.00
+220200300082|Clothes & Shoes|Shoes|Indoor Handbold Special Shoes|2963|3Top Sports|US|$130.00
+220200300086|Clothes & Shoes|Shoes|Mns Gazelle Men's Running Shoes|2963|3Top Sports|US|$252.00
+220200300087|Clothes & Shoes|Shoes|Mns Light 4 Low  Women's Volley Shoes|2963|3Top Sports|US|$209.00
+220200300088|Clothes & Shoes|Shoes|Mns Mercury Crosstrainer Shoes|2963|3Top Sports|US|$230.00
+220200300094|Clothes & Shoes|Shoes|Mns.fastpace Women's Running Shoes|2963|3Top Sports|US|$262.00
+220200300095|Clothes & Shoes|Shoes|Mns.light 4 Low Men's Indoor Shoes|2963|3Top Sports|US|$215.00
+220200300098|Clothes & Shoes|Shoes|Mns.riding Women's Running Shoes|2963|3Top Sports|US|$244.00
+220200300100|Clothes & Shoes|Shoes|Mns.super Women's Shoes|2963|3Top Sports|US|$135.00
+220200300101|Clothes & Shoes|Shoes|Mns.winner Men's Running Shoes|2963|3Top Sports|US|$237.00
+220200300102|Clothes & Shoes|Shoes|Mns.xzs Women's Aerobic Shoes|2963|3Top Sports|US|$250.00
+220200300103|Clothes & Shoes|Shoes|Multi L Women's Running Shoes|2963|3Top Sports|US|$104.00
+220200300106|Clothes & Shoes|Shoes|Multi Women's Running Shoes|2963|3Top Sports|US|$145.00
+220200300107|Clothes & Shoes|Shoes|Polly Millennium Men's Tennis Shoes|2963|3Top Sports|US|$153.00
+220200300110|Clothes & Shoes|Shoes|Qrs Men's Street Shoes|2963|3Top Sports|US|$108.00
+220200300115|Clothes & Shoes|Shoes|South Peak Men's Light Low Indoor Shoes|2963|3Top Sports|US|$154.00
+220200300116|Clothes & Shoes|Shoes|South Peak Men's Running Shoes|2963|3Top Sports|US|$154.00
+220200300117|Clothes & Shoes|Shoes|South Peak Women's Light Indoor Shoes|2963|3Top Sports|US|$183.00
+220200300120|Clothes & Shoes|Shoes|Starlite Men's Street Shoes|2963|3Top Sports|US|$137.00
+220200300121|Clothes & Shoes|Shoes|Starlite Shoes|2963|3Top Sports|US|$153.00
+220200300123|Clothes & Shoes|Shoes|The Gonzales Men's Shoes|2963|3Top Sports|US|$213.00
+220200300124|Clothes & Shoes|Shoes|The Jet Men's Running Shoes|2963|3Top Sports|US|$132.00
+220200300126|Clothes & Shoes|Shoes|The Wish L Women's Running Shoes|2963|3Top Sports|US|$94.00
+220200300127|Clothes & Shoes|Shoes|The Wish M Men's Running Shoes|2963|3Top Sports|US|$87.00
+220200300129|Clothes & Shoes|Shoes|Torino Men's Leather Adventure Shoes|2963|3Top Sports|US|$151.00
+220200300130|Clothes & Shoes|Shoes|Torino Men's Shoes|2963|3Top Sports|US|$136.00
+220200300131|Clothes & Shoes|Shoes|Torino Women's Leather Shoes|2963|3Top Sports|US|$127.00
+220200300136|Clothes & Shoes|Shoes|Trainer Women's Crosstrainer Shoes|2963|3Top Sports|US|$61.00
+220200300137|Clothes & Shoes|Shoes|Trapper Men's Crosstrainer Shoes|2963|3Top Sports|US|$172.00
+220200300142|Clothes & Shoes|Shoes|Vishnu Women's Running Shoes|2963|3Top Sports|US|$203.00
+220200300143|Clothes & Shoes|Shoes|W.a..trainer Leather Shoes|2963|3Top Sports|US|$130.00
+220200300146|Clothes & Shoes|Shoes|Arctic Children's Shoes|16733|Fuller Trading Co.|CA|$62.00
+220200300151|Clothes & Shoes|Shoes|Hardcore Junior/Women's Shoes|14682|Greenline Sports Ltd|GB|$159.00
+220200300152|Clothes & Shoes|Shoes|Hardcore Junior/Women's Street Shoes|14682|Greenline Sports Ltd|GB|$160.00
+220200300153|Clothes & Shoes|Shoes|Hardcore Junior/Women's Street Shoes Small|14682|Greenline Sports Ltd|GB|$154.00
+220200300154|Clothes & Shoes|Shoes|Hardcore Junior/Women's Street Shoes Large|14682|Greenline Sports Ltd|GB|$150.00
+220200300155|Clothes & Shoes|Shoes|Hardcore Men's Street Shoes|14682|Greenline Sports Ltd|GB|$140.00
+220200300157|Clothes & Shoes|Shoes|Hardcore Men's Street Shoes Large|14682|Greenline Sports Ltd|GB|$142.00
+220200300158|Clothes & Shoes|Shoes|Hardcore Shoes|14682|Greenline Sports Ltd|GB|$172.00
+220200300159|Clothes & Shoes|Shoes|Hispeed Shoes|14682|Greenline Sports Ltd|GB|$174.00
+220200300160|Clothes & Shoes|Shoes|Low Shoes|14682|Greenline Sports Ltd|GB|$209.00
+220200300162|Clothes & Shoes|Shoes|N.d.gear Men's Galileo Shoes|14682|Greenline Sports Ltd|GB|$77.00
+220200300163|Clothes & Shoes|Shoes|Traverse Junior/Women's Shoes|14682|Greenline Sports Ltd|GB|$193.00
+220200300164|Clothes & Shoes|Shoes|Traverse Shoes|14682|Greenline Sports Ltd|GB|$154.00
+240100100229|Sports|Assorted Sports Articles|Cruise First Star Baby Shoes|109|Petterson AB|SE|$33.00
+240100100429|Sports|Assorted Sports Articles|Shoelace 140 Cm, Assorted Colours|3815|Roll-Over Inc|US|$8.00
+240100100430|Sports|Assorted Sports Articles|Shoelace Black 100 Cm|5810|Teamsports Inc|US|$5.00
+240100100431|Sports|Assorted Sports Articles|Shoelace Black 150 Cm|5810|Teamsports Inc|US|$5.00
+240100100433|Sports|Assorted Sports Articles|Shoelace White 150 Cm|5810|Teamsports Inc|US|$5.00
+240100100434|Sports|Assorted Sports Articles|Shoeshine Black|16814|CrystalClear Optics Inc|CA|$27.00
+240100100437|Sports|Assorted Sports Articles|Shoeshine Olive|16814|CrystalClear Optics Inc|CA|$65.00
+240100100601|Sports|Assorted Sports Articles|Fred Shoes|4742|Luna sastreria S.A.|ES|$89.00
+240200100037|Sports|Golf|Bretagne Difference 2000 Goretex Shoes|2995|Van Dammeren International|NL|$398.00
+240200100043|Sports|Golf|Bretagne Performance Tg Men's Golf Shoes L.|2995|Van Dammeren International|NL|$271.00
+240200100051|Sports|Golf|Bretagne Stabilites 2000 Goretex Shoes|2995|Van Dammeren International|NL|$285.00
+240200100052|Sports|Golf|Bretagne Stabilities Tg Men's Golf Shoes|2995|Van Dammeren International|NL|$203.00
+240200100053|Sports|Golf|Bretagne Stabilities Women's Golf Shoes|2995|Van Dammeren International|NL|$177.00
+240200100225|Sports|Golf|Rubby Men's Golf Shoes w/Goretex|4168|Rubby Zapatos S.A.|ES|$302.00
+240200100226|Sports|Golf|Rubby Men's Golf Shoes w/Goretex Plain Toe|4168|Rubby Zapatos S.A.|ES|$350.00
+240200100227|Sports|Golf|Rubby Women's Golf Shoes w/Gore-Tex|4168|Rubby Zapatos S.A.|ES|$295.00
+240200100228|Sports|Golf|Rubby Women's Golf Shoes w/Goretex S|4168|Rubby Zapatos S.A.|ES|$283.00
+240200100229|Sports|Golf|Rubby Women's Golf Shoes w/Goretex|4168|Rubby Zapatos S.A.|ES|$314.00
