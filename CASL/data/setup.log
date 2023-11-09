@@ -1,0 +1,3800 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 1 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.27 seconds
+      cpu time            0.06 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CASAUTO uuid= "612d5c00-b9fe-e04a-af47-9ea84dd414e8" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 612d5c00-b9fe-e04a-af47-9ea84dd414e8.
+1   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+22                                                         The SAS System                           Monday, May 10, 2021 12:00:00 PM
+
+NOTE: The default CAS session CASAUTO identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the 
+      SESSREF= option to an active session.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is cef6a105-7ef6-5c41-b7c4-3c4cca6cca6a. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: The UUID 'cef6a105-7ef6-5c41-b7c4-3c4cca6cca6a' is connected using session CONN.
+NOTE: SASHELP.CARS was successfully added to the "CASUSER(student)" caslib as "CARS".
+
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: The UUID 'cef6a105-7ef6-5c41-b7c4-3c4cca6cca6a' is connected using session CONN.
+NOTE: SASHELP.HEART was successfully added to the "CASUSER(student)" caslib as "HEART".
+
+WARNING: You cannot disconnect or terminate session CONN until the procedure completes. Place the statement with the disconnect or 
+         terminate option after the QUIT statement.
+ERROR: Request for TERMINATE failed for session CONN.
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+23                                                         The SAS System                           Monday, May 10, 2021 12:00:00 PM
+
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "cef6a105-7ef6-5c41-b7c4-3c4cca6cca6a" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is cef6a105-7ef6-5c41-b7c4-3c4cca6cca6a. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+22                                                         The SAS System                           Monday, May 10, 2021 01:35:00 PM
+
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "0305455f-15c7-dd4a-8e08-cd83b596c30a" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 0305455f-15c7-dd4a-8e08-cd83b596c30a.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 9ead93e6-abe3-bc43-988b-2c34eca81e63. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+23                                                         The SAS System                           Monday, May 10, 2021 01:35:00 PM
+
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CONN.
+NOTE: The data set work.sessions has 1 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1    + cas CONN uuid= "8bcfb647-818d-6d43-9727-98e69dab9ba0" ;
+NOTE: Request to CONNECT is ignored. The session CONN is already connected using UUID 8bcfb647-818d-6d43-9727-98e69dab9ba0.
+1    +                                                        cas CONN terminate;
+NOTE: Libref CS has been deassigned.
+NOTE: Libref CASUSER has been deassigned.
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 72e942c7-ea6e-c248-b69d-aa9165e60096. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+2                                                          The SAS System                           Monday, May 10, 2021 09:37:22 AM
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 3.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASGOPT (memtype=CATALOG).
+NOTE: File WORK.SASGOPT (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC1 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC2 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC3 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC4 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC5 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC6 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC7 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC8 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC9 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.05 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 2 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "eb89b347-bc10-ff49-86ae-9e11deecde86" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is eb89b347-bc10-ff49-86ae-9e11deecde86. The user is student and the active caslib is cs.
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+22                                                         The SAS System                           Monday, May 10, 2021 02:14:00 PM
+
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "866f27ca-ecf1-7e4f-b855-974977a1993f" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 866f27ca-ecf1-7e4f-b855-974977a1993f.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is f1810d99-21b5-d540-a85a-cfff4c86079d. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+23                                                         The SAS System                           Monday, May 10, 2021 02:14:00 PM
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 1 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CASAUTO uuid= "3be8bd15-8a85-644f-aeb9-6bf642707cfc" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 3be8bd15-8a85-644f-aeb9-6bf642707cfc.
+1   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: The default CAS session CASAUTO identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the 
+      SESSREF= option to an active session.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 0e7a4564-1818-d442-9899-09220ff7b758. The user is student and the active caslib is 
+      CASUSER(student).
+11                                                         The SAS System                           Monday, May 10, 2021 02:20:00 PM
+
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 2 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.02 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "c17b8281-3692-a64f-b44c-61d41248ee08" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is c17b8281-3692-a64f-b44c-61d41248ee08. The user is student and the active caslib is cs.
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+22                                                         The SAS System                           Monday, May 10, 2021 02:21:00 PM
+
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "d112db6a-ce92-d847-8eda-573dbecb42af" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID d112db6a-ce92-d847-8eda-573dbecb42af.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 36c50838-5e5f-1546-ae3d-7958298b4b6b. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+23                                                         The SAS System                           Monday, May 10, 2021 02:21:00 PM
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 2 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "87511d89-d132-bc46-bc76-c7714621f365" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 87511d89-d132-bc46-bc76-c7714621f365. The user is student and the active caslib is cs.
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+22                                                         The SAS System                           Monday, May 10, 2021 02:22:00 PM
+
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "dcbd1511-12f0-a94d-a391-38153e61cbc7" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID dcbd1511-12f0-a94d-a391-38153e61cbc7.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is adb6b95e-6dba-7040-994a-ce0b4d82b32f. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+23                                                         The SAS System                           Monday, May 10, 2021 02:22:00 PM
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 1 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.05 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CASAUTO uuid= "4e28153b-9a08-cc4b-97de-42f8f52d986c" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 4e28153b-9a08-cc4b-97de-42f8f52d986c.
+1   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: The default CAS session CASAUTO identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the 
+      SESSREF= option to an active session.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is ded1e42b-b8de-fd45-8926-bfd419f6e434. The user is student and the active caslib is 
+      CASUSER(student).
+11                                                         The SAS System                           Monday, May 10, 2021 02:28:00 PM
+
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "82f85f5f-e19e-e447-be9d-1a4e55d16bec" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 82f85f5f-e19e-e447-be9d-1a4e55d16bec. The user is student and the active caslib is cs.
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+22                                                         The SAS System                           Monday, May 10, 2021 07:04:00 PM
+
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "bc359dfd-9cd7-3e4c-b767-62cd8c677136" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID bc359dfd-9cd7-3e4c-b767-62cd8c677136.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 22fb8771-3370-8c4a-b90b-a1447fb8b5c8. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+23                                                         The SAS System                           Monday, May 10, 2021 07:04:00 PM
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 1 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CASAUTO uuid= "f66b0ee4-e803-a647-848a-bca9a1f88e85" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID f66b0ee4-e803-a647-848a-bca9a1f88e85.
+1   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+22                                                         The SAS System                          Tuesday, May 11, 2021 01:26:00 PM
+
+NOTE: The default CAS session CASAUTO identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the 
+      SESSREF= option to an active session.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 322b0ad8-0412-5a4e-9246-bb1493736449. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "b0345c8d-0821-834e-bc45-58ecf732eb45" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is b0345c8d-0821-834e-bc45-58ecf732eb45. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+22                                                         The SAS System                          Tuesday, May 11, 2021 03:30:00 PM
+
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "90316b7c-b048-dd42-b49d-6a5aaa367f4a" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 90316b7c-b048-dd42-b49d-6a5aaa367f4a.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is f07142c0-b8dd-0f49-81ba-177692603432. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+23                                                         The SAS System                          Tuesday, May 11, 2021 03:30:00 PM
+
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "fd60adfb-e2a8-db4c-b24c-6a5a94a685df" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is fd60adfb-e2a8-db4c-b24c-6a5a94a685df. The user is student and the active caslib is cs.
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+11                                                         The SAS System                          Tuesday, May 11, 2021 03:40:00 PM
+
+2   + cas CASAUTO uuid= "6f5610aa-f2b3-3b4e-9800-c9d3bb3b032d" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 6f5610aa-f2b3-3b4e-9800-c9d3bb3b032d.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 16767cc0-7706-9f4a-85df-ea4fe561493e. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CONN.
+NOTE: The data set work.sessions has 1 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1    + cas CONN uuid= "079e494d-8218-cf4e-9351-e86761b5246a" ;
+NOTE: Request to CONNECT is ignored. The session CONN is already connected using UUID 079e494d-8218-cf4e-9351-e86761b5246a.
+1    +                                                        cas CONN terminate;
+NOTE: Libref CS has been deassigned.
+NOTE: Libref CASUSER has been deassigned.
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is f411406f-f8f7-494d-ae0f-bd6c9561b3b0. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+2                                                          The SAS System                          Tuesday, May 11, 2021 11:41:08 AM
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 3.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASGOPT (memtype=CATALOG).
+NOTE: File WORK.SASGOPT (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC1 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC2 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC3 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC4 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC5 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC6 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC7 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC8 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC9 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.02 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "10aba7f4-746a-2443-a084-e0474fae9b51" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 10aba7f4-746a-2443-a084-e0474fae9b51. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+22                                                         The SAS System                          Tuesday, May 11, 2021 05:40:00 PM
+
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "c1958053-bcdb-da4d-919a-956f134a74c8" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID c1958053-bcdb-da4d-919a-956f134a74c8.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 62ad90e6-dede-c94c-8a86-900453b66bb7. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+23                                                         The SAS System                          Tuesday, May 11, 2021 05:40:00 PM
+
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 1 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CASAUTO uuid= "e69ab72d-a0fe-5149-8b1a-07b876799728" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID e69ab72d-a0fe-5149-8b1a-07b876799728.
+1   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+22                                                         The SAS System                        Wednesday, May 12, 2021 01:10:00 PM
+
+NOTE: The default CAS session CASAUTO identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the 
+      SESSREF= option to an active session.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 42b4d870-125f-9048-8f9d-fe618a008f9a. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "bee82374-4e0b-b44d-8363-c22a80f67628" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is bee82374-4e0b-b44d-8363-c22a80f67628. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+22                                                         The SAS System                        Wednesday, May 12, 2021 05:19:00 PM
+
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "bcd1563c-2edd-9c43-aa17-b41b339415b7" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID bcd1563c-2edd-9c43-aa17-b41b339415b7.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 65b9daeb-3416-4a4c-b6d2-49593297501c. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+23                                                         The SAS System                        Wednesday, May 12, 2021 05:19:00 PM
+
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 2 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "378db1fc-f553-bf4a-b449-cc3ec1919667" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 378db1fc-f553-bf4a-b449-cc3ec1919667. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+22                                                         The SAS System                        Wednesday, May 12, 2021 05:27:00 PM
+
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "e971586b-c332-ac4c-b912-6b054146d9f9" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID e971586b-c332-ac4c-b912-6b054146d9f9.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is c3a248ab-e2d2-dc41-b524-ab180dfd9fc3. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+23                                                         The SAS System                        Wednesday, May 12, 2021 05:27:00 PM
+
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 1 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CASAUTO uuid= "30f20c14-0702-2b48-b1c2-cb8994d02f7a" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 30f20c14-0702-2b48-b1c2-cb8994d02f7a.
+1   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+22                                                         The SAS System                         Thursday, May 13, 2021 12:08:00 PM
+
+NOTE: The default CAS session CASAUTO identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the 
+      SESSREF= option to an active session.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is e3c4f048-2bc7-3d47-b418-2b844a97bef7. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "0f185945-712a-f744-8dcc-b40973a6540d" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 0f185945-712a-f744-8dcc-b40973a6540d. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+22                                                         The SAS System                         Thursday, May 13, 2021 01:33:00 PM
+
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "ca2826cd-ef68-414a-ad36-f695e251af0e" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID ca2826cd-ef68-414a-ad36-f695e251af0e.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 3db73be4-db0b-2544-be98-7e0619313717. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+23                                                         The SAS System                         Thursday, May 13, 2021 01:33:00 PM
+
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "772a0b54-edb3-3f48-aee2-8eae73d6c0d8" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 772a0b54-edb3-3f48-aee2-8eae73d6c0d8. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+22                                                         The SAS System                         Thursday, May 13, 2021 06:26:00 PM
+
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "cd9c109b-1240-b546-b772-1e051e8469d4" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID cd9c109b-1240-b546-b772-1e051e8469d4.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 4cf029cf-0b5f-2d46-aaea-b324493952fd. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+23                                                         The SAS System                         Thursday, May 13, 2021 06:26:00 PM
+
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 1 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CASAUTO uuid= "038641be-8a81-874d-b713-e67346ebe3da" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 038641be-8a81-874d-b713-e67346ebe3da.
+1   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+22                                                         The SAS System                           Friday, May 14, 2021 12:36:00 PM
+
+NOTE: The default CAS session CASAUTO identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the 
+      SESSREF= option to an active session.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 248de35f-fd67-b746-8c79-e82d24661dc9. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "289e99d6-57b8-8247-9bf0-e7058c73afe4" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 289e99d6-57b8-8247-9bf0-e7058c73afe4. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+22                                                         The SAS System                           Friday, May 14, 2021 02:02:00 PM
+
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "fc35dcac-4a1f-8440-a186-e1320ef7a71f" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID fc35dcac-4a1f-8440-a186-e1320ef7a71f.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 8f4d5537-1f15-4442-b95f-db0b37029f71. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+23                                                         The SAS System                           Friday, May 14, 2021 02:02:00 PM
+
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 2 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "c8541e80-8ca0-6946-87cc-efc73ae7ea8e" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is c8541e80-8ca0-6946-87cc-efc73ae7ea8e. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+22                                                         The SAS System                           Friday, May 14, 2021 05:02:00 PM
+
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "e808640c-c652-204e-9423-c4e12b475ff4" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID e808640c-c652-204e-9423-c4e12b475ff4.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 5ea0bd70-3ac3-6142-a0b5-a9c8d4982230. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+23                                                         The SAS System                           Friday, May 14, 2021 05:02:00 PM
+
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "40316351-4825-d84e-931f-9af79ef9a484" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 40316351-4825-d84e-931f-9af79ef9a484. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+11                                                         The SAS System                           Friday, May 14, 2021 05:52:00 PM
+
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "b5ee66d6-78f3-b54f-b65f-4c4a36f5d690" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID b5ee66d6-78f3-b54f-b65f-4c4a36f5d690.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 08b4d835-d6ff-d649-b095-0666a81f19f3. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "00a69bf6-71c3-f243-bd5c-6fc584944ab6" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 00a69bf6-71c3-f243-bd5c-6fc584944ab6. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+11                                                         The SAS System                           Friday, May 14, 2021 05:59:00 PM
+
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "30e4879a-fea4-2445-98b1-083b06f06f78" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 30e4879a-fea4-2445-98b1-083b06f06f78.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is b01390e9-2130-a844-b17f-af31ee517cf7. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "8dcdbe63-83ec-324d-863c-ea06a4ecb4ec" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 8dcdbe63-83ec-324d-863c-ea06a4ecb4ec. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+11                                                         The SAS System                           Friday, May 14, 2021 06:16:00 PM
+
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "d40b361d-df28-264d-b668-363ae7298e1e" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID d40b361d-df28-264d-b668-363ae7298e1e.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is c91c205f-72bb-414f-af31-d7fdb265aae5. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "d1604c52-41e1-6047-b64c-8190469259ed" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is d1604c52-41e1-6047-b64c-8190469259ed. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+11                                                         The SAS System                           Friday, May 14, 2021 06:28:00 PM
+
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "2e548629-1d00-5d4b-96af-7f86457a7bff" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 2e548629-1d00-5d4b-96af-7f86457a7bff.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 5847413d-0c17-1a46-bbe9-99b91d1cecf6. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "bd034a3b-c246-a045-8b4a-e565fd085f65" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is bd034a3b-c246-a045-8b4a-e565fd085f65. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+11                                                         The SAS System                           Friday, May 14, 2021 06:33:00 PM
+
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "9838e2fb-250c-054b-b594-f9ff34ccf881" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 9838e2fb-250c-054b-b594-f9ff34ccf881.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 9665147c-69f5-ed4e-a271-12ed7f33cef8. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 2 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "b21a110d-a544-5049-b81a-941dff30d893" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is b21a110d-a544-5049-b81a-941dff30d893. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+22                                                         The SAS System                           Friday, May 14, 2021 06:46:00 PM
+
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "0a0d728a-c00c-844f-a185-90e67f3325c8" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 0a0d728a-c00c-844f-a185-90e67f3325c8.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is e4a85913-aaa5-a447-a773-8b46b0ef337f. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+23                                                         The SAS System                           Friday, May 14, 2021 06:46:00 PM
+
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "5def679b-ae87-7647-9599-b57c9cb7c429" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 5def679b-ae87-7647-9599-b57c9cb7c429. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+11                                                         The SAS System                           Friday, May 14, 2021 07:13:00 PM
+
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "c9598b0f-67e2-8042-87bf-d34cb8ba74df" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID c9598b0f-67e2-8042-87bf-d34cb8ba74df.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 2f636bf5-5a96-6046-ba06-84e463fb838c. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "1353b966-bca2-a941-b5c8-f491288b51a0" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 1353b966-bca2-a941-b5c8-f491288b51a0. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+11                                                         The SAS System                           Friday, May 14, 2021 07:22:00 PM
+
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "175d3396-71de-174c-927a-3e836d10b542" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 175d3396-71de-174c-927a-3e836d10b542.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 6bbdf084-04a3-b442-aeeb-db1091c9877a. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CASAUTO.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 1 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "a14bd1e6-7047-424a-9f71-7c17e12932b9" ;
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is a14bd1e6-7047-424a-9f71-7c17e12932b9. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+1   +                                                        cas CONN terminate;
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+11                                                         The SAS System                           Friday, May 14, 2021 07:32:00 PM
+
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "35abe64c-9f88-984c-8039-c40e120bf97f" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 35abe64c-9f88-984c-8039-c40e120bf97f.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref ORSTAR has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is b0415b37-2cd5-f346-8942-cf07ec9b35af. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.04 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+ERROR: There is no server connection to execute the action 'session.listSessions'.
+ERROR: Execution halted
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.06 seconds
+      
+
+ERROR: File WORK.SESSIONS.DATA does not exist.
+NOTE: PROC SQL set option NOEXEC and will continue to check the syntax of statements.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is bb0d65a9-a930-c540-bcd0-394ea4517513. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+NOTE: Cloud Analytic Services made the file sales.csv available as table SALES_CSV in caslib CASUSER(student).
+{caslib=CASUSER(student),tableName=SALES_CSV}
+NOTE: Cloud Analytic Services saved the file sales.csv in caslib CASUSER(student).
+{caslib=CASUSER(student),name=sales.csv}
+NOTE: Cloud Analytic Services dropped table sales_csv from caslib CASUSER(student).
+
+NOTE: Cloud Analytic Services made the file sales.sas7bdat available as table SALE_SAS7BDAT in caslib CASUSER(student).
+{caslib=CASUSER(student),tableName=SALE_SAS7BDAT}
+NOTE: Cloud Analytic Services saved the file sales.sas7bdat in caslib CASUSER(student).
+{caslib=CASUSER(student),name=sales.sas7bdat}
+NOTE: Cloud Analytic Services dropped table sale_sas7bdat from caslib CASUSER(student).
+
+NOTE: Cloud Analytic Services made the file heart_raw.sashdat available as table HEART_RAW_SASHDAT in caslib CASUSER(student).
+{caslib=CASUSER(student),tableName=HEART_RAW_SASHDAT}
+NOTE: Cloud Analytic Services saved the file heart_raw.sashdat in caslib CASUSER(student).
+2                                                          The SAS System                         Tuesday, June  1, 2021 08:49:04 AM
+
+{caslib=CASUSER(student),name=heart_raw.sashdat}
+NOTE: Cloud Analytic Services dropped table heart_raw_sashdat from caslib CASUSER(student).
+
+NOTE: Cloud Analytic Services made the file products.xlsx available as table PRODUCTS in caslib CASUSER(student).
+{caslib=CASUSER(student),tableName=PRODUCTS}
+NOTE: Cloud Analytic Services saved the file products.xlsx in caslib CASUSER(student).
+{caslib=CASUSER(student),name=products.xlsx}
+NOTE: Cloud Analytic Services dropped table products from caslib CASUSER(student).
+
+NOTE: Cloud Analytic Services made the file orders_clean.sashdat available as table ORDERS in caslib CASUSER(student).
+{caslib=CASUSER(student),tableName=ORDERS}
+NOTE: Cloud Analytic Services saved the file orders_hd.sashdat in caslib CASUSER(student).
+{caslib=CASUSER(student),name=orders_hd.sashdat}
+NOTE: Cloud Analytic Services dropped table orders from caslib CASUSER(student).
+
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           1:24.06
+      cpu time            0.19 seconds
+      
+
+NOTE: The UUID 'bb0d65a9-a930-c540-bcd0-394ea4517513' is connected using session CONN.
+NOTE: SASHELP.CARS was successfully added to the "CASUSER(student)" caslib as "CARS".
+
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: The UUID 'bb0d65a9-a930-c540-bcd0-394ea4517513' is connected using session CONN.
+NOTE: SASHELP.HEART was successfully added to the "CASUSER(student)" caslib as "HEART".
+
+WARNING: You cannot disconnect or terminate session CONN until the procedure completes. Place the statement with the disconnect or 
+         terminate option after the QUIT statement.
+ERROR: Request for TERMINATE failed for session CONN.
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASGOPT (memtype=CATALOG).
+NOTE: File WORK.SASGOPT (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC1 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC2 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC3 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC4 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC5 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC6 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC7 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC8 (memtype=CATALOG).
+3                                                          The SAS System                         Tuesday, June  1, 2021 08:50:27 AM
+
+NOTE: Deleting WORK.SASMAC9 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+ERROR: There is no server connection to execute the action 'session.listSessions'.
+ERROR: Execution halted
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+ERROR: File WORK.SESSIONS.DATA does not exist.
+NOTE: PROC SQL set option NOEXEC and will continue to check the syntax of statements.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 142e28cd-51bc-5141-849b-6ce55a16d866. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.56 seconds
+      cpu time            0.12 seconds
+      
+
+11                                                         The SAS System                         Tuesday, June  1, 2021 02:09:00 PM
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+ERROR: There is no server connection to execute the action 'session.listSessions'.
+ERROR: Execution halted
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.03 seconds
+      
+
+ERROR: File WORK.SESSIONS.DATA does not exist.
+NOTE: PROC SQL set option NOEXEC and will continue to check the syntax of statements.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 8cf20b8c-5556-9f4b-ad86-e6962cc4d183. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+22                                                         The SAS System                         Tuesday, June  1, 2021 06:02:00 PM
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+ERROR: There is no server connection to execute the action 'session.listSessions'.
+ERROR: Execution halted
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+ERROR: File WORK.SESSIONS.DATA does not exist.
+NOTE: PROC SQL set option NOEXEC and will continue to check the syntax of statements.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is deba8546-ddd0-f446-9b72-c26909e12c10. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+22                                                         The SAS System                         Tuesday, June  1, 2021 08:18:00 PM
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+ERROR: There is no server connection to execute the action 'session.listSessions'.
+ERROR: Execution halted
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+ERROR: File WORK.SESSIONS.DATA does not exist.
+NOTE: PROC SQL set option NOEXEC and will continue to check the syntax of statements.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is cc4b5276-505a-df4c-bbcd-7057719f2147. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+22                                                         The SAS System                       Wednesday, June  2, 2021 12:42:00 PM
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+ERROR: There is no server connection to execute the action 'session.listSessions'.
+ERROR: Execution halted
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+ERROR: File WORK.SESSIONS.DATA does not exist.
+NOTE: PROC SQL set option NOEXEC and will continue to check the syntax of statements.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is e2f9d3b3-8704-3d47-ad5f-3ca9a1876fcb. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+22                                                         The SAS System                       Wednesday, June  2, 2021 05:34:00 PM
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+ERROR: There is no server connection to execute the action 'session.listSessions'.
+ERROR: Execution halted
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+ERROR: File WORK.SESSIONS.DATA does not exist.
+NOTE: PROC SQL set option NOEXEC and will continue to check the syntax of statements.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+NOTE: The session CONN connected successfully to Cloud Analytic Services controller.sas-cas-server-default.edu.svc.cluster.local 
+      using port 5570. The UUID is 4e9dac33-49f2-2347-aeca-18bbbb0c662f. The user is student and the active caslib is 
+      CASUSER(student).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 0 workers.
+
+
+
+NOTE: Active Session now CONN.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+
+file:sales.csv exists in casuser
+file:sales.sas7bdat exists in casuser
+file:heart_raw.sashdat exists in casuser
+file:products.xlsx exists in casuser
+file:orders_hd.sashdat exists in casuser
+NOTE: 'CASUSER(student)' is now the active caslib.
+
+22                                                         The SAS System                       Wednesday, June  2, 2021 06:34:00 PM
+
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.EXTRA (memtype=DATA).
+NOTE: Deleting WORK.PRODUCTS (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SITEINFO (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CONN.
+NOTE: The data set work.sessions has 3 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 2 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 3 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CONN uuid= "a45a6203-6868-3244-8273-0e701857f1ae" ;
+NOTE: Request to CONNECT is ignored. The session CONN is already connected using UUID 59d0ea14-6aeb-2c40-acbd-87b27e423deb.
+1   +                                                        cas CONN terminate;
+NOTE: Libref CASUSER has been deassigned.
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+2   + cas CASAUTO uuid= "df25af6b-1281-f543-bb70-c1e28a5a2ea2" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID df25af6b-1281-f543-bb70-c1e28a5a2ea2.
+2   +                                                           cas CASAUTO terminate;
+NOTE: Libref SWEE has been deassigned.
+NOTE: Libref IMAGES has been deassigned.
+NOTE: Libref CPGRETL has been deassigned.
+NOTE: Libref UKI has been deassigned.
+NOTE: Libref SAMPLES has been deassigned.
+NOTE: Libref SGF21AAI has been deassigned.
+NOTE: Libref SGF2021 has been deassigned.
+NOTE: Libref PUBLIC has been deassigned.
+NOTE: Libref PMVAPUB has been deassigned.
+NOTE: Libref MODELS has been deassigned.
+NOTE: Libref IOTPUB has been deassigned.
+NOTE: Libref GTPPUB has been deassigned.
+NOTE: Libref GPCI has been deassigned.
+NOTE: Libref GCSTT has been deassigned.
+NOTE: Libref FORMATS has been deassigned.
+4                                                          The SAS System                      Tuesday, October 25, 2022 04:16:42 PM
+
+NOTE: Libref EP_SAFE has been deassigned.
+NOTE: Libref EP_K12 has been deassigned.
+NOTE: Libref EP_DOE has been deassigned.
+NOTE: Libref EDUPUB has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+3   + cas CONN uuid= "59d0ea14-6aeb-2c40-acbd-87b27e423deb" ;
+ERROR: Connection failed. Server returned: Session reconnect failed: Could not find the specified session.
+ERROR: Request to CONNECT failed for UUID 59d0ea14-6aeb-2c40-acbd-87b27e423deb. Failure occurs when a disconnected CAS session 
+       exceeds the timeout value and terminates, when the specified UUID is not correct or designates a session that is already 
+       connected, or when authentication fails.
+3   +                                                        cas CONN terminate;
+ERROR: Request failed. Session CONN not recognized.
+NOTE: The session CONN connected successfully to Cloud Analytic Services sas-cas-server-default-client using port 5570. The UUID is 
+      fd792ec5-03a7-4341-ba0c-f4bf4e49b1dc. The user is T.Winand@sas.com and the active caslib is CASUSER(T.Winand@sas.com).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 4 workers.
+
+NOTE: Active Session now CONN.
+NOTE: Failed to resolve path /greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/CASL_VLE/data/cas/ for caslib cs.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+ERROR: The file or path 'sales.csv' is not available in the file system.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'sales_csv' is not available in the file system.
+ERROR: Table 'sales_csv' could not be loaded.
+ERROR: Failure opening table 'sales_csv': A table could not be loaded.
+ERROR: The action stopped due to errors.
+ERROR: The table sales_csv could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'sale_sas7bdat' is not available in the file system.
+ERROR: Table 'sale_sas7bdat' could not be loaded.
+ERROR: Failure opening table 'sale_sas7bdat': A table could not be loaded.
+ERROR: The action stopped due to errors.
+ERROR: The table sale_sas7bdat could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'heart_raw.sashdat' is not available in the file system.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'heart_raw_sashdat' is not available in the file system.
+ERROR: Table 'heart_raw_sashdat' could not be loaded.
+ERROR: Failure opening table 'heart_raw_sashdat': A table could not be loaded.
+ERROR: The action stopped due to errors.
+ERROR: The table heart_raw_sashdat could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'products' is not available in the file system.
+ERROR: Table 'products' could not be loaded.
+ERROR: Failure opening table 'products': A table could not be loaded.
+ERROR: The action stopped due to errors.
+ERROR: The table products could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'orders_clean.sashdat' is not available in the file system.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'orders' is not available in the file system.
+ERROR: Table 'orders' could not be loaded.
+ERROR: Failure opening table 'orders': A table could not be loaded.
+5                                                          The SAS System                      Tuesday, October 25, 2022 04:16:43 PM
+
+ERROR: The action stopped due to errors.
+ERROR: The table orders could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+NOTE: 'CASUSER(T.Winand@sas.com)' is now the active caslib.
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.48 seconds
+      cpu time            0.06 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASGOPT (memtype=CATALOG).
+NOTE: File WORK.SASGOPT (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC3 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Active Session now CONN.
+NOTE: The data set work.sessions has 2 observations and 5 variables.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Table WORK.ACTIVE created, with 2 rows and 5 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.SESSIONS.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + cas CASAUTO uuid= "021784f8-2a3f-f74d-b7d6-0117ba79b395" ;
+NOTE: Request to CONNECT is ignored. The session CASAUTO is already connected using UUID 021784f8-2a3f-f74d-b7d6-0117ba79b395.
+1   +                                                           cas CASAUTO terminate;
+NOTE: Libref SWEE has been deassigned.
+NOTE: Libref IMAGES has been deassigned.
+NOTE: Libref CPGRETL has been deassigned.
+NOTE: Libref UKI has been deassigned.
+NOTE: Libref SAMPLES has been deassigned.
+NOTE: Libref SGF21AAI has been deassigned.
+NOTE: Libref SGF2021 has been deassigned.
+NOTE: Libref PUBLIC has been deassigned.
+NOTE: Libref PMVAPUB has been deassigned.
+NOTE: Libref MODELS has been deassigned.
+NOTE: Libref IOTPUB has been deassigned.
+NOTE: Libref GTPPUB has been deassigned.
+NOTE: Libref GPCI has been deassigned.
+NOTE: Libref GCSTT has been deassigned.
+NOTE: Libref FORMATS has been deassigned.
+NOTE: Libref EP_SAFE has been deassigned.
+NOTE: Libref EP_K12 has been deassigned.
+NOTE: Libref EP_DOE has been deassigned.
+NOTE: Libref EDUPUB has been deassigned.
+NOTE: Deletion of the session CASAUTO was successful.
+NOTE: Request to TERMINATE completed for session CASAUTO.
+2   + cas CONN uuid= "5eaad215-280f-3147-bbc5-8cc830f906c6" ;
+NOTE: Request to CONNECT is ignored. The session CONN is already connected using UUID 5eaad215-280f-3147-bbc5-8cc830f906c6.
+4                                                          The SAS System                    Wednesday, October 26, 2022 12:51:06 PM
+
+2   +                                                        cas CONN terminate;
+NOTE: Libref CASUSER has been deassigned.
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: The session CONN connected successfully to Cloud Analytic Services sas-cas-server-default-client using port 5570. The UUID is 
+      bf49ef26-220e-354f-86c8-cf59ffcbd476. The user is T.Winand@sas.com and the active caslib is CASUSER(T.Winand@sas.com).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 4 workers.
+
+NOTE: Active Session now CONN.
+NOTE: Failed to resolve path /greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/CASL_VLE/data/cas/ for caslib cs.
+NOTE: 'cs' is now the active caslib.
+NOTE: Cloud Analytic Services added the caslib 'cs'.
+ERROR: The file or path 'sales.csv' is not available in the file system.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'sales_csv' is not available in the file system.
+ERROR: Table 'sales_csv' could not be loaded.
+ERROR: Failure opening table 'sales_csv': A table could not be loaded.
+ERROR: The action stopped due to errors.
+ERROR: The table sales_csv could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'sale_sas7bdat' is not available in the file system.
+ERROR: Table 'sale_sas7bdat' could not be loaded.
+ERROR: Failure opening table 'sale_sas7bdat': A table could not be loaded.
+ERROR: The action stopped due to errors.
+ERROR: The table sale_sas7bdat could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'heart_raw.sashdat' is not available in the file system.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'heart_raw_sashdat' is not available in the file system.
+ERROR: Table 'heart_raw_sashdat' could not be loaded.
+ERROR: Failure opening table 'heart_raw_sashdat': A table could not be loaded.
+ERROR: The action stopped due to errors.
+ERROR: The table heart_raw_sashdat could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'products' is not available in the file system.
+ERROR: Table 'products' could not be loaded.
+ERROR: Failure opening table 'products': A table could not be loaded.
+ERROR: The action stopped due to errors.
+ERROR: The table products could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'orders_clean.sashdat' is not available in the file system.
+ERROR: The action stopped due to errors.
+ERROR: The file or path 'orders' is not available in the file system.
+ERROR: Table 'orders' could not be loaded.
+ERROR: Failure opening table 'orders': A table could not be loaded.
+ERROR: The action stopped due to errors.
+ERROR: The table orders could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+NOTE: 'CASUSER(T.Winand@sas.com)' is now the active caslib.
+NOTE: The PROCEDURE CAS printed page 1.
+NOTE: PROCEDURE CAS used (Total process time):
+      real time           0.56 seconds
+5                                                          The SAS System                    Wednesday, October 26, 2022 12:51:07 PM
+
+      cpu time            0.07 seconds
+      
+
+NOTE: Deletion of the session CONN was successful.
+NOTE: The default CAS session CONN identified by SAS option SESSREF= was terminated. Use the OPTIONS statement to set the SESSREF= 
+      option to an active session.
+NOTE: Request to TERMINATE completed for session CONN.
+NOTE: Deleting WORK.ACTIVE (memtype=DATA).
+NOTE: Deleting WORK.PROFILE (memtype=CATALOG).
+NOTE: File WORK.PROFILE (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASGOPT (memtype=CATALOG).
+NOTE: File WORK.SASGOPT (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC3 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SESSIONS (memtype=DATA).
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
