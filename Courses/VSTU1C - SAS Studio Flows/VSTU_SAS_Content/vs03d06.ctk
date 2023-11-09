@@ -1,0 +1,325 @@
+<Task revision="1" schemaVersion="7.3">
+    <Registration>
+        <Name>One-Way Frequencies.ctk</Name>
+        <Description>The One-Way Frequencies task generates frequency tables and plots from your data. You can also use it to perform asymptotic and exact binomial and chi-square tests.</Description>
+        <GUID>0DA6917-F4E8-4B76-A6AD-774D873223AD</GUID>
+        <Procedures>FREQ</Procedures>
+        <Links>
+            <Link href="https://documentation.sas.com/?softwareId=STUDIOBASIC&amp;softwareVersion=01&amp;softwareContextId=tasks&amp;requestor=inapp">SAS Studio Task Reference Guide</Link>
+            <Link href=""> </Link>
+            <Link href=""> </Link>
+            <Link href="https://documentation.sas.com/?softwareId=MVADOC&amp;softwareVersion=01&amp;softwareContextId=proc_freq&amp;requestor=inapp">The FREQ Procedure</Link>
+            <Link href=""> </Link>
+            <Link href=""> </Link>
+            <Link href="http://support.sas.com/training/studio">SAS Tutorials</Link>
+        </Links>
+    </Registration>
+    <Metadata>
+        <DataSources>
+            <DataSource name="dataset" where="true">
+                <Roles>
+                    <Role exclude="byVariables,freqVariable" maxVars="0" minVars="1" name="analysisVariable" order="true" type="A">Analysis variables:</Role>
+                    <Role exclude="analysisVariable,freqVariable" maxVars="0" minVars="0" name="byVariables" order="true" type="A">Group analysis by:</Role>
+                    <Role exclude="analysisVariable,byVariables" maxVars="1" minVars="0" name="freqVariable" type="N">Frequency count:</Role>
+                </Roles>
+            </DataSource>
+        </DataSources>
+        <Options>
+            <Option inputType="string" name="dataTab">Data</Option>
+            <Option inputType="string" name="dataGroup">Data</Option>
+            <Option inputType="string" name="rolesGroup">Roles</Option>
+            <Option inputType="string" name="otherRolesGroup">Additional Roles</Option> 
+
+            <Option inputType="string" name="optionsTab">Options</Option>
+            
+            <Option inputType="string" name="freqTableOptions">Frequencies and Percentages</Option>
+            <Option defaultValue="1" inputType="checkbox" name="freqTable">Frequency table</Option>
+            <Option defaultValue="1" indent="1" inputType="checkbox" name="addPct">Include percentages</Option>
+            <Option defaultValue="1" indent="1" inputType="checkbox" name="addCumul">Include cumulative frequencies and percentages</Option>
+            <Option defaultValue="unformatOrder" indent="1" inputType="combobox" name="orderCombo">Row value order:</Option>
+            <Option inputType="string" name="unformatOrder">Unformatted value (Default)</Option>
+            <Option inputType="string" name="freqOrder">Descending frequency</Option>
+            <Option inputType="string" name="formatOrder">Formatted value</Option>
+            <Option inputType="string" name="dataOrder">Order of appearance in data set</Option>
+
+            <Option inputType="string" name="statisticsGroup">Statistics</Option>
+            <Option inputType="string" name="binomialGroup">Binomial Proportion</Option>
+            <Option defaultValue="0" inputType="checkbox" name="asymBinomial">Asymptotic test</Option>
+            <Option defaultValue="0" indent="1" inputType="checkbox" name="exactBinomial">Exact test</Option>
+            <Option decimalPlaces="1,15" defaultValue="0.5" indent="1" inputType="numbertext" invalidMessage="The null hypothesis proportion must be greater than 0 and less than 1." maxValue="0.9999999999" minValue="0.0000000001" missingMessage="The null hypothesis proportion must be greater than 0 and less than 1." name="nullProportion" promptMessage="The null hypothesis proportion must be greater than 0 and less than 1." rangeMessage="The null hypothesis proportion must be greater than 0 and less than 1." required="true" width="100px">Null hypothesis proportion:</Option>
+
+            <Option indent="1" inputType="checkbox" name="binomialConfidenceLimits">Confidence Limits</Option>
+            <Option defaultValue="confidence95" indent="1" inputType="combobox" name="binomialConfLevel">Confidence level:</Option>
+            <Option inputType="string" name="confidence99">99%</Option>                        
+            <Option inputType="string" name="confidence95">95%</Option>
+            <Option inputType="string" name="confidence90">90%</Option>
+            <Option inputType="string" name="confidenceSpecify">Use custom value</Option>
+            <Option decimalPlaces="0,15" defaultValue="95" indent="2" inputType="numbertext" invalidMessage="Enter a number greater than zero and less than 100 for the confidence level" maxValue="99.999999999" minValue="0.00000000001" missingMessage="Enter a number greater than zero and less than 100 for the confidence level" name="confidenceValue" promptMessage="Enter a number greater than zero and less than 100 for the confidence level" rangeMessage="Enter a number greater than zero and less than 100 for the confidence level" required="true" width="75px">Custom confidence level:</Option>
+
+            <Option inputType="string" name="exactCompGroup">Exact Computation Methods</Option>
+            <Option inputType="string" name="exactNote">Note: For some large problems, computation of exact tests might require a large amount of time and memory. Consider using asymptotic tests for such problems. Alternatively, when asymptotic methods might not be sufficient for such large problems, consider using Monte Carlo estimation of exact p-values.</Option>
+            <Option defaultValue="1" inputType="checkbox" name="limitCompTime">Limit computation time</Option>
+            <Option defaultValue="300" increment="1" indent="1" inputType="numstepper" minValue="1" name="timeInSecs" required="true">Maximum time (seconds):</Option>
+            <Option decimalPlaces="0,15" defaultValue="300" indent="1" inputType="numbertext" invalidMessage="Enter a number greater than zero for the maximum time (in seconds) to compute an exact p-value." minValue="0.0000000001" missingMessage="Enter a number greater than zero for the maximum time (in seconds) to compute an exact p-value." name="maxTime" promptMessage="Enter a number greater than zero for the maximum time (in seconds) to compute an exact p-value." rangeMessage="Enter a number greater than zero for the maximum time (in seconds) to compute an exact p-value." required="true" width="100px">Maximum time (in seconds):</Option>
+            <Option inputType="string" name="missingValuesGroup">Missing Values</Option>
+            <Option defaultValue="0" inputType="checkbox" name="missprint">Include in frequency table</Option>
+            <Option defaultValue="0" inputType="checkbox" name="includeMissing">Include in percentages and statistics</Option>
+
+            <Option inputType="string" name="chiSquareGroup">Chi-square Goodness-of-Fit</Option>
+            <Option defaultValue="0" inputType="checkbox" name="asymChisq">Asymptotic test</Option>
+            <Option defaultValue="0" indent="1" inputType="checkbox" name="exactChisq">Exact test</Option>
+            <Option indent="1" inputType="checkbox" name="lrchisq">Likelihood ratio goodness-of-fit test</Option>
+
+            <Option defaultValue="0" indent="2" inputType="checkbox" name="monteCarlo">Use Monte Carlo estimation</Option>
+            <Option defaultValue="confidence99" indent="3" inputType="combobox" name="mcConfidence">Confidence level:</Option>
+            <Option decimalPlaces="0,15" defaultValue="95" indent="3" inputType="numbertext" invalidMessage="Enter a number greater than zero and less than 100 for the Monte Carlo confidence level" maxValue="99.999999999" minValue="0.00000000001" missingMessage="Enter a number greater than zero and less than 100 for the Monte Carlo confidence level" name="mcConfidenceValue" promptMessage="Enter a number greater than zero and less than 100 for the Monte Carlo confidence level" rangeMessage="Enter a number greater than zero and less than 100 for the Monte Carlo confidence level" required="true" width="75px">Custom confidence level:</Option>
+
+            <Option inputType="string" name="plotsGroup">Plots</Option>          
+            <Option defaultValue="0" inputType="checkbox" name="suppressPlots">Suppress plots</Option>
+        </Options>
+    </Metadata>
+    
+    <UI>
+            <Container option="dataTab">
+                <Group open="true" option="dataGroup">
+                    <DataItem data="dataset"/>
+                </Group>
+                <Group open="true" option="rolesGroup">
+                    <RoleItem role="analysisVariable"/>
+                </Group>
+                <Group option="otherRolesGroup">
+                    <RoleItem role="freqVariable"/>
+                    <RoleItem role="byVariables"/>
+                </Group>
+            </Container>
+
+            <Container option="optionsTab">
+                <Group option="plotsGroup">
+                    <OptionItem option="suppressPlots"/>
+                </Group>
+                
+                <Group open="true" option="freqTableOptions">
+                     <OptionItem option="freqTable"/>
+                     <OptionItem option="addPct"/>
+                     <OptionItem option="addCumul"/>
+                     <OptionChoice option="orderCombo">
+                        <OptionItem option="unformatOrder"/>
+                        <OptionItem option="freqOrder"/>
+                        <OptionItem option="formatOrder"/>                        
+                        <OptionItem option="dataOrder"/>
+                     </OptionChoice>
+                </Group>
+                <Group option="statisticsGroup">
+                    <Group open="true" option="binomialGroup">
+                        <OptionItem option="asymBinomial"/>
+                        <OptionItem option="nullProportion"/>
+                        <OptionChoice option="binomialConfLevel">
+                            <OptionItem option="confidence99"/>                             
+                            <OptionItem option="confidence95"/>
+                            <OptionItem option="confidence90"/> 
+                            <OptionItem option="confidenceSpecify"/>                            
+                        </OptionChoice>
+                        <OptionItem option="confidenceValue"/>
+                        <OptionItem option="exactBinomial"/>
+                    </Group>
+                        
+                    <Group open="true" option="chiSquareGroup">
+                        <OptionItem option="asymChisq"/>
+<!-- 9.4
+                        <OptionItem option="lrchisq"/>
+-->
+                        <OptionItem option="exactChisq"/>
+                        <OptionItem option="monteCarlo"/>
+
+                        <OptionChoice option="mcConfidence">
+                            <OptionItem option="confidence90"/>
+                            <OptionItem option="confidence95"/>
+                            <OptionItem option="confidence99"/>
+                            <OptionItem option="confidenceSpecify"/>                            
+                        </OptionChoice>
+                        <OptionItem option="mcConfidenceValue"/>
+                    </Group>
+                        
+                    <OptionItem option="exactNote"/>
+                    
+                    <Group option="exactCompGroup">                
+                        <OptionItem option="limitCompTime"/>
+                        <OptionItem option="maxTime"/>
+                    </Group>
+                </Group>
+
+                    <Group option="missingValuesGroup">
+                        <OptionItem option="missprint"/>
+                        <OptionItem option="includeMissing"/>
+                    </Group>
+                
+            </Container>
+        </UI>
+    
+        <Dependencies>
+            <Dependency condition="($freqTable=='1')">
+                <Target action="show" conditionResult="true" option="addPct"/>
+                <Target action="hide" conditionResult="false" option="addPct"/>
+                <Target action="show" conditionResult="true" option="addCumul"/>
+                <Target action="hide" conditionResult="false" option="addCumul"/>
+            </Dependency>
+
+            <Dependency condition="($asymBinomial=='1')">
+                <Target action="show" conditionResult="true" option="exactBinomial"/>
+                <Target action="hide" conditionResult="false" option="exactBinomial"/>
+            </Dependency>
+
+            <Dependency condition="($asymChisq=='1')">
+                <Target action="show" conditionResult="true" option="exactChisq"/>
+                <Target action="hide" conditionResult="false" option="exactChisq"/>
+            </Dependency>
+
+            <Dependency condition="($asymChisq=='1' &amp;&amp; $exactChisq=='1')">
+                <Target action="show" conditionResult="true" option="monteCarlo"/>
+                <Target action="hide" conditionResult="false" option="monteCarlo"/>
+            </Dependency>
+
+            <Dependency condition=" (($asymBinomial=='1' &amp;&amp; $exactBinomial=='1') ||  ($asymChisq=='1' &amp;&amp; $exactChisq=='1')) ">
+                <Target action="show" conditionResult="true" option="limitCompTime"/>
+                <Target action="hide" conditionResult="false" option="limitCompTime"/>
+            </Dependency>
+
+            <Dependency condition="($asymBinomial=='1' || $exactBinomial=='1')">
+                <Target action="show" conditionResult="true" option="binomialConfLevel"/>
+                <Target action="hide" conditionResult="false" option="binomialConfLevel"/>
+                <Target action="show" conditionResult="true" option="nullProportion"/>
+                <Target action="hide" conditionResult="false" option="nullProportion"/>
+            </Dependency>
+            
+        <Dependency condition="(($asymBinomial=='1' || $exactBinomial=='1') &amp;&amp; $binomialConfLevel == 'confidenceSpecify')">
+            <Target action="show" conditionResult="true" option="confidenceValue"/>
+            <Target action="hide" conditionResult="false" option="confidenceValue"/>
+        </Dependency>
+            
+            <Dependency condition="(                  (($asymBinomial=='1' &amp;&amp; $exactBinomial=='1') ||                      ($asymChisq=='1' &amp;&amp; $exactChisq=='1')) )">
+                <Target action="show" conditionResult="true" option="maxTime"/>
+                <Target action="hide" conditionResult="false" option="maxTime"/>
+            </Dependency>
+            
+            <Dependency condition="(($exactBinomial=='1') || ($exactChisq=='1'))">
+                <Target action="show" conditionResult="true" option="exactNote"/>
+                <Target action="hide" conditionResult="false" option="exactNote"/>
+                <Target action="show" conditionResult="true" option="exactCompGroup"/>
+                <Target action="hide" conditionResult="false" option="exactCompGroup"/>             
+            </Dependency>
+<!-- 9.4
+            <Dependency condition="($asymChisq=='1')">
+                <Target option=lrchisq" conditionResult="true" action="show" />
+                <Target option="lrchisq" conditionResult="false" action="hide"/>
+            </Dependency>
+-->
+            <Dependency condition="(($asymChisq=='1' &amp;&amp; $exactChisq=='1') &amp;&amp; $monteCarlo=='1')">
+                <Target action="show" conditionResult="true" option="mcConfidence"/>
+                <Target action="hide" conditionResult="false" option="mcConfidence"/>
+            </Dependency>
+            
+            <Dependency condition="(($asymChisq=='1' &amp;&amp; $exactChisq=='1') &amp;&amp; $monteCarlo=='1' &amp;&amp; $mcConfidence == 'confidenceSpecify')">
+                <Target action="show" conditionResult="true" option="mcConfidenceValue"/>
+                <Target action="hide" conditionResult="false" option="mcConfidenceValue"/>
+            </Dependency>
+        </Dependencies>
+        
+        <Requirements> 
+            <Requirement condition="(($freqTable == '1') || ($asymBinomial=='1') || ($exactBinomial=='1') ||($asymChisq == '1') ||                  ($exactChisq == '1'))">
+                <Message>Select to show the frequency table or select at least one statistic.</Message>
+            </Requirement>
+        </Requirements>
+
+    <CodeTemplate>
+        <![CDATA[
+
+#if     ($binomialConfLevel == "confidence95") #set( $binomialAlpha = 0.05 ) 
+#elseif ($binomialConfLevel == "confidence99") #set( $binomialAlpha = 0.01 ) 
+#elseif ($binomialConfLevel == "confidence90") #set( $binomialAlpha = 0.10 ) 
+#elseif ($binomialConfLevel == 'confidenceSpecify')#set( $binomialAlpha = "%sysevalf((100-$confidenceValue)/100)" )
+#end
+
+#set ($showPlots=1)
+#if ($suppressPlots == 1) #set ($showPlots=0) #end
+
+#if($monteCarlo == "1")
+   #if     ($mcConfidence == "confidence95") #set( $mcAlpha = 0.05 ) 
+   #elseif ($mcConfidence == "confidence99") #set( $mcAlpha = 0.01 ) 
+   #elseif ($mcConfidence == "confidence90") #set( $mcAlpha = 0.10 ) 
+   #elseif ($mcConfidence == "confidenceSpecify") #set( $mcAlpha = "%sysevalf((100-$mcConfidenceValue)/100)" ) 
+   #end
+#end
+
+#set($bool_plots = 0)
+#if($freqPlot == "1" || $cumFreqPlot == "1" || $deviationPlot == "1")#set($bool_plots = 0)#end
+#if($bool_plots == 1)ods graphics on;#end
+
+#if($byVariables.size()>0)
+proc sort data=$dataset out=Work.SortTempTableSorted;
+   #if ($dataset.getWhereClause() != '')
+   where $dataset.getWhereClause();
+   #end
+   by #foreach( $item in $byVariables ) $item #end;
+run;
+proc freq data=Work.SortTempTableSorted
+#else
+proc freq data=$dataset
+#end
+#if($orderCombo != "unformatOrder") order=
+   #if($orderCombo == "freqOrder") freq 
+   #elseif($orderCombo == "formatOrder") formatted 
+   #else data
+   #end
+#end
+;
+
+#if ($byVariables.size() == 0 && $dataset.getWhereClause() != '')
+   where $dataset.getWhereClause();
+#end
+
+#if($analysisVariable.size() > 0)
+   tables #foreach( $item in $analysisVariable ) $item #end
+    /
+   #if(!($freqTable == "1"))noprint
+   #else 
+      #if(!($addPct == "1"))nopercent#end
+      #if(!($addCumul == "1"))nocum#end
+   #end
+   #if($includeMissing == "1") missing#elseif($missprint == "1") missprint#end 
+   #if($asymChisq == "1" || $exactChisq == "1") chisq#if ($lrchisq == 1)(lrchisq)#end#end
+   #if($asymBinomial == "1" || $exactBinomial == "1") binomial(p=$nullProportion cl=all) alpha=$binomialAlpha#end
+   #if($showPlots == "1")
+      #if ($freqTable == 1) plots=(freqplot cumfreqplot)#end
+      #else plots=none
+   #end
+;
+#end
+
+#if($exactBinomial == "1" || $exactChisq == "1")
+   exact  #if($exactBinomial == "1") binomial#end #if($exactChisq == "1") chisq#end / 
+   #if($limitCompTime == 1) maxtime=$maxTime #end
+   #if($monteCarlo == "1") mc alpha=$mcAlpha#end;
+#end
+
+#if( $freqVariable.size() > 0 )
+   weight #foreach( $item in $freqVariable ) $item #end;
+#end
+
+#if( $byVariables.size() > 0 )
+   by #foreach( $item in $byVariables ) $item #end;
+#end
+run;
+#if($byVariables.size()>0)
+proc delete data=Work.SortTempTableSorted; run;
+#end
+        ]]>
+    </CodeTemplate>
+
+
+<TemplateValues version="7.3">
+<![CDATA[
+{"dataset":{"librarytable":"ORION.EMPLOYEES_EU"},"analysisVariable":"json:[{\"value\":\"Department\",\"type\":\"Char\",\"length\":60,\"format\":\"\",\"informat\":\"\",\"className\":\"RoleObject\"}]","byVariables":"json:[{\"value\":\"Remote\",\"type\":\"Char\",\"length\":2,\"format\":\"\",\"informat\":\"\",\"className\":\"RoleObject\"}]","freqVariable":"","freqTable":"1","addPct":"1","addCumul":"0","orderCombo":[{"value":"freqOrder","displayValue":"Descending frequency","keys":["freqOrder",null,"Descending frequency"],"label":"Descending frequency","baseid":"{\"value\":\"freqOrder\",\"label\":\"Descending frequency\"}","id":"{\"value\":\"freqOrder\",\"label\":\"Descending frequency\"}1"}],"asymBinomial":"0","exactBinomial":"0","nullProportion":0.5,"binomialConfLevel":[{"value":"confidence95","displayValue":"95%","keys":["confidence95",null,"95%"],"label":"95%","baseid":"{\"value\":\"confidence95\",\"label\":\"95%\"}","id":"{\"value\":\"confidence95\",\"label\":\"95%\"}1"}],"confidenceValue":95,"limitCompTime":"1","maxTime":300,"missprint":"0","includeMissing":"0","asymChisq":"0","exactChisq":"0","monteCarlo":"0","mcConfidence":[{"value":"confidence99","displayValue":"99%","keys":["confidence99",null,"99%"],"label":"99%","baseid":"{\"value\":\"confidence99\",\"label\":\"99%\"}","id":"{\"value\":\"confidence99\",\"label\":\"99%\"}1"}],"mcConfidenceValue":95,"suppressPlots":"0"}
+]]>
+</TemplateValues>
+
+</Task>

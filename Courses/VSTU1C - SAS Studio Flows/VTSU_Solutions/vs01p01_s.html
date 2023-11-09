@@ -1,0 +1,4897 @@
+<!DOCTYPE html>
+<html class="ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta content="SAS V.04.00" name="generator"/>
+<title>Results:vs01p01_s.flw.sas</title>
+<style>
+/*<![CDATA[*/
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c section > table, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c section > pre, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c div > table,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c div > pre, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c article > table, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c article > pre,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j section > table, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j section > pre, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j div > table,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j div > pre, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j article > table, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j article > pre,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c p.note, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c p.warning, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c p.error, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c p.fatal,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j p.note, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j p.warning, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j p.error, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j p.fatal,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.c > table.layoutcontainer, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.l table, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.l pre, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.l p.note,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.l p.warning, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.l p.error, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.l p.fatal { margin-left: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.c table, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.c pre, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.c p.note,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.c p.warning, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.c p.error, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.r table, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.r pre, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.r p.note,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.r table, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.r pre, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.r p.note,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.r p.warning, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.r p.error, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion.r p.fatal { margin-right: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa article, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa aside, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa details, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa figcaption, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa figure, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa footer, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa header, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa hgroup, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa nav, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa section { display: block }
+html.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa { font-size: 100% }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body { margin: 1em; font-size: 13px; line-height: 1.231 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa ul, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa ol { margin: 1em 0; padding: 0 0 0 40px }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa dd { margin: 0 0 0 40px }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa nav ul, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa img { border: 0; vertical-align: middle }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa svg:not(:root) { overflow: hidden }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa figure { margin: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa table { border-collapse: collapse; border-spacing: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutcontainer { border-collapse: separate; border-spacing: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa p { margin-top: 0; text-align: left }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa h1.heading1 { text-align: left }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa h2.heading2 { text-align: left }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa h3.heading3 { text-align: left }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa h4.heading4 { text-align: left }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa h5.heading5 { text-align: left }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa h6.heading6 { text-align: left }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa span { text-align: left }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa table { margin-bottom: 1em }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa td, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa th { text-align: left; padding: 3px 6px; vertical-align: top }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa td[class$="fixed"], .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa th[class$="fixed"] { white-space: pre }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa section, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa article { padding-top: 1px; padding-bottom: 8px }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .stacked-value { text-align: left; display: block }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .stacked-cell > .stacked-value, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa td.data > td.data, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa th.data > td.data, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa th.data > th.data, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa td.data > th.data, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa th.header > th.header { border: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .stacked-cell > div.data { border-width: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer > p { margin: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .batch { display: table }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .toc { display: none }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .proc_note_group, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .proc_title_group { margin-bottom: 1em }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa p.proctitle { margin: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa p.note, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa p.warning, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa p.error, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa p.fatal { display: table }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .notebanner, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .warnbanner, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .errorbanner, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .fatalbanner,
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .notecontent, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .warncontent, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .errorcontent, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .fatalcontent { display: table-cell; padding: 0.5em }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .notebanner, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .warnbanner, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .errorbanner, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .fatalbanner { padding-right: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body > div > ol li { text-align: left }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .beforecaption > h4 { margin-top: 0; margin-bottom: 0 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .c { text-align: center }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .r { text-align: right }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .l { text-align: left }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .j { text-align: justify }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .d { text-align: right }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .b { vertical-align: bottom }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .m { vertical-align: middle }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .t { vertical-align: top }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .accessiblecaption {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa a:active { color: #800080 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .aftercaption {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    padding-top: 4pt;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .batch > colgroup {
+    border-left: 0 solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .batch > tbody, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .batch > thead, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .batch > tfoot {
+    border-top: 0 solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .batch { border: hidden; }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .batch {
+    background-color: #ffffff;
+    border: 0 solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+    font-size: 9pt;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .beforecaption {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    margin: 1em 2em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bodydate {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bycontentfolder {
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .byline {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bylinecontainer > col, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bylinecontainer > colgroup > col, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bylinecontainer > colgroup, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bylinecontainer > tr, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bylinecontainer > * > tr, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bylinecontainer > thead, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bylinecontainer > tbody, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bylinecontainer > tfoot { border: none; }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .bylinecontainer {
+    background-color: #ffffff;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .caption {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .cell, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .container {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .contentfolder, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .contentitem {
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .contentproclabel, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .contentprocname {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .contents {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .contentsdate {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .contenttitle {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .continued {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .cover {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    margin: 1em 2em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .data {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .dataempty {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .datafixed {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .datastrong {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .datastrongfixed {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .date {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .document {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .errorbanner {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .errorcontent {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .errorcontentfixed {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .extendedpage {
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 1pt;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .fatalbanner {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .fatalcontent {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .fatalcontentfixed {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .figure {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .figurecaption {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa a:focus, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa area:focus, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa button:focus { outline: #00517f solid 3px }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .folderaction {
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .footer {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .footeremphasis {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .footeremphasisfixed {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .footerempty {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .footerfixed {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .footerstrong {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .footerstrongfixed {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .frame {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .graph {
+    background-color: #ffffff;
+    border: 0 solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    margin-top: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .header {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .headeremphasis {
+    background-color: #d8dbd3;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .headeremphasisfixed {
+    background-color: #d8dbd3;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .headerempty {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .headerfixed {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .headersandfooters {
+    background-color: #edf2f9;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .headerstrong {
+    background-color: #d8dbd3;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .headerstrongfixed {
+    background-color: #d8dbd3;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .heading1, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .heading2, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .heading3, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .heading4, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .heading5, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .heading6, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .index {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .indexaction, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .indexitem {
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .indexprocname {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .indextitle {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .landmarkfolder, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .landmarkitem {
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutcontainer, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .layoutregion {
+    border-width: 0;
+    border-spacing: 30px;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .linecontent {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa a:link { color: #0000ff }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .list {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+    margin-top: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .list10 {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+    margin-top: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .list2 {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+    margin-top: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .list3, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .list4, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .list5, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .list6, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .list7, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .list8, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .list9 {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+    margin-top: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .listitem {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+    margin-top: 0;
+    orphans: 2;
+    text-align: left;
+    widows: 2;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .listitem10 {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+    margin-top: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .listitem2 {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+    margin-top: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .listitem3, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .listitem4, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .listitem5, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .listitem6, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .listitem7, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .listitem8, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .listitem9 {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+    margin-top: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .nonlinearoutputcaption {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .note {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .notebanner {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .notecontent {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .notecontentfixed {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .output > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .output > tbody, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .output > thead, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .output > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .output { border: hidden; }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .output {
+    background-color: #ffffff;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .pagebreak {
+    border-width: 0;
+    margin-bottom: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .pageno {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .pages {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .pagesdate {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .pagesitem {
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .pagesproclabel, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .pagesprocname {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .pagestitle {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .paragraph {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    margin-top: 1em;
+    orphans: 2;
+    widows: 2;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .parskip > col, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .parskip > colgroup > col, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .parskip > colgroup, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .parskip > tr, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .parskip > * > tr, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .parskip > thead, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .parskip > tbody, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .parskip > tfoot { border: none; }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .prepage {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .proctitle {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .proctitlefixed {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowfooter {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowfooteremphasis {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowfooteremphasisfixed {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowfooterempty {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowfooterfixed {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowfooterstrong {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowfooterstrongfixed {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowheader {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowheaderemphasis {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowheaderemphasisfixed {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowheaderempty {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowheaderfixed {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowheaderstrong {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .rowheaderstrongfixed {
+    background-color: #d8d8d8;
+    border: 1px solid #cccccc;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemfooter {
+    background-color: #ffffff;
+    border-width: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    margin-top: 1em;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemfooter10, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemfooter2, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemfooter3, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemfooter4, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemfooter5, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemfooter6, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemfooter7, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemfooter8, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemfooter9 {
+    background-color: #ffffff;
+    border-width: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    margin-top: 0;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemtitle, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemtitle10, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemtitle2, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemtitle3, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemtitle4, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemtitle5, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemtitle6, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemtitle7, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemtitle8, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systemtitle9 {
+    background-color: #ffffff;
+    border-width: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer > col, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer > colgroup > col, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer > colgroup, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer > tr, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer > * > tr, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer > thead, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer > tbody, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer > tfoot { border: none; }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .systitleandfootercontainer {
+    background-color: #ffffff;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .table > col, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .table > colgroup > col {
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .table > tr, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .table > * > tr {
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .table { border: hidden; }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .table {
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: inline-table;
+    margin-top: 1em;
+    }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .titleandnotecontainer > col, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .titleandnotecontainer > colgroup > col, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .titleandnotecontainer > colgroup, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .titleandnotecontainer > tr, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .titleandnotecontainer > * > tr, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .titleandnotecontainer > thead, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .titleandnotecontainer > tbody, .ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .titleandnotecontainer > tfoot { border: none; }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .titleandnotecontainer {
+    background-color: #ffffff;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .titlesandfooters {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .usertext {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    orphans: 2;
+    widows: 2;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa a:visited { color: #800080 }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .warnbanner {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .warncontent {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .warncontentfixed {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .sel-2 { content: '<div class="pagebreak" style="text-align: center; page-break-before: avoid; page-break-after: always"><span>&#160;</span></div>' }
+.ods_88d21d2c-24a1-4dc1-a351-b47b7c59deaa .sel-5 { content: '<hr class="pagebreak" epub:type="pagebreak" style="width: 0; page-break-before: avoid; page-break-after: always"/>' }
+/*]]>*/
+</style>
+</head>
+<body class="body">
+<div id="div_88d21d2c-24a1-4dc1-a351-b47b7c59deaa" class="c body">
+<h1 class="body toc">Results:vs01p01_s.flw.sas</h1>
+<section data-name="SGPlot" data-sec-type="proc">
+<h1 class="contentprocname toc">The SGPlot Procedure</h1>
+<article id="IDX" aria-label="The SGPlot Procedure">
+<h1 class="contentitem toc">The SGPlot Procedure</h1>
+<div class="c">
+<script type="text/ecmascript">
+function SVG_IDX_Init(anchor) {
+}
+</script>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" baseProfile="full" version="1.1" id="SVG_IDX" onload='SVG_IDX_Init("SVG_IDX")' viewBox="-1 -1 615 462" height="461" width="614">
+<title>Average MSRP by Vehicle Type &amp; Origin;</title>
+<desc id="desc_SVG_IDX">The SGPlot Procedure</desc>
+<defs>
+<clipPath id="SVG_IDX_clipPage1">
+<rect x="-1" y="-1" width="615" height="462"></rect>
+</clipPath>
+</defs>
+<g id="SVG_IDX_Page1" clip-path="url(#SVG_IDX_clipPage1)">
+<g transform=" scale(1, 1)">
+<rect x="0" y="0" width="613" height="460" style="fill: #FFFFFF; "></rect>
+<rect x="0" y="0" width="613" height="460" style="fill: #FFFFFF; "></rect>
+<rect x="0" y="0" width="613" height="460" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></rect>
+<g transform="matrix(1, 0, 0, 1, 11, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath0">
+<rect x="-1" y="-1" width="593" height="440" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath0)">
+<g transform="matrix(1, 0, 0, 1, 0, 29)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath1">
+<rect x="-1" y="-1" width="593" height="384" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath1)">
+<rect x="83.35919" y="0.43295" width="507.14333" height="335.23636" style="fill: #FFFFFF; "></rect>
+<path d="M82.86003 336.16818L590.00337 336.16818" style="stroke: #CCCCCC; stroke-width: 1; fill: none; stroke-dasharray: 4,4; "></path>
+<path d="M589 336L590.00337 336.16818" style="stroke: #CCCCCC; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 244.15388L590.00337 244.15388" style="stroke: #CCCCCC; stroke-width: 1; fill: none; stroke-dasharray: 4,4; "></path>
+<path d="M589 244L590.00337 244.15388" style="stroke: #CCCCCC; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 152.13959L590.00337 152.13959" style="stroke: #CCCCCC; stroke-width: 1; fill: none; stroke-dasharray: 4,4; "></path>
+<path d="M589 152L590.00337 152.13959" style="stroke: #CCCCCC; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 60.1253L590.00337 60.1253" style="stroke: #CCCCCC; stroke-width: 1; fill: none; stroke-dasharray: 4,4; "></path>
+<path d="M589 60L590.00337 60.1253" style="stroke: #CCCCCC; stroke-width: 1; fill: none; "></path>
+<defs>
+<clipPath id="SVG_IDX_ClipPath2">
+<rect x="82" y="-1" width="510" height="338" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath2)">
+<defs>
+<linearGradient id="SVG_IDX_lg0" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#3D5AAE"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="119" y="245" width="23" height="91" style="fill: url(#SVG_IDX_lg0); "></rect>
+<rect x="119.29848" y="244.52194" width="22.96121" height="91.64623" style="stroke: #194393; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg1" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#3D5AAE"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="179" y="200" width="23" height="136" style="fill: url(#SVG_IDX_lg1); "></rect>
+<rect x="178.79797" y="200.12964" width="22.96121" height="136.03853" style="stroke: #194393; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg2" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#90B328"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="202" y="114" width="23" height="222" style="fill: url(#SVG_IDX_lg2); "></rect>
+<rect x="201.75919" y="113.74203" width="22.96121" height="222.42615" style="stroke: #749800; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg3" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#9D2E14"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="225" y="177" width="23" height="159" style="fill: url(#SVG_IDX_lg3); "></rect>
+<rect x="224.7204" y="177.03314" width="22.96121" height="159.13503" style="stroke: #7F0F00; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg4" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#3D5AAE"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="261" y="231" width="23" height="105" style="fill: url(#SVG_IDX_lg4); "></rect>
+<rect x="261.25868" y="231.43765" width="22.96121" height="104.73052" style="stroke: #194393; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg5" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#90B328"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="284" y="138" width="23" height="198" style="fill: url(#SVG_IDX_lg5); "></rect>
+<rect x="284.21989" y="138.37402" width="22.96121" height="197.79416" style="stroke: #749800; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg6" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#9D2E14"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="307" y="218" width="23" height="118" style="fill: url(#SVG_IDX_lg6); "></rect>
+<rect x="307.18111" y="218.21122" width="22.96121" height="117.95695" style="stroke: #7F0F00; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg7" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#3D5AAE"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="344" y="187" width="23" height="149" style="fill: url(#SVG_IDX_lg7); "></rect>
+<rect x="343.71939" y="186.59597" width="22.96121" height="149.57221" style="stroke: #194393; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg8" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#90B328"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="367" y="5" width="23" height="331" style="fill: url(#SVG_IDX_lg8); "></rect>
+<rect x="366.6806" y="4.92272" width="22.96121" height="331.24545" style="stroke: #749800; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg9" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#9D2E14"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="390" y="128" width="23" height="208" style="fill: url(#SVG_IDX_lg9); "></rect>
+<rect x="389.64182" y="127.95261" width="22.96121" height="208.21556" style="stroke: #7F0F00; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg10" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#3D5AAE"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="438" y="242" width="23" height="94" style="fill: url(#SVG_IDX_lg10); "></rect>
+<rect x="438.15986" y="242.38893" width="22.96121" height="93.77924" style="stroke: #194393; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg11" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#9D2E14"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="461" y="211" width="23" height="125" style="fill: url(#SVG_IDX_lg11); "></rect>
+<rect x="461.12107" y="210.93557" width="22.96121" height="125.2326" style="stroke: #7F0F00; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg12" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#3D5AAE"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="509" y="230" width="23" height="106" style="fill: url(#SVG_IDX_lg12); "></rect>
+<rect x="508.6408" y="229.69049" width="22.96121" height="106.47768" style="stroke: #194393; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg13" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#90B328"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="532" y="162" width="23" height="174" style="fill: url(#SVG_IDX_lg13); "></rect>
+<rect x="531.60202" y="162.02538" width="22.96121" height="174.1428" style="stroke: #749800; stroke-width: 1; fill: none; "></rect>
+<defs>
+<linearGradient id="SVG_IDX_lg14" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="#9D2E14"></stop>
+   <stop offset="100%" stop-color="#FFFFFF"></stop>
+</linearGradient>
+</defs>
+<rect x="555" y="233" width="23" height="103" style="fill: url(#SVG_IDX_lg14); "></rect>
+<rect x="554.56323" y="233.36192" width="22.96121" height="102.80625" style="stroke: #7F0F00; stroke-width: 1; fill: none; "></rect>
+<path d="M82.86003 336.16818L591.00168 336.16818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+</g>
+<defs>
+<clipPath id="SVG_IDX_ClipPath3">
+<rect x="-1" y="-1" width="593" height="384" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath3)">
+<path d="M82.86003 336.16818L591.00168 336.16818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M591.00168 336.16818L591.00168 -0.0659" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 -0.0659L591.00168 -0.0659" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 336.16818L82.86003 -0.0659" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 336.16818L82.86003 -0.0659" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 336.16818L77.25674 336.16818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 59.75468, 340.16818)">
+<text textLength="14" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000024;&#x000030;</text>
+</g>
+<path d="M82.86003 244.15388L77.25674 244.15388" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 28.75468, 248.15388)">
+<text textLength="45" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000024;&#x000032;&#x000030;&#x00002C;&#x000030;&#x000030;&#x000030;</text>
+</g>
+<path d="M82.86003 152.13959L77.25674 152.13959" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 28.75468, 156.13959)">
+<text textLength="45" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000024;&#x000034;&#x000030;&#x00002C;&#x000030;&#x000030;&#x000030;</text>
+</g>
+<path d="M82.86003 60.1253L77.25674 60.1253" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 28.75468, 64.1253)">
+<text textLength="45" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000024;&#x000036;&#x000030;&#x00002C;&#x000030;&#x000030;&#x000030;</text>
+</g>
+<g transform="matrix(0, -1, 1, 0, 12.30095, 210.55113)">
+<text textLength="74" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font5', 'Albany AMT', sans-serif; font-size: 13px; font-weight: bold; white-space: pre; ">&#x00004D;&#x000053;&#x000052;&#x000050;&#x000020;&#x000028;&#x00004D;&#x000065;&#x000061;&#x00006E;&#x000029;</text>
+</g>
+<path d="M82.86003 336.16818L591.00168 336.16818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M130.77908 336.16818L130.77908 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 113.27908, 356.26818)">
+<text textLength="35" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000048;&#x000079;&#x000062;&#x000072;&#x000069;&#x000064;</text>
+</g>
+<path d="M213.23979 336.16818L213.23979 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 201.23979, 356.26818)">
+<text textLength="24" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000053;&#x000055;&#x000056;</text>
+</g>
+<path d="M295.7005 336.16818L295.7005 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 277.7005, 356.26818)">
+<text textLength="36" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000053;&#x000065;&#x000064;&#x000061;&#x00006E;</text>
+</g>
+<path d="M378.16121 336.16818L378.16121 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 360.16121, 356.26818)">
+<text textLength="36" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000053;&#x000070;&#x00006F;&#x000072;&#x000074;&#x000073;</text>
+</g>
+<path d="M460.62192 336.16818L460.62192 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 445.62192, 356.26818)">
+<text textLength="30" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000054;&#x000072;&#x000075;&#x000063;&#x00006B;</text>
+</g>
+<path d="M543.08263 336.16818L543.08263 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 523.58263, 356.26818)">
+<text textLength="39" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000057;&#x000061;&#x000067;&#x00006F;&#x00006E;</text>
+</g>
+<g transform="matrix(1, 0, 0, 1, 321.93001, 377.99109)">
+<text textLength="31" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font5', 'Albany AMT', sans-serif; font-size: 13px; font-weight: bold; white-space: pre; ">&#x000054;&#x000079;&#x000070;&#x000065;</text>
+</g>
+</g>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 234, 412)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath4">
+<rect x="-1" y="-1" width="208" height="28" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath4)">
+<rect x="0" y="10" width="206" height="16" style="fill: #FFFFFF; "></rect>
+<rect x="0" y="10" width="206" height="16" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></rect>
+<g transform="matrix(1, 0, 0, 1, 204, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath5">
+<rect x="-1" y="-1" width="3" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath5)">
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 157, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath6">
+<rect x="-1" y="-1" width="5" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath6)">
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 98, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath7">
+<rect x="-1" y="-1" width="5" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath7)">
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 39, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath8">
+<rect x="-1" y="-1" width="17" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath8)">
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 1, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath9">
+<rect x="-1" y="-1" width="5" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath9)">
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 176, 12)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath10">
+<rect x="-1" y="-1" width="29" height="14" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath10)">
+<text textLength="22" lengthAdjust="spacingAndGlyphs" x="3" y="10" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 11px; white-space: pre; ">&#x000055;&#x000053;&#x000041;</text>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 161, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath11">
+<rect x="-1" y="-1" width="16" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath11)">
+<rect x="3" y="2" width="8" height="8" style="fill: #9D2E14; "></rect>
+<rect x="3" y="2" width="8" height="8" style="stroke: #7F0F00; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 117, 12)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath12">
+<rect x="-1" y="-1" width="41" height="14" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath12)">
+<text textLength="34" lengthAdjust="spacingAndGlyphs" x="3" y="10" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 11px; white-space: pre; ">&#x000045;&#x000075;&#x000072;&#x00006F;&#x000070;&#x000065;</text>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 102, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath13">
+<rect x="-1" y="-1" width="16" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath13)">
+<rect x="3" y="2" width="8" height="8" style="fill: #90B328; "></rect>
+<rect x="3" y="2" width="8" height="8" style="stroke: #749800; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 70, 12)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath14">
+<rect x="-1" y="-1" width="29" height="14" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath14)">
+<text textLength="22" lengthAdjust="spacingAndGlyphs" x="3" y="10" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 11px; white-space: pre; ">&#x000041;&#x000073;&#x000069;&#x000061;</text>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 55, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath15">
+<rect x="-1" y="-1" width="16" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath15)">
+<rect x="3" y="2" width="8" height="8" style="fill: #3D5AAE; "></rect>
+<rect x="3" y="2" width="8" height="8" style="stroke: #194393; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 5, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath16">
+<rect x="-1" y="-1" width="35" height="15" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath16)">
+<text textLength="34" lengthAdjust="spacingAndGlyphs" x="0" y="11" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font5', 'Albany AMT', sans-serif; font-size: 12px; font-weight: bold; white-space: pre; ">&#x00004F;&#x000072;&#x000069;&#x000067;&#x000069;&#x00006E;</text>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="SVG_IDX_ClipPath17">
+<rect x="-1" y="-1" width="593" height="30" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath17)">
+<g transform="matrix(1, 0, 0, 1, 144, 0)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath18">
+<rect x="-1" y="-1" width="387" height="25" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath18)">
+<text textLength="380" lengthAdjust="spacingAndGlyphs" x="3" y="18.10546" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font5', 'Albany AMT', sans-serif; font-size: 20px; font-weight: bold; white-space: pre; ">&#x000041;&#x000076;&#x000065;&#x000072;&#x000061;&#x000067;&#x000065;&#x000020;&#x00004D;&#x000053;&#x000052;&#x000050;&#x000020;&#x000062;&#x000079;&#x000020;&#x000056;&#x000065;&#x000068;&#x000069;&#x000063;&#x00006C;&#x000065;&#x000020;&#x000054;&#x000079;&#x000070;&#x000065;&#x000020;&#x000026;&#x000020;&#x00004F;&#x000072;&#x000069;&#x000067;&#x000069;&#x00006E;</text>
+</g>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 0, 29)">
+</g>
+<defs>
+<clipPath id="SVG_IDX_ClipPath19">
+<rect x="82" y="-1" width="510" height="338" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath19)">
+</g>
+<defs>
+<clipPath id="SVG_IDX_ClipPath20">
+<rect x="-1" y="-1" width="593" height="440" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath20)">
+</g>
+</g>
+</g>
+<g fill-opacity="0" stroke-opacity="0">
+<title>The SGPlot Procedure</title>
+<rect x="0" y="0" width="613" height="460" style="fill: #FFFFFF; "></rect>
+<rect x="0" y="0" width="613" height="460" style="fill: #FFFFFF; "></rect>
+<rect x="0" y="0" width="613" height="460" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></rect>
+<g transform="matrix(1, 0, 0, 1, 11, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath21">
+<rect x="-1" y="-1" width="593" height="440" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath21)">
+<g transform="matrix(1, 0, 0, 1, 0, 29)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath22">
+<rect x="-1" y="-1" width="593" height="384" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath22)">
+<rect x="0" y="0" width="591" height="382" style="fill: #FFFFFF; "></rect>
+<rect x="83.35919" y="0.43295" width="507.14333" height="335.23636" style="fill: #FFFFFF; "></rect>
+<path d="M82.86003 336.16818L590.00337 336.16818" style="stroke: #CCCCCC; stroke-width: 1; fill: none; stroke-dasharray: 4,4; "></path>
+<path d="M589 336L590.00337 336.16818" style="stroke: #CCCCCC; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 244.15388L590.00337 244.15388" style="stroke: #CCCCCC; stroke-width: 1; fill: none; stroke-dasharray: 4,4; "></path>
+<path d="M589 244L590.00337 244.15388" style="stroke: #CCCCCC; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 152.13959L590.00337 152.13959" style="stroke: #CCCCCC; stroke-width: 1; fill: none; stroke-dasharray: 4,4; "></path>
+<path d="M589 152L590.00337 152.13959" style="stroke: #CCCCCC; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 60.1253L590.00337 60.1253" style="stroke: #CCCCCC; stroke-width: 1; fill: none; stroke-dasharray: 4,4; "></path>
+<path d="M589 60L590.00337 60.1253" style="stroke: #CCCCCC; stroke-width: 1; fill: none; "></path>
+<defs>
+<clipPath id="SVG_IDX_ClipPath23">
+<rect x="82" y="-1" width="510" height="338" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath23)">
+<a>
+<title>Type = Hybrid 
+ MSRP (Mean) = $19,920 
+ Origin = Asia</title>
+<path d="M119 245L143 245L143 337L119 337L119 245ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = SUV 
+ MSRP (Mean) = $29,569 
+ Origin = Asia</title>
+<path d="M179 200L203 200L203 337L179 337L179 200ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = SUV 
+ MSRP (Mean) = $48,346 
+ Origin = Europe</title>
+<path d="M202 114L226 114L226 337L202 337L202 114ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = SUV 
+ MSRP (Mean) = $34,589 
+ Origin = USA</title>
+<path d="M225 177L249 177L249 337L225 337L225 177ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Sedan 
+ MSRP (Mean) = $22,764 
+ Origin = Asia</title>
+<path d="M261 231L285 231L285 337L261 337L261 231ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Sedan 
+ MSRP (Mean) = $42,992 
+ Origin = Europe</title>
+<path d="M284 138L308 138L308 337L284 337L284 138ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Sedan 
+ MSRP (Mean) = $25,639 
+ Origin = USA</title>
+<path d="M307 218L331 218L331 337L307 337L307 218ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Sports 
+ MSRP (Mean) = $32,511 
+ Origin = Asia</title>
+<path d="M344 187L368 187L368 337L344 337L344 187ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Sports 
+ MSRP (Mean) = $71,999 
+ Origin = Europe</title>
+<path d="M367 5L391 5L391 337L367 337L367 5ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Sports 
+ MSRP (Mean) = $45,257 
+ Origin = USA</title>
+<path d="M390 128L414 128L414 337L390 337L390 128ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Truck 
+ MSRP (Mean) = $20,384 
+ Origin = Asia</title>
+<path d="M438 242L462 242L462 337L438 337L438 242ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Truck 
+ MSRP (Mean) = $27,220 
+ Origin = USA</title>
+<path d="M461 211L485 211L485 337L461 337L461 211ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Wagon 
+ MSRP (Mean) = $23,144 
+ Origin = Asia</title>
+<path d="M509 230L533 230L533 337L509 337L509 230ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Wagon 
+ MSRP (Mean) = $37,851 
+ Origin = Europe</title>
+<path d="M532 162L556 162L556 337L532 337L532 162ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+<a>
+<title>Type = Wagon 
+ MSRP (Mean) = $22,346 
+ Origin = USA</title>
+<path d="M555 233L579 233L579 337L555 337L555 233ZZ" style="fill: #CCCCCC; fill-rule: evenodd; "></path>
+</a>
+</g>
+<defs>
+<clipPath id="SVG_IDX_ClipPath24">
+<rect x="-1" y="-1" width="593" height="384" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath24)">
+<path d="M82.86003 336.16818L591.00168 336.16818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M591.00168 336.16818L591.00168 -0.0659" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 -0.0659L591.00168 -0.0659" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 336.16818L82.86003 -0.0659" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 336.16818L82.86003 -0.0659" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M82.86003 336.16818L77.25674 336.16818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 59.75468, 340.16818)">
+<text textLength="14" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000024;&#x000030;</text>
+</g>
+<path d="M82.86003 244.15388L77.25674 244.15388" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 28.75468, 248.15388)">
+<text textLength="45" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000024;&#x000032;&#x000030;&#x00002C;&#x000030;&#x000030;&#x000030;</text>
+</g>
+<path d="M82.86003 152.13959L77.25674 152.13959" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 28.75468, 156.13959)">
+<text textLength="45" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000024;&#x000034;&#x000030;&#x00002C;&#x000030;&#x000030;&#x000030;</text>
+</g>
+<path d="M82.86003 60.1253L77.25674 60.1253" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 28.75468, 64.1253)">
+<text textLength="45" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000024;&#x000036;&#x000030;&#x00002C;&#x000030;&#x000030;&#x000030;</text>
+</g>
+<g transform="matrix(0, -1, 1, 0, 12.30095, 210.55113)">
+<text textLength="74" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font5', 'Albany AMT', sans-serif; font-size: 13px; font-weight: bold; white-space: pre; ">&#x00004D;&#x000053;&#x000052;&#x000050;&#x000020;&#x000028;&#x00004D;&#x000065;&#x000061;&#x00006E;&#x000029;</text>
+</g>
+<path d="M82.86003 336.16818L591.00168 336.16818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<path d="M130.77908 336.16818L130.77908 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 113.27908, 356.26818)">
+<text textLength="35" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000048;&#x000079;&#x000062;&#x000072;&#x000069;&#x000064;</text>
+</g>
+<path d="M213.23979 336.16818L213.23979 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 201.23979, 356.26818)">
+<text textLength="24" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000053;&#x000055;&#x000056;</text>
+</g>
+<path d="M295.7005 336.16818L295.7005 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 277.7005, 356.26818)">
+<text textLength="36" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000053;&#x000065;&#x000064;&#x000061;&#x00006E;</text>
+</g>
+<path d="M378.16121 336.16818L378.16121 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 360.16121, 356.26818)">
+<text textLength="36" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000053;&#x000070;&#x00006F;&#x000072;&#x000074;&#x000073;</text>
+</g>
+<path d="M460.62192 336.16818L460.62192 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 445.62192, 356.26818)">
+<text textLength="30" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000054;&#x000072;&#x000075;&#x000063;&#x00006B;</text>
+</g>
+<path d="M543.08263 336.16818L543.08263 341.76818" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1, 0, 0, 1, 523.58263, 356.26818)">
+<text textLength="39" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 12px; white-space: pre; ">&#x000057;&#x000061;&#x000067;&#x00006F;&#x00006E;</text>
+</g>
+<g transform="matrix(1, 0, 0, 1, 321.93001, 377.99109)">
+<text textLength="31" lengthAdjust="spacingAndGlyphs" x="0" y="0.5" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font5', 'Albany AMT', sans-serif; font-size: 13px; font-weight: bold; white-space: pre; ">&#x000054;&#x000079;&#x000070;&#x000065;</text>
+</g>
+</g>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 234, 412)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath25">
+<rect x="-1" y="-1" width="208" height="28" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath25)">
+<rect x="0" y="10" width="206" height="16" style="fill: #FFFFFF; "></rect>
+<rect x="0" y="10" width="206" height="16" style="stroke: #6D6D6D; stroke-width: 1; fill: none; "></rect>
+<g transform="matrix(1, 0, 0, 1, 204, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath26">
+<rect x="-1" y="-1" width="3" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath26)">
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 157, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath27">
+<rect x="-1" y="-1" width="5" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath27)">
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 98, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath28">
+<rect x="-1" y="-1" width="5" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath28)">
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 39, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath29">
+<rect x="-1" y="-1" width="17" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath29)">
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 1, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath30">
+<rect x="-1" y="-1" width="5" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath30)">
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 176, 12)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath31">
+<rect x="-1" y="-1" width="29" height="14" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath31)">
+<text textLength="22" lengthAdjust="spacingAndGlyphs" x="3" y="10" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 11px; white-space: pre; ">&#x000055;&#x000053;&#x000041;</text>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 161, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath32">
+<rect x="-1" y="-1" width="16" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath32)">
+<rect x="3" y="2" width="8" height="8" style="fill: #9D2E14; "></rect>
+<rect x="3" y="2" width="8" height="8" style="stroke: #7F0F00; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 117, 12)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath33">
+<rect x="-1" y="-1" width="41" height="14" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath33)">
+<text textLength="34" lengthAdjust="spacingAndGlyphs" x="3" y="10" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 11px; white-space: pre; ">&#x000045;&#x000075;&#x000072;&#x00006F;&#x000070;&#x000065;</text>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 102, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath34">
+<rect x="-1" y="-1" width="16" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath34)">
+<rect x="3" y="2" width="8" height="8" style="fill: #90B328; "></rect>
+<rect x="3" y="2" width="8" height="8" style="stroke: #749800; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 70, 12)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath35">
+<rect x="-1" y="-1" width="29" height="14" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath35)">
+<text textLength="22" lengthAdjust="spacingAndGlyphs" x="3" y="10" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font3', 'Albany AMT', sans-serif; font-size: 11px; white-space: pre; ">&#x000041;&#x000073;&#x000069;&#x000061;</text>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 55, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath36">
+<rect x="-1" y="-1" width="16" height="16" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath36)">
+<rect x="3" y="2" width="8" height="8" style="fill: #3D5AAE; "></rect>
+<rect x="3" y="2" width="8" height="8" style="stroke: #194393; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 5, 11)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath37">
+<rect x="-1" y="-1" width="35" height="15" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath37)">
+<text textLength="34" lengthAdjust="spacingAndGlyphs" x="0" y="11" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font5', 'Albany AMT', sans-serif; font-size: 12px; font-weight: bold; white-space: pre; ">&#x00004F;&#x000072;&#x000069;&#x000067;&#x000069;&#x00006E;</text>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="SVG_IDX_ClipPath38">
+<rect x="-1" y="-1" width="593" height="30" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath38)">
+<g transform="matrix(1, 0, 0, 1, 144, 0)">
+<defs>
+<clipPath id="SVG_IDX_ClipPath39">
+<rect x="-1" y="-1" width="387" height="25" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath39)">
+<text textLength="380" lengthAdjust="spacingAndGlyphs" x="3" y="18.10546" style="fill: #111111; font-family: 'SVG_IDX_Albany AMT Font5', 'Albany AMT', sans-serif; font-size: 20px; font-weight: bold; white-space: pre; ">&#x000041;&#x000076;&#x000065;&#x000072;&#x000061;&#x000067;&#x000065;&#x000020;&#x00004D;&#x000053;&#x000052;&#x000050;&#x000020;&#x000062;&#x000079;&#x000020;&#x000056;&#x000065;&#x000068;&#x000069;&#x000063;&#x00006C;&#x000065;&#x000020;&#x000054;&#x000079;&#x000070;&#x000065;&#x000020;&#x000026;&#x000020;&#x00004F;&#x000072;&#x000069;&#x000067;&#x000069;&#x00006E;</text>
+</g>
+</g>
+</g>
+<g transform="matrix(1, 0, 0, 1, 0, 29)">
+</g>
+<defs>
+<clipPath id="SVG_IDX_ClipPath40">
+<rect x="82" y="-1" width="510" height="338" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath40)">
+</g>
+<defs>
+<clipPath id="SVG_IDX_ClipPath41">
+<rect x="-1" y="-1" width="593" height="440" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVG_IDX_ClipPath41)">
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<style type="text/css"><![CDATA[
+]]></style>
+</defs>
+<defs>
+<style type="text/css"><![CDATA[
+  @font-face {
+      font-family: "SVG_IDX_Albany AMT Font3";
+      src: url("#SVG_IDX_Font3") format("svg")
+      }
+]]></style>
+<font id="SVG_IDX_Font3" horiz-adv-x="3776" >
+   <font-face      font-family="SVG_IDX_Albany AMT Font3"
+    units-per-em="2048" ascent="1854" descent="-434" >
+      <font-face-src>
+         <font-face-name name="SVG_IDX_Albany AMT Font3"></font-face-name>
+      </font-face-src>
+   </font-face>
+<missing-glyph><path d="M0 0v4992h3456v-4992h-3456" fill="none"></path>
+</missing-glyph>
+<glyph unicode="&#40;" horiz-adv-x="680" 
+d="M597 -294L524 -341Q317 -110 222 101 T128 576Q128 838 222 1050 T524 1493L597 
+1446Q444 1242 371 1034 T298 578Q298 332 369 124 T597 -294Z" ></glyph>
+<glyph unicode="&#47;" horiz-adv-x="552" 
+d="M565 1450L122 0L-10 0L432 1450L565 1450Z" ></glyph>
+<glyph unicode="&#104;" horiz-adv-x="1147" 
+d="M1024 0L853 0L853 650Q853 766 790 831 T620 896Q451 896 298 725 L298 
+0L128 0L128 1493L298 1493L298 896Q470 1066 662 1066 Q830 1066 927 973 T
+1024 708Z" ></glyph>
+<glyph unicode="&#65;" horiz-adv-x="1360" 
+d="M1333 0L1153 0L946 512L375 512L169 0L-10 0L573 1450L749 1450L1333 
+0ZM878 682L661 1222L444 682L878 682Z" ></glyph>
+<glyph unicode="&#103;" horiz-adv-x="1147" 
+d="M1024 -22Q1024 -220 904 -323 T562 -426Q336 -426 128 -298 L192 -170Q395 -256 
+574 -256 Q706 -256 780 -187 T853 6L853 170Q736 0 538 0 Q328 0 206 147 T
+85 554Q85 782 211 924 T526 1066Q738 1066 853 938 L853 1066L1024 1066L1024 
+-22ZM853 361L853 768Q816 822 737 859 T566 896Q418 896 337 802 T256 538Q
+256 364 341 267 T573 170Q631 170 694 200 T805 285T853 341Z" ></glyph>
+<glyph unicode="&#36;" horiz-adv-x="1147" 
+d="M85 1076Q85 1235 197 1335 T512 1450L512 1621L640 1621L640 1450Q860 1432 1024 
+1322 L962 1152Q836 1257 640 1280 L640 831Q769 795 854 751 T981 659Q1066 561 
+1066 432 Q1066 253 951 136 T640 0L640 -170L512 -170L512 0Q278 10 85 
+128 L132 298Q332 181 512 170 L512 690Q329 741 284 761 T190 827T113 935T
+85 998ZM512 866L512 1280Q387 1269 321 1214 T256 1071Q262 936 464 880 ZM640 
+172Q757 192 826 262 T896 426Q896 508 837 562 T640 655Z" ></glyph>
+<glyph unicode="&#48;" horiz-adv-x="1147" 
+d="M1066 734Q1066 358 943 178 T576 0Q329 0 207 180 T85 734Q85 1092 207 
+1271 T576 1450Q820 1450 943 1271 T1066 734ZM575 170Q734 170 815 296 T896 726Q
+896 1014 820 1147 T573 1280Q414 1280 335 1141 T256 726Q256 448 336 309 T575 
+170Z" ></glyph>
+<glyph unicode="&#50;" horiz-adv-x="1147" 
+d="M1024 0L85 0L85 152Q336 390 502 539 T760 802T853 1035Q853 1148 771 
+1214 T559 1280Q380 1280 180 1194 L128 1365Q338 1450 566 1450 Q770 1450 897 1335 T
+1024 1039Q1024 904 941 773 T682 480L346 170L1024 170L1024 0Z" ></glyph>
+<glyph unicode="&#44;" horiz-adv-x="552" 
+d="M256 0Q200 6 164 44 T128 131Q128 184 161 220 T244 256Q301 256 342 
+209 T384 98Q384 -101 167 -213 L128 -128Q256 -73 256 0Z" ></glyph>
+<glyph unicode="&#52;" horiz-adv-x="1147" 
+d="M1066 298L853 298L853 0L682 0L682 298L42 298L42 469L674 1450L853 
+1450L853 469L1066 469L1066 298ZM682 469L682 1157L240 469L682 469Z" ></glyph>
+<glyph unicode="&#54;" horiz-adv-x="1147" 
+d="M256 815Q306 891 403 936 T606 981Q800 981 933 849 T1066 507Q1066 282 942 
+141 T596 0Q348 0 216 180 T85 704Q85 1069 231 1260 T635 1450Q823 1450 
+981 1365 L922 1194Q776 1280 626 1280 Q450 1280 355 1163 T256 815ZM589 170Q736 
+170 816 256 T896 492Q896 637 812 724 T582 810Q543 810 502 800 T424 770T
+354 724T289 657T256 601Q256 434 343 302 T589 170Z" ></glyph>
+<glyph unicode="&#72;" horiz-adv-x="1487" 
+d="M1322 0L1152 0L1152 682L341 682L341 0L170 0L170 1450L341 1450L341 
+853L1152 853L1152 1450L1322 1450L1322 0Z" ></glyph>
+<glyph unicode="&#121;" horiz-adv-x="977" 
+d="M992 1066L584 -2Q510 -196 414 -311 T144 -426Q58 -426 -42 -378 L-4 -213Q90 
+-256 141 -256 Q226 -256 293 -187 T418 30L-10 1066L169 1066L496 236L812 1066L
+992 1066Z" ></glyph>
+<glyph unicode="&#98;" horiz-adv-x="1147" 
+d="M298 938Q430 1066 626 1066 Q814 1066 940 924 T1066 554Q1066 299 940 149 T620 
+0Q423 0 298 128 L298 0L128 0L128 1493L298 1493L298 938ZM298 768L298 
+298Q341 245 421 208 T586 170Q730 170 813 267 T896 538Q896 709 814 802 T
+586 896Q511 896 433 860 T298 768Z" ></glyph>
+<glyph unicode="&#114;" horiz-adv-x="680" 
+d="M682 1024L618 853Q574 896 538 896 Q486 896 438 852 T345 724T298 638L298 
+0L128 0L128 1066L298 1066L298 810Q371 960 428 1013 T562 1066Q634 1066 
+682 1024Z" ></glyph>
+<glyph unicode="&#105;" horiz-adv-x="425" 
+d="M298 0L128 0L128 1066L298 1066L298 0ZM212 1493Q248 1493 273 1461 T298 
+1385Q298 1342 273 1311 T212 1280Q178 1280 153 1311 T128 1385Q128 1430 152 1462 T
+212 1493Z" ></glyph>
+<glyph unicode="&#100;" horiz-adv-x="1147" 
+d="M1024 0L853 0L853 170Q736 0 538 0 Q331 0 208 148 T85 554Q85 782 
+211 924 T526 1066Q742 1066 853 938 L853 1493L1024 1493L1024 0ZM853 361L853 
+768Q816 822 737 859 T566 896Q418 896 337 802 T256 538Q256 364 341 267 T
+573 170Q631 170 694 200 T805 285T853 341Z" ></glyph>
+<glyph unicode="&#83;" horiz-adv-x="1360" 
+d="M1109 1152Q1030 1207 912 1243 T690 1280Q531 1280 436 1223 T341 1078Q341 1015 
+406 965 T720 842Q885 793 987 749 T1164 628T1237 430Q1237 227 1075 113 T682 
+0Q378 0 128 149 L170 298Q429 170 674 170 Q846 170 956 238 T1066 416Q
+1066 484 1013 530 T882 603T672 676Q512 730 412 770 T241 885T170 1079Q170 
+1247 313 1349 T699 1450Q816 1450 950 1411 T1194 1301Z" ></glyph>
+<glyph unicode="&#85;" horiz-adv-x="1487" 
+d="M1322 552Q1322 301 1171 150 T746 0Q474 0 322 149 T170 548L170 1450L341 
+1450L341 564Q341 380 447 275 T740 170Q930 170 1041 277 T1152 568L1152 1450L
+1322 1450L1322 552Z" ></glyph>
+<glyph unicode="&#86;" horiz-adv-x="1360" 
+d="M1333 1450L749 0L573 0L-10 1450L169 1450L661 228L1153 1450L1333 1450Z" ></glyph>
+<glyph unicode="&#101;" horiz-adv-x="1147" 
+d="M1109 170Q876 0 654 0 Q386 0 235 143 T85 535Q85 773 221 919 T591 
+1066Q800 1066 933 928 T1066 558L1066 512L256 512Q264 346 363 258 T638 170Q
+845 170 1045 298 ZM896 640Q882 757 795 826 T589 896Q458 896 370 829 T256 
+640Z" ></glyph>
+<glyph unicode="&#97;" horiz-adv-x="1147" 
+d="M1077 0L906 0Q884 22 869 62 T853 128Q660 0 429 0 Q276 0 180 74 T
+85 282Q85 387 142 460 T314 573T606 625L853 640L853 668Q853 796 790 
+846 T569 896Q493 896 381 870 T192 810L128 981Q218 1019 348 1043 T587 1066Q
+810 1066 917 972 T1024 686L1024 248Q1024 84 1077 0ZM853 298L853 512Q616 
+500 542 493 T398 464T292 402T256 304Q256 244 310 207 T449 170Q557 170 
+671 206 T853 298Z" ></glyph>
+<glyph unicode="&#110;" horiz-adv-x="1147" 
+d="M1024 0L853 0L853 650Q853 766 790 831 T620 896Q451 896 298 725 L298 
+0L128 0L128 1066L298 1066L298 896Q470 1066 662 1066 Q830 1066 927 973 T
+1024 708Z" ></glyph>
+<glyph unicode="&#112;" horiz-adv-x="1147" 
+d="M298 938Q430 1066 626 1066 Q814 1066 940 924 T1066 554Q1066 299 940 149 T620 
+0Q423 0 298 128 L298 -426L128 -426L128 1066L298 1066L298 938ZM298 768L
+298 298Q341 245 421 208 T586 170Q730 170 813 267 T896 538Q896 709 814 
+802 T586 896Q511 896 433 860 T298 768Z" ></glyph>
+<glyph unicode="&#111;" horiz-adv-x="1147" 
+d="M576 1066Q802 1066 934 920 T1066 533Q1066 292 934 146 T576 0Q349 0 217 
+145 T85 533Q85 776 217 921 T576 1066ZM576 170Q724 170 810 276 T896 533Q
+896 697 812 796 T576 896Q423 896 339 797 T256 533Q256 380 342 275 T576 
+170Z" ></glyph>
+<glyph unicode="&#116;" horiz-adv-x="552" 
+d="M597 42Q497 0 437 0 Q298 0 234 73 T170 304L170 896L42 896L42 1066L
+170 1066L170 1365L341 1365L341 1066L554 1066L554 896L341 896L341 331Q341 
+170 461 170 Q513 170 576 170 Z" ></glyph>
+<glyph unicode="&#115;" horiz-adv-x="1020" 
+d="M832 810Q668 896 512 896 Q388 896 322 867 T256 786Q256 750 305 726 T448 
+668L588 618Q788 546 863 478 T938 306Q938 162 822 81 T510 0Q278 0 85 
+85 L149 256Q328 170 506 170 Q768 170 768 300 Q768 350 706 385 T465 483Q
+322 536 267 556 T169 610T105 685T85 779Q85 908 196 987 T516 1066Q604 
+1066 709 1044 T896 981Z" ></glyph>
+<glyph unicode="&#84;" horiz-adv-x="1190" 
+d="M1152 1280L682 1280L682 0L512 0L512 1280L42 1280L42 1450L1152 1450L1152 
+1280Z" ></glyph>
+<glyph unicode="&#117;" horiz-adv-x="1147" 
+d="M1024 0L853 0L853 170Q682 0 489 0 Q321 0 224 93 T128 358L128 1066L
+298 1066L298 416Q298 301 361 236 T532 170Q700 170 853 341 L853 1066L1024 
+1066L1024 0Z" ></glyph>
+<glyph unicode="&#99;" horiz-adv-x="1020" 
+d="M85 535Q85 786 230 926 T591 1066Q774 1066 938 938 L888 810Q744 896 590 
+896 Q444 896 350 797 T256 534Q256 368 349 269 T584 170Q728 170 886 256 L
+938 128Q771 0 585 0 Q363 0 224 146 T85 535Z" ></glyph>
+<glyph unicode="&#107;" horiz-adv-x="1020" 
+d="M1024 0L822 0L425 545L298 426L298 0L128 0L128 1493L298 1493L298 
+644L749 1066L981 1066L544 657L1024 0Z" ></glyph>
+<glyph unicode="&#87;" horiz-adv-x="2040" 
+d="M2016 1450L1612 0L1428 0L1045 1217L663 0L487 0L32 1450L208 1450L576 
+279L944 1450L1146 1450L1514 279L1840 1450L2016 1450Z" ></glyph>
+<glyph unicode="&#69;" horiz-adv-x="1360" 
+d="M1237 0L170 0L170 1450L1237 1450L1237 1280L341 1280L341 853L1152 853L1152 
+682L341 682L341 170L1237 170L1237 0Z" ></glyph>
+</font>
+<style type="text/css"><![CDATA[
+  @font-face {
+      font-family: "SVG_IDX_Albany AMT Font5";
+      font-weight: bold;
+      src: url("#SVG_IDX_Font5") format("svg")
+      }
+]]></style>
+<font id="SVG_IDX_Font5" horiz-adv-x="3648" >
+   <font-face      font-family="SVG_IDX_Albany AMT Font5"
+    font-weight="bold"    units-per-em="2048" ascent="1854" descent="-434" >
+      <font-face-src>
+         <font-face-name name="SVG_IDX_Albany AMT Font5"></font-face-name>
+      </font-face-src>
+   </font-face>
+<missing-glyph><path d="M0 0v4992h3456v-4992h-3456" fill="none"></path>
+</missing-glyph>
+<glyph unicode="&#40;" horiz-adv-x="680" 
+d="M640 -252L524 -341Q294 -107 189 104 T85 576Q85 832 187 1042 T524 1493L640 
+1404Q517 1245 450 1024 T384 578Q384 328 448 112 T640 -252Z" ></glyph>
+<glyph unicode="&#47;" horiz-adv-x="552" 
+d="M565 1450L208 0L-10 0L346 1450L565 1450Z" ></glyph>
+<glyph unicode="&#104;" horiz-adv-x="1232" 
+d="M1109 0L810 0L810 594Q810 810 662 810 Q530 810 426 640 L426 0L128 
+0L128 1493L426 1493L426 896Q555 1066 759 1066 Q919 1066 1014 970 T1109 700Z" ></glyph>
+<glyph unicode="&#65;" horiz-adv-x="1402" 
+d="M1493 0L1172 0L1027 384L466 384L320 0L0 0L594 1450L898 1450L1493 
+0ZM930 640L746 1124L562 640L930 640Z" ></glyph>
+<glyph unicode="&#103;" horiz-adv-x="1232" 
+d="M1109 48Q1109 -180 965 -303 T557 -426Q321 -426 128 -298 L192 -85Q365 -170 536 
+-170 Q668 -170 739 -111 T810 60L810 128Q692 0 513 0 Q325 0 205 141 T
+85 521Q85 774 206 920 T525 1066Q605 1066 683 1031 T810 938L810 1066L1109 
+1066L1109 48ZM810 384L810 682Q722 810 594 810 Q502 810 443 735 T384 528Q
+384 400 441 328 T594 256Q719 256 810 384Z" ></glyph>
+<glyph unicode="&#77;" horiz-adv-x="1742" 
+d="M1578 0L1280 0L1280 1088L958 0L749 0L426 1088L426 0L170 0L170 1450L
+580 1450L874 457L1168 1450L1578 1450L1578 0Z" ></glyph>
+<glyph unicode="&#83;" horiz-adv-x="1360" 
+d="M1152 1066Q923 1194 682 1194 Q545 1194 464 1157 T384 1060Q384 1021 437 992 T
+698 902Q876 849 993 810 T1195 683T1280 444Q1280 244 1104 122 T668 0Q336 
+0 42 149 L128 384Q419 256 656 256 Q802 256 891 303 T981 429Q981 478 
+920 514 T642 613Q471 664 359 701 T166 824T85 1059Q85 1234 245 1342 T678 
+1450Q973 1450 1237 1301 Z" ></glyph>
+<glyph unicode="&#82;" horiz-adv-x="1487" 
+d="M1504 0L1124 0L684 512L426 512L426 0L128 0L128 1450L772 1450Q1032 
+1450 1177 1328 T1322 986Q1322 822 1239 710 T1021 562ZM426 768L763 768Q1024 768 
+1024 983 Q1024 1083 953 1139 T748 1194L426 1194L426 768Z" ></glyph>
+<glyph unicode="&#80;" horiz-adv-x="1360" 
+d="M128 1450L742 1450Q996 1450 1138 1329 T1280 987Q1280 762 1137 637 T744 512L
+426 512L426 0L128 0L128 1450ZM426 768L722 768Q844 768 913 826 T981 
+984Q981 1080 912 1137 T722 1194L426 1194L426 768Z" ></glyph>
+<glyph unicode="&#32;" horiz-adv-x="552" 
+></glyph>
+<glyph unicode="&#101;" horiz-adv-x="1147" 
+d="M1066 128Q888 0 655 0 Q394 0 239 146 T85 535Q85 774 223 920 T590 
+1066Q800 1066 933 916 T1066 499L1066 426L384 426Q398 353 475 304 T661 256Q
+832 256 1002 341 ZM768 640Q757 738 706 795 T582 853Q504 853 449 795 T384 
+640Z" ></glyph>
+<glyph unicode="&#97;" horiz-adv-x="1147" 
+d="M1077 0L778 0Q725 70 725 128 Q586 0 392 0 Q249 0 167 85 T85 311Q
+85 413 139 489 T301 611T557 669L725 682L725 699Q725 853 529 853 Q468 
+853 369 828 T192 768L128 981Q228 1018 357 1042 T588 1066Q802 1066 913 965 T
+1024 670L1024 248Q1024 100 1077 0ZM725 341L725 512Q573 494 537 487 T461 
+457T403 398T384 320Q384 275 411 244 T486 213Q618 213 725 341Z" ></glyph>
+<glyph unicode="&#110;" horiz-adv-x="1232" 
+d="M1109 0L810 0L810 594Q810 810 662 810 Q530 810 426 658 L426 0L128 
+0L128 1066L426 1066L426 896Q555 1066 759 1066 Q919 1066 1014 970 T1109 700Z" ></glyph>
+<glyph unicode="&#41;" horiz-adv-x="680" 
+d="M157 1493Q388 1259 492 1047 T597 576Q597 316 492 104 T157 -341L42 -252Q169 
+-104 233 112 T298 578Q298 802 231 1024 T42 1404Z" ></glyph>
+<glyph unicode="&#84;" horiz-adv-x="1275" 
+d="M1194 1194L768 1194L768 0L469 0L469 1194L42 1194L42 1450L1194 1450L1194 
+1194Z" ></glyph>
+<glyph unicode="&#121;" horiz-adv-x="1147" 
+d="M1162 1066L722 -16Q643 -216 519 -321 T184 -426Q74 -426 -42 -386 L12 -128Q102 
+-170 170 -170 Q272 -170 334 -134 T429 -20L-10 1066L261 1066L568 308L890 1066L
+1162 1066Z" ></glyph>
+<glyph unicode="&#112;" horiz-adv-x="1232" 
+d="M426 914Q474 982 557 1024 T726 1066Q912 1066 1032 926 T1152 554Q1152 297 1032 
+148 T726 0Q537 0 426 142 L426 -426L128 -426L128 1066L426 1066L426 914ZM
+426 374Q513 256 646 256 Q736 256 795 332 T853 537Q853 670 794 740 T643 
+810Q520 810 426 684 Z" ></glyph>
+<glyph unicode="&#79;" horiz-adv-x="1572" 
+d="M790 1450Q1112 1450 1302 1250 T1493 724Q1493 410 1299 205 T790 0Q474 0 279 
+205 T85 724Q85 1048 273 1249 T790 1450ZM790 256Q979 256 1087 383 T1194 724Q
+1194 938 1086 1066 T790 1194Q600 1194 492 1067 T384 724Q384 514 489 385 T790 
+256Z" ></glyph>
+<glyph unicode="&#114;" horiz-adv-x="807" 
+d="M810 1024L746 768Q706 810 662 810 Q613 810 567 780 T474 673T426 582L426 
+0L128 0L128 1066L426 1066L426 853Q482 970 540 1018 T682 1066Q759 1066 
+810 1024Z" ></glyph>
+<glyph unicode="&#105;" horiz-adv-x="552" 
+d="M276 1493Q336 1493 381 1449 T426 1342Q426 1282 382 1238 T276 1194Q214 1194 
+171 1238 T128 1342Q128 1405 171 1449 T276 1493ZM426 0L128 0L128 1066L426 
+1066L426 0Z" ></glyph>
+<glyph unicode="&#118;" horiz-adv-x="1147" 
+d="M1162 1066L734 0L418 0L-10 1066L261 1066L576 283L890 1066L1162 1066Z" ></glyph>
+<glyph unicode="&#98;" horiz-adv-x="1232" 
+d="M426 914Q474 982 557 1024 T726 1066Q912 1066 1032 926 T1152 554Q1152 297 1032 
+148 T726 0Q537 0 426 142 L426 0L128 0L128 1493L426 1493L426 914ZM426 
+374Q513 256 646 256 Q736 256 795 332 T853 537Q853 670 794 740 T643 810Q
+520 810 426 684 Z" ></glyph>
+<glyph unicode="&#86;" horiz-adv-x="1360" 
+d="M1322 1450L875 0L446 0L0 1450L314 1450L661 322L1009 1450L1322 1450Z" ></glyph>
+<glyph unicode="&#99;" horiz-adv-x="1147" 
+d="M1066 128Q892 0 664 0 Q396 0 240 144 T85 535Q85 780 242 923 T666 
+1066Q877 1066 1066 938 L1024 725Q848 810 679 810 Q561 810 472 739 T384 534Q
+384 400 471 328 T675 256Q857 256 1024 341 Z" ></glyph>
+<glyph unicode="&#108;" horiz-adv-x="552" 
+d="M426 0L128 0L128 1493L426 1493L426 0Z" ></glyph>
+<glyph unicode="&#38;" horiz-adv-x="1487" 
+d="M1420 162L1248 -10L1043 190Q942 86 839 43 T591 0Q360 0 222 119 T85 
+420Q85 681 383 840 Q334 889 295 975 T256 1143Q256 1286 365 1368 T644 1450Q
+805 1450 914 1365 T1024 1145Q1024 940 780 792 L1016 560Q1052 702 1066 853 L1365 
+777Q1321 574 1204 374 ZM608 960Q759 1041 725 1111 Q725 1146 701 1170 T640 1194Q
+602 1194 578 1170 T554 1106Q532 1035 608 960ZM855 376L566 660Q388 553 384 
+423 Q384 356 442 306 T590 256Q740 256 855 376Z" ></glyph>
+</font>
+</defs>
+</svg>
+</div>
+<script type="application/xml" class="ODSGraphics" id="odsgraphics_GF96AMZ8">
+<?xml version="1.0" encoding="utf-8" ?>
+<SASReport version="1.2" xmlns:style="http://www.sas.com/sasreportmodel/styles">
+  <Data version="V.04.00">
+    <DataModel name="StatGraphDataModel">
+      <IQData type="2DEmbedded" name="StatGraphData">
+        <EmbeddedData>
+          <Variables>
+            <Variable name="Type" label="Type" type="String" valuesCount="15" length="8"/>
+            <Variable name="_Mean1_MSRP_" label="MSRP (Mean)" type="Numeric" valuesCount="15" SASFormat="DOLLAR8." encoding="Text"/>
+            <Variable name="Origin" label="Origin" type="String" valuesCount="15" length="6"/>
+          </Variables>
+          <ValuesList valuesCount="15">
+            <V>Hybrid</V>
+            <V>19920</V>
+            <V>Asia</V>
+            <V>SUV</V>
+            <V>29569</V>
+            <V>Asia</V>
+            <V>SUV</V>
+            <V>48346</V>
+            <V>Europe</V>
+            <V>SUV</V>
+            <V>34589.2</V>
+            <V>USA</V>
+            <V>Sedan</V>
+            <V>22763.9680851063</V>
+            <V>Asia</V>
+            <V>Sedan</V>
+            <V>42992.0512820512</V>
+            <V>Europe</V>
+            <V>Sedan</V>
+            <V>25638.8333333333</V>
+            <V>USA</V>
+            <V>Sports</V>
+            <V>32510.6470588235</V>
+            <V>Asia</V>
+            <V>Sports</V>
+            <V>71998.6956521739</V>
+            <V>Europe</V>
+            <V>Sports</V>
+            <V>45257.2222222222</V>
+            <V>USA</V>
+            <V>Truck</V>
+            <V>20383.625</V>
+            <V>Asia</V>
+            <V>Truck</V>
+            <V>27220.25</V>
+            <V>USA</V>
+            <V>Wagon</V>
+            <V>23143.7272727272</V>
+            <V>Asia</V>
+            <V>Wagon</V>
+            <V>37851.25</V>
+            <V>Europe</V>
+            <V>Wagon</V>
+            <V>22345.7142857142</V>
+            <V>USA</V>
+          </ValuesList>
+        </EmbeddedData>
+      </IQData>
+      <VarStats>
+        <VarStat name="_Mean1_MSRP_" modelName="StatGraphData" nobs="15" min="19920" max="71998.6956521739" />
+      </VarStats>
+    </DataModel>
+  </Data>
+  <View>
+    <StatGraph height="461" width="614" designHeight="480" designWidth="640" renderer="java" dataSizeScalingFactor="0.98995378849947" gapScalingFactor="0.96041666666666" style:style="StatGraphStyle" antiAlias="true" nBinsMax="10000" nXYBinsMax="100000" linePatternOBSMax="10000" totalCellMax="2000" sessionLocale="en_US" missingOption="." notesOption="true" collation="binary" version="V.04.00">
+      <EntryTitle>
+<EntryItem>Average MSRP by Vehicle Type &#x0026; Origin</EntryItem>
+        <TextAttrs size="14"/>
+      </EntryTitle>
+      <LayoutOverlay>
+        <XAxisOpts type="DISCRETE">
+          <DiscreteOpts tickValueFitPolicy="SplitRotate" tickValueListPolicy="Union">
+          </DiscreteOpts>
+        </XAxisOpts>
+        <Y2AxisOpts labelFitPolicy="Split">
+        </Y2AxisOpts>
+        <YAxisOpts gridDisplay="on" labelFitPolicy="Split" type="AUTO">
+        </YAxisOpts>
+        <X2AxisOpts type="DISCRETE">
+          <DiscreteOpts tickValueFitPolicy="SplitRotate" tickValueListPolicy="Union">
+          </DiscreteOpts>
+        </X2AxisOpts>
+        <BarChartParm y="StatGraphData#_MEAN1_MSRP_" x="StatGraphData#TYPE" x_type="Variable" y_type="Variable" group="StatGraphData#ORIGIN" _outDataID="STATGRAPHDATA" name="VBAR" _stmt="BARCHARTPARM" fillType="gradient" groupDisplay="cluster" legendLabel="MSRP (Mean)" primary="true">
+        </BarChartParm>
+        <DiscreteLegend title="Origin">
+          <GraphNames>
+            <Value>VBAR</Value>
+          </GraphNames>
+        </DiscreteLegend>
+      </LayoutOverlay>
+    </StatGraph>
+  </View>
+</SASReport>
+</script>
+</article>
+</section>
+<section data-name="Print" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX1" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Cars by Origin</span> </p>
+</div>
+<h1 class="contentprocname toc">The Print Procedure</h1>
+<section>
+<h1 class="bycontentfolder toc">Origin=Asia</h1>
+<article aria-label="Data Set WORK.CARS_ORIGIN">
+<h1 class="contentitem toc">Data Set WORK.CARS_ORIGIN</h1>
+<p class="c byline" style="border-spacing: 0">Origin=Asia</p>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.CARS_ORIGIN">
+<caption aria-label="Data Set WORK.CARS_ORIGIN"></caption>
+<colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="header" scope="col">Make</th>
+<th class="header" scope="col">Model</th>
+<th class="header" scope="col">Type</th>
+<th class="r header" scope="col">MSRP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data">Acura</td>
+<td class="data">NSX coupe 2dr manual S</td>
+<td class="data">Sports</td>
+<td class="r data">$89,765</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">LX 470</td>
+<td class="data">SUV</td>
+<td class="r data">$64,800</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">SC 430 convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$63,200</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">LS 430 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$55,750</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Land Cruiser</td>
+<td class="data">SUV</td>
+<td class="r data">$54,765</td>
+</tr>
+<tr>
+<td class="data">Infiniti</td>
+<td class="data">Q45 Luxury 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$52,545</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">GS 430 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$48,450</td>
+</tr>
+<tr>
+<td class="data">Acura</td>
+<td class="data">3.5 RL w/Navigation 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$46,100</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">GX 470</td>
+<td class="data">SUV</td>
+<td class="r data">$45,700</td>
+</tr>
+<tr>
+<td class="data">Acura</td>
+<td class="data">3.5 RL 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$43,755</td>
+</tr>
+<tr>
+<td class="data">Infiniti</td>
+<td class="data">M45 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$42,845</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">GS 300 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$41,010</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">RX 330</td>
+<td class="data">SUV</td>
+<td class="r data">$39,195</td>
+</tr>
+<tr>
+<td class="data">Acura</td>
+<td class="data">MDX</td>
+<td class="data">SUV</td>
+<td class="r data">$36,945</td>
+</tr>
+<tr>
+<td class="data">Infiniti</td>
+<td class="data">FX45</td>
+<td class="data">Wagon</td>
+<td class="r data">$36,395</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Sequoia SR5</td>
+<td class="data">SUV</td>
+<td class="r data">$35,695</td>
+</tr>
+<tr>
+<td class="data">Infiniti</td>
+<td class="data">FX35</td>
+<td class="data">Wagon</td>
+<td class="r data">$34,895</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">350Z Enthusiast convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$34,390</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Pathfinder Armada SE</td>
+<td class="data">SUV</td>
+<td class="r data">$33,840</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">S2000 convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$33,260</td>
+</tr>
+<tr>
+<td class="data">Acura</td>
+<td class="data">TL 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$33,195</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Montero XLS</td>
+<td class="data">SUV</td>
+<td class="r data">$33,112</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Quest SE</td>
+<td class="data">Sedan</td>
+<td class="r data">$32,780</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">IS 300 SportCross</td>
+<td class="data">Wagon</td>
+<td class="r data">$32,455</td>
+</tr>
+<tr>
+<td class="data">Infiniti</td>
+<td class="data">G35 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$32,445</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">IS 300 4dr auto</td>
+<td class="data">Sedan</td>
+<td class="r data">$32,415</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">ES 330 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$32,350</td>
+</tr>
+<tr>
+<td class="data">Isuzu</td>
+<td class="data">Ascender S</td>
+<td class="data">SUV</td>
+<td class="r data">$31,849</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Outback H-6 VDC 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$31,545</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Impreza WRX STi 4dr</td>
+<td class="data">Sports</td>
+<td class="r data">$31,545</td>
+</tr>
+<tr>
+<td class="data">Infiniti</td>
+<td class="data">I35 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$31,145</td>
+</tr>
+<tr>
+<td class="data">Lexus</td>
+<td class="data">IS 300 4dr manual</td>
+<td class="data">Sedan</td>
+<td class="r data">$31,045</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Avalon XLS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$30,920</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Endeavor XLS</td>
+<td class="data">SUV</td>
+<td class="r data">$30,492</td>
+</tr>
+<tr>
+<td class="data">Infiniti</td>
+<td class="data">G35 Sport Coupe 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$29,795</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Lancer Evolution 4dr</td>
+<td class="data">Sports</td>
+<td class="r data">$29,562</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Maxima SL 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$29,440</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Outback H6 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$29,345</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Diamante LS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$29,282</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Sienna XLE Limited</td>
+<td class="data">Sedan</td>
+<td class="r data">$28,800</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">MPV ES</td>
+<td class="data">Sedan</td>
+<td class="r data">$28,750</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Murano SL</td>
+<td class="data">Wagon</td>
+<td class="r data">$28,739</td>
+</tr>
+<tr>
+<td class="data">Infiniti</td>
+<td class="data">G35 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$28,495</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Highlander V6</td>
+<td class="data">SUV</td>
+<td class="r data">$27,930</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">4Runner SR5 V6</td>
+<td class="data">SUV</td>
+<td class="r data">$27,710</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Pilot LX</td>
+<td class="data">SUV</td>
+<td class="r data">$27,560</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Maxima SE 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$27,490</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Odyssey EX</td>
+<td class="data">Sedan</td>
+<td class="r data">$27,450</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Pathfinder SE</td>
+<td class="data">SUV</td>
+<td class="r data">$27,339</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">RX-8 4dr manual</td>
+<td class="data">Sports</td>
+<td class="r data">$27,200</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Outback Limited Sedan 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$27,145</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Eclipse Spyder GT convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$26,992</td>
+</tr>
+<tr>
+<td class="data">Acura</td>
+<td class="data">TSX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,990</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Accord EX V6 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,960</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">350Z coupe 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$26,910</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Titan King Cab XE</td>
+<td class="data">Truck</td>
+<td class="r data">$26,650</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Avalon XL 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,560</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Camry Solara SLE V6 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,510</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">XG350 L 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,189</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Amanti 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,000</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Tundra Access Cab V6 SR5</td>
+<td class="data">Truck</td>
+<td class="r data">$25,935</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Camry XLE V6 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$25,920</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">RX-8 4dr automatic</td>
+<td class="data">Sports</td>
+<td class="r data">$25,700</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Galant GTS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$25,700</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Legacy GT 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$25,645</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">MX-5 Miata LS convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$25,193</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">MR2 Spyder convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$25,130</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Eclipse GTS 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$25,092</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Impreza WRX 4dr</td>
+<td class="data">Sports</td>
+<td class="r data">$25,045</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Odyssey LX</td>
+<td class="data">Sedan</td>
+<td class="r data">$24,950</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Quest S</td>
+<td class="data">Sedan</td>
+<td class="r data">$24,780</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">XG350 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$24,589</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Baja</td>
+<td class="data">Truck</td>
+<td class="r data">$24,520</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Outback</td>
+<td class="data">Wagon</td>
+<td class="r data">$23,895</td>
+</tr>
+<tr>
+<td class="data">Acura</td>
+<td class="data">RSX Type S 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,820</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Accord LX V6 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,760</td>
+</tr>
+<tr>
+<td class="data">Suzuki</td>
+<td class="data">XL-7 EX</td>
+<td class="data">SUV</td>
+<td class="r data">$23,699</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Sienna CE</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,495</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Altima SE 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,290</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Camry LE V6 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$22,775</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Celica GT-S 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$22,570</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">MX-5 Miata convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$22,388</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">B4000 SE Cab Plus</td>
+<td class="data">Truck</td>
+<td class="r data">$22,350</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Accord EX 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$22,260</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Camry Solara SE V6 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$21,965</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">Santa Fe GLS</td>
+<td class="data">SUV</td>
+<td class="r data">$21,589</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Forester X</td>
+<td class="data">Wagon</td>
+<td class="r data">$21,445</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">Tribute DX 2.0</td>
+<td class="data">SUV</td>
+<td class="r data">$21,087</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Xterra XE V6</td>
+<td class="data">SUV</td>
+<td class="r data">$20,939</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Sedona LX</td>
+<td class="data">Sedan</td>
+<td class="r data">$20,615</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Prius 4dr (gas/electric)</td>
+<td class="data">Hybrid</td>
+<td class="r data">$20,510</td>
+</tr>
+<tr>
+<td class="data">Isuzu</td>
+<td class="data">Rodeo S</td>
+<td class="data">SUV</td>
+<td class="r data">$20,449</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Legacy L 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$20,445</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">Sonata LX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$20,339</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">RAV4</td>
+<td class="data">SUV</td>
+<td class="r data">$20,290</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Civic Hybrid 4dr manual (gas/electric)</td>
+<td class="data">Hybrid</td>
+<td class="r data">$20,140</td>
+</tr>
+<tr>
+<td class="data">Subaru</td>
+<td class="data">Impreza 2.5 RS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,945</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">CR-V LX</td>
+<td class="data">SUV</td>
+<td class="r data">$19,860</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Accord LX 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,860</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Sorento LX</td>
+<td class="data">SUV</td>
+<td class="r data">$19,635</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Camry Solara SE 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,635</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Camry LE 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,560</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Civic Si 2dr hatch</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,490</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Frontier King Cab XE V6</td>
+<td class="data">Truck</td>
+<td class="r data">$19,479</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">Sonata GLS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,339</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Galant ES 2.4L 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,312</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">Mazda6 i 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,270</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Altima S 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,240</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Insight 2dr (gas/electric)</td>
+<td class="data">Hybrid</td>
+<td class="r data">$19,110</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Outlander LS</td>
+<td class="data">SUV</td>
+<td class="r data">$18,892</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">Tiburon GT V6 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$18,739</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Element LX</td>
+<td class="data">SUV</td>
+<td class="r data">$18,690</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Optima LX V6 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$18,435</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Civic EX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$17,750</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Sentra SE-R 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$17,640</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Lancer Sportback LS</td>
+<td class="data">Wagon</td>
+<td class="r data">$17,495</td>
+</tr>
+<tr>
+<td class="data">Suzuki</td>
+<td class="data">Verona LX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$17,262</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Lancer OZ Rally 4dr auto</td>
+<td class="data">Sedan</td>
+<td class="r data">$17,232</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">Mazda3 s 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$17,200</td>
+</tr>
+<tr>
+<td class="data">Suzuki</td>
+<td class="data">Vitara LX</td>
+<td class="data">SUV</td>
+<td class="r data">$17,163</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Lancer LS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$16,722</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Matrix XR</td>
+<td class="data">Wagon</td>
+<td class="r data">$16,695</td>
+</tr>
+<tr>
+<td class="data">Suzuki</td>
+<td class="data">Aerio SX</td>
+<td class="data">Wagon</td>
+<td class="r data">$16,497</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Tundra Regular Cab V6</td>
+<td class="data">Truck</td>
+<td class="r data">$16,495</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Optima LX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$16,040</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Civic LX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,850</td>
+</tr>
+<tr>
+<td class="data">Suzuki</td>
+<td class="data">Forenza EX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,568</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">Mazda3 i 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,500</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">Elantra GT 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,389</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">Elantra GT 4dr hatch</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,389</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Corolla LE 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,295</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Corolla S 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,030</td>
+</tr>
+<tr>
+<td class="data">Mazda</td>
+<td class="data">B2300 SX Regular Cab</td>
+<td class="data">Truck</td>
+<td class="r data">$14,840</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Sentra 1.8 S 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$14,740</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Spectra GSX 4dr hatch</td>
+<td class="data">Sedan</td>
+<td class="r data">$14,630</td>
+</tr>
+<tr>
+<td class="data">Mitsubishi</td>
+<td class="data">Lancer ES 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$14,622</td>
+</tr>
+<tr>
+<td class="data">Suzuki</td>
+<td class="data">Aerio LX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$14,500</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Civic HX 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$14,170</td>
+</tr>
+<tr>
+<td class="data">Scion</td>
+<td class="data">xB</td>
+<td class="data">Wagon</td>
+<td class="r data">$14,165</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Corolla CE 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$14,085</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">Elantra GLS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$13,839</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Spectra GS 4dr hatch</td>
+<td class="data">Sedan</td>
+<td class="r data">$13,580</td>
+</tr>
+<tr>
+<td class="data">Honda</td>
+<td class="data">Civic DX 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$13,270</td>
+</tr>
+<tr>
+<td class="data">Scion</td>
+<td class="data">xA 4dr hatch</td>
+<td class="data">Sedan</td>
+<td class="r data">$12,965</td>
+</tr>
+<tr>
+<td class="data">Suzuki</td>
+<td class="data">Aeno S 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$12,884</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Tacoma</td>
+<td class="data">Truck</td>
+<td class="r data">$12,800</td>
+</tr>
+<tr>
+<td class="data">Nissan</td>
+<td class="data">Sentra 1.8 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$12,740</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Spectra 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$12,360</td>
+</tr>
+<tr>
+<td class="data">Suzuki</td>
+<td class="data">Forenza S 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$12,269</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">Accent GT 2dr hatch</td>
+<td class="data">Sedan</td>
+<td class="r data">$11,939</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Rio Cinco</td>
+<td class="data">Wagon</td>
+<td class="r data">$11,905</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">Accent GL 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$11,839</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Echo 2dr auto</td>
+<td class="data">Sedan</td>
+<td class="r data">$11,560</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Echo 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$11,290</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Rio 4dr auto</td>
+<td class="data">Sedan</td>
+<td class="r data">$11,155</td>
+</tr>
+<tr>
+<td class="data">Toyota</td>
+<td class="data">Echo 2dr manual</td>
+<td class="data">Sedan</td>
+<td class="r data">$10,760</td>
+</tr>
+<tr>
+<td class="data">Hyundai</td>
+<td class="data">Accent 2dr hatch</td>
+<td class="data">Sedan</td>
+<td class="r data">$10,539</td>
+</tr>
+<tr>
+<td class="data">Kia</td>
+<td class="data">Rio 4dr manual</td>
+<td class="data">Sedan</td>
+<td class="r data">$10,280</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX2">
+<h1 class="bycontentfolder toc">Origin=Europe</h1>
+<article aria-label="Data Set WORK.CARS_ORIGIN">
+<h1 class="contentitem toc">Data Set WORK.CARS_ORIGIN</h1>
+<p class="c byline" style="border-spacing: 0">Origin=Europe</p>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.CARS_ORIGIN">
+<caption aria-label="Data Set WORK.CARS_ORIGIN"></caption>
+<colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="header" scope="col">Make</th>
+<th class="header" scope="col">Model</th>
+<th class="header" scope="col">Type</th>
+<th class="r header" scope="col">MSRP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data">Porsche</td>
+<td class="data">911 GT2 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$192,465</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">CL600 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$128,420</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">SL600 convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$126,670</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">SL55 AMG 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$121,770</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">CL500 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$94,820</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">SL500 convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$90,520</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">XKR convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$86,995</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">S500 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$86,970</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">RS 6 4dr</td>
+<td class="data">Sports</td>
+<td class="r data">$84,600</td>
+</tr>
+<tr>
+<td class="data">Porsche</td>
+<td class="data">911 Carrera 4S coupe 2dr (convert)</td>
+<td class="data">Sports</td>
+<td class="r data">$84,165</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">XKR coupe 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$81,995</td>
+</tr>
+<tr>
+<td class="data">Porsche</td>
+<td class="data">911 Carrera convertible 2dr (coupe)</td>
+<td class="data">Sports</td>
+<td class="r data">$79,165</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">G500</td>
+<td class="data">SUV</td>
+<td class="r data">$76,870</td>
+</tr>
+<tr>
+<td class="data">Porsche</td>
+<td class="data">911 Targa coupe 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$76,765</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Phaeton W12 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$75,000</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">XJR 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$74,995</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">XK8 convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$74,995</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">S430 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$74,320</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">745Li 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$73,195</td>
+</tr>
+<tr>
+<td class="data">Land Rover</td>
+<td class="data">Range Rover HSE</td>
+<td class="data">SUV</td>
+<td class="r data">$72,250</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">XK8 coupe 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$69,995</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">745i 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$69,195</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A8 L Quattro 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$69,190</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">Vanden Plas 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$68,995</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Phaeton 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$65,000</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">S-Type R 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$63,120</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">E500</td>
+<td class="data">Wagon</td>
+<td class="r data">$60,670</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">XJ8 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$59,995</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">E500 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$57,270</td>
+</tr>
+<tr>
+<td class="data">Porsche</td>
+<td class="data">Cayenne S</td>
+<td class="data">SUV</td>
+<td class="r data">$56,665</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">M3 convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$56,595</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">SLK32 AMG 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$56,170</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">545iA 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$54,995</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">CLK500 coupe 2dr (convertible)</td>
+<td class="data">Sedan</td>
+<td class="r data">$52,800</td>
+</tr>
+<tr>
+<td class="data">Porsche</td>
+<td class="data">Boxster S convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$52,365</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">X5 4.4i</td>
+<td class="data">SUV</td>
+<td class="r data">$52,195</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">C32 AMG 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$52,120</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">E320</td>
+<td class="data">Wagon</td>
+<td class="r data">$50,670</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">S-Type 4.2 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$49,995</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A6 4.2 Quattro 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$49,690</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">S4 Avant Quattro</td>
+<td class="data">Wagon</td>
+<td class="r data">$49,090</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">M3 coupe 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$48,195</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">E320 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$48,170</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">S4 Quattro 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$48,040</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">ML500</td>
+<td class="data">SUV</td>
+<td class="r data">$46,470</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">CLK320 coupe 2dr (convertible)</td>
+<td class="data">Sedan</td>
+<td class="r data">$45,707</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">S80 T6 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$45,210</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">530i 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$44,995</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">330Ci convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$44,295</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A4 3.0 Quattro convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$44,240</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">S-Type 3.0 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$43,895</td>
+</tr>
+<tr>
+<td class="data">Porsche</td>
+<td class="data">Boxster convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$43,365</td>
+</tr>
+<tr>
+<td class="data">Saab</td>
+<td class="data">9-3 Aero convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$43,175</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A6 2.7 Turbo Quattro 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$42,840</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">C70 HPT convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$42,565</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A4 3.0 convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$42,490</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">XC90 T6</td>
+<td class="data">SUV</td>
+<td class="r data">$41,250</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">Z4 convertible 3.0i 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$41,045</td>
+</tr>
+<tr>
+<td class="data">Saab</td>
+<td class="data">9-5 Aero</td>
+<td class="data">Wagon</td>
+<td class="r data">$40,845</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A6 3.0 Avant Quattro</td>
+<td class="data">Wagon</td>
+<td class="r data">$40,840</td>
+</tr>
+<tr>
+<td class="data">Saab</td>
+<td class="data">9-3 Arc convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$40,670</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">TT 3.2 coupe 2dr (convertible)</td>
+<td class="data">Sports</td>
+<td class="r data">$40,590</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">C70 LPT convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$40,565</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">SLK230 convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$40,320</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Passat W8</td>
+<td class="data">Wagon</td>
+<td class="r data">$40,235</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">525i 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$39,995</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A6 3.0 Quattro 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$39,640</td>
+</tr>
+<tr>
+<td class="data">Saab</td>
+<td class="data">9-5 Aero 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$39,465</td>
+</tr>
+<tr>
+<td class="data">Land Rover</td>
+<td class="data">Discovery SE</td>
+<td class="data">SUV</td>
+<td class="r data">$39,250</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Passat W8 4MOTION 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$39,235</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">C320 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$38,830</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">325Ci convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$37,995</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">S80 2.5T 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$37,885</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">S80 2.9 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$37,730</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">C320 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$37,630</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">S60 R 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$37,560</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">TT 1.8 Quattro 2dr (convertible)</td>
+<td class="data">Sports</td>
+<td class="r data">$37,390</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">330xi 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$37,245</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">X3 3.0i</td>
+<td class="data">SUV</td>
+<td class="r data">$37,000</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">330Ci 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$36,995</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A6 3.0 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$36,640</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A41.8T convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$35,940</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">TT 1.8 convertible 2dr (coupe)</td>
+<td class="data">Sports</td>
+<td class="r data">$35,940</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">C320 Sport 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$35,920</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Touareg V6</td>
+<td class="data">SUV</td>
+<td class="r data">$35,515</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">330i 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$35,495</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">XC70</td>
+<td class="data">Wagon</td>
+<td class="r data">$35,145</td>
+</tr>
+<tr>
+<td class="data">Saab</td>
+<td class="data">9-5 Arc 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$35,105</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">S60 T5 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$34,845</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A4 3.0 Quattro 4dr auto</td>
+<td class="data">Sedan</td>
+<td class="r data">$34,480</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">X-Type 3.0 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$33,995</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">Z4 convertible 2.5i 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$33,895</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">C240</td>
+<td class="data">Wagon</td>
+<td class="r data">$33,780</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">C240 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$33,480</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A4 3.0 Quattro 4dr manual</td>
+<td class="data">Sedan</td>
+<td class="r data">$33,430</td>
+</tr>
+<tr>
+<td class="data">Saab</td>
+<td class="data">9-3 Aero 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$33,360</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Passat GLX V6 4MOTION 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$33,180</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">325xi Sport</td>
+<td class="data">Wagon</td>
+<td class="r data">$32,845</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">C240 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$32,280</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A4 3.0 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$31,840</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">S60 2.5 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$31,745</td>
+</tr>
+<tr>
+<td class="data">Saab</td>
+<td class="data">9-3 Arc Sport 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$30,860</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">325Ci 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$30,795</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">325xi 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$30,245</td>
+</tr>
+<tr>
+<td class="data">Jaguar</td>
+<td class="data">X-Type 2.5 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$29,995</td>
+</tr>
+<tr>
+<td class="data">BMW</td>
+<td class="data">325i 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$28,495</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">C320 Sport 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$28,370</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">V40</td>
+<td class="data">Wagon</td>
+<td class="r data">$26,135</td>
+</tr>
+<tr>
+<td class="data">Mercedes-Benz</td>
+<td class="data">C230 Sport 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,060</td>
+</tr>
+<tr>
+<td class="data">Land Rover</td>
+<td class="data">Freelander SE</td>
+<td class="data">SUV</td>
+<td class="r data">$25,995</td>
+</tr>
+<tr>
+<td class="data">Audi</td>
+<td class="data">A4 1.8T 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$25,940</td>
+</tr>
+<tr>
+<td class="data">Volvo</td>
+<td class="data">S40 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$25,135</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Passat GLS 1.8T</td>
+<td class="data">Wagon</td>
+<td class="r data">$24,955</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Passat GLS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,955</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Jetta GLI VR6 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,785</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">New Beetle GLS convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,215</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Jetta GLS TDI 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$21,055</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">New Beetle GLS 1.8T 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$21,055</td>
+</tr>
+<tr>
+<td class="data">MINI</td>
+<td class="data">Cooper S</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,999</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">GTI 1.8T 2dr hatch</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,825</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Jetta GL</td>
+<td class="data">Wagon</td>
+<td class="r data">$19,005</td>
+</tr>
+<tr>
+<td class="data">Volkswagen</td>
+<td class="data">Golf GLS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$18,715</td>
+</tr>
+<tr>
+<td class="data">MINI</td>
+<td class="data">Cooper</td>
+<td class="data">Sedan</td>
+<td class="r data">$16,999</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX3">
+<h1 class="bycontentfolder toc">Origin=USA</h1>
+<article aria-label="Data Set WORK.CARS_ORIGIN">
+<h1 class="contentitem toc">Data Set WORK.CARS_ORIGIN</h1>
+<p class="c byline" style="border-spacing: 0">Origin=USA</p>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.CARS_ORIGIN">
+<caption aria-label="Data Set WORK.CARS_ORIGIN"></caption>
+<colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="header" scope="col">Make</th>
+<th class="header" scope="col">Model</th>
+<th class="header" scope="col">Type</th>
+<th class="r header" scope="col">MSRP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Viper SRT-10 convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$81,795</td>
+</tr>
+<tr>
+<td class="data">Cadillac</td>
+<td class="data">XLR convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$76,200</td>
+</tr>
+<tr>
+<td class="data">Cadillac</td>
+<td class="data">Escalade EXT</td>
+<td class="data">Truck</td>
+<td class="r data">$52,975</td>
+</tr>
+<tr>
+<td class="data">Cadillac</td>
+<td class="data">Escalade</td>
+<td class="data">SUV</td>
+<td class="r data">$52,795</td>
+</tr>
+<tr>
+<td class="data">Lincoln</td>
+<td class="data">Navigator Luxury</td>
+<td class="data">SUV</td>
+<td class="r data">$52,775</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Corvette convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$51,535</td>
+</tr>
+<tr>
+<td class="data">Cadillac</td>
+<td class="data">Deville DTS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$50,595</td>
+</tr>
+<tr>
+<td class="data">Lincoln</td>
+<td class="data">Town Car Ultimate L 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$50,470</td>
+</tr>
+<tr>
+<td class="data">Hummer</td>
+<td class="data">H2</td>
+<td class="data">SUV</td>
+<td class="r data">$49,995</td>
+</tr>
+<tr>
+<td class="data">Cadillac</td>
+<td class="data">Seville SLS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$47,955</td>
+</tr>
+<tr>
+<td class="data">Cadillac</td>
+<td class="data">SRX V8</td>
+<td class="data">SUV</td>
+<td class="r data">$46,995</td>
+</tr>
+<tr>
+<td class="data">GMC</td>
+<td class="data">Yukon XL 2500 SLT</td>
+<td class="data">SUV</td>
+<td class="r data">$46,265</td>
+</tr>
+<tr>
+<td class="data">Cadillac</td>
+<td class="data">Deville 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$45,445</td>
+</tr>
+<tr>
+<td class="data">Lincoln</td>
+<td class="data">Town Car Ultimate 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$44,925</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Corvette 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$44,535</td>
+</tr>
+<tr>
+<td class="data">Lincoln</td>
+<td class="data">LS V8 Ultimate 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$43,495</td>
+</tr>
+<tr>
+<td class="data">Lincoln</td>
+<td class="data">Aviator Ultimate</td>
+<td class="data">SUV</td>
+<td class="r data">$42,915</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Suburban 1500 LT</td>
+<td class="data">SUV</td>
+<td class="r data">$42,735</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">SSR</td>
+<td class="data">Truck</td>
+<td class="r data">$41,995</td>
+</tr>
+<tr>
+<td class="data">Lincoln</td>
+<td class="data">Town Car Signature 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$41,815</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Excursion 6.8 XLT</td>
+<td class="data">SUV</td>
+<td class="r data">$41,475</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Tahoe LT</td>
+<td class="data">SUV</td>
+<td class="r data">$41,465</td>
+</tr>
+<tr>
+<td class="data">Buick</td>
+<td class="data">Park Avenue Ultra 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$40,720</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Silverado SS</td>
+<td class="data">Truck</td>
+<td class="r data">$40,340</td>
+</tr>
+<tr>
+<td class="data">Lincoln</td>
+<td class="data">LS V8 Sport 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$40,095</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">Town and Country Limited</td>
+<td class="data">Sedan</td>
+<td class="r data">$38,380</td>
+</tr>
+<tr>
+<td class="data">Buick</td>
+<td class="data">Rainier</td>
+<td class="data">SUV</td>
+<td class="r data">$37,895</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Thunderbird Deluxe convert w/hardtop 2d</td>
+<td class="data">Sports</td>
+<td class="r data">$37,530</td>
+</tr>
+<tr>
+<td class="data">Lincoln</td>
+<td class="data">LS V6 Premium 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$36,895</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Avalanche 1500</td>
+<td class="data">Truck</td>
+<td class="r data">$36,100</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">Bonneville GXP 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$35,995</td>
+</tr>
+<tr>
+<td class="data">GMC</td>
+<td class="data">Yukon 1500 SLE</td>
+<td class="data">SUV</td>
+<td class="r data">$35,725</td>
+</tr>
+<tr>
+<td class="data">Buick</td>
+<td class="data">Park Avenue 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$35,545</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Expedition 4.6 XLT</td>
+<td class="data">SUV</td>
+<td class="r data">$34,560</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">Crossfire 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$34,495</td>
+</tr>
+<tr>
+<td class="data">Mercury</td>
+<td class="data">Marauder 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$34,495</td>
+</tr>
+<tr>
+<td class="data">Mercury</td>
+<td class="data">Monterey Luxury</td>
+<td class="data">Sedan</td>
+<td class="r data">$33,995</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">F-150 Supercab Lariat</td>
+<td class="data">Truck</td>
+<td class="r data">$33,540</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">GTO 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$33,500</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">300M Special Edition 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$33,295</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Grand Caravan SXT</td>
+<td class="data">Sedan</td>
+<td class="r data">$32,660</td>
+</tr>
+<tr>
+<td class="data">Lincoln</td>
+<td class="data">LS V6 Luxury 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$32,495</td>
+</tr>
+<tr>
+<td class="data">Buick</td>
+<td class="data">LeSabre Limited 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$32,245</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Durango SLT</td>
+<td class="data">SUV</td>
+<td class="r data">$32,235</td>
+</tr>
+<tr>
+<td class="data">GMC</td>
+<td class="data">Envoy XUV SLE</td>
+<td class="data">SUV</td>
+<td class="r data">$31,890</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">Montana EWB</td>
+<td class="data">Sedan</td>
+<td class="r data">$31,370</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">Pacifica</td>
+<td class="data">Wagon</td>
+<td class="r data">$31,230</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">Sebring Limited convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$30,950</td>
+</tr>
+<tr>
+<td class="data">Mercury</td>
+<td class="data">Grand Marquis LS Ultimate 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$30,895</td>
+</tr>
+<tr>
+<td class="data">Cadillac</td>
+<td class="data">CTS VVT 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$30,835</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Crown Victoria LX Sport 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$30,315</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">TrailBlazer LT</td>
+<td class="data">SUV</td>
+<td class="r data">$30,295</td>
+</tr>
+<tr>
+<td class="data">Mercury</td>
+<td class="data">Mountaineer</td>
+<td class="data">SUV</td>
+<td class="r data">$29,995</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">300M 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$29,865</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Explorer XLT V6</td>
+<td class="data">SUV</td>
+<td class="r data">$29,670</td>
+</tr>
+<tr>
+<td class="data">Mercury</td>
+<td class="data">Grand Marquis LS Premium 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$29,595</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Mustang GT Premium convertible 2dr</td>
+<td class="data">Sports</td>
+<td class="r data">$29,380</td>
+</tr>
+<tr>
+<td class="data">GMC</td>
+<td class="data">Sierra HD 2500</td>
+<td class="data">Truck</td>
+<td class="r data">$29,322</td>
+</tr>
+<tr>
+<td class="data">Oldsmobile</td>
+<td class="data">Silhouette GL</td>
+<td class="data">Sedan</td>
+<td class="r data">$28,790</td>
+</tr>
+<tr>
+<td class="data">Buick</td>
+<td class="data">Regal GS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$28,345</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Impala SS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$27,995</td>
+</tr>
+<tr>
+<td class="data">Jeep</td>
+<td class="data">Grand Cherokee Laredo</td>
+<td class="data">SUV</td>
+<td class="r data">$27,905</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">Town and Country LX</td>
+<td class="data">Sedan</td>
+<td class="r data">$27,490</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Crown Victoria LX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$27,370</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Venture LS</td>
+<td class="data">Sedan</td>
+<td class="r data">$27,020</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Freestar SE</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,930</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">Concorde LXi 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,860</td>
+</tr>
+<tr>
+<td class="data">Buick</td>
+<td class="data">Rendezvous CX</td>
+<td class="data">SUV</td>
+<td class="r data">$26,545</td>
+</tr>
+<tr>
+<td class="data">Buick</td>
+<td class="data">LeSabre Custom 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,470</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Astro</td>
+<td class="data">Sedan</td>
+<td class="r data">$26,395</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">PT Cruiser GT 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$25,955</td>
+</tr>
+<tr>
+<td class="data">GMC</td>
+<td class="data">Sierra Extended Cab 1500</td>
+<td class="data">Truck</td>
+<td class="r data">$25,717</td>
+</tr>
+<tr>
+<td class="data">GMC</td>
+<td class="data">Safari SLE</td>
+<td class="data">Sedan</td>
+<td class="r data">$25,640</td>
+</tr>
+<tr>
+<td class="data">Jeep</td>
+<td class="data">Wrangler Sahara convertible 2dr</td>
+<td class="data">SUV</td>
+<td class="r data">$25,520</td>
+</tr>
+<tr>
+<td class="data">GMC</td>
+<td class="data">Sonoma Crew Cab</td>
+<td class="data">Truck</td>
+<td class="r data">$25,395</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">Sebring convertible 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$25,215</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Impala LS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$25,000</td>
+</tr>
+<tr>
+<td class="data">Buick</td>
+<td class="data">Regal LS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$24,895</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Intrepid ES 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$24,885</td>
+</tr>
+<tr>
+<td class="data">Mercury</td>
+<td class="data">Grand Marquis GS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$24,695</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Crown Victoria 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$24,345</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">Grand Prix GT2 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$24,295</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Monte Carlo SS 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$24,225</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">Concorde LX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$24,130</td>
+</tr>
+<tr>
+<td class="data">Mercury</td>
+<td class="data">Sable LS Premium 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,895</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">Montana</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,845</td>
+</tr>
+<tr>
+<td class="data">Oldsmobile</td>
+<td class="data">Alero GLS 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,675</td>
+</tr>
+<tr>
+<td class="data">Saturn</td>
+<td class="data">L300 2</td>
+<td class="data">Wagon</td>
+<td class="r data">$23,560</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Malibu LT 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$23,495</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Taurus SES Duratec 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$22,735</td>
+</tr>
+<tr>
+<td class="data">Mercury</td>
+<td class="data">Sable GS</td>
+<td class="data">Wagon</td>
+<td class="r data">$22,595</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Escape XLS</td>
+<td class="data">SUV</td>
+<td class="r data">$22,515</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">Grand Am GT 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$22,450</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">Grand Prix GT1 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$22,395</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Taurus SE</td>
+<td class="data">Wagon</td>
+<td class="r data">$22,290</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Malibu Maxx LS</td>
+<td class="data">Wagon</td>
+<td class="r data">$22,225</td>
+</tr>
+<tr>
+<td class="data">Buick</td>
+<td class="data">Century Custom 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$22,180</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Intrepid SE 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$22,035</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">F-150 Regular Cab XL</td>
+<td class="data">Truck</td>
+<td class="r data">$22,010</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">PT Cruiser Limited 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$22,000</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Impala 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$21,900</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">Sebring Touring 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$21,840</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Monte Carlo LS 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$21,825</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Caravan SE</td>
+<td class="data">Sedan</td>
+<td class="r data">$21,795</td>
+</tr>
+<tr>
+<td class="data">Mercury</td>
+<td class="data">Sable GS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$21,595</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">Aztekt</td>
+<td class="data">SUV</td>
+<td class="r data">$21,595</td>
+</tr>
+<tr>
+<td class="data">Saturn</td>
+<td class="data">L300-2 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$21,410</td>
+</tr>
+<tr>
+<td class="data">Saturn</td>
+<td class="data">VUE</td>
+<td class="data">SUV</td>
+<td class="r data">$20,585</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Malibu LS 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$20,370</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Taurus LX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$20,320</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Silverado 1500 Regular Cab</td>
+<td class="data">Truck</td>
+<td class="r data">$20,310</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Dakota Club Cab</td>
+<td class="data">Truck</td>
+<td class="r data">$20,300</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Tracker</td>
+<td class="data">SUV</td>
+<td class="r data">$20,255</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Stratus SE 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$20,220</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Ram 1500 Regular Cab ST</td>
+<td class="data">Truck</td>
+<td class="r data">$20,215</td>
+</tr>
+<tr>
+<td class="data">Jeep</td>
+<td class="data">Liberty Sport</td>
+<td class="data">SUV</td>
+<td class="r data">$20,130</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Focus SVT 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,135</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">Sebring 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$19,090</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Malibu 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$18,995</td>
+</tr>
+<tr>
+<td class="data">Oldsmobile</td>
+<td class="data">Alero GX 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$18,825</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Stratus SXT 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$18,820</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Colorado Z85</td>
+<td class="data">Truck</td>
+<td class="r data">$18,760</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Mustang 2dr (convertible)</td>
+<td class="data">Sports</td>
+<td class="r data">$18,345</td>
+</tr>
+<tr>
+<td class="data">Chrysler</td>
+<td class="data">PT Cruiser 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$17,985</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">Sunfire 1SC 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$17,735</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Dakota Regular Cab</td>
+<td class="data">Truck</td>
+<td class="r data">$17,630</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Focus ZTW</td>
+<td class="data">Wagon</td>
+<td class="r data">$17,475</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">Vibe</td>
+<td class="data">Wagon</td>
+<td class="r data">$17,045</td>
+</tr>
+<tr>
+<td class="data">GMC</td>
+<td class="data">Canyon Z85 SL Regular Cab</td>
+<td class="data">Truck</td>
+<td class="r data">$16,530</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Cavalier LS 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$16,385</td>
+</tr>
+<tr>
+<td class="data">Saturn</td>
+<td class="data">lon3 quad coupe 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$16,350</td>
+</tr>
+<tr>
+<td class="data">Saturn</td>
+<td class="data">lon3 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,825</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Focus ZX5 5dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,580</td>
+</tr>
+<tr>
+<td class="data">Pontiac</td>
+<td class="data">Sunfire 1SA 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,495</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Focus SE 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,460</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Neon SXT 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$15,040</td>
+</tr>
+<tr>
+<td class="data">Saturn</td>
+<td class="data">lon2 quad coupe 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$14,850</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Cavalier 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$14,810</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Cavalier 2dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$14,610</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Ranger 2.3 XL Regular Cab</td>
+<td class="data">Truck</td>
+<td class="r data">$14,385</td>
+</tr>
+<tr>
+<td class="data">Saturn</td>
+<td class="data">lon2 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$14,300</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Focus LX 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$13,730</td>
+</tr>
+<tr>
+<td class="data">Dodge</td>
+<td class="data">Neon SE 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$13,670</td>
+</tr>
+<tr>
+<td class="data">Ford</td>
+<td class="data">Focus ZX3 2dr hatch</td>
+<td class="data">Sedan</td>
+<td class="r data">$13,270</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Aveo LS 4dr hatch</td>
+<td class="data">Sedan</td>
+<td class="r data">$12,585</td>
+</tr>
+<tr>
+<td class="data">Chevrolet</td>
+<td class="data">Aveo 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$11,690</td>
+</tr>
+<tr>
+<td class="data">Saturn</td>
+<td class="data">Ion1 4dr</td>
+<td class="data">Sedan</td>
+<td class="r data">$10,995</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+</div>
+</body>
+</html>
