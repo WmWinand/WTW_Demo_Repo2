@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Simple JSON</title>
+<link rel="stylesheet" href="/SASJobExecution/theme">
+</head>
+
+<body role="main" class="jobexec_body">
+
+<form class="jobexec_form" action="/SASJobExecution/" target="_tab">
+<input type="hidden" name="_program" value="$PROGRAM$"/>
+<input type="hidden" name="_action" value="execute"/>
+<input type="hidden" name="_output_type" value="json"/>
+<div class="jobexec_sample_header">SAS<sup>&#174;</sup> Job Execution</div>
+
+<h1 class="jobexec_sample_name">Simple JSON</h1>
+
+<p>
+The JSON procedure creates simple JSON content that returns the data in the SASHELP.CLASS table.
+</p>
+
+<hr/>
+
+<input type="submit" value="Run code" class="jobexec_sample_input_submit"/>
+<input type="checkbox" name="_debug" id="_debug" value="log" 
+   class="jobexec_sample_input_checkbox"/>
+<label for="_debug">Show SAS Log</label>
+
+</form>
+
+</body>
+
+</html>

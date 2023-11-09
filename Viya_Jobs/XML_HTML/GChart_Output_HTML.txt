@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Return GCHART Image Output</title>
+<link rel="stylesheet" href="/SASJobExecution/theme">
+</head>
+
+<body role="main" class="jobexec_body">
+
+<form class="jobexec_form" action="/SASJobExecution/" target="_tab">
+<input type="hidden" name="_program" value="$PROGRAM$"/>
+<input type="hidden" name="_action"  value="execute"/>
+<div class="jobexec_sample_header">SAS<sup>®</sup> Job Execution</div>
+
+<h1 class="jobexec_sample_name">Return GCHART Image Output</h1>
+
+<p>
+The GCHART procedure creates a bar chart using the SASHELP.CLASS
+table, and returns the binary image data to the client.
+</p>
+
+<label for="_output_type">Output format:</label>
+<select name="_output_type" id="_output_type" class="jobexec_sample_select">
+  <option value="gif">GIF</option>
+  <option value="jpeg">JPEG</option>
+  <option value="svg">SVG</option>
+  <option value="png" selected>PNG</option>
+</select>
+
+<br/>
+<br/>
+
+<label for="_odsstyle">ODS style:</label>
+<select name="_odsstyle" id="_odsstyle" class="jobexec_sample_select">
+  <option value="Illuminate" selected>illuminate</option>
+  <option value="Ignite" selected>ignite</option>
+  <option value="HTMLBlue" selected>HTMLBlue</option>
+</select>
+
+<br/>
+<br/>
+
+<hr/>
+
+<input type="submit" value="Run code" class="jobexec_sample_input_submit"/>
+<input type="checkbox" name="_debug" id="_debug" value="log" 
+   class="jobexec_sample_input_checkbox"/>
+<label for="_debug">Show SAS Log</label>
+
+</form>
+
+</body>
+
+</html>
