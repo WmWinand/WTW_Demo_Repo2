@@ -1,0 +1,1897 @@
+1    /* region: SAS session initialization */
+2    /*----------------------------------------------------------------------
+3    /
+4    / SASStudio initialization file for SAS
+5    /
+6    *----------------------------------------------------------------------*/
+7    /* Get the Git version */
+8    DATA _NULL_;
+9      GITVERSION = GIT_VERSION();
+10     CALL SYMPUT('_GITVERSION', GITVERSION);
+11   RUN;
+
+NOTE: Numeric values have been converted to character values at the places given by: (Line):(Column).
+      10:30   
+NOTE: Libgit2 version 1.3.0
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12   
+13   
+14   %MACRO resolveHomeDirectory;
+15   	%GLOBAL _USERHOME;
+16   	%LOCAL _HOMEVAR;
+17   
+18   	%IF (&SYSSCP=WIN) %THEN
+19   		%DO;
+20   			%LET _HOMEVAR=USERPROFILE;
+3                                                          The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+21   		%END;
+22   	%ELSE
+23   		%DO;
+24   			%LET _HOMEVAR=HOME;
+25   		%END;
+26   
+27   	%LET _USERHOME= %SYSFUNC(SYSGET(&_HOMEVAR));
+28   
+29   %MEND;
+30   
+31   %resolveHomeDirectory;
+32   
+33   %macro web_open_file(name,type);
+34   %global _DATAOUT_NAME;
+35   %global _DATAOUT_MIME_TYPE;
+36   %let _DATAOUT_NAME=&name;
+37   %let _DATAOUT_MIME_TYPE=&type;
+38   %mend;
+39   
+40   %macro web_open_table(table);
+41   %global _DATAOUT_TABLE;
+42   %if %length(&_dataout_table)=0 %then %let _DATAOUT_TABLE=&table;
+43   %else %let _DATAOUT_TABLE=&_DATAOUT_TABLE,&table;
+44   %mend;
+45   
+46   %macro web_open_url(url);
+47   %global _DATAOUT_URL;
+48   %let _DATAOUT_URL=&url;
+49   %mend;
+50   
+51   %macro sgdesign();
+52   %put ERROR: SGDesigner macro can not be invoked from SAS Studio.;
+53   %mend;
+54   
+55   %macro sgedit();
+56   %put ERROR: SGEdit macro can not be invoked from SAS Studio.;
+57   %mend;
+58   
+59   %macro web_list_entries(catalog,type);
+60   
+61   %let typearg=;
+62   %let type=%upcase(&type);
+63   %if &type^=_ALL_ and &type^=_all_ %then %let typearg= entrytype=&type;
+64   
+65   proc catalog catalog=&catalog &typearg;
+66   contents;
+67   title "Catalog Entries in &catalog";
+68   run;
+69   quit;
+70   
+71   %mend;
+72   
+73   %macro web_list_catalogs(library);
+74       %let library=%upcase(&library);
+75       proc sql ;
+76           create table work.catalogs as select memname as Catalog, memtype as
+77               Type, engine as Engine from sashelp.vmember where
+78               libname="&library" and memtype="CATALOG";
+4                                                          The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+79           run;
+80           quit;
+81           title "Catalogs in &library";
+82   
+83       proc print data=work.catalogs;
+84       run;
+85   %mend;
+86   
+87   %macro web_replay_grseg(catalog,entry);
+88   proc greplay nofs igout=&catalog;
+89   replay &entry;
+90   run;
+91   %mend;
+92   
+93   %macro sasstudio_get_zos_ds_info(DSN);
+94   
+95   OPTIONS FILESYSTEM=MVS;
+96   
+97   DATA work._sasstudio_dataset_info_;
+98   
+99     LENGTH XDSN $32000;
+100    XDSN=ZDSLIST('CATLG', &DSN, XVOLS, '');
+101  
+102    LENGTH XNUM 8;
+103    XNUM=ZDSNUM(XDSN);
+104    LENGTH XIDNM $4096;
+105    LENGTH XATTR $4096;
+106    LENGTH XATTRC $72;
+107    LENGTH XATTRN 8;
+108    LENGTH attributeType $10;
+109  
+110    DO I=1 to XNUM;
+111      XIDNM=ZDSIDNM(XDSN, I);
+112      XATTR=ZDSATTR(XIDNM, 'ALL');
+113      XATTRN=ZDSXATT(XATTR);
+114  
+115      do j=1 to xattrn;
+116       XATTRC=ZDSYATT(XATTR, j);
+117       blank_pos = index(xattrc," ");
+118             key = substr(xattrc, blank_pos,99);
+119             val= substr(xattrc,1,blank_pos);
+120             pos = index(key, 'FILE ATTRIBUTES');
+121             if (pos > 0) then do;
+122                attributeType = 'FILE';
+123             end;
+124             else do;
+125                 pos = index(key, 'VOLUME ATTRIBUTES');
+126                 if (pos > 0) then do;
+127                    attributeType = 'VOLUME';
+128                 end;
+129                 else do;
+130                     pos = index(key, 'MIGRATED DATA SET ATTRIBUTES');
+131                     if (pos > 0) then do;
+132                        attributeType = 'MIGRATED';
+133                     end;
+134                     else do;
+135                        pos = index(key, '*****');
+136                     end;
+5                                                          The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+137                 end;
+138             end;
+139             if (pos = 0) then do;
+140                output;
+141             end;
+142             keep key val attributeType;
+143      end;
+144    END;
+145   RUN;
+146  %mend sasstudio_get_zos_ds_info;
+147  
+148  %macro show_zos_dataset_attributes(dsn);
+149     %sasstudio_get_zos_ds_info(&dsn);
+150  
+151     data work._sasstudio_dataset_info_ds_;
+152         set work._sasstudio_dataset_info_;
+153  
+154         if strip(val)='.' then do;
+155             val='***NONE***';
+156         end;
+157  
+158         position = index(attributeType, 'FILE');
+159         if position > 0 then do;
+160             output;
+161         end;
+162         drop position attributeType;
+163     run;
+164  
+165     data work._sasstudio_dataset_info_vol_;
+166         set work._sasstudio_dataset_info_;
+167  
+168         if strip(val)='.' then do;
+169             val='***NONE***';
+170         end;
+171  
+172         position = index(attributeType, 'VOLUME');
+173         if position > 0 then do;
+174             output;
+175         end;
+176         drop position attributeType;
+177     run;
+178  
+179      proc print data=work._sasstudio_dataset_info_ds_ noobs label;
+180      LABEL key='Dataset Attribute'  val='00'x;
+181         title1 &dsn;
+182      run;
+183  
+184      proc print data=work._sasstudio_dataset_info_vol_ noobs label;
+185          title1;
+186          LABEL key='Volume Attribute'  val='00'x;
+187      run;
+188  
+189      proc delete data=work._sasstudio_dataset_info_
+190      work._sasstudio_dataset_info_ds_
+191      work._sasstudio_dataset_info_vol_;
+192  
+193  %mend;
+194  
+6                                                          The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+195  %macro validCasEnvironment( sessionName=, createSession=, returnCode=RC);
+196  
+197  /* This section is just to give information about the CAS connection */
+198  %let CASHOST = %SYSFUNC(GETOPTION(CASHOST));
+199  
+200  %if (%LENGTH(&CASHOST)=0) %then %do;
+201      %put CASHOST is not set;
+202  %end; %else %do;
+203      %put CASHOST is &CASHOST;
+204  %end;
+205  
+206  %let CASPORT = %SYSFUNC(GETOPTION(CASPORT));
+207  
+208  %if (&CASPORT=0) %then %do;
+209      %put CASPORT is not set;
+210  %end; %else %do;
+211      %put CASPORT is &CASPORT;
+212  %end;
+213  
+214  %let CASHOST = %SYSFUNC(GETOPTION(_CASHOST_));
+215  %if (%LENGTH(&CASHOST)=0) %then %do;
+216      %put _CASHOST_ is not set;
+217  %end; %else %do;
+218      %put _CASHOST_ is &CASHOST;
+219  %end;
+220  
+221  %let CASPORT = %SYSFUNC(GETOPTION(_CASPORT_));
+222  
+223  %if (%LENGTH(&CASPORT)=0) %then %do;
+224      %put _CASPORT_ is not set;
+225  %end; %else %do;
+226      %put _CASPORT_ is &CASPORT;
+227  %end;
+228  
+229  %let CASUSER = %SYSFUNC(GETOPTION(CASUSER));
+230  
+231  %if (%LENGTH(&CASUSER) = 0) %then %do;
+232      %put CASUSER is not set;
+233  %end; %else %do;
+234      %put CASUSER is &CASUSER;
+235  %end;
+236  
+237  
+238  %if &sessionName = %then %do;
+239      %let DEFAULTSESS= %SYSFUNC(GETOPTION(SESSREF));
+240      %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&DEFAULTSESS));
+241      %if (&SESSIONFOUND = 0) %then %do;
+242         %put Default session &DEFAULTSESS is not available.;
+243         %let &returnCode=0;
+244      %end;
+245      %else %do;
+246         %put Default session &DEFAULTSESS is available.;
+247         %let &returnCode=3;
+248      %end;
+249  %end; %else %do;                                                /* Session name was specified */
+250      %if &createSession = %then %do;                             /* createSession not specified */
+251         %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&sessionName));   /* Default to false (don't create) */
+252         %if (&SESSIONFOUND = 0) %then %do;
+7                                                          The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+253            %put Session &sessionName is not available.;
+254            %let &returnCode=0;
+255         %end;
+256         %else %do;
+257            %put Session &sessionName already exists.;
+258            %let &returnCode=2;
+259         %end;
+260      %end;
+261      %else %do;
+262         %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&sessionName));  /* Does session already exist? */
+263         %if (&createSession = false) %then %do;                 /* User does not want to create it. */
+264            %put createSession is false;
+265            %if (&SESSIONFOUND = 0) %then %do;
+266               %put Session &sessionName is not available.;      /* Tell user it does not exist. */
+267               %let &returnCode=0;
+268            %end;
+269            %else %do;
+270               %put Session &sessionName exists;
+271               %let &returnCode = 2;
+272            %end;
+273         %end;
+274         %else %do;
+275           %put createSession is true;
+276           %if (&SESSIONFOUND = 0) %then %do;                    /* Session does not exist, so create it */
+277               cas &sessionName;
+278               %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&sessionName));
+279               %if (&SESSIONFOUND = 0) %then %do;               /* Session created successfully */
+280                   %let &returnCode=1;
+281               %end;
+282               %else %do;
+283                   %let &returnCode=4;                          /* Session creation failed. */
+284               %end;
+285           %end;
+286           %else %do;                                           /* Session already exists, so user cannot create it */
+287               %put Session &sessionName already exists;
+288               %let &returnCode=2;
+289           %end;
+290         %end;
+291      %end;
+292  %end;
+293  
+294  
+295  %mend validCasEnvironment;
+296  
+297  /* This macro is used by code generated for Query nodes in an EG Process flow *
+298  /* Conditionally delete set of tables or views, if they exists          */
+299  /* If the member does not exist, then no action is performed   */
+300  %macro _eg_conditional_dropds /parmbuff;
+301  
+302      %local num;
+303      %local stepneeded;
+304      %local stepstarted;
+305      %local dsname;
+306      %local name;
+307  
+308      %let num=1;
+309      /* flags to determine whether a PROC SQL step is needed */
+310      /* or even started yet                                  */
+8                                                          The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+311      %let stepneeded=0;
+312      %let stepstarted=0;
+313      %let dsname= %qscan(&syspbuff,&num,',()');
+314      %do %while(&dsname ne);
+315          %let name = %sysfunc(left(&dsname));
+316          %if %qsysfunc(exist(&name)) %then %do;
+317              %let stepneeded=1;
+318              %if (&stepstarted eq 0) %then %do;
+319                  proc sql;
+320                  %let stepstarted=1;
+321  
+322              %end;
+323                  drop table &name;
+324          %end;
+325  
+326          %if %sysfunc(exist(&name,view)) %then %do;
+327              %let stepneeded=1;
+328              %if (&stepstarted eq 0) %then %do;
+329                  proc sql;
+330                  %let stepstarted=1;
+331              %end;
+332                  drop view &name;
+333          %end;
+334          %let num=%eval(&num+1);
+335          %let dsname=%qscan(&syspbuff,&num,',()');
+336      %end;
+337      %if &stepstarted %then %do;
+338          quit;
+339      %end;
+340  %mend _eg_conditional_dropds;
+341  
+342  /* Given a fileref and a memname and memtype, we attempt to open the
+343  member of the directory (catalog or file system directory). We
+344  set &member_found to 1 if it can be opened, 0 if not. */
+345  %macro _entry_exists(fileref,memname,memtype);
+346  %global _macro_found;
+347  %let _macro_found = 0;
+348  data _null_;
+349  *-----open the directory and proceed if it can be opened-----*;
+350  handle = dopen("&fileref.");
+351  if handle ne 0;
+352  *-----open the member and set the macro variable based on result-----*;
+353  mem_handle = mopen(handle,"&memname..&memtype.",'i');
+354  call symputx('_macro_found',mem_handle ne 0);
+355  *-----close the member if it were opened successfully-----*;
+356  if mem_handle then rc = fclose(mem_handle);
+357  *-----close the directory-----*;
+358  rc = dclose(handle);
+359  run;
+360  %mend _entry_exists;
+361  
+362  /* Given a macro name, we determine if it has already been
+363  compiled. We first look in work.sasmacr, then in the sasmacr
+364  referenced by sasmstore (if given) and then in work.sasmacX. */
+365  %macro _compiled_macro_exists(macro_name);
+366  options nonotes;
+367  %global _macro_found;
+368  *-----try work.sasmacr first to see if the compiled macro is there-----*;
+9                                                          The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+369  filename maclib catalog "work.sasmacr";
+370  %_entry_exists(maclib,&macro_name.,macro);
+371  filename maclib clear;
+372  %if &_macro_found %then %goto done;
+373  *-----try sasmacr referenced by sasmstore if it were specified-----*;
+374  %let sasmstore_option = %sysfunc(getoption(sasmstore));
+375  %if %sysfunc(getoption(mstored))=MSTORED and %length(&sasmstore_option) > 0 %then %do;
+376  filename maclib catalog "&sasmstore_option..sasmacr";
+377  %_entry_exists(maclib,&macro_name.,macro);
+378  %end;
+379  
+380  %do i=1 %to 9;
+381  %if &_macro_found %then %goto done;
+382  filename maclib catalog "work.sasmac&i.";
+383  %_entry_exists(maclib,&macro_name.,macro);
+384  filename maclib clear;
+385  %end;
+386  
+387  %done: options notes;
+388  %mend _compiled_macro_exists;
+389  
+390  %macro studio_cas_start;
+391  
+392  %global _macro_found;
+393  %global syscasinit;
+394  
+395  %let syscasinit=0;
+396  
+397  %_compiled_macro_exists(studio_cas_init);
+398  
+399  %if &_macro_found %then %do;
+400  
+401  %let syscasinit=1;
+402  
+403  %studio_cas_init;
+404  
+405  %end;
+406  %mend studio_cas_start;
+407  
+408  %macro studio_hide_wrapper;
+409      %global _studionotes;
+410      %global _studiosource;
+411      %global _studiostimer;
+412  
+413      %if &_studionotes = %then %do;
+414          %let _studionotes=%sysfunc(getoption(notes));
+415      %end;
+416      options nonotes;
+417  
+418      %if &_studiosource = %then %do;
+419          %let _studiosource=%sysfunc(getoption(source));
+420      %end;
+421      options nosource;
+422  
+423      %if &_studiostimer = %then %do;
+424          %let _studiostimer=%sysfunc(getoption(stimer));
+425      %end;
+426      options nostimer;
+10                                                         The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+427  %mend studio_hide_wrapper;
+428  
+429  %macro studio_show_wrapper;
+430      %global _studionotes;
+431      %global _studiosource;
+432      %global _studiostimer;
+433  
+434      %if &_studionotes = %then %do;
+435          %let _studionotes=%sysfunc(getoption(notes));
+436      %end;
+437      options notes;
+438  
+439      %if &_studiosource = %then %do;
+440          %let _studiosource=%sysfunc(getoption(source));
+441      %end;
+442      options source;
+443  
+444      %if &_studiostimer = %then %do;
+445          %let _studiostimer=%sysfunc(getoption(stimer));
+446      %end;
+447      options stimer;
+448  %mend studio_show_wrapper;
+449  
+450  %macro studio_show_only_notes_wrapper;
+451      %global _studionotes;
+452      %global _studiosource;
+453      %global _studiostimer;
+454  
+455      %if &_studionotes = %then %do;
+456          %let _studionotes=%sysfunc(getoption(notes));
+457      %end;
+458      options notes;
+459  
+460      %if &_studiosource = %then %do;
+461          %let _studiosource=%sysfunc(getoption(source));
+462      %end;
+463      options nosource;
+464  
+465      %if &_studiostimer = %then %do;
+466          %let _studiostimer=%sysfunc(getoption(stimer));
+467      %end;
+468      options nostimer;
+469  %mend studio_show_only_notes_wrapper;
+470  
+471  
+472  %macro studio_restore_wrapper;
+473      %global _studionotes;
+474      %global _studiosource;
+475      %global _studiostimer;
+476  
+477      options &_studionotes;
+478      options &_studiosource;
+479      options &_studiostimer;
+480  
+481      /* Clear out values so we know they have been restored */
+482      %let _studionotes=;
+483      %let _studiosource=;
+484      %let _studiostimer=;
+11                                                         The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+485  %mend studio_restore_wrapper;
+486  
+487  %macro studio_setup_locale(requestedLocale);
+488      %let validlocale=%SYSFUNC(getpxlocale(&requestedlocale));
+489      %let validlocale=%trim(&validlocale);
+490  
+491      %if %length(&validlocale) > 0 %then
+492          %do;
+493              options locale=&validlocale DFLANG=LOCALE;
+494          %end;
+495      %else
+496          %do;
+497              options locale=en_US DFLANG=LOCALE;
+498          %end;
+499  %mend;
+500  
+501  /* This macro initializes a base results path for a submission, and sets up a
+502     macro variable to access it. */
+503  %macro studio_results_directory;
+504      %global _results_prefix_;
+505      %let _results_prefix_=!COMPUTESERVER_TMP_PATH/results-&SYS_COMPUTE_JOB_ID;
+506  %mend;
+507  
+508  /*
+509  This macro initializes the filename and type for any custom output created.
+510  */
+511  %macro studio_initialize_custom_output;
+512      %global _dataout_name _dataout_mime_type;
+513      %let _dataout_name=;
+514      %let _dataout_mime_type=;
+515  %mend;
+516  
+517  /*
+518  This macro captures the filename and type for any custom output created.
+519  */
+520  %macro studio_capture_custom_output;
+521      %if "&_dataout_name" ne "" and "&_dataout_mime_type" ne "" %then
+522          %do;
+523              filename _datname "!COMPUTESERVER_TMP_PATH/results-&SYS_COMPUTE_JOB_ID..datname";
+524              filename _dattype "!COMPUTESERVER_TMP_PATH/results-&SYS_COMPUTE_JOB_ID..dattype";
+525  
+526              data _null_;
+527                  file _datname;
+528                  put "&_dataout_name";
+529              run;
+530  
+531              data _null_;
+532                  file _dattype;
+533                  put "&_dataout_mime_type";
+534              run;
+535          %end;
+536  %mend;
+537  
+538  /*
+539  This macro captures a log for a background job to the specified destination
+540  alongside any HTML results.
+541  */
+542  %macro studio_capture_background_log;
+12                                                         The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+543  
+544      /*
+545      Capture original value for syntaxcheck, and set it to nosyntaxcheck so we
+546      can capture the log even if there are errors above
+547      */
+548      %let _studiosyntaxcheck=%sysfunc(getoption(syntaxcheck));
+549      options nosyntaxcheck;
+550  
+551      /*
+552      Get base URL for compute, and download the log to the _logout fileref.
+553      */
+554      %let _url_template=%sysget(SAS_URL_SERVICE_TEMPLATE);
+555      %let _url_base=%sysfunc(tranwrd(&_url_template,@k8s.service.name@,sas-compute));
+556      proc http
+557          url="&_url_base./compute/sessions/&SYS_COMPUTE_SESSION_ID/jobs/&SYS_COMPUTE_JOB_ID/log"
+558          oauth_bearer = sas_services
+559          method='get'
+560          out=_logout;
+561      headers 'accept'='text/plain';
+562      quit;
+563  
+564      /*
+565      Restore the original value for syntaxcheck.
+566      */
+567      options &_studiosyntaxcheck;
+568  %mend;
+569  
+570  DATA _NULL_;
+571  	ID=SYMGET("SYSUSERID");
+572  	CALL SYMPUT("SYSUSERNAME",ID);
+573  	RC=TSLVL('UWUUSERN','N');
+574  	_ERROR_=0;
+575  	IF (RC^=' ') THEN DO;
+576  		call execute("DATA _NULL_;NAME=USERNAME();CALL SYMPUT('SYSUSERNAME',NAME);RUN;");
+577  	END;
+578  RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + DATA _NULL_;NAME=USERNAME();CALL SYMPUT('SYSUSERNAME',NAME);RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+579  
+580  OPTIONS TIMEZONE='GMT-04:00';
+581  %studio_setup_locale(en-US);
+582  OPTIONS VALIDVARNAME=ANY VALIDMEMNAME=EXTEND;
+583  /* endregion */
+584  
+585  /* region: SAS Studio autoexec */
+586  * CENSUS API KEY * CENSUS INFORMATION AND URL *;
+13                                                         The SAS System                        Wednesday, May 10, 2023 06:41:00 PM
+
+587  Cas conn;
+NOTE: The session CONN connected successfully to Cloud Analytic Services sas-cas-server-default-client using port 5570. The UUID is 
+      03b00299-4bf8-f54a-bd11-b9255a892cf1. The user is T.Winand@sas.com and the active caslib is CASUSER(T.Winand@sas.com).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 4 workers.
+588  %let census_api_key_path = /greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Code/Python/census_api.csv;  /*Location of
+588! your CSV file with the API key*/
+589  %let census_api_url = https://api.census.gov/data/2021/pep/population?;
+590  libname casuser cas caslib='casuser';
+NOTE: Libref CASUSER was successfully assigned as follows: 
+      Engine:        CAS 
+      Physical Name: 03b00299-4bf8-f54a-bd11-b9255a892cf1
+591  
+592  libname libbase2 libdef='/dataSources/providers/Compute/sourceDefinitions/f751829c-dee0-492e-b010-e4b997a17917';
+592  ENABLEDIRECTIO=NO NOSETPERM=NO USEDIRECTIO=NO
+NOTE: Library LIBBASE2 does not exist.
+593  libname DATA '/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Data' ;
+NOTE: Libref DATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Data
+594  /* endregion */
+595  
+596  /* region: Generated preamble */
+597  /* Make sure the current directory is writable */
+598  data _null_;
+599      length rc 4;
+600      %let tworkloc="%sysfunc(getoption(work))";
+601      rc=dlgcdir(&tworkloc);
+602  run;
+
+NOTE: The current working directory is now 
+      "/opt/sas/viya/config/var/tmp/compsrv/default/b92e42aa-5757-46ea-91f6-9e932dd4ff11/SAS_work516D000000BF_sas-compute-server-295
+      4720b-955e-4787-a441-383fdf51cd7d-rz4x5".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+603  
+604  /* Setup options */
+605  title;
+606  footnote;
+607  options validvarname=any;
+608  options validmemname=extend;
+609  options dtreset date number;
+610  options device=png;
+611  
+612  /* Setup macro variables */
+613  %let syscc=0;
+614  %let _clientapp = %nrquote(%nrstr(SAS Studio));
+615  %let _clientappabbrev = %nrquote(%nrstr(Studio));
+616  %let _clientappversion=2023.01;
+617  %let _clientversion=;
+618  %let _sasservername=&SYSHOSTNAME;
+619  %let _sashostname=&SYSHOSTNAME;
+620  %let _sasprogramfilehost=&SYSHOSTNAME;
+621  %let _clientuserid = %nrquote(%nrstr(T.Winand@sas.com));
+14                                                         The SAS System                        Wednesday, May 10, 2023 02:41:47 PM
+
+622  %let _clientusername = %nrquote(%nrstr(T Winand));
+623  %let clientmachine = %nrquote(%nrstr());
+624  %let _clientmachine = %nrquote(%nrstr());
+625  %let _clientmode = %nrquote(%nrstr(viya));
+626  %let sasworklocation="%sysfunc(getoption(work))/";
+627  filename _cwd &sasworklocation;
+628  data _null_;
+629      call symput('_sasworkingdir',pathname('_cwd'));
+630  run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+631  filename _cwd;
+NOTE: Fileref _CWD has been deassigned.
+632  %let _sasprogramfile =
+632! %nrquote(%nrstr(/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/Viya_Programming_HOW/Code/1. Viya Programming
+632! Code/ViyaPgm_HOW - Complete Program.sas));
+633  %let _baseurl = %nrquote(%nrstr(https://ssemonthly.demo.sas.com/SASStudio/));
+634  %let _execenv = %nrquote(%nrstr(SASStudio));
+635  %symdel _dataout_mime_type _dataout_name _dataout_url _dataout_table / nowarn;
+636  %let _sasws_ = %bquote(%sysfunc(getoption(work)));
+637  %let _saswstemp_ = %bquote(%sysfunc(getoption(work)));
+638  
+639  /* Detect SAS/Graph and setup graph options */
+640  data _null_;
+641      length rc $255;
+642      call symput("graphinit","");
+643      call symput("graphterm","");
+644      rc=tslvl('sasxgopt','n');
+645      _error_=0;
+646      if (rc^=' ') then do;
+647          call symput("graphinit","goptions reset=all gsfname=_gsfname;");
+648          call symput("graphterm","goptions noaccessible;");
+649      end;
+650  run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+651  data _null_;
+652      length rc 4;
+653      rc=sysprod("PRODNUM002");
+654      if (rc^=1) then do;
+655          call symput("graphinit","");
+656          call symput("graphterm","");
+657      end;
+658  run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+15                                                         The SAS System                        Wednesday, May 10, 2023 02:41:47 PM
+
+659  
+660  /* Setup ODS destinations */
+661  ods _all_ close;
+662  %studio_results_directory;
+663  filename _htmlout '/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/Viya_Programming_HOW/Code/1. Viya
+663! Programming Code/ViyaPgm_HOW - Complete Program.html';
+664  filename _gsfname temp;
+665  filename _dataout "&_results_prefix_..dat";
+666  ods autonavigate off;
+667  ods graphics on;
+668  ods html5 (id=web) METATEXT='http-equiv="Content-Security-Policy" content="default-src ''none''; style-src ''unsafe-inline'';
+668! img-src data: ;"' device=png gpath="&_saswstemp_" path="&_saswstemp_" encoding=utf8 file=_htmlout (title='Results:ViyaPgm_HOW -
+668!  Complete Program.sas') style=Illuminate options(bitmap_mode='inline' outline='on' svg_mode='inline'
+668! css_prefix=".ods_&SYS_COMPUTE_JOB_ID" body_id="div_&SYS_COMPUTE_JOB_ID" );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+669  &graphinit;
+670  filename _logout '/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/Viya_Programming_HOW/Code/1. Viya Programming
+670!  Code/ViyaPgm_HOW - Complete Program.log';
+671  /* endregion */
+672  
+673  /*****************************************************************************/
+674  /* ViyaPgm_HOW: Complete Program                                             */
+675  /*****************************************************************************/
+676  
+677  /*****************************************************************************/
+678  /* This program contains all code steps that are associated with the         */
+679  /* following indepent code examples                                          */
+680  /*                                                                           */
+681  /* ViyaPgm_01: Create a CAS Connection & Start a CAS Session                 */
+682  /* ViyaPgm_02: Create a SAS librefs for existing caslibs                     */
+683  /* ViyaPgm_03: Load data into CAS memory - 3 simple ways                     */
+684  /* ViyaPgm_04: List CAS in-memory tables                                     */
+685  /* ViyaPgm_05: Run DATA Step in Viya                                         */
+686  /* ViyaPgm_06: Run DATA Step with "BIG" Data in Viya                         */
+687  /* ViyaPgm_07: Run a DATA Step with Group By in Viya                         */
+688  /* ViyaPgm_08: Run a DATA Step using Partition and Orderby in CAS            */
+689  /* ViyaPgm_09: Analyze Data using SAS9 Procedures                            */
+690  /* ViyaPgm_10: Analyze Data using Viya Procedures                            */
+691  /* ViyaPgm_11: Query Dataset using Proc SQL & CAS Table Using Proc FedSQL    */
+692  /* ViyaPgm_12: Create and Use User-Defined Formats in CAS                    */
+693  /* ViyaPgm_13: Clean Up                                                      */
+694  /*****************************************************************************/
+695  
+696  /*****************************************************************************/
+697  /*  Set the options necessary for creating a connection to a CAS server.     */
+698  /*  Once the options are set, the cas command connects the default session   */
+699  /*  to the specified CAS server and CAS port, for example the default value  */
+700  /*  is 5570.                                                                 */
+701  /*****************************************************************************/
+702  
+703  /* options cashost="127.0.0.1" casport=5570; */
+704  
+705  /*****************************************************************************/
+706  /*  Start a session named mySession using the existing CAS server connection */
+707  /*  while allowing override of caslib, timeout (in seconds), and locale     */
+708  /*  defaults.                                                                */
+709  /*****************************************************************************/
+710  
+16                                                         The SAS System                        Wednesday, May 10, 2023 02:41:47 PM
+
+711  cas mySession sessopts=(caslib=casuser timeout=1800 locale="en_US");
+NOTE: The session MYSESSION connected successfully to Cloud Analytic Services sas-cas-server-default-client using port 5570. The 
+      UUID is cbd9342a-5c0a-d542-84ee-3bd979e7d155. The user is T.Winand@sas.com and the active caslib is CASUSER(T.Winand@sas.com).
+NOTE: The SAS option SESSREF was updated with the value MYSESSION.
+NOTE: The SAS macro _SESSREF_ was updated with the value MYSESSION.
+NOTE: The session is using 4 workers.
+NOTE: 'CASUSER(T.Winand@sas.com)' is now the active caslib.
+NOTE: The CAS statement request to update one or more session options for session MYSESSION completed.
+712  
+713  
+714  /*****************************************************************************/
+715  /*  Create SAS librefs for existing caslibs                                  */
+716  /*  so that they are visible in the SAS Studio Libraries tree.               */
+717  /*  Create a separate libref for the casuser caslib                          */
+718  /*****************************************************************************/
+719  
+720  caslib _all_ assign;
+NOTE: A SAS Library associated with a caslib can only reference library member names that conform to SAS Library naming conventions.
+NOTE: CASLIB CASUSER(T.Winand@sas.com) for session MYSESSION will be mapped to SAS Library CASUSER.
+NOTE: CASLIB CPSAppData for session MYSESSION will not be mapped to SAS Library CPSAppData. The CASLIB name is not valid for use as 
+      a libref.
+NOTE: CASLIB EDUPub for session MYSESSION will be mapped to SAS Library EDUPUB.
+NOTE: CASLIB EP_CommunityCollege for session MYSESSION will not be mapped to SAS Library EP_CommunityCollege. The CASLIB name is 
+      not valid for use as a libref.
+NOTE: CASLIB EP_DOE for session MYSESSION will be mapped to SAS Library EP_DOE.
+NOTE: CASLIB EP_Forecasting for session MYSESSION will not be mapped to SAS Library EP_Forecasting. The CASLIB name is not valid 
+      for use as a libref.
+NOTE: CASLIB EP_K12 for session MYSESSION will be mapped to SAS Library EP_K12.
+NOTE: CASLIB EP_SAfE for session MYSESSION will be mapped to SAS Library EP_SAFE.
+NOTE: CASLIB EP_Shapes for session MYSESSION will not be mapped to SAS Library EP_Shapes. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB EP_Sports for session MYSESSION will not be mapped to SAS Library EP_Sports. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB EP_University for session MYSESSION will not be mapped to SAS Library EP_University. The CASLIB name is not valid for 
+      use as a libref.
+NOTE: CASLIB EP_Workforce for session MYSESSION will not be mapped to SAS Library EP_Workforce. The CASLIB name is not valid for 
+      use as a libref.
+NOTE: CASLIB Formats for session MYSESSION will be mapped to SAS Library FORMATS.
+NOTE: CASLIB GCSTT for session MYSESSION will be mapped to SAS Library GCSTT.
+NOTE: CASLIB GPCI for session MYSESSION will be mapped to SAS Library GPCI.
+NOTE: CASLIB GTPPub for session MYSESSION will be mapped to SAS Library GTPPUB.
+NOTE: CASLIB IoTPub for session MYSESSION will be mapped to SAS Library IOTPUB.
+NOTE: CASLIB ModelPerformanceData for session MYSESSION will not be mapped to SAS Library ModelPerformanceData. The CASLIB name is 
+      not valid for use as a libref.
+NOTE: CASLIB Models for session MYSESSION will be mapped to SAS Library MODELS.
+NOTE: CASLIB PMVAPub for session MYSESSION will be mapped to SAS Library PMVAPUB.
+NOTE: CASLIB Public for session MYSESSION will be mapped to SAS Library PUBLIC.
+NOTE: CASLIB QASANLOUT for session MYSESSION will not be mapped to SAS Library QASANLOUT. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB QASMartStore for session MYSESSION will not be mapped to SAS Library QASMartStore. The CASLIB name is not valid for 
+      use as a libref.
+NOTE: CASLIB SGF2021 for session MYSESSION will be mapped to SAS Library SGF2021.
+NOTE: CASLIB SGF21AAI for session MYSESSION will be mapped to SAS Library SGF21AAI.
+NOTE: CASLIB SIS2021_6 for session MYSESSION will not be mapped to SAS Library SIS2021_6. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB Samples for session MYSESSION will be mapped to SAS Library SAMPLES.
+NOTE: CASLIB Samples2023 for session MYSESSION will not be mapped to SAS Library Samples2023. The CASLIB name is not valid for use 
+      as a libref.
+17                                                         The SAS System                        Wednesday, May 10, 2023 02:41:49 PM
+
+NOTE: CASLIB UKI for session MYSESSION will be mapped to SAS Library UKI.
+NOTE: CASLIB cpgretl for session MYSESSION will be mapped to SAS Library CPGRETL.
+NOTE: CASLIB images for session MYSESSION will be mapped to SAS Library IMAGES.
+NOTE: CASLIB sashack22 for session MYSESSION will not be mapped to SAS Library sashack22. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB sashack23 for session MYSESSION will not be mapped to SAS Library sashack23. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB swee for session MYSESSION will be mapped to SAS Library SWEE.
+721  caslib _all_ list;
+NOTE: Session = MYSESSION Name = CASUSER(T.Winand@sas.com)
+         Type = PATH
+         Description = Personal File System Caslib
+         Path = /cas/data/caslibs/casuserlibraries/t.winand@sas.com/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = Yes
+         Personal = Yes
+NOTE: Session = MYSESSION Name = cpgretl
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/cpgretail/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = CPSAppData
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/CPSAppData/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = EDUPub
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/edupub/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = EP_CommunityCollege
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_CommunityCollege/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = EP_DOE
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_DOE/
+18                                                         The SAS System                        Wednesday, May 10, 2023 02:41:49 PM
+
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = EP_Forecasting
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_Forecasting/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = EP_K12
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_K12/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = EP_SAfE
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_SAfE/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = EP_Shapes
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_Shapes/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = EP_Sports
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_Sports/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = EP_University
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_University/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+19                                                         The SAS System                        Wednesday, May 10, 2023 02:41:49 PM
+
+         Personal = No
+NOTE: Session = MYSESSION Name = EP_Workforce
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_Workforce/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = Formats
+         Type = PATH
+         Description = Stores user defined formats.
+         Path = /cas/data/caslibs/formats/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = GCSTT
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/GCSTT/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = GPCI
+         Type = PATH
+         Description = Group Lib for Global CI team.   Suneel Grover is the main contact
+         Path = /cas/data/caslibs/globalci/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = GTPPub
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/gtppub/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = images
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/images/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = IoTPub
+         Type = PATH
+         Description = 
+20                                                         The SAS System                        Wednesday, May 10, 2023 02:41:49 PM
+
+         Path = /cas/data/caslibs/iotpub/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = ModelPerformanceData
+         Type = PATH
+         Description = Stores performance data output for the Model Management service.
+         Path = /cas/data/caslibs/modelMonitorLibrary/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = Models
+         Type = PATH
+         Description = Stores models created by Visual Analytics for use in other analytics or SAS Studio.
+         Path = /cas/data/caslibs/models/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = PMVAPub
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/PMVAPub/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = Public
+         Type = PATH
+         Description = Shared and writeable caslib, accessible to all users.  30 days of data.  Purged Monthly.
+         Path = /cas/data/caslibs/public/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = QASANLOUT
+         Type = PATH
+         Description = The CASLib would be used to store the analysis output datasets.
+         Path = /cas/data/caslibs/qasAnlOut/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = QASMartStore
+         Type = PATH
+         Description = Stores quality analytic suite mart tables.
+         Path = /cas/data/caslibs/qasMartStore/
+         Definition = 
+         Subdirs = No
+         Local = No
+21                                                         The SAS System                        Wednesday, May 10, 2023 02:41:49 PM
+
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = Samples
+         Type = PATH
+         Description = Stores sample data, supplied by SAS.
+         Path = /cas/data/caslibs/samples/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = Samples2023
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/Samples2023/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = sashack22
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/sashack22/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = sashack23
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/sashack23/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = SGF2021
+         Type = PATH
+         Description = Private CASLib for SGF 2021 Content Admins
+         Path = /cas/data/caslibs/sgf2021/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = SGF21AAI
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/sgf21aai/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = SIS2021_6
+         Type = PATH
+22                                                         The SAS System                        Wednesday, May 10, 2023 02:41:49 PM
+
+         Description = 
+         Path = /cas/data/caslibs/sis_2021/SIS2021_6/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = swee
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/swee/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Session = MYSESSION Name = UKI
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/UKI/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+NOTE: Action caslib LIST completed for session MYSESSION.
+722  
+723  libname mycas cas caslib=casuser;
+NOTE: Libref MYCAS was successfully assigned as follows: 
+      Engine:        CAS 
+      Physical Name: cbd9342a-5c0a-d542-84ee-3bd979e7d155
+724  
+725  %let path=/home/sasdemo/WTW_Demo_Repo_SSH/data;
+726  libname mysas "&path";
+ERROR: The path /home/sasdemo/WTW_Demo_Repo_SSH/data is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the LIBNAME statement.
+727  
+728  
+729  /*****************************************************************************/
+730  /*  Three simple ways to load a SAS dataset into a CASLIB as a CAS in-memory */
+731  /*  table                                                                    */
+732  /*****************************************************************************/
+733  
+734  data mycas.cars;
+735    set sashelp.cars;
+736  run;
+
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set MYCAS.CARS has 428 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.02 seconds
+      
+
+737  
+738  proc casutil;
+NOTE: The UUID 'cbd9342a-5c0a-d542-84ee-3bd979e7d155' is connected using session MYSESSION.
+739    load data=sashelp.cars casout="cars" replace;
+23                                                         The SAS System                        Wednesday, May 10, 2023 02:41:49 PM
+
+NOTE: SASHELP.CARS was successfully added to the "CASUSER(T.Winand@sas.com)" caslib as "CARS".
+740  quit;
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.01 seconds
+      
+
+741  
+742  proc sql;
+743    create table mycas.cars as
+744      select * from sashelp.cars;
+NOTE: Table MYCAS.CARS created, with 428 rows and 15 columns.
+
+745  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.02 seconds
+      
+
+746  
+747  
+748  /*****************************************************************************/
+749  /*  Using PROC CASUTIL to load xlsx and csv files                            */
+750  /*****************************************************************************/
+751  
+752  proc casutil;
+NOTE: The UUID 'cbd9342a-5c0a-d542-84ee-3bd979e7d155' is connected using session MYSESSION.
+753      load file="&path/products.xlsx"
+754      casout='myproducts'
+755      outcaslib='casuser'
+756      importoptions=(filetype='excel' getnames=true)
+757      replace;
+ERROR: Failed to open file '/home/sasdemo/WTW_Demo_Repo_SSH/data/products.xlsx'.
+758  
+759      load file="&path/sales.csv"
+760      casout='mysales'
+761      outcaslib='casuser'
+762      importoptions=(filetype='csv' getnames=true)
+763      replace;
+ERROR: Failed to open file '/home/sasdemo/WTW_Demo_Repo_SSH/data/sales.csv'.
+764  quit;
+
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+765  
+766  
+767  /*****************************************************************************/
+768  /*  Using PROC CASUTIL to list in-memory tables                              */
+769  /*****************************************************************************/
+770  
+
+
+771  proc casutil;
+NOTE: The UUID 'cbd9342a-5c0a-d542-84ee-3bd979e7d155' is connected using session MYSESSION.
+24                                                         The SAS System                        Wednesday, May 10, 2023 02:41:49 PM
+
+772    list tables;
+NOTE: Cloud Analytic Services processed the combined requests in 0.01621 seconds.
+773  quit;
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.02 seconds
+      
+
+774  
+775  
+776  /*****************************************************************************/
+777  /*  Running a DATA Step in SAS9 (Compute Server)                             */
+778  /*****************************************************************************/
+779  
+780  data work.cars;
+781    set sashelp.cars;
+782  
+783    Average_MPG=mean(MPG_City, MPG_Highway);
+784    Keep origin Make Model Type MSRP MPG_City MPG_Highway Average_MPG;
+785  run;
+
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set WORK.CARS has 428 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+786  
+787  
+788  
+789  /*****************************************************************************/
+790  /*  Running a DATA Step in CAS Using CAS In-Memory Tables                    */
+791  /*****************************************************************************/
+792  
+793  data mycas.cars;
+794    set mycas.cars;
+795  
+796    Average_MPG=mean(MPG_City, MPG_Highway);
+797    Keep origin Make Model Type MSRP MPG_City MPG_Highway Average_MPG;
+798  run;
+
+NOTE: Running DATA step in Cloud Analytic Services.
+NOTE: The DATA step will run in multiple threads.
+NOTE: There were 428 observations read from the table CARS in caslib CASUSER(T.Winand@sas.com).
+NOTE: The table cars in caslib CASUSER(T.Winand@sas.com) has 428 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.00 seconds
+      
+
+799  
+800  
+801  /*****************************************************************************/
+802  /*  Running a DATA Step with Big Data in SAS9 (Compute Server)                */
+803  /*****************************************************************************/
+804  data bigcars;
+25                                                         The SAS System                        Wednesday, May 10, 2023 02:41:50 PM
+
+805    set sashelp.cars;
+806  
+807    do i=1 to 100000;
+808      output;
+809    end;
+810  run;
+
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set WORK.BIGCARS has 42800000 observations and 16 variables.
+NOTE: DATA statement used (Total process time):
+      real time           6.34 seconds
+      cpu time            6.33 seconds
+      
+
+811  
+812  data bigcars_score;
+813    set bigcars;
+814  
+815    length myscore 8;
+816    myscore=0.3*Invoice/(MSRP-Invoice)
+817      + 0.5*(EngineSize+Horsepower)/Weight + 0.2*(MPG_City+MPG_Highway);
+818  run;
+
+NOTE: There were 42800000 observations read from the data set WORK.BIGCARS.
+NOTE: The data set WORK.BIGCARS_SCORE has 42800000 observations and 17 variables.
+NOTE: DATA statement used (Total process time):
+      real time           18.55 seconds
+      cpu time            13.22 seconds
+      
+
+819  
+820  
+821  /*****************************************************************************/
+822  /*  Running a DATA Step with Big Data in CAS                                 */
+823  /*****************************************************************************/
+824  data mycas.bigcars;
+825    set mycas.cars;
+826  
+827    do i=1 to 100000;
+828      output;
+829    end;
+830  run
+831  ;
+
+NOTE: Running DATA step in Cloud Analytic Services.
+NOTE: The DATA step will run in multiple threads.
+NOTE: There were 428 observations read from the table CARS in caslib CASUSER(T.Winand@sas.com).
+NOTE: The table bigcars in caslib CASUSER(T.Winand@sas.com) has 42800000 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           3.39 seconds
+      cpu time            0.03 seconds
+      
+
+832  
+833  data mycas.bigcars_score;
+834    set mycas.bigcars;
+835  
+836    length myscore 8;
+26                                                         The SAS System                        Wednesday, May 10, 2023 02:42:18 PM
+
+837    myscore=0.3*Invoice/(MSRP-Invoice)
+838      + 0.5*(EngineSize+Horsepower)/Weight + 0.2*(MPG_City+MPG_Highway);
+839    Thread=_threadid_;
+840  run;
+
+NOTE: Running DATA step in Cloud Analytic Services.
+NOTE: The DATA step will run in multiple threads.
+NOTE: Variable Invoice is uninitialized.
+NOTE: Variable Horsepower is uninitialized.
+NOTE: Variable EngineSize is uninitialized.
+NOTE: Variable Weight is uninitialized.
+NOTE: Missing values were generated as a result of performing an operation on missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      231660 at 837:14
+      234000 at 837:14
+      230840 at 837:14
+NOTE: Duplicate messages output by DATA step:
+NOTE: Missing values were generated as a result of performing an operation on missing values.  (occurred 184 times)
+      Each place is given by: (Number of times) at (Line):(Column).  (occurred 184 times)
+      231660 at 837:14  (occurred 104 times)
+      234000 at 837:14  (occurred 76 times)
+      230840 at 837:14  (occurred 4 times)
+NOTE: There were 42800000 observations read from the table BIGCARS in caslib CASUSER(T.Winand@sas.com).
+NOTE: The table bigcars_score in caslib CASUSER(T.Winand@sas.com) has 42800000 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           3.19 seconds
+      cpu time            0.01 seconds
+      
+
+841  
+842  
+843  /*****************************************************************************/
+844  /*  Runninga DATA Step with Group By in SAS9 (Compute Server)                */
+845  /*****************************************************************************/
+846  proc sort data=sashelp.cars out=sort_cars;
+847    by Type MSRP;
+848  run;
+
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set WORK.SORT_CARS has 428 observations and 15 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+849  
+850  data cars2;
+851    set sort_cars;
+852  
+853    Average_MPG=mean(MPG_City, MPG_Highway);
+854    keep Make Model Type Average_MPG MSRP LowMSRP HighMSRP;
+855  
+856    by Type;
+857    if first.Type then LowMSRP=1;
+858      else LowMSRP=0;
+859    if last.Type then HighMSRP=1;
+860      else HighMSRP=0;
+861  run;
+27                                                         The SAS System                        Wednesday, May 10, 2023 02:42:21 PM
+
+
+NOTE: There were 428 observations read from the data set WORK.SORT_CARS.
+NOTE: The data set WORK.CARS2 has 428 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+862  
+863  
+864  /*****************************************************************************/
+865  /*  Running a DATA Step with Group By in CAS                                 */
+866  /*****************************************************************************/
+867  data mycas.cars2;
+868    set mycas.cars;
+869  
+870    Average_MPG=mean(MPG_City, MPG_Highway);
+871    keep Make Model Type Average_MPG MSRP LowMSRP HighMSRP;
+872  
+873    by Type MSRP;
+874    if first.Type then LowMSRP=1;
+875      else LowMSRP=0;
+876    if last.Type then HighMSRP=1;
+877      else HighMSRP=0;
+878  run;
+
+NOTE: Running DATA step in Cloud Analytic Services.
+NOTE: The DATA step will run in multiple threads.
+NOTE: There were 428 observations read from the table CARS in caslib CASUSER(T.Winand@sas.com).
+NOTE: The table cars2 in caslib CASUSER(T.Winand@sas.com) has 428 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.30 seconds
+      cpu time            0.01 seconds
+      
+
+879  
+880  
+881  /*****************************************************************************/
+882  /*  Running a DATA Step using Partition and Orderby in CAS                   */
+883  /*****************************************************************************/
+884  data mycas.cars2 (partition=(type) orderby=(MSRP));
+885    set mycas.cars;
+886  
+887    Average_MPG=mean(MPG_City, MPG_Highway);
+888    keep Make Model Type Average_MPG MSRP LowMSRP HighMSRP;
+889  
+890    by Type;
+891    if first.Type then LowMSRP=1;
+892      else LowMSRP=0;
+893    if last.Type then HighMSRP=1;
+894      else HighMSRP=0;
+895  run;
+
+NOTE: Running DATA step in Cloud Analytic Services.
+NOTE: The DATA step will run in multiple threads.
+NOTE: There were 428 observations read from the table CARS in caslib CASUSER(T.Winand@sas.com).
+NOTE: The table cars2 in caslib CASUSER(T.Winand@sas.com) has 428 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+28                                                         The SAS System                        Wednesday, May 10, 2023 02:42:22 PM
+
+      real time           0.32 seconds
+      cpu time            0.01 seconds
+      
+
+896  
+897  
+898  /*****************************************************************************/
+899  /*  Analyze Data Using SAS9 Procedures                                       */
+900  /*****************************************************************************/
+901  proc means data=mycas.cars chartype mean std min max n range vardef=df;
+902  	var MSRP;
+903  	output out=mycas.cars_means mean=std=min=max=n=range= / autoname;
+904  	by Type;
+905  run;
+
+NOTE: The CAS aggregation.aggregate action will be used to perform the initial summarization.
+NOTE: The data set MYCAS.CARS_MEANS has 6 observations and 9 variables.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.49 seconds
+      cpu time            0.08 seconds
+      
+
+906  
+907  proc print data=mycas.cars_means;
+908  run;
+
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.04 seconds
+      
+
+909  
+910  
+911  /*****************************************************************************/
+912  /*  Analyze Data Using Viya Procedures                                       */
+913  /*****************************************************************************/
+914  proc mdsummary data=mycas.cars;
+915    groupby Type;
+916    var MSRP;
+917    output out=mycas.cars_mdsstats (replace=yes);
+918  quit;
+
+NOTE: The Cloud Analytic Services server processed the request in 0.048751 seconds.
+NOTE: The data set MYCAS.CARS_MDSSTATS has 6 observations and 19 variables.
+NOTE: PROCEDURE MDSUMMARY used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.01 seconds
+      
+
+919  
+920  proc print data=mycas.cars_mdsstats;
+921  run;
+
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.03 seconds
+      
+
+29                                                         The SAS System                        Wednesday, May 10, 2023 02:42:23 PM
+
+922  
+923  
+924  /*****************************************************************************/
+925  /*  Query SAS Dataset using Proc SQL and CAS Table Using Proc FedSQL         */
+926  /*****************************************************************************/
+927  proc sql;
+928  /* create table mycas.cars_sql as    */
+929     select Make
+930          , Model
+931          , MSRP
+932          , (MPG_City + MPG_Highway)/2 as Average_MPG format=9.2
+933       from sashelp.cars
+934       where calculated Average_MPG > 25
+935         and Origin eq 'USA'
+936       order by MSRP
+937       ;
+938  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+939  
+940  %if not %sysfunc(exist(mycas.US_FuelEfficient_Cars)) %then %do;
+941  
+942  	
+942!  proc fedsql sessref=Mysession;
+943  	create table casuser.US_FuelEfficient_Cars as
+944  	   select Make
+945  	        , Model
+946  	        , MSRP
+947  	        , put((MPG_City + MPG_Highway)/2, 9.2) as Average_MPG
+948  	     from casuser.cars
+949  	     where (MPG_City + MPG_Highway)/2 > 25
+950  	       and Origin = 'USA'
+951  	;
+NOTE: CASDAL driver. Creation of an NVARCHAR column has been requested, but is not supported by the CASDAL driver. A VARCHAR column 
+      will be created instead.
+NOTE: Table US_FUELEFFICIENT_CARS was created in caslib CASUSER(T.Winand@sas.com) with 33 rows returned.
+952  	select *
+953  	   from casuser.US_FuelEfficient_Cars
+954  	   order by MSRP
+955  	;
+956  	quit;
+
+NOTE: PROCEDURE FEDSQL used (Total process time):
+      real time           0.40 seconds
+      cpu time            0.02 seconds
+      
+
+957  
+958  %end;
+959  
+960  cas mySession listhistory;
+NOTE: 136: action table.tableInfo / name='CARS_MDSSTATS', caslib='CASUSER(T.Winand@sas.com)', quiet=true; /* (SUCCESS) */
+NOTE: 137: action table.columnInfo / table={name='CARS_MDSSTATS', caslib='CASUSER(T.Winand@sas.com)'}, extended=true, 
+      sastypes=false; /* (SUCCESS) */
+NOTE: 138: action table.tableInfo / name='CARS_MDSSTATS', caslib='CASUSER(T.Winand@sas.com)', quiet=true; /* (SUCCESS) */
+30                                                         The SAS System                        Wednesday, May 10, 2023 02:42:23 PM
+
+NOTE: 139: action table.tableInfo / name='CARS_MDSSTATS', caslib='CASUSER(T.Winand@sas.com)', quiet=true; /* (SUCCESS) */
+NOTE: 140: action table.columnInfo / table={name='CARS_MDSSTATS', caslib='CASUSER(T.Winand@sas.com)'}, extended=true, 
+      sastypes=false; /* (SUCCESS) */
+NOTE: 141: action table.fetch / table={name='CARS_MDSSTATS', caslib='CASUSER(T.Winand@sas.com)', vars={{name='Type'}, 
+      {name='Type_f'}, {name='_Column_'}, {name='_Min_'}, {name='_Max_'}, {name='_NObs_'}, {name='_NMiss_'}, {name='_Mean_'}, 
+      {name='_Sum_'}, {name='_Std_'}, {name='_StdErr_'}, {name='_Var_'}, {name='_USS_'}, {name='_CSS_'}, {name='_CV_'}, 
+      {name='_T_'}, {name='_PRT_'}, {name='_Skewness_'}, {name='_Kurtosis_'}}}, from=1, to=6, sasTypes=false, index=false; /* 
+      (SUCCESS) */
+NOTE: 142: action table.tableInfo / name='US_FUELEFFICIENT_CARS', caslib='CASUSER(T.Winand@sas.com)', quiet=true; /* (SUCCESS) */
+NOTE: 143: action builtins.loadActionSet / actionSet='fedsql'; /* (SUCCESS) */
+NOTE: 144: action fedSql.execDirect / query='create table casuser.US_FuelEfficient_Cars as select Make , Model , MSRP , 
+      put((MPG_City + MPG_Highway)/2, 9.2) as Average_MPG from casuser.cars where (MPG_City + MPG_Highway)/2 > 25 and Origin = 
+      ''USA''', validateOnly=false, cntl={}, nullBehavior='MISSING'; /* (SUCCESS) */
+NOTE: 145: action fedSql.execDirect / query='select * from casuser.US_FuelEfficient_Cars order by MSRP', validateOnly=false, 
+      cntl={}, nullBehavior='MISSING'; /* (SUCCESS) */
+NOTE: Request to LISTHISTORY completed for session MYSESSION.
+961  
+962  proc casutil;
+NOTE: The UUID 'cbd9342a-5c0a-d542-84ee-3bd979e7d155' is connected using session MYSESSION.
+963     contents casdata="US_FuelEfficient_Cars" incaslib="casuser";
+NOTE: Cloud Analytic Services processed the combined requests in 0.037577 seconds.
+964  run;
+
+965  
+966  
+967  
+968  /*****************************************************************************/
+969  /* Creating and Using a User-defined Format in SAS9 (Compute Server)         */
+970  /*****************************************************************************/
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.03 seconds
+      
+
+971  proc format;
+972    value pricerange_sas low-25000=”Low”
+973                         25000<-50000=”Mid”
+974                         50000<-75000=”High”
+975                         75000<-high=”Luxury”;
+NOTE: Format PRICERANGE_SAS has been output.
+976  run;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+977  
+978  data cars_formatted;
+979    set sashelp.cars;
+980  
+981    format MSRP pricerange_sas.;
+982    keep Make Model MSRP MPG_Highway;
+983  run;
+
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set WORK.CARS_FORMATTED has 428 observations and 4 variables.
+31                                                         The SAS System                        Wednesday, May 10, 2023 02:42:23 PM
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+984  
+985  proc print data=cars_formatted;
+986  run;
+
+NOTE: There were 428 observations read from the data set WORK.CARS_FORMATTED.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.23 seconds
+      
+
+987  
+988  
+989  /*****************************************************************************/
+990  /* Creating and Using a User-defined Format in CAS                           */
+991  /*****************************************************************************/
+992  proc format casfmtlib="casformats";
+NOTE: Both CAS based formats and catalog-based formats will be written. The CAS based formats will be written to the session 
+      MYSESSION.
+993    value pricerange_cas low-25000=”Low”
+994                         25000<-50000=”Mid”
+995                         50000<-75000=”High”
+996                         75000<-high=”Luxury”;
+NOTE: Format library CASFORMATS added. Format search update using parameter APPEND completed.
+NOTE: Format PRICERANGE_CAS has been output.
+997  run;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+998  
+999  data mycas.cars_formatted;
+1000   set sashelp.cars;
+1001  
+1002    format MSRP pricerange_cas.;
+1003    keep Make Model MSRP MPG_Highway;
+1004  run;
+
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set MYCAS.CARS_FORMATTED has 428 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.02 seconds
+      
+
+1005  
+1006  proc mdsummary data=mycas.cars_formatted;
+1007    var MPG_Highway;
+1008    groupby MSRP / out=mycas.cars_summary;
+1009  run;
+
+NOTE: The Cloud Analytic Services server processed the request in 0.046736 seconds.
+32                                                         The SAS System                        Wednesday, May 10, 2023 02:42:24 PM
+
+NOTE: The data set MYCAS.CARS_SUMMARY has 4 observations and 19 variables.
+NOTE: PROCEDURE MDSUMMARY used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.01 seconds
+      
+
+1010  
+1011  proc print data=mycas.cars_summary;
+1012  run;
+
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.04 seconds
+      
+
+1013  
+1014  /*****************************************************************************/
+1015  /* ViyaPgm_10: Cleaning Up                                                   */
+1016  /*****************************************************************************/
+1017  
+1018  /* LIST FILES AND TABLES ASSOCIATED WITH OUR CASLIB*/
+1019  proc casutil;
+NOTE: The UUID 'cbd9342a-5c0a-d542-84ee-3bd979e7d155' is connected using session MYSESSION.
+1020    list files incaslib=casuser;
+NOTE: Cloud Analytic Services processed the combined requests in 0.060263 seconds.
+1021    list tables incaslib=casuser;
+NOTE: Cloud Analytic Services processed the combined requests in 0.020111 seconds.
+1022  run;
+
+1023  
+1024  /* USING PROC CASUTIL TO SAVE IN MEMORY TABLES TO PERSISTENT STORAGE */
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.05 seconds
+      
+
+1025  proc casutil;
+NOTE: The UUID 'cbd9342a-5c0a-d542-84ee-3bd979e7d155' is connected using session MYSESSION.
+1026    save casdata="cars" incaslib="casuser" replace;
+NOTE: Cloud Analytic Services saved the file cars.sashdat in caslib CASUSER(T.Winand@sas.com).
+NOTE: The Cloud Analytic Services server processed the request in 0.060951 seconds.
+1027    save casdata="bigcars" incaslib="casuser" replace;
+NOTE: Cloud Analytic Services saved the file bigcars.sashdat in caslib CASUSER(T.Winand@sas.com).
+NOTE: The Cloud Analytic Services server processed the request in 13.759995 seconds.
+1028  quit;
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           13.85 seconds
+      cpu time            0.00 seconds
+      
+
+1029  
+1030  
+1031  /* RELEASING OUR TABLES FROM MEMORY */
+1032  proc casutil;
+NOTE: The UUID 'cbd9342a-5c0a-d542-84ee-3bd979e7d155' is connected using session MYSESSION.
+1033    droptable incaslib="casuser" casdata="cars";
+33                                                         The SAS System                        Wednesday, May 10, 2023 02:42:38 PM
+
+NOTE: Cloud Analytic Services dropped table cars from caslib CASUSER(T.Winand@sas.com).
+NOTE: The Cloud Analytic Services server processed the request in 0.010121 seconds.
+1034    droptable incaslib="casuser" casdata="bigcars";
+NOTE: Cloud Analytic Services dropped table bigcars from caslib CASUSER(T.Winand@sas.com).
+NOTE: The Cloud Analytic Services server processed the request in 0.357185 seconds.
+1035    droptable incaslib="casuser" casdata="bigcars_score";
+NOTE: Cloud Analytic Services dropped table bigcars_score from caslib CASUSER(T.Winand@sas.com).
+NOTE: The Cloud Analytic Services server processed the request in 0.498327 seconds.
+1036    droptable incaslib="casuser" casdata="cars2";
+NOTE: Cloud Analytic Services dropped table cars2 from caslib CASUSER(T.Winand@sas.com).
+NOTE: The Cloud Analytic Services server processed the request in 0.010492 seconds.
+1037    droptable incaslib="casuser" casdata="myproducts";
+ERROR: The table myproducts could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+NOTE: The Cloud Analytic Services server processed the request in 0.013674 seconds.
+1038    droptable incaslib="casuser" casdata="mysales";
+ERROR: The table mysales could not be located in caslib CASUSER(T.Winand@sas.com) of Cloud Analytic Services.
+ERROR: The action stopped due to errors.
+NOTE: The Cloud Analytic Services server processed the request in 0.016772 seconds.
+1039  quit;
+
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           1.00 seconds
+      cpu time            0.01 seconds
+      
+1040  
+1041  
+1042  /* LIST FILES AND TABLES ASSOCIATED WITH OUR CASLIB TO SEE WHAT HAS CHANGED */
+
+
+1043  proc casutil;
+NOTE: The UUID 'cbd9342a-5c0a-d542-84ee-3bd979e7d155' is connected using session MYSESSION.
+1044    list files incaslib=casuser;
+NOTE: Cloud Analytic Services processed the combined requests in 0.344247 seconds.
+1045    list tables incaslib=casuser;
+NOTE: Cloud Analytic Services processed the combined requests in 0.019022 seconds.
+1046  run;
+
+1047  
+1048  /* TERMINATE SESSION AND RELEASE RESOURCES */
+1049  cas mySession terminate;
+WARNING: You cannot disconnect or terminate session MYSESSION until the procedure completes. Place the statement with the 
+         disconnect or terminate option after the QUIT statement.
+ERROR: Request for TERMINATE failed for session MYSESSION.
+1050  
+1051  
+1052  /* region: Generated postamble */
+1053  /* Close ODS destinations */
+1054  &graphterm; ;*';*";*/;run;quit;
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.44 seconds
+      cpu time            0.05 seconds
+      
+
+1055  quit;run;
+1056  ods html5 (id=web) close;
+34                                                         The SAS System                        Wednesday, May 10, 2023 02:42:39 PM
+
+1057  %if %sysfunc(fileref(_gsfname)) lt 0 %then %do;
+1058      filename _gsfname clear;
+NOTE: Fileref _GSFNAME has been deassigned.
+1059  %end;
+1060  %studio_capture_background_log;
+

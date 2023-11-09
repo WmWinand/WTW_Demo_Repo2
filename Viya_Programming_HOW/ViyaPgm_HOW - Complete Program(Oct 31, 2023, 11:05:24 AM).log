@@ -1,0 +1,3435 @@
+1    /* region: SAS session initialization */
+2    /*----------------------------------------------------------------------
+3    /
+4    / SASStudio initialization file for SAS
+5    /
+6    *----------------------------------------------------------------------*/
+7    /* Get the Git version */
+8    DATA _NULL_;
+9      GITVERSION = GIT_VERSION();
+10     CALL SYMPUT('_GITVERSION', GITVERSION);
+11   RUN;
+
+NOTE: Numeric values have been converted to character values at the places given by: (Line):(Column).
+      10:30   
+NOTE: Libgit2 version 1.3.0
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+12   
+13   
+14   %MACRO resolveHomeDirectory;
+15   	%GLOBAL _USERHOME;
+16   	%LOCAL _HOMEVAR;
+17   
+18   	%IF (&SYSSCP=WIN) %THEN
+3                                                          The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+19   		%DO;
+20   			%LET _HOMEVAR=USERPROFILE;
+21   		%END;
+22   	%ELSE
+23   		%DO;
+24   			%LET _HOMEVAR=HOME;
+25   		%END;
+26   
+27   	%LET _USERHOME= %SYSFUNC(SYSGET(&_HOMEVAR));
+28   
+29   %MEND;
+30   
+31   %resolveHomeDirectory;
+32   
+33   %macro web_open_file(name,type);
+34   %global _DATAOUT_NAME;
+35   %global _DATAOUT_MIME_TYPE;
+36   %let _DATAOUT_NAME=&name;
+37   %let _DATAOUT_MIME_TYPE=&type;
+38   %mend;
+39   
+40   %macro web_open_table(table);
+41   %global _DATAOUT_TABLE;
+42   %if %length(&_dataout_table)=0 %then %let _DATAOUT_TABLE=&table;
+43   %else %let _DATAOUT_TABLE=&_DATAOUT_TABLE,&table;
+44   %mend;
+45   
+46   %macro web_open_url(url);
+47   %global _DATAOUT_URL;
+48   %let _DATAOUT_URL=&url;
+49   %mend;
+50   
+51   %macro sgdesign();
+52   %put ERROR: SGDesigner macro can not be invoked from SAS Studio.;
+53   %mend;
+54   
+55   %macro sgedit();
+56   %put ERROR: SGEdit macro can not be invoked from SAS Studio.;
+57   %mend;
+58   
+59   %macro web_list_entries(catalog,type);
+60   
+61   %let typearg=;
+62   %let type=%upcase(&type);
+63   %if &type^=_ALL_ and &type^=_all_ %then %let typearg= entrytype=&type;
+64   
+65   proc catalog catalog=&catalog &typearg;
+66   contents;
+67   title "Catalog Entries in &catalog";
+68   run;
+69   quit;
+70   
+71   %mend;
+72   
+73   %macro web_list_catalogs(library);
+74       %let library=%upcase(&library);
+75       proc sql ;
+76           create table work.catalogs as select memname as Catalog, memtype as
+4                                                          The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+77               Type, engine as Engine from sashelp.vmember where
+78               libname="&library" and memtype="CATALOG";
+79           run;
+80           quit;
+81           title "Catalogs in &library";
+82   
+83       proc print data=work.catalogs;
+84       run;
+85   %mend;
+86   
+87   %macro web_replay_grseg(catalog,entry);
+88   proc greplay nofs igout=&catalog;
+89   replay &entry;
+90   run;
+91   %mend;
+92   
+93   %macro sasstudio_get_zos_ds_info(DSN);
+94   
+95   OPTIONS FILESYSTEM=MVS;
+96   
+97   DATA work._sasstudio_dataset_info_;
+98   
+99     LENGTH XDSN $32000;
+100    XDSN=ZDSLIST('CATLG', &DSN, XVOLS, '');
+101  
+102    LENGTH XNUM 8;
+103    XNUM=ZDSNUM(XDSN);
+104    LENGTH XIDNM $4096;
+105    LENGTH XATTR $4096;
+106    LENGTH XATTRC $72;
+107    LENGTH XATTRN 8;
+108    LENGTH attributeType $10;
+109  
+110    DO I=1 to XNUM;
+111      XIDNM=ZDSIDNM(XDSN, I);
+112      XATTR=ZDSATTR(XIDNM, 'ALL');
+113      XATTRN=ZDSXATT(XATTR);
+114  
+115      do j=1 to xattrn;
+116       XATTRC=ZDSYATT(XATTR, j);
+117       blank_pos = index(xattrc," ");
+118             key = substr(xattrc, blank_pos,99);
+119             val= substr(xattrc,1,blank_pos);
+120             pos = index(key, 'FILE ATTRIBUTES');
+121             if (pos > 0) then do;
+122                attributeType = 'FILE';
+123             end;
+124             else do;
+125                 pos = index(key, 'VOLUME ATTRIBUTES');
+126                 if (pos > 0) then do;
+127                    attributeType = 'VOLUME';
+128                 end;
+129                 else do;
+130                     pos = index(key, 'MIGRATED DATA SET ATTRIBUTES');
+131                     if (pos > 0) then do;
+132                        attributeType = 'MIGRATED';
+133                     end;
+134                     else do;
+5                                                          The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+135                        pos = index(key, '*****');
+136                     end;
+137                 end;
+138             end;
+139             if (pos = 0) then do;
+140                output;
+141             end;
+142             keep key val attributeType;
+143      end;
+144    END;
+145   RUN;
+146  %mend sasstudio_get_zos_ds_info;
+147  
+148  %macro show_zos_dataset_attributes(dsn);
+149     %sasstudio_get_zos_ds_info(&dsn);
+150  
+151     data work._sasstudio_dataset_info_ds_;
+152         set work._sasstudio_dataset_info_;
+153  
+154         if strip(val)='.' then do;
+155             val='***NONE***';
+156         end;
+157  
+158         position = index(attributeType, 'FILE');
+159         if position > 0 then do;
+160             output;
+161         end;
+162         drop position attributeType;
+163     run;
+164  
+165     data work._sasstudio_dataset_info_vol_;
+166         set work._sasstudio_dataset_info_;
+167  
+168         if strip(val)='.' then do;
+169             val='***NONE***';
+170         end;
+171  
+172         position = index(attributeType, 'VOLUME');
+173         if position > 0 then do;
+174             output;
+175         end;
+176         drop position attributeType;
+177     run;
+178  
+179      proc print data=work._sasstudio_dataset_info_ds_ noobs label;
+180      LABEL key='Dataset Attribute'  val='00'x;
+181         title1 &dsn;
+182      run;
+183  
+184      proc print data=work._sasstudio_dataset_info_vol_ noobs label;
+185          title1;
+186          LABEL key='Volume Attribute'  val='00'x;
+187      run;
+188  
+189      proc delete data=work._sasstudio_dataset_info_
+190      work._sasstudio_dataset_info_ds_
+191      work._sasstudio_dataset_info_vol_;
+192  
+6                                                          The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+193  %mend;
+194  
+195  %macro validCasEnvironment( sessionName=, createSession=, returnCode=RC);
+196  
+197  /* This section is just to give information about the CAS connection */
+198  %let CASHOST = %SYSFUNC(GETOPTION(CASHOST));
+199  
+200  %if (%LENGTH(&CASHOST)=0) %then %do;
+201      %put CASHOST is not set;
+202  %end; %else %do;
+203      %put CASHOST is &CASHOST;
+204  %end;
+205  
+206  %let CASPORT = %SYSFUNC(GETOPTION(CASPORT));
+207  
+208  %if (&CASPORT=0) %then %do;
+209      %put CASPORT is not set;
+210  %end; %else %do;
+211      %put CASPORT is &CASPORT;
+212  %end;
+213  
+214  %let CASHOST = %SYSFUNC(GETOPTION(_CASHOST_));
+215  %if (%LENGTH(&CASHOST)=0) %then %do;
+216      %put _CASHOST_ is not set;
+217  %end; %else %do;
+218      %put _CASHOST_ is &CASHOST;
+219  %end;
+220  
+221  %let CASPORT = %SYSFUNC(GETOPTION(_CASPORT_));
+222  
+223  %if (%LENGTH(&CASPORT)=0) %then %do;
+224      %put _CASPORT_ is not set;
+225  %end; %else %do;
+226      %put _CASPORT_ is &CASPORT;
+227  %end;
+228  
+229  %let CASUSER = %SYSFUNC(GETOPTION(CASUSER));
+230  
+231  %if (%LENGTH(&CASUSER) = 0) %then %do;
+232      %put CASUSER is not set;
+233  %end; %else %do;
+234      %put CASUSER is &CASUSER;
+235  %end;
+236  
+237  
+238  %if &sessionName = %then %do;
+239      %let DEFAULTSESS= %SYSFUNC(GETOPTION(SESSREF));
+240      %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&DEFAULTSESS));
+241      %if (&SESSIONFOUND = 0) %then %do;
+242         %put Default session &DEFAULTSESS is not available.;
+243         %let &returnCode=0;
+244      %end;
+245      %else %do;
+246         %put Default session &DEFAULTSESS is available.;
+247         %let &returnCode=3;
+248      %end;
+249  %end; %else %do;                                                /* Session name was specified */
+250      %if &createSession = %then %do;                             /* createSession not specified */
+7                                                          The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+251         %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&sessionName));   /* Default to false (don't create) */
+252         %if (&SESSIONFOUND = 0) %then %do;
+253            %put Session &sessionName is not available.;
+254            %let &returnCode=0;
+255         %end;
+256         %else %do;
+257            %put Session &sessionName already exists.;
+258            %let &returnCode=2;
+259         %end;
+260      %end;
+261      %else %do;
+262         %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&sessionName));  /* Does session already exist? */
+263         %if (&createSession = false) %then %do;                 /* User does not want to create it. */
+264            %put createSession is false;
+265            %if (&SESSIONFOUND = 0) %then %do;
+266               %put Session &sessionName is not available.;      /* Tell user it does not exist. */
+267               %let &returnCode=0;
+268            %end;
+269            %else %do;
+270               %put Session &sessionName exists;
+271               %let &returnCode = 2;
+272            %end;
+273         %end;
+274         %else %do;
+275           %put createSession is true;
+276           %if (&SESSIONFOUND = 0) %then %do;                    /* Session does not exist, so create it */
+277               cas &sessionName;
+278               %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&sessionName));
+279               %if (&SESSIONFOUND = 0) %then %do;               /* Session created successfully */
+280                   %let &returnCode=1;
+281               %end;
+282               %else %do;
+283                   %let &returnCode=4;                          /* Session creation failed. */
+284               %end;
+285           %end;
+286           %else %do;                                           /* Session already exists, so user cannot create it */
+287               %put Session &sessionName already exists;
+288               %let &returnCode=2;
+289           %end;
+290         %end;
+291      %end;
+292  %end;
+293  
+294  
+295  %mend validCasEnvironment;
+296  
+297  /* This macro is used by code generated for Query nodes in an EG Process flow *
+298  /* Conditionally delete set of tables or views, if they exists          */
+299  /* If the member does not exist, then no action is performed   */
+300  %macro _eg_conditional_dropds /parmbuff;
+301  
+302      %local num;
+303      %local stepneeded;
+304      %local stepstarted;
+305      %local dsname;
+306      %local name;
+307  
+308      %let num=1;
+8                                                          The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+309      /* flags to determine whether a PROC SQL step is needed */
+310      /* or even started yet                                  */
+311      %let stepneeded=0;
+312      %let stepstarted=0;
+313      %let dsname= %qscan(&syspbuff,&num,',()');
+314      %do %while(&dsname ne);
+315          %let name = %sysfunc(left(&dsname));
+316          %if %qsysfunc(exist(&name)) %then %do;
+317              %let stepneeded=1;
+318              %if (&stepstarted eq 0) %then %do;
+319                  proc sql;
+320                  %let stepstarted=1;
+321  
+322              %end;
+323                  drop table &name;
+324          %end;
+325  
+326          %if %sysfunc(exist(&name,view)) %then %do;
+327              %let stepneeded=1;
+328              %if (&stepstarted eq 0) %then %do;
+329                  proc sql;
+330                  %let stepstarted=1;
+331              %end;
+332                  drop view &name;
+333          %end;
+334          %let num=%eval(&num+1);
+335          %let dsname=%qscan(&syspbuff,&num,',()');
+336      %end;
+337      %if &stepstarted %then %do;
+338          quit;
+339      %end;
+340  %mend _eg_conditional_dropds;
+341  
+342  /* Given a fileref and a memname and memtype, we attempt to open the
+343  member of the directory (catalog or file system directory). We
+344  set &member_found to 1 if it can be opened, 0 if not. */
+345  %macro _entry_exists(fileref,memname,memtype);
+346  %global _macro_found;
+347  %let _macro_found = 0;
+348  data _null_;
+349  *-----open the directory and proceed if it can be opened-----*;
+350  handle = dopen("&fileref.");
+351  if handle ne 0;
+352  *-----open the member and set the macro variable based on result-----*;
+353  mem_handle = mopen(handle,"&memname..&memtype.",'i');
+354  call symputx('_macro_found',mem_handle ne 0);
+355  *-----close the member if it were opened successfully-----*;
+356  if mem_handle then rc = fclose(mem_handle);
+357  *-----close the directory-----*;
+358  rc = dclose(handle);
+359  run;
+360  %mend _entry_exists;
+361  
+362  /* Given a macro name, we determine if it has already been
+363  compiled. We first look in work.sasmacr, then in the sasmacr
+364  referenced by sasmstore (if given) and then in work.sasmacX. */
+365  %macro _compiled_macro_exists(macro_name);
+366  options nonotes;
+9                                                          The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+367  %global _macro_found;
+368  *-----try work.sasmacr first to see if the compiled macro is there-----*;
+369  filename maclib catalog "work.sasmacr";
+370  %_entry_exists(maclib,&macro_name.,macro);
+371  filename maclib clear;
+372  %if &_macro_found %then %goto done;
+373  *-----try sasmacr referenced by sasmstore if it were specified-----*;
+374  %let sasmstore_option = %sysfunc(getoption(sasmstore));
+375  %if %sysfunc(getoption(mstored))=MSTORED and %length(&sasmstore_option) > 0 %then %do;
+376  filename maclib catalog "&sasmstore_option..sasmacr";
+377  %_entry_exists(maclib,&macro_name.,macro);
+378  %end;
+379  
+380  %do i=1 %to 9;
+381  %if &_macro_found %then %goto done;
+382  filename maclib catalog "work.sasmac&i.";
+383  %_entry_exists(maclib,&macro_name.,macro);
+384  filename maclib clear;
+385  %end;
+386  
+387  %done: options notes;
+388  %mend _compiled_macro_exists;
+389  
+390  %macro studio_cas_start;
+391  
+392  %global _macro_found;
+393  %global syscasinit;
+394  
+395  %let syscasinit=0;
+396  
+397  %_compiled_macro_exists(studio_cas_init);
+398  
+399  %if &_macro_found %then %do;
+400  
+401  %let syscasinit=1;
+402  
+403  %studio_cas_init;
+404  
+405  %end;
+406  %mend studio_cas_start;
+407  
+408  %macro studio_hide_wrapper;
+409      %global _studionotes;
+410      %global _studiosource;
+411      %global _studiostimer;
+412  
+413      %if &_studionotes = %then %do;
+414          %let _studionotes=%sysfunc(getoption(notes));
+415      %end;
+416      options nonotes;
+417  
+418      %if &_studiosource = %then %do;
+419          %let _studiosource=%sysfunc(getoption(source));
+420      %end;
+421      options nosource;
+422  
+423      %if &_studiostimer = %then %do;
+424          %let _studiostimer=%sysfunc(getoption(stimer));
+10                                                         The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+425      %end;
+426      options nostimer;
+427  %mend studio_hide_wrapper;
+428  
+429  %macro studio_show_wrapper;
+430      %global _studionotes;
+431      %global _studiosource;
+432      %global _studiostimer;
+433  
+434      %if &_studionotes = %then %do;
+435          %let _studionotes=%sysfunc(getoption(notes));
+436      %end;
+437      options notes;
+438  
+439      %if &_studiosource = %then %do;
+440          %let _studiosource=%sysfunc(getoption(source));
+441      %end;
+442      options source;
+443  
+444      %if &_studiostimer = %then %do;
+445          %let _studiostimer=%sysfunc(getoption(stimer));
+446      %end;
+447      options stimer;
+448  %mend studio_show_wrapper;
+449  
+450  %macro studio_show_only_notes_wrapper;
+451      %global _studionotes;
+452      %global _studiosource;
+453      %global _studiostimer;
+454  
+455      %if &_studionotes = %then %do;
+456          %let _studionotes=%sysfunc(getoption(notes));
+457      %end;
+458      options notes;
+459  
+460      %if &_studiosource = %then %do;
+461          %let _studiosource=%sysfunc(getoption(source));
+462      %end;
+463      options nosource;
+464  
+465      %if &_studiostimer = %then %do;
+466          %let _studiostimer=%sysfunc(getoption(stimer));
+467      %end;
+468      options nostimer;
+469  %mend studio_show_only_notes_wrapper;
+470  
+471  
+472  %macro studio_restore_wrapper;
+473      %global _studionotes;
+474      %global _studiosource;
+475      %global _studiostimer;
+476  
+477      options &_studionotes;
+478      options &_studiosource;
+479      options &_studiostimer;
+480  
+481      /* Clear out values so we know they have been restored */
+482      %let _studionotes=;
+11                                                         The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+483      %let _studiosource=;
+484      %let _studiostimer=;
+485  %mend studio_restore_wrapper;
+486  
+487  %macro studio_setup_locale(requestedLocale);
+488      %let validlocale=%SYSFUNC(getpxlocale(&requestedlocale));
+489      %let validlocale=%trim(&validlocale);
+490  
+491      %if %length(&validlocale) > 0 %then
+492          %do;
+493              options locale=&validlocale DFLANG=LOCALE;
+494          %end;
+495      %else
+496          %do;
+497              options locale=en_US DFLANG=LOCALE;
+498          %end;
+499  %mend;
+500  
+501  /* This macro initializes a base results path for a submission, and sets up a
+502     macro variable to access it. */
+503  %macro studio_results_directory;
+504      %global _results_prefix_;
+505      %let _results_prefix_=!COMPUTESERVER_TMP_PATH/results-&SYS_COMPUTE_JOB_ID;
+506  %mend;
+507  
+508  /*
+509  This macro initializes the filename and type for any custom output created.
+510  */
+511  %macro studio_initialize_custom_output;
+512      %global _dataout_name _dataout_mime_type;
+513      %let _dataout_name=;
+514      %let _dataout_mime_type=;
+515  %mend;
+516  
+517  /*
+518  This macro captures the filename and type for any custom output created.
+519  */
+520  %macro studio_capture_custom_output;
+521      %if "&_dataout_name" ne "" and "&_dataout_mime_type" ne "" %then
+522          %do;
+523              filename _datname "!COMPUTESERVER_TMP_PATH/results-&SYS_COMPUTE_JOB_ID..datname";
+524              filename _dattype "!COMPUTESERVER_TMP_PATH/results-&SYS_COMPUTE_JOB_ID..dattype";
+525  
+526              data _null_;
+527                  file _datname;
+528                  put "&_dataout_name";
+529              run;
+530  
+531              data _null_;
+532                  file _dattype;
+533                  put "&_dataout_mime_type";
+534              run;
+535          %end;
+536  %mend;
+537  
+538  /*
+539  This macro captures a log for a background job to the specified destination
+540  alongside any HTML results.
+12                                                         The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+541  */
+542  %macro studio_capture_background_log;
+543  
+544      /*
+545      Capture original value for syntaxcheck, and set it to nosyntaxcheck so we
+546      can capture the log even if there are errors above
+547      */
+548      %let _studiosyntaxcheck=%sysfunc(getoption(syntaxcheck));
+549      options nosyntaxcheck;
+550  
+551      /*
+552      Get base URL for compute, and download the log to the _logout fileref.
+553      */
+554      %let _url_template=%sysget(SAS_URL_SERVICE_TEMPLATE);
+555      %let _url_base=%sysfunc(tranwrd(&_url_template,@k8s.service.name@,sas-compute));
+556      proc http
+557          url="&_url_base./compute/sessions/&SYS_COMPUTE_SESSION_ID/jobs/&SYS_COMPUTE_JOB_ID/log"
+558          oauth_bearer = sas_services
+559          method='get'
+560          out=_logout;
+561      headers 'accept'='text/plain';
+562      quit;
+563  
+564      /*
+565      Restore the original value for syntaxcheck.
+566      */
+567      options &_studiosyntaxcheck;
+568  %mend;
+569  
+570  DATA _NULL_;
+571  	ID=SYMGET("SYSUSERID");
+572  	CALL SYMPUT("SYSUSERNAME",ID);
+573  	RC=TSLVL('UWUUSERN','N');
+574  	_ERROR_=0;
+575  	IF (RC^=' ') THEN DO;
+576  		call execute("DATA _NULL_;NAME=USERNAME();CALL SYMPUT('SYSUSERNAME',NAME);RUN;");
+577  	END;
+578  RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + DATA _NULL_;NAME=USERNAME();CALL SYMPUT('SYSUSERNAME',NAME);RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+579  
+580  OPTIONS TIMEZONE='GMT-04:00';
+581  %studio_setup_locale(en-US);
+582  OPTIONS VALIDVARNAME=ANY VALIDMEMNAME=EXTEND;
+583  /* endregion */
+584  
+13                                                         The SAS System                      Tuesday, October 31, 2023 03:05:00 PM
+
+585  /* region: SAS Studio autoexec */
+586  options fullstimer;
+587  libname orion '/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Courses/VSTU1C - SAS Studio Flows/VSTU_Data' ;
+NOTE: Libref ORION was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Courses/VSTU1C - SAS Studio Flows/VSTU_Data
+588  /* endregion */
+589  
+590  /* region: Generated preamble */
+591  /* Make sure the current directory is writable */
+592  data _null_;
+593      length rc 4;
+594      %let tworkloc="%sysfunc(getoption(work))";
+595      rc=dlgcdir(&tworkloc);
+596  run;
+
+NOTE: The current working directory is now 
+      "/opt/sas/viya/config/var/tmp/compsrv/default/17347f7b-bfb1-4b27-bea2-fd413a1db2ad/SAS_workD3E1000001A3_sas-compute-server-4c5
+      34d73-7a55-4227-8050-d6c98ecf60df-bqpxp".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.00 seconds
+      memory              493.06k
+      OS Memory           26668.00k
+      Timestamp           10/31/2023 03:05:41 PM
+      Step Count                        5  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     36
+      Page Swaps                        0
+      Voluntary Context Switches        0
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+597  
+598  /* Setup options */
+599  title;
+600  footnote;
+601  options validvarname=any;
+602  options validmemname=extend;
+603  options dtreset date number;
+604  options device=png;
+605  
+606  /* Setup macro variables */
+607  %let syscc=0;
+608  %let _clientapp = %nrquote(%nrstr(SAS Studio));
+609  %let _clientappabbrev = %nrquote(%nrstr(Studio));
+610  %let _clientappversion=2023.10;
+611  %let _clientversion=;
+612  %let _sasservername=&SYSHOSTNAME;
+613  %let _sashostname=&SYSHOSTNAME;
+614  %let _sasprogramfilehost=&SYSHOSTNAME;
+615  %let _clientuserid = %nrquote(%nrstr(T.Winand@sas.com));
+616  %let _clientusername = %nrquote(%nrstr(T Winand));
+617  %let clientmachine = %nrquote(%nrstr());
+618  %let _clientmachine = %nrquote(%nrstr());
+14                                                         The SAS System                      Tuesday, October 31, 2023 11:05:41 AM
+
+619  %let _clientmode = %nrquote(%nrstr(viya));
+620  %let sasworklocation="%sysfunc(getoption(work))/";
+621  filename _cwd &sasworklocation;
+622  data _null_;
+623      call symput('_sasworkingdir',pathname('_cwd'));
+624  run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.00 seconds
+      memory              498.59k
+      OS Memory           26668.00k
+      Timestamp           10/31/2023 03:05:41 PM
+      Step Count                        6  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     14
+      Page Swaps                        0
+      Voluntary Context Switches        0
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+625  filename _cwd;
+NOTE: Fileref _CWD has been deassigned.
+626  %let _sasprogramfile =
+626! %nrquote(%nrstr(/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/Viya_Programming_HOW/Code/1. Viya Programming
+626! Code/ViyaPgm_HOW - Complete Program.sas));
+627  %let _baseurl = %nrquote(%nrstr(https://ssemonthly.demo.sas.com/SASStudio/));
+628  %let _execenv = %nrquote(%nrstr(SASStudio));
+629  %symdel _dataout_mime_type _dataout_name _dataout_url _dataout_table / nowarn;
+630  %let _sasws_ = %bquote(%sysfunc(getoption(work)));
+631  %let _saswstemp_ = %bquote(%sysfunc(getoption(work)));
+632  
+633  /* Detect SAS/Graph and setup graph options */
+634  data _null_;
+635      length rc $255;
+636      call symput("graphinit","");
+637      call symput("graphterm","");
+638      rc=tslvl('sasxgopt','n');
+639      _error_=0;
+640      if (rc^=' ') then do;
+641          call symput("graphinit","goptions reset=all gsfname=_gsfname;");
+642          call symput("graphterm","goptions noaccessible;");
+643      end;
+644  run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.00 seconds
+      memory              487.31k
+      OS Memory           26668.00k
+      Timestamp           10/31/2023 03:05:41 PM
+      Step Count                        7  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     30
+15                                                         The SAS System                      Tuesday, October 31, 2023 11:05:41 AM
+
+      Page Swaps                        0
+      Voluntary Context Switches        0
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+645  data _null_;
+646      length rc 4;
+647      rc=sysprod("PRODNUM002");
+648      if (rc^=1) then do;
+649          call symput("graphinit","");
+650          call symput("graphterm","");
+651      end;
+652  run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.00 seconds
+      memory              486.31k
+      OS Memory           26668.00k
+      Timestamp           10/31/2023 03:05:41 PM
+      Step Count                        8  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     12
+      Page Swaps                        0
+      Voluntary Context Switches        0
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+653  
+654  /* Setup ODS destinations */
+655  ods _all_ close;
+656  %studio_results_directory;
+657  filename _htmlout '/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/Viya_Programming_HOW/Code/1. Viya
+657! Programming Code/ViyaPgm_HOW - Complete Program(Oct 31, 2023, 11:05:24 AM).html';
+658  filename _gsfname temp;
+659  filename _dataout "&_results_prefix_..dat";
+660  ods autonavigate off;
+661  ods graphics on;
+662  ods html5 (id=web) METATEXT='http-equiv="Content-Security-Policy" content="default-src ''none''; style-src ''unsafe-inline'';
+662! img-src data: ;"' device=png gpath="&_saswstemp_" path="&_saswstemp_" encoding=utf8 file=_htmlout (title='Results:ViyaPgm_HOW -
+662!  Complete Program.sas') style=Illuminate options(bitmap_mode='inline' outline='on' svg_mode='inline'
+662! css_prefix=".ods_&SYS_COMPUTE_JOB_ID" body_id="div_&SYS_COMPUTE_JOB_ID" );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+663  &graphinit;
+664  filename _logout '/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/Viya_Programming_HOW/Code/1. Viya Programming
+664!  Code/ViyaPgm_HOW - Complete Program(Oct 31, 2023, 11:05:24 AM).log';
+665  /* endregion */
+666  
+667  /*****************************************************************************/
+668  /* ViyaPgm_HOW: Complete Program                                             */
+669  /*****************************************************************************/
+670  
+671  /*****************************************************************************/
+16                                                         The SAS System                      Tuesday, October 31, 2023 11:05:42 AM
+
+672  /* This program contains all code steps that are associated with the         */
+673  /* following indepent code examples                                          */
+674  /*                                                                           */
+675  /* ViyaPgm_01: Create a CAS Connection & Start a CAS Session                 */
+676  /* ViyaPgm_02: Create a SAS librefs for existing caslibs                     */
+677  /* ViyaPgm_03: Load data into CAS memory - 3 simple ways                     */
+678  /* ViyaPgm_04: List CAS in-memory tables                                     */
+679  /* ViyaPgm_05: Run DATA Step in Viya                                         */
+680  /* ViyaPgm_06: Run DATA Step with "BIG" Data in Viya                         */
+681  /* ViyaPgm_07: Run a DATA Step with Group By in Viya                         */
+682  /* ViyaPgm_08: Run a DATA Step using Partition and Orderby in CAS            */
+683  /* ViyaPgm_09: Analyze Data using SAS9 Procedures                            */
+684  /* ViyaPgm_10: Analyze Data using Viya Procedures                            */
+685  /* ViyaPgm_11: Query Dataset using Proc SQL & CAS Table Using Proc FedSQL    */
+686  /* ViyaPgm_12: Create and Use User-Defined Formats in CAS                    */
+687  /* ViyaPgm_13: Clean Up                                                      */
+688  /*****************************************************************************/
+689  
+690  /*****************************************************************************/
+691  /*  Set the options necessary for creating a connection to a CAS server.     */
+692  /*  Once the options are set, the cas command connects the default session   */
+693  /*  to the specified CAS server and CAS port, for example the default value  */
+694  /*  is 5570.                                                                 */
+695  /*****************************************************************************/
+696  
+697  /* options cashost="127.0.0.1" casport=5570; */
+698  
+699  /*****************************************************************************/
+700  /*  Start a session named mySession using the existing CAS server connection */
+701  /*  while allowing override of caslib, timeout (in seconds), and locale     */
+702  /*  defaults.                                                                */
+703  /*****************************************************************************/
+704  
+705  cas mySession sessopts=(caslib=casuser timeout=1800 locale="en_US" metrics="TRUE");
+NOTE: The session MYSESSION connected successfully to Cloud Analytic Services sas-cas-server-default-client using port 5570. The 
+      UUID is c3541769-5dd8-6742-b8de-83ee98882494. The user is T.Winand@sas.com and the active caslib is CASUSER(T.Winand@sas.com).
+NOTE: The SAS option SESSREF was updated with the value MYSESSION.
+NOTE: The SAS macro _SESSREF_ was updated with the value MYSESSION.
+NOTE: The session is using 4 workers.
+NOTE: 'CASUSER(T.Winand@sas.com)' is now the active caslib.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+NOTE:       real time               0.010598 seconds
+NOTE:       cpu time                0.015226 seconds (143.67%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.39M (0.00%)
+NOTE: The CAS statement request to update one or more session options for session MYSESSION completed.
+706  
+707  
+708  /*****************************************************************************/
+709  /*  Create SAS librefs for existing caslibs                                  */
+710  /*  so that they are visible in the SAS Studio Libraries tree.               */
+711  /*  Create a separate libref for the casuser caslib                          */
+712  /*****************************************************************************/
+713  
+714  caslib _all_ assign;
+NOTE: Executing action 'table.caslibInfo'.
+NOTE: A SAS Library associated with a caslib can only reference library member names that conform to SAS Library naming conventions.
+17                                                         The SAS System                      Tuesday, October 31, 2023 11:05:43 AM
+
+NOTE: CASLIB AIoTPgMeta for session MYSESSION will not be mapped to SAS Library AIoTPgMeta. The CASLIB name is not valid for use as 
+      a libref.
+NOTE: CASLIB CASUSER(T.Winand@sas.com) for session MYSESSION will be mapped to SAS Library CASUSER.
+NOTE: CASLIB CPSAppData for session MYSESSION will not be mapped to SAS Library CPSAppData. The CASLIB name is not valid for use as 
+      a libref.
+NOTE: CASLIB EDUPub for session MYSESSION will be mapped to SAS Library EDUPUB.
+NOTE: CASLIB EP_CommunityCollege for session MYSESSION will not be mapped to SAS Library EP_CommunityCollege. The CASLIB name is 
+      not valid for use as a libref.
+NOTE: CASLIB EP_DOE for session MYSESSION will be mapped to SAS Library EP_DOE.
+NOTE: CASLIB EP_Forecasting for session MYSESSION will not be mapped to SAS Library EP_Forecasting. The CASLIB name is not valid 
+      for use as a libref.
+NOTE: CASLIB EP_K12 for session MYSESSION will be mapped to SAS Library EP_K12.
+NOTE: CASLIB EP_SAfE for session MYSESSION will be mapped to SAS Library EP_SAFE.
+NOTE: CASLIB EP_Shapes for session MYSESSION will not be mapped to SAS Library EP_Shapes. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB EP_Sports for session MYSESSION will not be mapped to SAS Library EP_Sports. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB EP_University for session MYSESSION will not be mapped to SAS Library EP_University. The CASLIB name is not valid for 
+      use as a libref.
+NOTE: CASLIB EP_Workforce for session MYSESSION will not be mapped to SAS Library EP_Workforce. The CASLIB name is not valid for 
+      use as a libref.
+NOTE: CASLIB Formats for session MYSESSION will be mapped to SAS Library FORMATS.
+NOTE: CASLIB GCSTT for session MYSESSION will be mapped to SAS Library GCSTT.
+NOTE: CASLIB GPCI for session MYSESSION will be mapped to SAS Library GPCI.
+NOTE: CASLIB GTPPub for session MYSESSION will be mapped to SAS Library GTPPUB.
+NOTE: CASLIB IoTPub for session MYSESSION will be mapped to SAS Library IOTPUB.
+NOTE: CASLIB ModelPerformanceData for session MYSESSION will not be mapped to SAS Library ModelPerformanceData. The CASLIB name is 
+      not valid for use as a libref.
+NOTE: CASLIB Models for session MYSESSION will be mapped to SAS Library MODELS.
+NOTE: CASLIB PMVAPub for session MYSESSION will be mapped to SAS Library PMVAPUB.
+NOTE: CASLIB Public for session MYSESSION will be mapped to SAS Library PUBLIC.
+NOTE: CASLIB QASANLOUT for session MYSESSION will not be mapped to SAS Library QASANLOUT. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB QASMartStore for session MYSESSION will not be mapped to SAS Library QASMartStore. The CASLIB name is not valid for 
+      use as a libref.
+NOTE: CASLIB SGF2021 for session MYSESSION will be mapped to SAS Library SGF2021.
+NOTE: CASLIB SGF21AAI for session MYSESSION will be mapped to SAS Library SGF21AAI.
+NOTE: CASLIB SIS2021_6 for session MYSESSION will not be mapped to SAS Library SIS2021_6. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB Samples for session MYSESSION will be mapped to SAS Library SAMPLES.
+NOTE: CASLIB Samples2023 for session MYSESSION will not be mapped to SAS Library Samples2023. The CASLIB name is not valid for use 
+      as a libref.
+NOTE: CASLIB UKI for session MYSESSION will be mapped to SAS Library UKI.
+NOTE: CASLIB cpgretl for session MYSESSION will be mapped to SAS Library CPGRETL.
+NOTE: CASLIB images for session MYSESSION will be mapped to SAS Library IMAGES.
+NOTE: CASLIB jsmdata for session MYSESSION will be mapped to SAS Library JSMDATA.
+NOTE: CASLIB sashack22 for session MYSESSION will not be mapped to SAS Library sashack22. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB sashack23 for session MYSESSION will not be mapped to SAS Library sashack23. The CASLIB name is not valid for use as a 
+      libref.
+NOTE: CASLIB swee for session MYSESSION will be mapped to SAS Library SWEE.
+NOTE: Action 'table.caslibInfo' used (Total process time):
+NOTE:       real time               0.008032 seconds
+NOTE:       cpu time                0.011768 seconds (146.51%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.86M (0.00%)
+715  caslib _all_ list;
+18                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+NOTE: Executing action 'table.caslibInfo'.
+NOTE: Session = MYSESSION Name = AIoTPgMeta
+         Type = PATH
+         Description = Stores quality analytic suite postgres tables.
+         Path = /cas/data/caslibs/aiotPgMeta/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = CASUSER(T.Winand@sas.com)
+         Type = PATH
+         Description = Personal File System Caslib
+         Path = /greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/casuser/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = Yes
+         Personal = Yes
+         Hidden = No
+         Transient = Yes
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = cpgretl
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/cpgretail/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = CPSAppData
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/CPSAppData/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = EDUPub
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/edupub/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+19                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = EP_CommunityCollege
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_CommunityCollege/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = EP_DOE
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_DOE/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = EP_Forecasting
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_Forecasting/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = EP_K12
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_K12/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = EP_SAfE
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_SAfE/
+         Definition = 
+         Subdirs = No
+         Local = No
+20                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = EP_Shapes
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_Shapes/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = EP_Sports
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_Sports/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = EP_University
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_University/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = EP_Workforce
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/educationpractice/EP_Workforce/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = Formats
+         Type = PATH
+         Description = Stores user defined formats.
+         Path = /cas/data/caslibs/formats/
+         Definition = 
+21                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = GCSTT
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/GCSTT/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = GPCI
+         Type = PATH
+         Description = Group Lib for Global CI team.   Suneel Grover is the main contact
+         Path = /cas/data/caslibs/globalci/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = GTPPub
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/gtppub/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = images
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/images/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = IoTPub
+         Type = PATH
+         Description = 
+22                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+         Path = /cas/data/caslibs/iotpub/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = jsmdata
+         Type = PATH
+         Description = 
+RITM0602947 - Fang K. Chen:  We would like to leverage SSEMonthly in support of the "2023 Joint Statistical Meetings Conference".
+         Path = /cas/data/caslibs/jsmdata/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = ModelPerformanceData
+         Type = PATH
+         Description = Stores performance data output for the Model Management service.
+         Path = /cas/data/caslibs/modelMonitorLibrary/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = Models
+         Type = PATH
+         Description = Stores models created by Visual Analytics for use in other analytics or SAS Studio.
+         Path = /cas/data/caslibs/models/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = PMVAPub
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/PMVAPub/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+23                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+NOTE: Session = MYSESSION Name = Public
+         Type = PATH
+         Description = Shared and writeable caslib, accessible to all users.  30 days of data.  Purged Monthly.
+         Path = /cas/data/caslibs/public/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = QASANLOUT
+         Type = PATH
+         Description = The CASLib would be used to store the analysis output datasets.
+         Path = /cas/data/caslibs/qasAnlOut/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = QASMartStore
+         Type = PATH
+         Description = Stores quality analytic suite mart tables.
+         Path = /cas/data/caslibs/qasMartStore/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = Samples
+         Type = PATH
+         Description = Stores sample data, supplied by SAS.
+         Path = /cas/data/caslibs/samples/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = Samples2023
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/Samples2023/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+24                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = sashack22
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/sashack22/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = sashack23
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/sashack23/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = SGF2021
+         Type = PATH
+         Description = Private CASLib for SGF 2021 Content Admins
+         Path = /cas/data/caslibs/sgf2021/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = SGF21AAI
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/sgf21aai/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = SIS2021_6
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/sis_2021/SIS2021_6/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+25                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = swee
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/swee/
+         Definition = 
+         Subdirs = Yes
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Session = MYSESSION Name = UKI
+         Type = PATH
+         Description = 
+         Path = /cas/data/caslibs/UKI/
+         Definition = 
+         Subdirs = No
+         Local = No
+         Active = No
+         Personal = No
+         Hidden = No
+         Transient = No
+         Table Redistribute Up Policy = Not Specified
+NOTE: Action 'table.caslibInfo' used (Total process time):
+NOTE:       real time               0.007540 seconds
+NOTE:       cpu time                0.011652 seconds (154.54%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.86M (0.00%)
+NOTE: Action caslib LIST completed for session MYSESSION.
+716  
+717  libname mycas cas caslib=casuser;
+NOTE: Libref MYCAS was successfully assigned as follows: 
+      Engine:        CAS 
+      Physical Name: c3541769-5dd8-6742-b8de-83ee98882494
+718  
+719  %let path=/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Data;
+720  libname mysas "&path";
+NOTE: Libref MYSAS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Data
+721  
+722  
+723  /*****************************************************************************/
+724  /*  Three simple ways to load a SAS dataset into a CASLIB as a CAS in-memory */
+725  /*  table                                                                    */
+726  /*****************************************************************************/
+727  
+728  data mycas.cars;
+729    set sashelp.cars;
+730  run;
+
+NOTE: Executing action 'table.tableInfo'.
+26                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.008484 seconds
+NOTE:       cpu time                0.011915 seconds (140.44%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.45M (0.00%)
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set MYCAS.CARS has 428 observations and 15 variables.
+NOTE: Executing action 'table.addTable'.
+NOTE: DATA statement used (Total process time):
+      real time           0.11 seconds
+      user cpu time       0.02 seconds
+      system cpu time     0.00 seconds
+      memory              1248.81k
+      OS Memory           36696.00k
+      Timestamp           10/31/2023 03:05:44 PM
+      Step Count                        9  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     532
+      Page Swaps                        0
+      Voluntary Context Switches        85
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+731  
+732  proc casutil;
+NOTE: The UUID 'c3541769-5dd8-6742-b8de-83ee98882494' is connected using session MYSESSION.
+733    load data=sashelp.cars casout="cars" replace;
+NOTE: Executing action 'table.addTable'.
+NOTE: Action 'table.addTable' used (Total process time):
+NOTE:       real time               0.020875 seconds
+NOTE:       cpu time                0.038050 seconds (182.28%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  5.76M (0.00%)
+NOTE:       bytes moved             69.28K
+NOTE: SASHELP.CARS was successfully added to the "CASUSER(T.Winand@sas.com)" caslib as "CARS".
+NOTE: Executing action 'sessionProp.getSessOpt'.
+NOTE: Action 'sessionProp.getSessOpt' used (Total process time):
+NOTE:       real time               0.004699 seconds
+NOTE:       cpu time                0.007202 seconds (153.27%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.02M (0.00%)
+734  quit;
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.05 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.00 seconds
+      memory              954.56k
+      OS Memory           36696.00k
+      Timestamp           10/31/2023 03:05:44 PM
+      Step Count                        10  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     82
+27                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+      Page Swaps                        0
+      Voluntary Context Switches        86
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+735  
+736  proc sql;
+737    create table mycas.cars as
+738      select * from sashelp.cars;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005984 seconds
+NOTE:       cpu time                0.009170 seconds (153.24%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.83M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005708 seconds
+NOTE:       cpu time                0.008822 seconds (154.56%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.82M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.008994 seconds
+NOTE:       cpu time                0.014601 seconds (162.34%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.44M (0.00%)
+NOTE: Executing action 'table.addTable'.
+NOTE: Table MYCAS.CARS created, with 428 rows and 15 columns.
+
+739  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.10 seconds
+      user cpu time       0.03 seconds
+      system cpu time     0.00 seconds
+      memory              5360.53k
+      OS Memory           41304.00k
+      Timestamp           10/31/2023 03:05:44 PM
+      Step Count                        11  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     338
+      Page Swaps                        0
+      Voluntary Context Switches        147
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+740  
+741  
+742  /*****************************************************************************/
+743  /*  Using PROC CASUTIL to load xlsx and csv files                            */
+744  /*****************************************************************************/
+28                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+745  
+746  proc casutil;
+NOTE: The UUID 'c3541769-5dd8-6742-b8de-83ee98882494' is connected using session MYSESSION.
+747      load file="&path/products.xlsx"
+748      casout='myproducts'
+749      outcaslib='casuser'
+750      importoptions=(filetype='excel' getnames=true)
+751      replace;
+NOTE: Executing action 'table.upload'.
+NOTE: Executing action 'table.loadTable'.
+NOTE: Cloud Analytic Services made the uploaded file available as table MYPRODUCTS in caslib CASUSER(T.Winand@sas.com).
+NOTE: Action 'table.loadTable' used (Total process time):
+NOTE:       real time               0.042132 seconds
+NOTE:       cpu time                0.061225 seconds (145.32%)
+NOTE:       data movement time      0.002737 seconds
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  17.54M (0.00%)
+NOTE:       bytes moved             2.49K
+NOTE: The table MYPRODUCTS has been created in caslib CASUSER(T.Winand@sas.com) from binary data uploaded to Cloud Analytic 
+      Services.
+NOTE: Action 'table.upload' used (Total process time):
+NOTE:       real time               0.057874 seconds
+NOTE:       cpu time                0.082777 seconds (143.03%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  17.54M (0.00%)
+752  
+753      load file="&path/sales.csv"
+754      casout='mysales'
+755      outcaslib='casuser'
+756      importoptions=(filetype='csv' getnames=true)
+757      replace;
+NOTE: Executing action 'table.upload'.
+NOTE: Executing action 'table.loadTable'.
+NOTE: Cloud Analytic Services made the uploaded file available as table MYSALES in caslib CASUSER(T.Winand@sas.com).
+NOTE: Action 'table.loadTable' used (Total process time):
+NOTE:       real time               0.035390 seconds
+NOTE:       cpu time                0.117316 seconds (331.49%)
+NOTE:       data movement time      0.003618 seconds
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  392.88M (0.02%)
+NOTE:       bytes moved             28.70K
+NOTE: The table MYSALES has been created in caslib CASUSER(T.Winand@sas.com) from binary data uploaded to Cloud Analytic Services.
+NOTE: Action 'table.upload' used (Total process time):
+NOTE:       real time               0.049589 seconds
+NOTE:       cpu time                0.138164 seconds (278.62%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  392.88M (0.02%)
+758  quit;
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.13 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.00 seconds
+      memory              732.15k
+29                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+      OS Memory           36952.00k
+      Timestamp           10/31/2023 03:05:44 PM
+      Step Count                        12  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     26
+      Page Swaps                        0
+      Voluntary Context Switches        127
+      Involuntary Context Switches      0
+      Block Input Operations            72
+      Block Output Operations           0
+      
+
+759  
+760  
+761  /*****************************************************************************/
+762  /*  Using PROC CASUTIL to list in-memory tables                              */
+763  /*****************************************************************************/
+764  
+765  proc casutil;
+NOTE: The UUID 'c3541769-5dd8-6742-b8de-83ee98882494' is connected using session MYSESSION.
+766    list tables;
+NOTE: Executing action 'table.caslibInfo'.
+NOTE: Action 'table.caslibInfo' used (Total process time):
+NOTE:       real time               0.008684 seconds
+NOTE:       cpu time                0.012906 seconds (148.62%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.83M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007598 seconds
+NOTE:       cpu time                0.011714 seconds (154.17%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.84M (0.00%)
+NOTE: Cloud Analytic Services processed the combined requests in 0.016282 seconds.
+767  quit;
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.05 seconds
+      user cpu time       0.04 seconds
+      system cpu time     0.00 seconds
+      memory              1642.59k
+      OS Memory           37460.00k
+      Timestamp           10/31/2023 03:05:44 PM
+      Step Count                        13  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     308
+      Page Swaps                        0
+      Voluntary Context Switches        48
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+768  
+769  
+770  /*****************************************************************************/
+30                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+771  /*  Running a DATA Step in SAS9 (Compute Server)                             */
+772  /*****************************************************************************/
+773  
+774  data work.cars;
+775    set sashelp.cars;
+776  
+777    Average_MPG=mean(MPG_City, MPG_Highway);
+778    Keep origin Make Model Type MSRP MPG_City MPG_Highway Average_MPG;
+779  run;
+
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set WORK.CARS has 428 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.00 seconds
+      memory              646.59k
+      OS Memory           37460.00k
+      Timestamp           10/31/2023 03:05:44 PM
+      Step Count                        14  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     67
+      Page Swaps                        0
+      Voluntary Context Switches        0
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           136
+      
+
+780  
+781  
+782  
+783  /*****************************************************************************/
+784  /*  Running a DATA Step in CAS Using CAS In-Memory Tables                    */
+785  /*****************************************************************************/
+786  
+787  data mycas.cars;
+788    set mycas.cars;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007173 seconds
+NOTE:       cpu time                0.011254 seconds (156.89%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.84M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007683 seconds
+NOTE:       cpu time                0.010399 seconds (135.35%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.84M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.009502 seconds
+NOTE:       cpu time                0.015018 seconds (158.05%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+31                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+NOTE:       memory                  2.47M (0.00%)
+789  
+790    Average_MPG=mean(MPG_City, MPG_Highway);
+791    Keep origin Make Model Type MSRP MPG_City MPG_Highway Average_MPG;
+792  run;
+
+NOTE: Running DATA step in Cloud Analytic Services.
+NOTE: Executing action 'sessionProp.getSessOpt'.
+NOTE: Action 'sessionProp.getSessOpt' used (Total process time):
+NOTE:       real time               0.005604 seconds
+NOTE:       cpu time                0.010028 seconds (178.94%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.04M (0.00%)
+NOTE: Executing action 'sessionProp.setSessOpt'.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+NOTE:       real time               0.006718 seconds
+NOTE:       cpu time                0.011154 seconds (166.03%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.39M (0.00%)
+NOTE: The DATA step will run in multiple threads.
+NOTE: Executing action 'dataStep.runBinary'.
+NOTE: There were 428 observations read from the table CARS in caslib CASUSER(T.Winand@sas.com).
+NOTE: The table cars in caslib CASUSER(T.Winand@sas.com) has 428 observations and 8 variables.
+NOTE: Action 'dataStep.runBinary' used (Total process time):
+NOTE:       real time               0.066975 seconds
+NOTE:       cpu time                0.510238 seconds (761.83%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  127.05M (0.01%)
+NOTE:       bytes moved             45.88K
+NOTE: Executing action 'sessionProp.setSessOpt'.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+NOTE:       real time               0.006684 seconds
+NOTE:       cpu time                0.010928 seconds (163.49%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.40M (0.00%)
+NOTE: DATA statement used (Total process time):
+      real time           0.19 seconds
+      user cpu time       0.02 seconds
+      system cpu time     0.01 seconds
+      memory              1580.71k
+      OS Memory           38744.00k
+      Timestamp           10/31/2023 03:05:44 PM
+      Step Count                        15  Switch Count  2
+      Page Faults                       0
+      Page Reclaims                     212
+      Page Swaps                        0
+      Voluntary Context Switches        261
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+793  
+794  
+32                                                         The SAS System                      Tuesday, October 31, 2023 11:05:44 AM
+
+795  /*****************************************************************************/
+796  /*  Running a DATA Step with Big Data in SAS9 (Compute Server)                */
+797  /*****************************************************************************/
+798  data bigcars;
+799    set sashelp.cars;
+800  
+801    do i=1 to 100000;
+802      output;
+803    end;
+804  run;
+
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set WORK.BIGCARS has 42800000 observations and 16 variables.
+NOTE: DATA statement used (Total process time):
+      real time           8.08 seconds
+      user cpu time       1.07 seconds
+      system cpu time     6.92 seconds
+      memory              736.31k
+      OS Memory           37716.00k
+      Timestamp           10/31/2023 03:05:52 PM
+      Step Count                        16  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     860
+      Page Swaps                        0
+      Voluntary Context Switches        924
+      Involuntary Context Switches      2654
+      Block Input Operations            136
+      Block Output Operations           13394832
+      
+
+805  
+806  data bigcars_score;
+807    set bigcars;
+808  
+809    length myscore 8;
+810    myscore=0.3*Invoice/(MSRP-Invoice)
+811      + 0.5*(EngineSize+Horsepower)/Weight + 0.2*(MPG_City+MPG_Highway);
+812  run;
+
+NOTE: There were 42800000 observations read from the data set WORK.BIGCARS.
+NOTE: The data set WORK.BIGCARS_SCORE has 42800000 observations and 17 variables.
+NOTE: DATA statement used (Total process time):
+      real time           20.29 seconds
+      user cpu time       3.26 seconds
+      system cpu time     13.19 seconds
+      memory              698.62k
+      OS Memory           37716.00k
+      Timestamp           10/31/2023 03:06:13 PM
+      Step Count                        17  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     2092
+      Page Swaps                        0
+      Voluntary Context Switches        18803
+      Involuntary Context Switches      7494
+      Block Input Operations            13394696
+      Block Output Operations           14083472
+      
+
+33                                                         The SAS System                      Tuesday, October 31, 2023 11:06:13 AM
+
+813  
+814  
+815  /*****************************************************************************/
+816  /*  Running a DATA Step with Big Data in CAS                                 */
+817  /*****************************************************************************/
+818  data mycas.bigcars;
+819    set mycas.cars;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006181 seconds
+NOTE:       cpu time                0.010389 seconds (168.08%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.84M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005886 seconds
+NOTE:       cpu time                0.009384 seconds (159.43%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.85M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.008714 seconds
+NOTE:       cpu time                0.014884 seconds (170.81%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.47M (0.00%)
+820  
+821    do i=1 to 100000;
+822      output;
+823    end;
+824  run;
+
+NOTE: Running DATA step in Cloud Analytic Services.
+NOTE: Executing action 'sessionProp.getSessOpt'.
+NOTE: Action 'sessionProp.getSessOpt' used (Total process time):
+NOTE:       real time               0.005339 seconds
+NOTE:       cpu time                0.008726 seconds (163.44%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.05M (0.00%)
+NOTE: Executing action 'sessionProp.setSessOpt'.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+NOTE:       real time               0.006744 seconds
+NOTE:       cpu time                0.010946 seconds (162.31%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.39M (0.00%)
+NOTE: The DATA step will run in multiple threads.
+NOTE: Executing action 'dataStep.runBinary'.
+NOTE: There were 428 observations read from the table CARS in caslib CASUSER(T.Winand@sas.com).
+NOTE: The table bigcars in caslib CASUSER(T.Winand@sas.com) has 42800000 observations and 9 variables.
+NOTE: Action 'dataStep.runBinary' used (Total process time):
+NOTE:       real time               3.069977 seconds
+NOTE:       cpu time                19.902198 seconds (648.28%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+34                                                         The SAS System                      Tuesday, October 31, 2023 11:06:16 AM
+
+NOTE:       memory                  172.70M (0.01%)
+NOTE:       bytes moved             4.47G
+NOTE: Executing action 'sessionProp.setSessOpt'.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+NOTE:       real time               0.006786 seconds
+NOTE:       cpu time                0.010507 seconds (154.83%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.41M (0.00%)
+NOTE: DATA statement used (Total process time):
+      real time           3.19 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.01 seconds
+      memory              1514.78k
+      OS Memory           39000.00k
+      Timestamp           10/31/2023 03:06:16 PM
+      Step Count                        18  Switch Count  2
+      Page Faults                       0
+      Page Reclaims                     322
+      Page Swaps                        0
+      Voluntary Context Switches        283
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+825  
+826  data mycas.bigcars_score;
+827    set mycas.bigcars;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007631 seconds
+NOTE:       cpu time                0.009440 seconds (123.71%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.87M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007219 seconds
+NOTE:       cpu time                0.009123 seconds (126.37%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.86M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.011656 seconds
+NOTE:       cpu time                0.015492 seconds (132.91%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.48M (0.00%)
+828  
+829    length myscore 8;
+830    myscore=0.3*Invoice/(MSRP-Invoice)
+831      + 0.5*(EngineSize+Horsepower)/Weight + 0.2*(MPG_City+MPG_Highway);
+832    Thread=_threadid_;
+833  run;
+
+NOTE: Running DATA step in Cloud Analytic Services.
+35                                                         The SAS System                      Tuesday, October 31, 2023 11:06:16 AM
+
+NOTE: Executing action 'sessionProp.getSessOpt'.
+NOTE: Action 'sessionProp.getSessOpt' used (Total process time):
+NOTE:       real time               0.004959 seconds
+NOTE:       cpu time                0.007304 seconds (147.29%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.05M (0.00%)
+NOTE: Executing action 'sessionProp.setSessOpt'.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+NOTE:       real time               0.006306 seconds
+NOTE:       cpu time                0.009335 seconds (148.03%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.41M (0.00%)
+NOTE: The DATA step will run in multiple threads.
+NOTE: Executing action 'dataStep.runBinary'.
+NOTE: Variable Invoice is uninitialized.
+NOTE: Variable Horsepower is uninitialized.
+NOTE: Variable EngineSize is uninitialized.
+NOTE: Variable Weight is uninitialized.
+NOTE: Missing values were generated as a result of performing an operation on missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      222300 at 830:14
+      224640 at 830:14
+      221480 at 830:14
+NOTE: Duplicate messages output by DATA step:
+NOTE: Missing values were generated as a result of performing an operation on missing values.  (occurred 192 times)
+      Each place is given by: (Number of times) at (Line):(Column).  (occurred 192 times)
+      222300 at 830:14  (occurred 136 times)
+      224640 at 830:14  (occurred 52 times)
+      221480 at 830:14  (occurred 4 times)
+NOTE: There were 42800000 observations read from the table BIGCARS in caslib CASUSER(T.Winand@sas.com).
+NOTE: The table bigcars_score in caslib CASUSER(T.Winand@sas.com) has 42800000 observations and 15 variables.
+NOTE: Action 'dataStep.runBinary' used (Total process time):
+NOTE:       real time               3.366875 seconds
+NOTE:       cpu time                56.323115 seconds (1672.86%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  976.70M (0.05%)
+NOTE:       bytes moved             6.38G
+NOTE: Executing action 'sessionProp.setSessOpt'.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+NOTE:       real time               0.006631 seconds
+NOTE:       cpu time                0.011869 seconds (178.99%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.44M (0.00%)
+NOTE: DATA statement used (Total process time):
+      real time           3.49 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.01 seconds
+      memory              1523.62k
+      OS Memory           39000.00k
+      Timestamp           10/31/2023 03:06:19 PM
+      Step Count                        19  Switch Count  2
+      Page Faults                       0
+      Page Reclaims                     88
+      Page Swaps                        0
+36                                                         The SAS System                      Tuesday, October 31, 2023 11:06:19 AM
+
+      Voluntary Context Switches        329
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+834  
+835  
+836  /*****************************************************************************/
+837  /*  Runninga DATA Step with Group By in SAS9 (Compute Server)                */
+838  /*****************************************************************************/
+839  proc sort data=sashelp.cars out=sort_cars;
+840    by Type MSRP;
+841  run;
+
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set WORK.SORT_CARS has 428 observations and 15 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.00 seconds
+      memory              887.03k
+      OS Memory           38040.00k
+      Timestamp           10/31/2023 03:06:19 PM
+      Step Count                        20  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     259
+      Page Swaps                        0
+      Voluntary Context Switches        0
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           272
+      
+
+842  
+843  data cars2;
+844    set sort_cars;
+845  
+846    Average_MPG=mean(MPG_City, MPG_Highway);
+847    keep Make Model Type Average_MPG MSRP LowMSRP HighMSRP;
+848  
+849    by Type;
+850    if first.Type then LowMSRP=1;
+851      else LowMSRP=0;
+852    if last.Type then HighMSRP=1;
+853      else HighMSRP=0;
+854  run;
+
+NOTE: There were 428 observations read from the data set WORK.SORT_CARS.
+NOTE: The data set WORK.CARS2 has 428 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.00 seconds
+      memory              677.34k
+      OS Memory           38040.00k
+      Timestamp           10/31/2023 03:06:19 PM
+      Step Count                        21  Switch Count  0
+37                                                         The SAS System                      Tuesday, October 31, 2023 11:06:19 AM
+
+      Page Faults                       0
+      Page Reclaims                     79
+      Page Swaps                        0
+      Voluntary Context Switches        0
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           136
+      
+
+855  
+856  
+857  /*****************************************************************************/
+858  /*  Running a DATA Step with Group By in CAS                                 */
+859  /*****************************************************************************/
+860  data mycas.cars2;
+861    set mycas.cars;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007117 seconds
+NOTE:       cpu time                0.012004 seconds (168.67%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005331 seconds
+NOTE:       cpu time                0.008554 seconds (160.46%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.008291 seconds
+NOTE:       cpu time                0.013398 seconds (161.60%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.50M (0.00%)
+862  
+863    Average_MPG=mean(MPG_City, MPG_Highway);
+864    keep Make Model Type Average_MPG MSRP LowMSRP HighMSRP;
+865  
+866    by Type MSRP;
+867    if first.Type then LowMSRP=1;
+868      else LowMSRP=0;
+869    if last.Type then HighMSRP=1;
+870      else HighMSRP=0;
+871  run;
+
+NOTE: Running DATA step in Cloud Analytic Services.
+NOTE: Executing action 'sessionProp.getSessOpt'.
+NOTE: Action 'sessionProp.getSessOpt' used (Total process time):
+NOTE:       real time               0.005697 seconds
+NOTE:       cpu time                0.007694 seconds (135.05%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.05M (0.00%)
+NOTE: Executing action 'sessionProp.setSessOpt'.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+38                                                         The SAS System                      Tuesday, October 31, 2023 11:06:19 AM
+
+NOTE:       real time               0.006976 seconds
+NOTE:       cpu time                0.010196 seconds (146.16%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.44M (0.00%)
+NOTE: The DATA step will run in multiple threads.
+NOTE: Executing action 'dataStep.runBinary'.
+NOTE: There were 428 observations read from the table CARS in caslib CASUSER(T.Winand@sas.com).
+NOTE: The table cars2 in caslib CASUSER(T.Winand@sas.com) has 428 observations and 7 variables.
+NOTE: Action 'dataStep.runBinary' used (Total process time):
+NOTE:       real time               0.103350 seconds
+NOTE:       cpu time                0.629140 seconds (608.75%)
+NOTE:       data movement time      0.005184 seconds
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  134.37M (0.01%)
+NOTE:       bytes moved             86.02K
+NOTE: Executing action 'sessionProp.setSessOpt'.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+NOTE:       real time               0.007091 seconds
+NOTE:       cpu time                0.010674 seconds (150.53%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.44M (0.00%)
+NOTE: DATA statement used (Total process time):
+      real time           0.22 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.01 seconds
+      memory              1533.28k
+      OS Memory           39324.00k
+      Timestamp           10/31/2023 03:06:20 PM
+      Step Count                        22  Switch Count  2
+      Page Faults                       0
+      Page Reclaims                     59
+      Page Swaps                        0
+      Voluntary Context Switches        263
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+872  
+873  
+874  /*****************************************************************************/
+875  /*  Running a DATA Step using Partition and Orderby in CAS                   */
+876  /*****************************************************************************/
+877  data mycas.cars2 (partition=(type) orderby=(MSRP));
+878    set mycas.cars;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006780 seconds
+NOTE:       cpu time                0.010273 seconds (151.52%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.89M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005850 seconds
+39                                                         The SAS System                      Tuesday, October 31, 2023 11:06:20 AM
+
+NOTE:       cpu time                0.008969 seconds (153.32%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.89M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.009138 seconds
+NOTE:       cpu time                0.014201 seconds (155.41%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.52M (0.00%)
+879  
+880    Average_MPG=mean(MPG_City, MPG_Highway);
+881    keep Make Model Type Average_MPG MSRP LowMSRP HighMSRP;
+882  
+883    by Type;
+884    if first.Type then LowMSRP=1;
+885      else LowMSRP=0;
+886    if last.Type then HighMSRP=1;
+887      else HighMSRP=0;
+888  run;
+
+NOTE: Running DATA step in Cloud Analytic Services.
+NOTE: Executing action 'sessionProp.getSessOpt'.
+NOTE: Action 'sessionProp.getSessOpt' used (Total process time):
+NOTE:       real time               0.004683 seconds
+NOTE:       cpu time                0.007373 seconds (157.44%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.05M (0.00%)
+NOTE: Executing action 'sessionProp.setSessOpt'.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+NOTE:       real time               0.006693 seconds
+NOTE:       cpu time                0.009690 seconds (144.78%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.42M (0.00%)
+NOTE: The DATA step will run in multiple threads.
+NOTE: Executing action 'dataStep.runBinary'.
+NOTE: Executing action 'table.partition'.
+NOTE: Action 'table.partition' used (Total process time):
+NOTE:       real time               0.033146 seconds
+NOTE:       cpu time                0.101040 seconds (304.83%)
+NOTE:       data movement time      0.004779 seconds
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  109.60M (0.01%)
+NOTE:       bytes moved             81.29K
+NOTE: There were 428 observations read from the table CARS in caslib CASUSER(T.Winand@sas.com).
+NOTE: The table cars2 in caslib CASUSER(T.Winand@sas.com) has 428 observations and 7 variables.
+NOTE: Action 'dataStep.runBinary' used (Total process time):
+NOTE:       real time               0.149558 seconds
+NOTE:       cpu time                0.651642 seconds (435.71%)
+NOTE:       data movement time      0.003209 seconds
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  109.60M (0.01%)
+NOTE:       bytes moved             86.02K
+40                                                         The SAS System                      Tuesday, October 31, 2023 11:06:20 AM
+
+NOTE: Executing action 'sessionProp.setSessOpt'.
+NOTE: Action 'sessionProp.setSessOpt' used (Total process time):
+NOTE:       real time               0.006109 seconds
+NOTE:       cpu time                0.009695 seconds (158.70%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.42M (0.00%)
+NOTE: DATA statement used (Total process time):
+      real time           0.27 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.01 seconds
+      memory              1531.59k
+      OS Memory           39324.00k
+      Timestamp           10/31/2023 03:06:20 PM
+      Step Count                        23  Switch Count  2
+      Page Faults                       0
+      Page Reclaims                     65
+      Page Swaps                        0
+      Voluntary Context Switches        292
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+889  
+890  
+891  /*****************************************************************************/
+892  /*  Analyze Data Using SAS9 Procedures                                       */
+893  /*****************************************************************************/
+894  proc means data=sort_cars chartype mean std min max n range vardef=df;
+895  	var MSRP;
+896  	output out=mycas.cars_means mean=std=min=max=n=range= / autoname;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005505 seconds
+NOTE:       cpu time                0.009349 seconds (169.83%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.48M (0.00%)
+897  	by Type;
+898  run;
+
+NOTE: There were 428 observations read from the data set WORK.SORT_CARS.
+NOTE: The data set MYCAS.CARS_MEANS has 6 observations and 9 variables.
+NOTE: Executing action 'table.addTable'.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.10 seconds
+      user cpu time       0.05 seconds
+      system cpu time     0.01 seconds
+      memory              2317.43k
+      OS Memory           39584.00k
+      Timestamp           10/31/2023 03:06:20 PM
+      Step Count                        24  Switch Count  5
+      Page Faults                       0
+      Page Reclaims                     1786
+      Page Swaps                        0
+      Voluntary Context Switches        90
+      Involuntary Context Switches      2
+41                                                         The SAS System                      Tuesday, October 31, 2023 11:06:20 AM
+
+      Block Input Operations            512
+      Block Output Operations           32
+      
+
+899  
+900  proc means data=mycas.cars chartype mean std min max n range vardef=df;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005315 seconds
+NOTE:       cpu time                0.008628 seconds (162.33%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.89M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007352 seconds
+NOTE:       cpu time                0.010981 seconds (149.36%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.008406 seconds
+NOTE:       cpu time                0.014090 seconds (167.62%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.51M (0.00%)
+901  	var MSRP;
+902  	output out=mycas.cars_means mean=std=min=max=n=range= / autoname;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005983 seconds
+NOTE:       cpu time                0.009413 seconds (157.33%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007004 seconds
+NOTE:       cpu time                0.010657 seconds (152.16%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.009453 seconds
+NOTE:       cpu time                0.015826 seconds (167.42%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.51M (0.00%)
+903  	by Type;
+904  run;
+
+NOTE: The CAS aggregation.aggregate action will be used to perform the initial summarization.
+NOTE: Executing action 'sessionProp.getSessOpt'.
+NOTE: Action 'sessionProp.getSessOpt' used (Total process time):
+NOTE:       real time               0.005701 seconds
+NOTE:       cpu time                0.008885 seconds (155.85%)
+42                                                         The SAS System                      Tuesday, October 31, 2023 11:06:20 AM
+
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.06M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006512 seconds
+NOTE:       cpu time                0.010631 seconds (163.25%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'sessionProp.getSessOpt'.
+NOTE: Action 'sessionProp.getSessOpt' used (Total process time):
+NOTE:       real time               0.005102 seconds
+NOTE:       cpu time                0.008457 seconds (165.76%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.06M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005204 seconds
+NOTE:       cpu time                0.008558 seconds (164.45%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.008204 seconds
+NOTE:       cpu time                0.014250 seconds (173.70%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.51M (0.00%)
+NOTE: Executing action 'table.fetch'.
+NOTE: Action 'table.fetch' used (Total process time):
+NOTE:       real time               0.037048 seconds
+NOTE:       cpu time                0.119829 seconds (323.44%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  39.80M (0.00%)
+NOTE: The above message was for the following BY group:
+      Type=Hybrid
+NOTE: Executing action 'sessionProp.getSessOpt'.
+NOTE: Action 'sessionProp.getSessOpt' used (Total process time):
+NOTE:       real time               0.006132 seconds
+NOTE:       cpu time                0.010098 seconds (164.68%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.06M (0.00%)
+NOTE: The data set MYCAS.CARS_MEANS has 6 observations and 9 variables.
+NOTE: Executing action 'table.addTable'.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.42 seconds
+      user cpu time       0.08 seconds
+      system cpu time     0.01 seconds
+      memory              2304.37k
+      OS Memory           39840.00k
+      Timestamp           10/31/2023 03:06:20 PM
+      Step Count                        25  Switch Count  5
+      Page Faults                       0
+43                                                         The SAS System                      Tuesday, October 31, 2023 11:06:20 AM
+
+      Page Reclaims                     644
+      Page Swaps                        0
+      Voluntary Context Switches        537
+      Involuntary Context Switches      2
+      Block Input Operations            0
+      Block Output Operations           16
+      
+
+905  
+906  proc print data=mycas.cars_means;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006482 seconds
+NOTE:       cpu time                0.009599 seconds (148.09%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006154 seconds
+NOTE:       cpu time                0.009226 seconds (149.92%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.008091 seconds
+NOTE:       cpu time                0.013439 seconds (166.10%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.51M (0.00%)
+907  run;
+
+NOTE: Executing action 'table.fetch'.
+NOTE: Action 'table.fetch' used (Total process time):
+NOTE:       real time               0.015258 seconds
+NOTE:       cpu time                0.024769 seconds (162.33%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  5.03M (0.00%)
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.10 seconds
+      user cpu time       0.03 seconds
+      system cpu time     0.01 seconds
+      memory              481.50k
+      OS Memory           38296.00k
+      Timestamp           10/31/2023 03:06:21 PM
+      Step Count                        26  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     133
+      Page Swaps                        0
+      Voluntary Context Switches        130
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+908  
+44                                                         The SAS System                      Tuesday, October 31, 2023 11:06:21 AM
+
+909  
+910  /*****************************************************************************/
+911  /*  Analyze Data Using Viya Procedures                                       */
+912  /*****************************************************************************/
+913  proc mdsummary data=mycas.cars;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006380 seconds
+NOTE:       cpu time                0.010248 seconds (160.63%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007320 seconds
+NOTE:       cpu time                0.010729 seconds (146.57%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.009604 seconds
+NOTE:       cpu time                0.016149 seconds (168.15%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.51M (0.00%)
+914    groupby Type;
+915    var MSRP;
+916    output out=mycas.cars_mdsstats (replace=yes);
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006181 seconds
+NOTE:       cpu time                0.009195 seconds (148.76%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.48M (0.00%)
+917  quit;
+
+NOTE: Executing action 'simple.summary'.
+NOTE: Action 'simple.summary' used (Total process time):
+NOTE:       real time               0.032740 seconds
+NOTE:       cpu time                0.094901 seconds (289.86%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  36.83M (0.00%)
+NOTE:       bytes moved             3.04K
+NOTE: The Cloud Analytic Services server processed the request in 0.03274 seconds.
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005770 seconds
+NOTE:       cpu time                0.009313 seconds (161.40%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.007608 seconds
+NOTE:       cpu time                0.012726 seconds (167.27%)
+45                                                         The SAS System                      Tuesday, October 31, 2023 11:06:21 AM
+
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.51M (0.00%)
+NOTE: The data set MYCAS.CARS_MDSSTATS has 6 observations and 19 variables.
+NOTE: PROCEDURE MDSUMMARY used (Total process time):
+      real time           0.14 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.00 seconds
+      memory              376.12k
+      OS Memory           38296.00k
+      Timestamp           10/31/2023 03:06:21 PM
+      Step Count                        27  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     177
+      Page Swaps                        0
+      Voluntary Context Switches        216
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+918  
+919  proc print data=mycas.cars_mdsstats;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005951 seconds
+NOTE:       cpu time                0.009116 seconds (153.18%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.005707 seconds
+NOTE:       cpu time                0.008903 seconds (156.00%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.009878 seconds
+NOTE:       cpu time                0.015858 seconds (160.54%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.51M (0.00%)
+920  run;
+
+NOTE: Executing action 'table.fetch'.
+NOTE: Action 'table.fetch' used (Total process time):
+NOTE:       real time               0.016430 seconds
+NOTE:       cpu time                0.027887 seconds (169.73%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  5.18M (0.00%)
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.11 seconds
+      user cpu time       0.04 seconds
+      system cpu time     0.00 seconds
+      memory              559.28k
+46                                                         The SAS System                      Tuesday, October 31, 2023 11:06:21 AM
+
+      OS Memory           38296.00k
+      Timestamp           10/31/2023 03:06:21 PM
+      Step Count                        28  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     113
+      Page Swaps                        0
+      Voluntary Context Switches        128
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           16
+      
+
+921  
+922  
+923  /*****************************************************************************/
+924  /*  Query SAS Dataset using Proc SQL and CAS Table Using Proc FedSQL         */
+925  /*****************************************************************************/
+926  proc sql;
+927  /* create table mycas.cars_sql as    */
+928     select Make
+929          , Model
+930          , MSRP
+931          , (MPG_City + MPG_Highway)/2 as Average_MPG format=9.2
+932       from sashelp.cars
+933       where calculated Average_MPG > 25
+934         and Origin eq 'USA'
+935       order by MSRP
+936       ;
+937  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.02 seconds
+      user cpu time       0.03 seconds
+      system cpu time     0.00 seconds
+      memory              8343.71k
+      OS Memory           46784.00k
+      Timestamp           10/31/2023 03:06:21 PM
+      Step Count                        29  Switch Count  1
+      Page Faults                       0
+      Page Reclaims                     823
+      Page Swaps                        0
+      Voluntary Context Switches        35
+      Involuntary Context Switches      3
+      Block Input Operations            8
+      Block Output Operations           0
+      
+
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006289 seconds
+NOTE:       cpu time                0.010830 seconds (172.21%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.50M (0.00%)
+938  
+939  %if not %sysfunc(exist(mycas.US_FuelEfficient_Cars)) %then %do;
+940  
+941  	
+941!  proc fedsql sessref=Mysession;
+47                                                         The SAS System                      Tuesday, October 31, 2023 11:06:21 AM
+
+942  	create table casuser.US_FuelEfficient_Cars as
+943  	   select Make
+944  	        , Model
+945  	        , MSRP
+946  	        , put((MPG_City + MPG_Highway)/2, 9.2) as Average_MPG
+947  	     from casuser.cars
+948  	     where (MPG_City + MPG_Highway)/2 > 25
+949  	       and Origin = 'USA'
+950  	;
+NOTE: Executing action 'fedSql.execDirect'.
+NOTE: CASDAL driver. Creation of an NVARCHAR column has been requested, but is not supported by the CASDAL driver. A VARCHAR column 
+      will be created instead.
+NOTE: Table US_FUELEFFICIENT_CARS was created in caslib CASUSER(T.Winand@sas.com) with 33 rows returned.
+NOTE: Action 'fedSql.execDirect' used (Total process time):
+NOTE:       real time               0.165373 seconds
+NOTE:       cpu time                1.263740 seconds (764.18%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  632.70M (0.03%)
+NOTE:       bytes moved             5.35K
+951  	select *
+952  	   from casuser.US_FuelEfficient_Cars
+953  	   order by MSRP
+954  	;
+NOTE: Executing action 'fedSql.execDirect'.
+NOTE: Action 'fedSql.execDirect' used (Total process time):
+NOTE:       real time               0.051623 seconds
+NOTE:       cpu time                0.116979 seconds (226.60%)
+NOTE:       data movement time      0.000702 seconds
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  16.13M (0.00%)
+NOTE:       bytes moved             2.27K
+955  	quit;
+
+NOTE: PROCEDURE FEDSQL used (Total process time):
+      real time           0.28 seconds
+      user cpu time       0.03 seconds
+      system cpu time     0.00 seconds
+      memory              409.03k
+      OS Memory           40124.00k
+      Timestamp           10/31/2023 03:06:21 PM
+      Step Count                        30  Switch Count  2
+      Page Faults                       0
+      Page Reclaims                     139
+      Page Swaps                        0
+      Voluntary Context Switches        101
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           16
+      
+
+956  
+957  %end;
+958  
+959  proc print data=casuser.US_FuelEfficient_Cars;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+48                                                         The SAS System                      Tuesday, October 31, 2023 11:06:21 AM
+
+NOTE:       real time               0.008432 seconds
+NOTE:       cpu time                0.012665 seconds (150.20%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.90M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007806 seconds
+NOTE:       cpu time                0.011230 seconds (143.86%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.90M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.010583 seconds
+NOTE:       cpu time                0.015177 seconds (143.41%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.54M (0.00%)
+960  run;
+
+NOTE: Executing action 'table.fetch'.
+NOTE: Action 'table.fetch' used (Total process time):
+NOTE:       real time               0.017888 seconds
+NOTE:       cpu time                0.027842 seconds (155.65%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  5.00M (0.00%)
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.13 seconds
+      user cpu time       0.05 seconds
+      system cpu time     0.00 seconds
+      memory              439.96k
+      OS Memory           40124.00k
+      Timestamp           10/31/2023 03:06:21 PM
+      Step Count                        31  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     157
+      Page Swaps                        0
+      Voluntary Context Switches        129
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           16
+      
+
+961  
+962  cas mySession listhistory;
+NOTE: Executing action 'builtins.history'.
+NOTE: 151: action table.columnInfo / table={name='CARS_MDSSTATS', caslib='CASUSER(T.Winand@sas.com)'}, extended=true, 
+      sastypes=false; /* (SUCCESS) */
+NOTE: 152: action table.fetch / table={name='CARS_MDSSTATS', caslib='CASUSER(T.Winand@sas.com)', vars={{name='Type'}, 
+      {name='Type_f'}, {name='_Column_'}, {name='_Min_'}, {name='_Max_'}, {name='_NObs_'}, {name='_NMiss_'}, {name='_Mean_'}, 
+      {name='_Sum_'}, {name='_Std_'}, {name='_StdErr_'}, {name='_Var_'}, {name='_USS_'}, {name='_CSS_'}, {name='_CV_'}, 
+      {name='_T_'}, {name='_PRT_'}, {name='_Skewness_'}, {name='_Kurtosis_'}}}, from=1, to=6, sasTypes=false, index=false; /* 
+      (SUCCESS) */
+NOTE: 153: action table.tableInfo / name='US_FUELEFFICIENT_CARS', caslib='CASUSER(T.Winand@sas.com)', quiet=true; /* (SUCCESS) */
+NOTE: 154: action builtins.loadActionSet / actionSet='fedsql'; /* (SUCCESS) */
+NOTE: 155: action fedSql.execDirect / query='create table casuser.US_FuelEfficient_Cars as select Make , Model , MSRP , 
+49                                                         The SAS System                      Tuesday, October 31, 2023 11:06:21 AM
+
+      put((MPG_City + MPG_Highway)/2, 9.2) as Average_MPG from casuser.cars where (MPG_City + MPG_Highway)/2 > 25 and Origin = 
+      ''USA''', validateOnly=false, cntl={}, nullBehavior='MISSING'; /* (SUCCESS) */
+NOTE: 156: action fedSql.execDirect / query='select * from casuser.US_FuelEfficient_Cars order by MSRP', validateOnly=false, 
+      cntl={}, nullBehavior='MISSING'; /* (SUCCESS) */
+NOTE: 157: action table.tableInfo / name='US_FUELEFFICIENT_CARS', caslib='CASUSER(T.Winand@sas.com)', quiet=true; /* (SUCCESS) */
+NOTE: 158: action table.tableInfo / name='US_FUELEFFICIENT_CARS', caslib='CASUSER(T.Winand@sas.com)', quiet=true; /* (SUCCESS) */
+NOTE: 159: action table.columnInfo / table={name='US_FUELEFFICIENT_CARS', caslib='CASUSER(T.Winand@sas.com)'}, extended=true, 
+      sastypes=false; /* (SUCCESS) */
+NOTE: 160: action table.fetch / table={name='US_FUELEFFICIENT_CARS', caslib='CASUSER(T.Winand@sas.com)', vars={{name='Make'}, 
+      {name='Model'}, {name='MSRP'}, {name='AVERAGE_MPG'}}}, from=1, to=33, sasTypes=false, index=false; /* (SUCCESS) */
+NOTE: Action 'builtins.history' used (Total process time):
+NOTE:       real time               0.007136 seconds
+NOTE:       cpu time                0.010264 seconds (143.83%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.09M (0.00%)
+NOTE: Request to LISTHISTORY completed for session MYSESSION.
+963  
+964  proc casutil;
+NOTE: The UUID 'c3541769-5dd8-6742-b8de-83ee98882494' is connected using session MYSESSION.
+965     contents casdata="US_FuelEfficient_Cars" incaslib="casuser";
+NOTE: Executing action 'table.tableExists'.
+NOTE: Action 'table.tableExists' used (Total process time):
+NOTE:       real time               0.008210 seconds
+NOTE:       cpu time                0.011399 seconds (138.84%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.48M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007786 seconds
+NOTE:       cpu time                0.009541 seconds (122.54%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.90M (0.00%)
+NOTE: Executing action 'table.tableDetails'.
+NOTE: Action 'table.tableDetails' used (Total process time):
+NOTE:       real time               0.011038 seconds
+NOTE:       cpu time                0.013591 seconds (123.13%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.010346 seconds
+NOTE:       cpu time                0.015071 seconds (145.67%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.53M (0.00%)
+NOTE: Cloud Analytic Services processed the combined requests in 0.029594 seconds.
+966  run;
+
+967  
+968  
+969  
+970  /*****************************************************************************/
+971  /* Creating and Using a User-defined Format in SAS9 (Compute Server)         */
+972  /*****************************************************************************/
+50                                                         The SAS System                      Tuesday, October 31, 2023 11:06:21 AM
+
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.09 seconds
+      user cpu time       0.04 seconds
+      system cpu time     0.00 seconds
+      memory              777.01k
+      OS Memory           40380.00k
+      Timestamp           10/31/2023 03:06:21 PM
+      Step Count                        32  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     84
+      Page Swaps                        0
+      Voluntary Context Switches        93
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           16
+      
+
+973  proc format;
+974    value pricerange_sas low-25000=”Low”
+975                         25000<-50000=”Mid”
+976                         50000<-75000=”High”
+977                         75000<-high=”Luxury”;
+NOTE: Format PRICERANGE_SAS has been output.
+978  run;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.01 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.01 seconds
+      memory              247.03k
+      OS Memory           40124.00k
+      Timestamp           10/31/2023 03:06:21 PM
+      Step Count                        33  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     70
+      Page Swaps                        0
+      Voluntary Context Switches        2
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           56
+      
+
+979  
+980  data cars_formatted;
+981    set sashelp.cars;
+982  
+983    format MSRP pricerange_sas.;
+984    keep Make Model MSRP MPG_Highway;
+985  run;
+
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set WORK.CARS_FORMATTED has 428 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.00 seconds
+      memory              636.62k
+51                                                         The SAS System                      Tuesday, October 31, 2023 11:06:21 AM
+
+      OS Memory           40380.00k
+      Timestamp           10/31/2023 03:06:21 PM
+      Step Count                        34  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     35
+      Page Swaps                        0
+      Voluntary Context Switches        0
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           136
+      
+
+986  
+987  proc print data=cars_formatted;
+988  run;
+
+NOTE: There were 428 observations read from the data set WORK.CARS_FORMATTED.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.24 seconds
+      user cpu time       0.24 seconds
+      system cpu time     0.00 seconds
+      memory              424.84k
+      OS Memory           40380.00k
+      Timestamp           10/31/2023 03:06:22 PM
+      Step Count                        35  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     41
+      Page Swaps                        0
+      Voluntary Context Switches        1
+      Involuntary Context Switches      4
+      Block Input Operations            0
+      Block Output Operations           144
+      
+
+989  
+990  
+991  /*****************************************************************************/
+992  /* Creating and Using a User-defined Format in CAS                           */
+993  /*****************************************************************************/
+994  proc format casfmtlib="casformats";
+NOTE: Both CAS based formats and catalog-based formats will be written. The CAS based formats will be written to the session 
+      MYSESSION.
+995    value pricerange_cas low-25000=”Low”
+996                         25000<-50000=”Mid”
+997                         50000<-75000=”High”
+998                         75000<-high=”Luxury”;
+NOTE: Executing action 'sessionProp.addFmtLib'.
+NOTE: Format library CASFORMATS added. Format search update using parameter APPEND completed.
+NOTE: Action 'sessionProp.addFmtLib' used (Total process time):
+NOTE:       real time               0.017610 seconds
+NOTE:       cpu time                0.025611 seconds (145.43%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.03M (0.00%)
+NOTE: Executing action 'sessionProp.addFormat'.
+NOTE: Action 'sessionProp.addFormat' used (Total process time):
+NOTE:       real time               0.006822 seconds
+NOTE:       cpu time                0.011244 seconds (164.82%)
+52                                                         The SAS System                      Tuesday, October 31, 2023 11:06:22 AM
+
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.12M (0.00%)
+Executing action 'sessionProp.addFormat'.
+Action 'sessionProp.addFormat' used (Total process time):
+      real time               0.006822 seconds
+      cpu time                0.011244 seconds (164.82%)
+      total nodes             5 (240 cores)
+      total memory            1.85T
+      memory                  1.12M (0.00%)
+NOTE: Format PRICERANGE_CAS has been output.
+999  run;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.04 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.00 seconds
+      memory              291.50k
+      OS Memory           40380.00k
+      Timestamp           10/31/2023 03:06:22 PM
+      Step Count                        36  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     110
+      Page Swaps                        0
+      Voluntary Context Switches        25
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+1000  
+1001  data mycas.cars_formatted;
+1002   set sashelp.cars;
+1003  
+1004    format MSRP pricerange_cas.;
+1005    keep Make Model MSRP MPG_Highway;
+1006  run;
+
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007918 seconds
+NOTE:       cpu time                0.009809 seconds (123.88%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.50M (0.00%)
+NOTE: There were 428 observations read from the data set SASHELP.CARS.
+NOTE: The data set MYCAS.CARS_FORMATTED has 428 observations and 4 variables.
+NOTE: Executing action 'table.addTable'.
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      user cpu time       0.02 seconds
+      system cpu time     0.00 seconds
+      memory              941.31k
+      OS Memory           40896.00k
+      Timestamp           10/31/2023 03:06:22 PM
+      Step Count                        37  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     180
+53                                                         The SAS System                      Tuesday, October 31, 2023 11:06:22 AM
+
+      Page Swaps                        0
+      Voluntary Context Switches        85
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+1007  
+1008  proc mdsummary data=mycas.cars_formatted;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007093 seconds
+NOTE:       cpu time                0.009202 seconds (129.73%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.90M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007354 seconds
+NOTE:       cpu time                0.009475 seconds (128.84%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.90M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.009163 seconds
+NOTE:       cpu time                0.013836 seconds (151.00%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.53M (0.00%)
+1009    var MPG_Highway;
+1010    groupby MSRP / out=mycas.cars_summary;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.018593 seconds
+NOTE:       cpu time                0.023176 seconds (124.65%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.50M (0.00%)
+1011  run;
+
+NOTE: Executing action 'simple.summary'.
+NOTE: Action 'simple.summary' used (Total process time):
+NOTE:       real time               0.042356 seconds
+NOTE:       cpu time                0.104400 seconds (246.48%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  37.07M (0.00%)
+NOTE:       bytes moved             2.59K
+NOTE: The Cloud Analytic Services server processed the request in 0.042356 seconds.
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.008080 seconds
+NOTE:       cpu time                0.011035 seconds (136.57%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.90M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+54                                                         The SAS System                      Tuesday, October 31, 2023 11:06:22 AM
+
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.009982 seconds
+NOTE:       cpu time                0.014907 seconds (149.34%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.54M (0.00%)
+NOTE: The data set MYCAS.CARS_SUMMARY has 4 observations and 19 variables.
+NOTE: PROCEDURE MDSUMMARY used (Total process time):
+      real time           0.17 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.00 seconds
+      memory              412.20k
+      OS Memory           40380.00k
+      Timestamp           10/31/2023 03:06:22 PM
+      Step Count                        38  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     115
+      Page Swaps                        0
+      Voluntary Context Switches        215
+      Involuntary Context Switches      1
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+1012  
+1013  proc print data=mycas.cars_summary;
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006816 seconds
+NOTE:       cpu time                0.010714 seconds (157.19%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.90M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006879 seconds
+NOTE:       cpu time                0.010426 seconds (151.56%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.90M (0.00%)
+NOTE: Executing action 'table.columnInfo'.
+NOTE: Action 'table.columnInfo' used (Total process time):
+NOTE:       real time               0.010845 seconds
+NOTE:       cpu time                0.017216 seconds (158.75%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  2.54M (0.00%)
+1014  run;
+
+NOTE: Executing action 'table.fetch'.
+NOTE: Action 'table.fetch' used (Total process time):
+NOTE:       real time               0.015400 seconds
+NOTE:       cpu time                0.029476 seconds (191.40%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  5.20M (0.00%)
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.15 seconds
+55                                                         The SAS System                      Tuesday, October 31, 2023 11:06:22 AM
+
+      user cpu time       0.04 seconds
+      system cpu time     0.00 seconds
+      memory              567.01k
+      OS Memory           40380.00k
+      Timestamp           10/31/2023 03:06:22 PM
+      Step Count                        39  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     109
+      Page Swaps                        0
+      Voluntary Context Switches        125
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           16
+      
+
+1015  
+1016  /*****************************************************************************/
+1017  /* ViyaPgm_10: Cleaning Up                                                   */
+1018  /*****************************************************************************/
+1019  
+1020  /* LIST FILES AND TABLES ASSOCIATED WITH OUR CASLIB*/
+1021  proc casutil;
+NOTE: The UUID 'c3541769-5dd8-6742-b8de-83ee98882494' is connected using session MYSESSION.
+1022    list files incaslib=casuser;
+NOTE: Executing action 'table.caslibInfo'.
+NOTE: Action 'table.caslibInfo' used (Total process time):
+NOTE:       real time               0.006036 seconds
+NOTE:       cpu time                0.009697 seconds (160.65%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.fileInfo'.
+NOTE: Action 'table.fileInfo' used (Total process time):
+NOTE:       real time               0.013523 seconds
+NOTE:       cpu time                0.010644 seconds (78.71%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.85M (0.00%)
+NOTE: Cloud Analytic Services processed the combined requests in 0.019559 seconds.
+1023    list tables incaslib=casuser;
+NOTE: Executing action 'table.caslibInfo'.
+NOTE: Action 'table.caslibInfo' used (Total process time):
+NOTE:       real time               0.006376 seconds
+NOTE:       cpu time                0.010224 seconds (160.35%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.88M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.006674 seconds
+NOTE:       cpu time                0.010502 seconds (157.36%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.91M (0.00%)
+NOTE: Cloud Analytic Services processed the combined requests in 0.01305 seconds.
+1024  run;
+
+1025  
+56                                                         The SAS System                      Tuesday, October 31, 2023 11:06:22 AM
+
+1026  /* USING PROC CASUTIL TO SAVE IN MEMORY TABLES TO PERSISTENT STORAGE */
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.10 seconds
+      user cpu time       0.05 seconds
+      system cpu time     0.01 seconds
+      memory              979.68k
+      OS Memory           40892.00k
+      Timestamp           10/31/2023 03:06:22 PM
+      Step Count                        40  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     170
+      Page Swaps                        0
+      Voluntary Context Switches        98
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           16
+      
+
+1027  proc casutil;
+NOTE: The UUID 'c3541769-5dd8-6742-b8de-83ee98882494' is connected using session MYSESSION.
+1028    save casdata="cars" incaslib="casuser" replace;
+NOTE: Executing action 'table.save'.
+NOTE: Cloud Analytic Services saved the file cars.sashdat in caslib CASUSER(T.Winand@sas.com).
+NOTE: Action 'table.save' used (Total process time):
+NOTE:       real time               0.036036 seconds
+NOTE:       cpu time                0.042740 seconds (118.60%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  66.78M (0.00%)
+NOTE: The Cloud Analytic Services server processed the request in 0.036036 seconds.
+1029    save casdata="bigcars" incaslib="casuser" replace;
+NOTE: Executing action 'table.save'.
+NOTE: Cloud Analytic Services saved the file bigcars.sashdat in caslib CASUSER(T.Winand@sas.com).
+NOTE: Action 'table.save' used (Total process time):
+NOTE:       real time               9.577713 seconds
+NOTE:       cpu time                7.845840 seconds (81.92%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  338.79M (0.02%)
+NOTE: The Cloud Analytic Services server processed the request in 9.577713 seconds.
+1030  quit;
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           9.64 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.00 seconds
+      memory              246.40k
+      OS Memory           40380.00k
+      Timestamp           10/31/2023 03:06:32 PM
+      Step Count                        41  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     78
+      Page Swaps                        0
+      Voluntary Context Switches        104
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+57                                                         The SAS System                      Tuesday, October 31, 2023 11:06:32 AM
+
+      
+
+1031  
+1032  
+1033  /* RELEASING OUR TABLES FROM MEMORY */
+1034  proc casutil;
+NOTE: The UUID 'c3541769-5dd8-6742-b8de-83ee98882494' is connected using session MYSESSION.
+1035    droptable incaslib="casuser" casdata="cars";
+NOTE: Executing action 'table.dropTable'.
+NOTE: Cloud Analytic Services dropped table cars from caslib CASUSER(T.Winand@sas.com).
+NOTE: Action 'table.dropTable' used (Total process time):
+NOTE:       real time               0.011397 seconds
+NOTE:       cpu time                0.012760 seconds (111.96%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.44M (0.00%)
+NOTE: The Cloud Analytic Services server processed the request in 0.011397 seconds.
+1036    droptable incaslib="casuser" casdata="bigcars";
+NOTE: Executing action 'table.dropTable'.
+NOTE: Cloud Analytic Services dropped table bigcars from caslib CASUSER(T.Winand@sas.com).
+NOTE: Action 'table.dropTable' used (Total process time):
+NOTE:       real time               0.403543 seconds
+NOTE:       cpu time                1.512279 seconds (374.75%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.44M (0.00%)
+NOTE: The Cloud Analytic Services server processed the request in 0.403543 seconds.
+1037    droptable incaslib="casuser" casdata="bigcars_score";
+NOTE: Executing action 'table.dropTable'.
+NOTE: Cloud Analytic Services dropped table bigcars_score from caslib CASUSER(T.Winand@sas.com).
+NOTE: Action 'table.dropTable' used (Total process time):
+NOTE:       real time               0.568240 seconds
+NOTE:       cpu time                2.183016 seconds (384.17%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.42M (0.00%)
+NOTE: The Cloud Analytic Services server processed the request in 0.56824 seconds.
+1038    droptable incaslib="casuser" casdata="cars2";
+NOTE: Executing action 'table.dropTable'.
+NOTE: Cloud Analytic Services dropped table cars2 from caslib CASUSER(T.Winand@sas.com).
+NOTE: Action 'table.dropTable' used (Total process time):
+NOTE:       real time               0.008359 seconds
+NOTE:       cpu time                0.012286 seconds (146.98%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.42M (0.00%)
+NOTE: The Cloud Analytic Services server processed the request in 0.008359 seconds.
+1039    droptable incaslib="casuser" casdata="myproducts";
+NOTE: Executing action 'table.dropTable'.
+NOTE: Cloud Analytic Services dropped table myproducts from caslib CASUSER(T.Winand@sas.com).
+NOTE: Action 'table.dropTable' used (Total process time):
+NOTE:       real time               0.008654 seconds
+NOTE:       cpu time                0.012806 seconds (147.98%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.41M (0.00%)
+NOTE: The Cloud Analytic Services server processed the request in 0.008654 seconds.
+1040    droptable incaslib="casuser" casdata="mysales";
+58                                                         The SAS System                      Tuesday, October 31, 2023 11:06:33 AM
+
+NOTE: Executing action 'table.dropTable'.
+NOTE: Cloud Analytic Services dropped table mysales from caslib CASUSER(T.Winand@sas.com).
+NOTE: Action 'table.dropTable' used (Total process time):
+NOTE:       real time               0.007848 seconds
+NOTE:       cpu time                0.011533 seconds (146.95%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.41M (0.00%)
+NOTE: The Cloud Analytic Services server processed the request in 0.007848 seconds.
+1041  quit;
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           1.13 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.01 seconds
+      memory              235.46k
+      OS Memory           40380.00k
+      Timestamp           10/31/2023 03:06:33 PM
+      Step Count                        42  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     203
+      Page Swaps                        0
+      Voluntary Context Switches        197
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+1042  
+1043  
+1044  /* LIST FILES AND TABLES ASSOCIATED WITH OUR CASLIB TO SEE WHAT HAS CHANGED */
+1045  proc casutil;
+NOTE: The UUID 'c3541769-5dd8-6742-b8de-83ee98882494' is connected using session MYSESSION.
+1046    list files incaslib=casuser;
+NOTE: Executing action 'table.caslibInfo'.
+NOTE: Action 'table.caslibInfo' used (Total process time):
+NOTE:       real time               0.007214 seconds
+NOTE:       cpu time                0.010329 seconds (143.18%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.84M (0.00%)
+NOTE: Executing action 'table.fileInfo'.
+NOTE: Action 'table.fileInfo' used (Total process time):
+NOTE:       real time               0.326652 seconds
+NOTE:       cpu time                0.317685 seconds (97.25%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.82M (0.00%)
+NOTE: Cloud Analytic Services processed the combined requests in 0.333866 seconds.
+1047    list tables incaslib=casuser;
+NOTE: Executing action 'table.caslibInfo'.
+NOTE: Action 'table.caslibInfo' used (Total process time):
+NOTE:       real time               0.007462 seconds
+NOTE:       cpu time                0.010817 seconds (144.96%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.84M (0.00%)
+NOTE: Executing action 'table.tableInfo'.
+59                                                         The SAS System                      Tuesday, October 31, 2023 11:06:33 AM
+
+NOTE: Action 'table.tableInfo' used (Total process time):
+NOTE:       real time               0.007722 seconds
+NOTE:       cpu time                0.011534 seconds (149.37%)
+NOTE:       total nodes             5 (240 cores)
+NOTE:       total memory            1.85T
+NOTE:       memory                  1.86M (0.00%)
+NOTE: Cloud Analytic Services processed the combined requests in 0.015184 seconds.
+1048  run;
+
+1049  
+1050  /* TERMINATE SESSION AND RELEASE RESOURCES */
+1051  cas mySession terminate;
+WARNING: You cannot disconnect or terminate session MYSESSION until the procedure completes. Place the statement with the 
+         disconnect or terminate option after the QUIT statement.
+ERROR: Request for TERMINATE failed for session MYSESSION.
+1052  
+1053  
+1054  /* region: Generated postamble */
+1055  /* Close ODS destinations */
+1056  &graphterm; ;*';*";*/;run;quit;
+
+NOTE: PROCEDURE CASUTIL used (Total process time):
+      real time           0.42 seconds
+      user cpu time       0.05 seconds
+      system cpu time     0.00 seconds
+      memory              863.93k
+      OS Memory           40892.00k
+      Timestamp           10/31/2023 03:06:33 PM
+      Step Count                        43  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     187
+      Page Swaps                        0
+      Voluntary Context Switches        97
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           16
+      
+
+1057  quit;run;
+1058  ods html5 (id=web) close;
+1059  %if %sysfunc(fileref(_gsfname)) lt 0 %then %do;
+1060      filename _gsfname clear;
+NOTE: Fileref _GSFNAME has been deassigned.
+1061  %end;
+1062  %studio_capture_background_log;
+
