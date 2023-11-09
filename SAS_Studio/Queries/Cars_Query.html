@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html class="ods_1EB94592-A931-E041-9091-26A8BD3FBDBE" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta content="SAS V.04.00" name="generator"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data: ;"/>
+<title>Results:Cars_Query.cqy.sas</title>
+<style>
+/*<![CDATA[*/
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c section > table, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c section > pre, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c div > table,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c div > pre, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c article > table, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c article > pre,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j section > table, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j section > pre, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j div > table,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j div > pre, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j article > table, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j article > pre,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c p.note, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c p.warning, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c p.error, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c p.fatal,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j p.note, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j p.warning, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j p.error, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j p.fatal,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.c > table.layoutcontainer, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.l table, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.l pre, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.l p.note,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.l p.warning, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.l p.error, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.l p.fatal { margin-left: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.c table, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.c pre, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.c p.note,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.c p.warning, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.c p.error, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.r table, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.r pre, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.r p.note,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.r table, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.r pre, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.r p.note,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.r p.warning, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.r p.error, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion.r p.fatal { margin-right: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE article, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE aside, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE details, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE figcaption, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE figure, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE footer, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE header, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE hgroup, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE nav, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE section { display: block }
+html.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE { font-size: 100% }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body { margin: 1em; font-size: 13px; line-height: 1.231 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE ul, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE ol { margin: 1em 0; padding: 0 0 0 40px }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE dd { margin: 0 0 0 40px }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE nav ul, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE img { border: 0; vertical-align: middle }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE svg:not(:root) { overflow: hidden }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE figure { margin: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE table { border-collapse: collapse; border-spacing: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutcontainer { border-collapse: separate; border-spacing: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE p { margin-top: 0; text-align: left }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE h1.heading1 { text-align: left }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE h2.heading2 { text-align: left }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE h3.heading3 { text-align: left }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE h4.heading4 { text-align: left }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE h5.heading5 { text-align: left }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE h6.heading6 { text-align: left }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE span { text-align: left }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE table { margin-bottom: 1em }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE td, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE th { text-align: left; padding: 3px 6px; vertical-align: top }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE td[class$="fixed"], .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE th[class$="fixed"] { white-space: pre }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE section, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE article { padding-top: 1px; padding-bottom: 8px }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .stacked-value { text-align: left; display: block }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .stacked-cell > .stacked-value, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE td.data > td.data, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE th.data > td.data, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE th.data > th.data, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE td.data > th.data, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE th.header > th.header { border: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .stacked-cell > div.data { border-width: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer > p { margin: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .batch { display: table }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .toc { display: none }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .proc_note_group, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .proc_title_group { margin-bottom: 1em }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE p.proctitle { margin: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE p.note, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE p.warning, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE p.error, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE p.fatal { display: table }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .notebanner, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .warnbanner, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .errorbanner, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .fatalbanner,
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .notecontent, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .warncontent, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .errorcontent, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .fatalcontent { display: table-cell; padding: 0.5em }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .notebanner, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .warnbanner, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .errorbanner, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .fatalbanner { padding-right: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body > div > ol li { text-align: left }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .beforecaption > h4 { margin-top: 0; margin-bottom: 0 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .c { text-align: center }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .r { text-align: right }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .l { text-align: left }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .j { text-align: justify }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .d { text-align: right }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .b { vertical-align: bottom }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .m { vertical-align: middle }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .t { vertical-align: top }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .accessiblecaption {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE a:active { color: #626f80 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .aftercaption {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4pt;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .batch > colgroup {
+    border-left: 1px solid #696969;
+    border-right: 1px solid #696969;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .batch > tbody, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .batch > thead, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .batch > tfoot {
+    border-top: 1px solid #696969;
+    border-bottom: 1px solid #696969;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .batch { border: hidden; }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .batch {
+    background-color: #ffffff;
+    border: 1px solid #696969;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #2a3037;
+    font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .beforecaption {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .body {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bodydate {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bycontentfolder {
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .byline {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bylinecontainer > col, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bylinecontainer > colgroup > col, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bylinecontainer > colgroup, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bylinecontainer > tr, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bylinecontainer > * > tr, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bylinecontainer > thead, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bylinecontainer > tbody, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bylinecontainer > tfoot { border: none; }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .bylinecontainer {
+    background-color: #ffffff;
+    border: none;
+    border-spacing: 1px;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .caption {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .cell, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .container {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .contentfolder, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .contentitem {
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .contentproclabel, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .contentprocname {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .contents {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .contentsdate {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .contenttitle {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .continued {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    width: 100%;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .data {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #2a3037;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .dataempty {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .datafixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .datastrong {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .datastrongfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .date {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .document {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .errorbanner {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .errorcontent {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .errorcontentfixed {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Courier New', Courier;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .extendedpage {
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 1pt;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .fatalbanner {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .fatalcontent {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .fatalcontentfixed {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Courier New', Courier;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .folderaction {
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .footer {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .footeremphasis {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .footeremphasisfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .footerempty {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .footerfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .footerstrong {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .footerstrongfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .frame {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .graph > colgroup {
+    border-left: 1px solid #696969;
+    border-right: 1px solid #696969;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .graph > tbody, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .graph > thead, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .graph > tfoot {
+    border-top: 1px solid #696969;
+    border-bottom: 1px solid #696969;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .graph { border: hidden; }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .graph {
+    background-color: #ffffff;
+    border: 1px solid #696969;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .header {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .headeremphasis {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .headeremphasisfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .headerempty {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .headerfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .headersandfooters {
+    background-color: #ffffff;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .headerstrong {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .headerstrongfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .heading1 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 24pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .heading2 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 18pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .heading3 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .heading4 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 12pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .heading5 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .heading6 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .index {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .indexaction, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .indexitem {
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .indexprocname {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .indextitle {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutcontainer, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .layoutregion {
+    border-width: 0;
+    border-spacing: 30px;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .linecontent {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE a:link { color: #525f70 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .list {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .list10 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .list2 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .list3, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .list4, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .list5, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .list6, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .list7, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .list8, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .list9 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .listitem {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .listitem10 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .listitem2 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .listitem3, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .listitem4, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .listitem5, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .listitem6, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .listitem7, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .listitem8, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .listitem9 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .note {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .notebanner {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .notecontent {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .notecontentfixed {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Courier New', Courier;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .output > colgroup {
+    border-left: 1px solid #696969;
+    border-right: 1px solid #696969;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .output > tbody, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .output > thead, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .output > tfoot {
+    border-top: 1px solid #696969;
+    border-bottom: 1px solid #696969;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .output { border: hidden; }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .output {
+    background-color: #ffffff;
+    border: 1px solid #696969;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .pageno {
+    background-color: #ffffff;
+    border-spacing: 0;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .pages {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .pagesdate {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .pagesitem {
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .pagesproclabel, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .pagesprocname {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .pagestitle {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .paragraph {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .parskip > col, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .parskip > colgroup > col, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .parskip > colgroup, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .parskip > tr, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .parskip > * > tr, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .parskip > thead, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .parskip > tbody, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .parskip > tfoot { border: none; }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .prepage {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .proctitle {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .proctitlefixed {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowfooter {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowfooteremphasis {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowfooteremphasisfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowfooterempty {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowfooterfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowfooterstrong {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowfooterstrongfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowheader {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowheaderemphasis {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowheaderemphasisfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowheaderempty {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowheaderfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowheaderstrong {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .rowheaderstrongfixed {
+    background-color: #ffffff;
+    border: 1px solid #ebedef;
+    color: #2a3037;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemfooter, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemfooter10, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemfooter2, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemfooter3, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemfooter4, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemfooter5, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemfooter6, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemfooter7, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemfooter8, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemfooter9 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemtitle, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemtitle10, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemtitle2, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemtitle3, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemtitle4, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemtitle5, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemtitle6, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemtitle7, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemtitle8, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systemtitle9 {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer > col, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer > colgroup > col, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer > colgroup, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer > tr, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer > * > tr, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer > thead, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer > tbody, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer > tfoot { border: none; }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .systitleandfootercontainer {
+    background-color: #ffffff;
+    border: none;
+    border-spacing: 1px;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .table > col, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .table > colgroup > col {
+    border-left: 1px solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .table > tr, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .table > * > tr {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .table { border: hidden; }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .table {
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .titleandnotecontainer > col, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .titleandnotecontainer > colgroup > col, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .titleandnotecontainer > colgroup, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .titleandnotecontainer > tr, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .titleandnotecontainer > * > tr, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .titleandnotecontainer > thead, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .titleandnotecontainer > tbody, .ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .titleandnotecontainer > tfoot { border: none; }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .titleandnotecontainer {
+    background-color: #ffffff;
+    border: none;
+    border-spacing: 1px;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .titlesandfooters {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .usertext {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE a:visited { color: #626f80 }
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .warnbanner {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .warncontent {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Avenir Next for SAS', Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1EB94592-A931-E041-9091-26A8BD3FBDBE .warncontentfixed {
+    background-color: #ffffff;
+    color: #696969;
+    font-family: 'Courier New', Courier;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+/*]]>*/
+</style>
+</head>
+<body class="body">
+<div id="div_1EB94592-A931-E041-9091-26A8BD3FBDBE" class="c body">
+<h1 class="body toc">Results:Cars_Query.cqy.sas</h1>
+</div>
+</body>
+</html>

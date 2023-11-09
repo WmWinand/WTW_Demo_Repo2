@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<Snippet schemaVersion="1.0">
+
+	<Registration>
+		<Abbreviation></Abbreviation>
+		<Description></Description>
+		<Procedures></Procedures>
+		<Language>SAS</Language>
+		<Version></Version>
+	</Registration>
+
+	<CodeTemplate><![CDATA[
+cas mySession terminate;]]></CodeTemplate>
+
+</Snippet>

@@ -1,0 +1,222 @@
+<Task revision="1" schemaVersion="7.3">
+	<Registration>
+	    <Name>List Data.ctk</Name>
+	    <Description>The List Data task displays the contents of a table as a report.</Description>
+	    <GUID>454536B-485B-493E-B21A-EF19D7DA3E1C</GUID>
+		<Procedures>PRINT SORT</Procedures>
+		<Links>
+         <Link href="https://documentation.sas.com/?softwareId=STUDIOBASIC&amp;softwareVersion=01&amp;softwareContextId=tasks&amp;requestor=inapp">SAS Studio Task Reference Guide</Link>
+         <Link href=""> </Link>
+         <Link href=""> </Link>
+		 <Link href="https://documentation.sas.com/?softwareId=MVADOC&amp;softwareVersion=01&amp;softwareContextId=proc_print&amp;requestor=inapp">The PRINT Procedure</Link>
+         <Link href=""> </Link>
+         <Link href=""> </Link>
+		 <Link href="https://documentation.sas.com/?softwareId=MVADOC&amp;softwareVersion=01&amp;softwareContextId=proc_sort&amp;requestor=inapp">The SORT Procedure</Link>
+         <Link href=""> </Link>
+         <Link href=""> </Link>         
+         <Link href="http://support.sas.com/training/studio">SAS Tutorials</Link>
+		</Links>
+	</Registration>
+	<Metadata>
+		<DataSources>
+			<DataSource name="DATASOURCE" where="true">
+				<Roles>
+					<Role maxVars="0" minVars="0" name="VAR" order="true" type="A">List variables:</Role>
+					<Role maxVars="0" minVars="0" name="BY" order="true" type="A">Group analysis by:</Role>
+					<Role maxVars="0" minVars="0" name="SUM" order="true" type="N">Total of:</Role>
+					<Role maxVars="0" minVars="0" name="ID" order="true" type="A">Identifying label:</Role>
+				</Roles>
+			</DataSource>
+		</DataSources>
+
+		<Options>
+			<Option defaultValue="all" inputType="combobox" name="ROWS2LIST">Rows to list:</Option>
+			<Option inputType="string" name="all">All rows</Option>
+			<Option inputType="string" name="firstnrows">First n rows</Option>
+			<!--<Option inputType="string" name="firstnpct">First n percent of rows</Option>-->
+			<!--<Option inputType="string" name="everynrow">Every nth row</Option>-->
+				<Option decimalPlaces="0" defaultValue="10" indent="1" inputType="numstepper" maxValue="999999" minValue="1" name="NVALUE" required="true">Amount (n):</Option>
+				<!--<Option decimalPlaces="0" defaultValue="25" indent="1" inputType="numstepper" maxValue="100" minValue="1" name="NPERCENT">Percent (n):</Option>-->
+
+			<Option inputType="string" name="DATATAB">Data</Option>
+			<Option inputType="string" name="DATAGROUP">Data</Option>
+			<Option inputType="string" name="ROLESGROUP">Roles</Option>
+
+			<Option inputType="string" name="OPTIONSTAB">Options</Option>
+			<Option inputType="string" name="BASICOPTIONS">Basic Options</Option>
+
+			<Option defaultValue="1" inputType="checkbox" name="OBS">Display row numbers</Option>
+			<Option indent="1" inputType="inputtext" name="OBSHEADING" width="250px">Column label:</Option>
+
+			<Option defaultValue="1" inputType="checkbox" name="LABEL">Use column labels as column headings</Option>
+
+			<Option defaultValue="0" inputType="checkbox" name="PRINTNUMROWS">Display number of rows</Option>
+
+			<Option defaultValue="0" inputType="checkbox" name="ROUND">Round values before summing the variable</Option>
+
+			<Option defaultValue="default" inputType="combobox" name="HEADING">Heading direction:</Option>
+			<Option inputType="string" name="default">Default</Option>
+			<Option inputType="string" name="horizontal">Horizontal</Option>
+			<Option inputType="string" name="vertical">Vertical</Option>
+
+			<Option defaultValue="default" inputType="combobox" name="WIDTH">Column width:</Option>
+			<Option inputType="string" name="full">Full</Option>
+			<Option inputType="string" name="minimum">Minimum</Option>
+			<Option inputType="string" name="uniform">Uniform</Option>
+			<Option inputType="string" name="uniformby">Uniform by</Option>
+
+			<Option defaultValue="0" inputType="checkbox" name="SPLITLABEL">Split labels</Option>
+			<Option defaultValue="*" indent="1" inputType="combobox" name="SPLITLABELVALUE">Split character:</Option>
+         
+         <Option inputType="string" name="titleText">List Data for {1}</Option>
+		</Options>
+	  </Metadata>
+	  <UI>
+		  <Container option="DATATAB">
+			  <Group open="true" option="DATAGROUP">
+				  <DataItem data="DATASOURCE"/>
+			  </Group>
+			  <Group open="true" option="ROLESGROUP">
+				  <RoleItem role="VAR"/>
+				  <RoleItem role="BY"/>
+				  <RoleItem role="SUM"/>
+				  <RoleItem role="ID"/>
+			  </Group>
+		  </Container>
+
+		  <Container option="OPTIONSTAB">
+
+			  <Group open="true" option="BASICOPTIONS">
+
+			  <OptionItem option="OBS"/>			
+			  <OptionItem option="OBSHEADING"/>	      
+			  <OptionItem option="LABEL"/>
+			  <OptionItem option="PRINTNUMROWS"/>
+			  <OptionItem option="ROUND"/>
+
+			  <OptionChoice option="HEADING">
+				<OptionItem option="default"/>
+				<OptionItem option="horizontal"/>
+				<OptionItem option="vertical"/>
+			  </OptionChoice>
+
+			  <OptionChoice option="WIDTH">
+				<OptionItem option="default"/>
+				<OptionItem option="full"/>
+				<OptionItem option="minimum"/>
+				<OptionItem option="uniform"/>
+				<OptionItem option="uniformby"/>
+			  </OptionChoice>
+
+			  <OptionItem option="SPLITLABEL"/>
+			  <OptionChoice option="SPLITLABELVALUE">
+				  <OptionValue>*</OptionValue>
+				  <OptionValue>!</OptionValue>
+				  <OptionValue>@</OptionValue>
+				  <OptionValue>#</OptionValue>
+				  <OptionValue>$</OptionValue>
+				  <OptionValue>%</OptionValue>
+				  <OptionValue>^</OptionValue>
+				  <OptionValue>&amp;</OptionValue>
+				  <OptionValue>+</OptionValue>
+				</OptionChoice>	      
+
+				<OptionChoice option="ROWS2LIST">
+					<OptionItem option="all"/>
+					<OptionItem option="firstnrows"/>
+			  </OptionChoice>
+			  <OptionItem option="NVALUE"/>
+
+			</Group>
+		  </Container>
+	  </UI>
+	<Dependencies>
+		<Dependency condition="$OBS=='1'">
+			<Target action="enable" conditionResult="true" option="OBSHEADING"/>
+			<Target action="disable" conditionResult="false" option="OBSHEADING"/>
+		</Dependency>
+		<Dependency condition="$SPLITLABEL=='1'">
+			<Target action="enable" conditionResult="true" option="SPLITLABELVALUE"/>
+			<Target action="disable" conditionResult="false" option="SPLITLABELVALUE"/>
+		</Dependency>
+		<Dependency condition="$ROWS2LIST.equalsIgnoreCase('firstnrows')">
+			<Target action="enable" conditionResult="true" option="NVALUE"/>
+			<Target action="disable" conditionResult="false" option="NVALUE"/>
+		</Dependency>
+	</Dependencies>
+  	<CodeTemplate>
+		<![CDATA[
+#set( $TABLE = $DATASOURCE )
+
+#set( $finalTitle = $titleText.replace("{1}", "${DATASOURCE.value}") )
+title1 $CTMUtil.quoteString($finalTitle);
+
+#if( $BY.size() > 0 )
+
+proc sort data=$DATASOURCE out=WORK.SORTTEMP;
+   #if($DATASOURCE.getWhereClause() != '') where $DATASOURCE.getWhereClause(); #end
+     by #foreach($item in $BY ) $item#end;
+run;
+#set( $TABLE = "WORK.SORTTEMP" )
+#end
+
+proc print data=$TABLE
+#if($ROWS2LIST.equalsIgnoreCase("firstnrows"))
+	(obs=$NVALUE)
+#end
+#if ($OBS == '1')
+	#if($OBSHEADING != '') obs=$CTMUtil.quoteString("$OBSHEADING") #end
+#else
+	noobs
+#end
+#if ($HEADING && ($HEADING != "default"))
+	heading=$HEADING
+#end
+#if ($LABEL == '1')
+	label
+#end
+#if ($PRINTNUMROWS == '1')
+	n
+#end
+#if ($ROUND == '1')
+	round
+#end
+#if ($DIVIDE == '0')
+	rows=page
+#end
+#if ($WIDTH && ($WIDTH != 'default'))
+	width=$WIDTH
+#end
+#if ($SPLITLABEL == '1')
+	split='$SPLITLABELVALUE'
+#end
+    ;
+#if($BY.size() == 0 && $DATASOURCE.getWhereClause() != '') where $DATASOURCE.getWhereClause(); #end
+#if( $VAR.size() > 0 )
+    var #foreach( $item in $VAR ) $item#end;
+#end
+#if( $BY.size() > 0 )
+    by #foreach( $item in $BY ) $item#end;
+#end
+#if( $SUM.size() > 0 )
+    sum #foreach( $item in $SUM ) $item#end;
+#end
+#if( $ID.size() > 0 )
+    id #foreach( $item in $ID ) $item#end;
+#end
+run;
+
+#if($BY.size() > 0)
+proc delete data=work.SORTTEMP;
+run;
+#end
+title1;
+		]]>
+	</CodeTemplate>
+<TemplateValues version="7.3">
+<![CDATA[
+{"DATASOURCE":{"librarytable":"SASHELP.CARS","whereclause":"type = \"Sports\""},"VAR":"json:[{\"value\":\"Make\",\"type\":\"Char\",\"length\":13,\"format\":\"\",\"informat\":\"\",\"className\":\"RoleObject\"},{\"value\":\"Model\",\"type\":\"Char\",\"length\":40,\"format\":\"\",\"informat\":\"\",\"className\":\"RoleObject\"},{\"value\":\"Type\",\"type\":\"Char\",\"length\":8,\"format\":\"\",\"informat\":\"\",\"className\":\"RoleObject\"},{\"value\":\"Invoice\",\"type\":\"Numeric\",\"length\":8,\"format\":\"DOLLAR8.\",\"informat\":\"\",\"className\":\"RoleObject\"}]","BY":"json:[{\"value\":\"Origin\",\"type\":\"Char\",\"length\":6,\"format\":\"\",\"informat\":\"\",\"className\":\"RoleObject\"}]","SUM":"json:[{\"value\":\"Invoice\",\"type\":\"Numeric\",\"length\":8,\"format\":\"DOLLAR8.\",\"informat\":\"\",\"className\":\"RoleObject\"}]","ID":"","ROWS2LIST":[{"value":"all","displayValue":"All rows","keys":["all",null,"All rows"],"label":"All rows","baseid":"{\"value\":\"all\",\"label\":\"All rows\"}","id":"{\"value\":\"all\",\"label\":\"All rows\"}1"}],"NVALUE":10,"OBS":"1","OBSHEADING":"","LABEL":"1","PRINTNUMROWS":"0","ROUND":"0","HEADING":[{"value":"default","displayValue":"Default","keys":["default",null,"Default"],"label":"Default","baseid":"{\"value\":\"default\",\"label\":\"Default\"}","id":"{\"value\":\"default\",\"label\":\"Default\"}1"}],"WIDTH":[{"value":"default","displayValue":"Default","keys":["default",null,"Default"],"label":"Default","baseid":"{\"value\":\"default\",\"label\":\"Default\"}","id":"{\"value\":\"default\",\"label\":\"Default\"}1"}],"SPLITLABEL":"0","SPLITLABELVALUE":[{"value":"*","displayValue":"*","keys":["*",null,"*"],"label":"*","baseid":"{\"value\":\"*\",\"label\":\"*\"}","id":"{\"value\":\"*\",\"label\":\"*\"}1"}]}
+]]>
+</TemplateValues>
+
+</Task>
