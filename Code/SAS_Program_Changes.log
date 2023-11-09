@@ -1,0 +1,834 @@
+1    /* _STARTMACROCODE_ */
+2    /*----------------------------------------------------------------------
+3    /
+4    / SASStudio initialization file for SAS workspace connections
+5    /
+6    *----------------------------------------------------------------------*/
+7    /* Get the Git version */
+8    DATA _NULL_;
+9      GITVERSION = GIT_VERSION();
+10     CALL SYMPUT('_GITVERSION', GITVERSION);
+11   RUN;
+
+NOTE: Numeric values have been converted to character values at the places given by: (Line):(Column).
+      10:30   
+NOTE: Libgit2 version 1.3.0
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+12   
+13   
+14   %MACRO resolveHomeDirectory;
+15   	%GLOBAL _USERHOME;
+16   	%LOCAL _HOMEVAR;
+17   
+18   	%IF (&SYSSCP=WIN) %THEN
+19   		%DO;
+20   			%LET _HOMEVAR=USERPROFILE;
+21   		%END;
+22   	%ELSE
+23   		%DO;
+24   			%LET _HOMEVAR=HOME;
+25   		%END;
+26   
+27   	%LET _USERHOME= %SYSFUNC(SYSGET(&_HOMEVAR));
+28   
+29   %MEND;
+30   
+31   %resolveHomeDirectory;
+32   
+33   %macro web_open_file(name,type);
+34   %global _DATAOUT_NAME;
+35   %global _DATAOUT_MIME_TYPE;
+36   %let _DATAOUT_NAME=&name;
+37   %let _DATAOUT_MIME_TYPE=&type;
+38   %mend;
+39   
+3                                                          The SAS System                      Thursday, August 18, 2022 10:30:00 PM
+
+40   %macro web_open_table(table);
+41   %global _DATAOUT_TABLE;
+42   %if %length(&_dataout_table)=0 %then %let _DATAOUT_TABLE=&table;
+43   %else %let _DATAOUT_TABLE=&_DATAOUT_TABLE,&table;
+44   %mend;
+45   
+46   %macro web_open_url(url);
+47   %global _DATAOUT_URL;
+48   %let _DATAOUT_URL=&url;
+49   %mend;
+50   
+51   %macro sgdesign();
+52   %put ERROR: SGDesigner macro can not be invoked from SAS Studio.;
+53   %mend;
+54   
+55   %macro sgedit();
+56   %put ERROR: SGEdit macro can not be invoked from SAS Studio.;
+57   %mend;
+58   
+59   %macro web_list_entries(catalog,type);
+60   
+61   %let typearg=;
+62   %let type=%upcase(&type);
+63   %if &type^=_ALL_ and &type^=_all_ %then %let typearg= entrytype=&type;
+64   
+65   proc catalog catalog=&catalog &typearg;
+66   contents;
+67   title "Catalog Entries in &catalog";
+68   run;
+69   quit;
+70   
+71   %mend;
+72   
+73   %macro web_list_catalogs(library);
+74   	%let library=%upcase(&library);
+75       proc sql ;
+76           create table work.catalogs as select memname as Catalog, memtype as
+77               Type, engine as Engine from sashelp.vmember where
+78               libname="&library" and memtype="CATALOG";
+79           run;
+80           quit;
+81           title "Catalogs in &library";
+82   
+83       proc print data=work.catalogs;
+84       run;
+85   %mend;
+86   
+87   %macro web_replay_grseg(catalog,entry);
+88   proc greplay nofs igout=&catalog;
+89   replay &entry;
+90   run;
+91   %mend;
+92   
+93   %macro sasstudio_get_zos_ds_info(DSN);
+94   
+95   OPTIONS FILESYSTEM=MVS;
+96   
+97   DATA work._sasstudio_dataset_info_;
+4                                                          The SAS System                      Thursday, August 18, 2022 10:30:00 PM
+
+98   
+99     LENGTH XDSN $32000;
+100    XDSN=ZDSLIST('CATLG', &DSN, XVOLS, '');
+101  
+102    LENGTH XNUM 8;
+103    XNUM=ZDSNUM(XDSN);
+104    LENGTH XIDNM $4096;
+105    LENGTH XATTR $4096;
+106    LENGTH XATTRC $72;
+107    LENGTH XATTRN 8;
+108    LENGTH attributeType $10;
+109  
+110    DO I=1 to XNUM;
+111      XIDNM=ZDSIDNM(XDSN, I);
+112      XATTR=ZDSATTR(XIDNM, 'ALL');
+113      XATTRN=ZDSXATT(XATTR);
+114  
+115      do j=1 to xattrn;
+116       XATTRC=ZDSYATT(XATTR, j);
+117       blank_pos = index(xattrc," ");
+118  		   key = substr(xattrc, blank_pos,99);
+119  		   val= substr(xattrc,1,blank_pos);
+120  		   pos = index(key, 'FILE ATTRIBUTES');
+121  		   if (pos > 0) then do;
+122  		      attributeType = 'FILE';
+123  		   end;
+124  		   else do;
+125  			   pos = index(key, 'VOLUME ATTRIBUTES');
+126  			   if (pos > 0) then do;
+127  			      attributeType = 'VOLUME';
+128  			   end;
+129  			   else do;
+130  				   pos = index(key, 'MIGRATED DATA SET ATTRIBUTES');
+131  				   if (pos > 0) then do;
+132  				      attributeType = 'MIGRATED';
+133  				   end;
+134  				   else do;
+135  				      pos = index(key, '*****');
+136  				   end;
+137  			   end;
+138  		   end;
+139  		   if (pos = 0) then do;
+140  		      output;
+141  		   end;
+142  		   keep key val attributeType;
+143      end;
+144    END;
+145   RUN;
+146  %mend sasstudio_get_zos_ds_info;
+147  
+148  %macro show_zos_dataset_attributes(dsn);
+149     %sasstudio_get_zos_ds_info(&dsn);
+150  
+151     data work._sasstudio_dataset_info_ds_;
+152         set work._sasstudio_dataset_info_;
+153  
+154         if strip(val)='.' then do;
+155             val='***NONE***';
+5                                                          The SAS System                      Thursday, August 18, 2022 10:30:00 PM
+
+156         end;
+157  
+158         position = index(attributeType, 'FILE');
+159         if position > 0 then do;
+160             output;
+161         end;
+162         drop position attributeType;
+163     run;
+164  
+165     data work._sasstudio_dataset_info_vol_;
+166         set work._sasstudio_dataset_info_;
+167  
+168         if strip(val)='.' then do;
+169             val='***NONE***';
+170         end;
+171  
+172         position = index(attributeType, 'VOLUME');
+173         if position > 0 then do;
+174             output;
+175         end;
+176         drop position attributeType;
+177     run;
+178  
+179  	proc print data=work._sasstudio_dataset_info_ds_ noobs label;
+180  	LABEL key='Dataset Attribute'  val='00'x;
+181  	   title1 &dsn;
+182  	run;
+183  
+184  	proc print data=work._sasstudio_dataset_info_vol_ noobs label;
+185  	    title1;
+186  		LABEL key='Volume Attribute'  val='00'x;
+187  	run;
+188  
+189  	proc delete data=work._sasstudio_dataset_info_
+190  	work._sasstudio_dataset_info_ds_
+191  	work._sasstudio_dataset_info_vol_;
+192  
+193  %mend;
+194  
+195  %macro validCasEnvironment( sessionName=, createSession=, returnCode=RC);
+196  
+197  /* This section is just to give information about the CAS connection */
+198  %let CASHOST = %SYSFUNC(GETOPTION(CASHOST));
+199  
+200  %if (%LENGTH(&CASHOST)=0) %then %do;
+201      %put CASHOST is not set;
+202  %end; %else %do;
+203      %put CASHOST is &CASHOST;
+204  %end;
+205  
+206  %let CASPORT = %SYSFUNC(GETOPTION(CASPORT));
+207  
+208  %if (&CASPORT=0) %then %do;
+209      %put CASPORT is not set;
+210  %end; %else %do;
+211      %put CASPORT is &CASPORT;
+212  %end;
+213  
+6                                                          The SAS System                      Thursday, August 18, 2022 10:30:00 PM
+
+214  %let CASHOST = %SYSFUNC(GETOPTION(_CASHOST_));
+215  %if (%LENGTH(&CASHOST)=0) %then %do;
+216      %put _CASHOST_ is not set;
+217  %end; %else %do;
+218      %put _CASHOST_ is &CASHOST;
+219  %end;
+220  
+221  %let CASPORT = %SYSFUNC(GETOPTION(_CASPORT_));
+222  
+223  %if (%LENGTH(&CASPORT)=0) %then %do;
+224      %put _CASPORT_ is not set;
+225  %end; %else %do;
+226      %put _CASPORT_ is &CASPORT;
+227  %end;
+228  
+229  %let CASUSER = %SYSFUNC(GETOPTION(CASUSER));
+230  
+231  %if (%LENGTH(&CASUSER) = 0) %then %do;
+232      %put CASUSER is not set;
+233  %end; %else %do;
+234      %put CASUSER is &CASUSER;
+235  %end;
+236  
+237  
+238  %if &sessionName = %then %do;
+239   	%let DEFAULTSESS= %SYSFUNC(GETOPTION(SESSREF));
+240  	%let SESSIONFOUND = %SYSFUNC(SESSFOUND(&DEFAULTSESS));
+241  	%if (&SESSIONFOUND = 0) %then %do;
+242  	   %put Default session &DEFAULTSESS is not available.;
+243         %let &returnCode=0;
+244      %end;
+245      %else %do;
+246  	   %put Default session &DEFAULTSESS is available.;
+247         %let &returnCode=3;
+248      %end;
+249  %end; %else %do;                                                /* Session name was specified */
+250  	%if &createSession = %then %do;                             /* createSession not specified */
+251  	   %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&sessionName));   /* Default to false (don't create) */
+252  	   %if (&SESSIONFOUND = 0) %then %do;
+253  	      %put Session &sessionName is not available.;
+254            %let &returnCode=0;
+255         %end;
+256         %else %do;
+257            %put Session &sessionName already exists.;
+258            %let &returnCode=2;
+259         %end;
+260      %end;
+261      %else %do;
+262  	   %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&sessionName));  /* Does session already exist? */
+263         %if (&createSession = false) %then %do;                 /* User does not want to create it. */
+264            %put createSession is false;
+265  	      %if (&SESSIONFOUND = 0) %then %do;
+266  	         %put Session &sessionName is not available.;      /* Tell user it does not exist. */
+267               %let &returnCode=0;
+268            %end;
+269            %else %do;
+270               %put Session &sessionName exists;
+271               %let &returnCode = 2;
+7                                                          The SAS System                      Thursday, August 18, 2022 10:30:00 PM
+
+272            %end;
+273  	   %end;
+274  	   %else %do;
+275           %put createSession is true;
+276           %if (&SESSIONFOUND = 0) %then %do;                    /* Session does not exist, so create it */
+277               cas &sessionName;
+278               %let SESSIONFOUND = %SYSFUNC(SESSFOUND(&sessionName));
+279               %if (&SESSIONFOUND = 0) %then %do;               /* Session created successfully */
+280                   %let &returnCode=1;
+281               %end;
+282               %else %do;
+283                   %let &returnCode=4;                          /* Session creation failed. */
+284               %end;
+285           %end;
+286           %else %do;                                           /* Session already exists, so user cannot create it */
+287               %put Session &sessionName already exists;
+288               %let &returnCode=2;
+289           %end;
+290  	   %end;
+291  	%end;
+292  %end;
+293  
+294  
+295  %mend validCasEnvironment;
+296  
+297  /* This macro is used by code generated for Query nodes in an EG Process flow *
+298  /* Conditionally delete set of tables or views, if they exists          */
+299  /* If the member does not exist, then no action is performed   */
+300  %macro _eg_conditional_dropds /parmbuff;
+301  
+302     	%local num;
+303     	%local stepneeded;
+304     	%local stepstarted;
+305     	%local dsname;
+306  	%local name;
+307  
+308     	%let num=1;
+309  	/* flags to determine whether a PROC SQL step is needed */
+310  	/* or even started yet                                  */
+311  	%let stepneeded=0;
+312  	%let stepstarted=0;
+313     	%let dsname= %qscan(&syspbuff,&num,',()');
+314  	%do %while(&dsname ne);
+315  		%let name = %sysfunc(left(&dsname));
+316  		%if %qsysfunc(exist(&name)) %then %do;
+317  			%let stepneeded=1;
+318  			%if (&stepstarted eq 0) %then %do;
+319  				proc sql;
+320  				%let stepstarted=1;
+321  
+322  			%end;
+323  				drop table &name;
+324  		%end;
+325  
+326  		%if %sysfunc(exist(&name,view)) %then %do;
+327  			%let stepneeded=1;
+328  			%if (&stepstarted eq 0) %then %do;
+329  				proc sql;
+8                                                          The SAS System                      Thursday, August 18, 2022 10:30:00 PM
+
+330  				%let stepstarted=1;
+331  			%end;
+332  				drop view &name;
+333  		%end;
+334  		%let num=%eval(&num+1);
+335        	%let dsname=%qscan(&syspbuff,&num,',()');
+336  	%end;
+337  	%if &stepstarted %then %do;
+338  		quit;
+339  	%end;
+340  %mend _eg_conditional_dropds;
+341  
+342  /* Given a fileref and a memname and memtype, we attempt to open the
+343  member of the directory (catalog or file system directory). We
+344  set &member_found to 1 if it can be opened, 0 if not. */
+345  %macro _entry_exists(fileref,memname,memtype);
+346  %global _macro_found;
+347  %let _macro_found = 0;
+348  data _null_;
+349  *-----open the directory and proceed if it can be opened-----*;
+350  handle = dopen("&fileref.");
+351  if handle ne 0;
+352  *-----open the member and set the macro variable based on result-----*;
+353  mem_handle = mopen(handle,"&memname..&memtype.",'i');
+354  call symputx('_macro_found',mem_handle ne 0);
+355  *-----close the member if it were opened successfully-----*;
+356  if mem_handle then rc = fclose(mem_handle);
+357  *-----close the directory-----*;
+358  rc = dclose(handle);
+359  run;
+360  %mend _entry_exists;
+361  
+362  /* Given a macro name, we determine if it has already been
+363  compiled. We first look in work.sasmacr, then in the sasmacr
+364  referenced by sasmstore (if given) and then in work.sasmacX. */
+365  %macro _compiled_macro_exists(macro_name);
+366  options nonotes;
+367  %global _macro_found;
+368  *-----try work.sasmacr first to see if the compiled macro is there-----*;
+369  filename maclib catalog "work.sasmacr";
+370  %_entry_exists(maclib,&macro_name.,macro);
+371  filename maclib clear;
+372  %if &_macro_found %then %goto done;
+373  *-----try sasmacr referenced by sasmstore if it were specified-----*;
+374  %let sasmstore_option = %sysfunc(getoption(sasmstore));
+375  %if %sysfunc(getoption(mstored))=MSTORED and %length(&sasmstore_option) > 0 %then %do;
+376  filename maclib catalog "&sasmstore_option..sasmacr";
+377  %_entry_exists(maclib,&macro_name.,macro);
+378  %end;
+379  
+380  %do i=1 %to 9;
+381  %if &_macro_found %then %goto done;
+382  filename maclib catalog "work.sasmac&i.";
+383  %_entry_exists(maclib,&macro_name.,macro);
+384  filename maclib clear;
+385  %end;
+386  
+387  %done: options notes;
+9                                                          The SAS System                      Thursday, August 18, 2022 10:30:00 PM
+
+388  %mend _compiled_macro_exists;
+389  
+390  %macro studio_cas_start;
+391  
+392  %global _macro_found;
+393  %global syscasinit;
+394  
+395  %let syscasinit=0;
+396  
+397  %_compiled_macro_exists(studio_cas_init);
+398  
+399  %if &_macro_found %then %do;
+400  
+401  %let syscasinit=1;
+402  
+403  %studio_cas_init;
+404  
+405  %end;
+406  %mend studio_cas_start;
+407  
+408  %macro studio_hide_wrapper;
+409  	%global _studionotes;
+410  	%global _studiosource;
+411  	%global _studiostimer;
+412  
+413      %if &_studionotes = %then %do;
+414  	    %let _studionotes=%sysfunc(getoption(notes));
+415  	%end;
+416  	options nonotes;
+417  
+418      %if &_studiosource = %then %do;
+419  	    %let _studiosource=%sysfunc(getoption(source));
+420  	%end;
+421  	options nosource;
+422  
+423      %if &_studiostimer = %then %do;
+424  	    %let _studiostimer=%sysfunc(getoption(stimer));
+425  	%end;
+426      options nostimer;
+427  %mend studio_hide_wrapper;
+428  
+429  %macro studio_show_wrapper;
+430  	%global _studionotes;
+431  	%global _studiosource;
+432  	%global _studiostimer;
+433  
+434      %if &_studionotes = %then %do;
+435  	    %let _studionotes=%sysfunc(getoption(notes));
+436  	%end;
+437  	options notes;
+438  
+439      %if &_studiosource = %then %do;
+440  	    %let _studiosource=%sysfunc(getoption(source));
+441  	%end;
+442  	options source;
+443  
+444      %if &_studiostimer = %then %do;
+445  	    %let _studiostimer=%sysfunc(getoption(stimer));
+10                                                         The SAS System                      Thursday, August 18, 2022 10:30:00 PM
+
+446  	%end;
+447      options stimer;
+448  %mend studio_show_wrapper;
+449  
+450  %macro studio_show_only_notes_wrapper;
+451  	%global _studionotes;
+452  	%global _studiosource;
+453  	%global _studiostimer;
+454  
+455      %if &_studionotes = %then %do;
+456  	    %let _studionotes=%sysfunc(getoption(notes));
+457  	%end;
+458  	options notes;
+459  
+460      %if &_studiosource = %then %do;
+461  	    %let _studiosource=%sysfunc(getoption(source));
+462  	%end;
+463  	options nosource;
+464  
+465      %if &_studiostimer = %then %do;
+466  	    %let _studiostimer=%sysfunc(getoption(stimer));
+467  	%end;
+468      options nostimer;
+469  %mend studio_show_only_notes_wrapper;
+470  
+471  
+472  %macro studio_restore_wrapper;
+473      %global _studionotes;
+474      %global _studiosource;
+475      %global _studiostimer;
+476  
+477  	options &_studionotes;
+478  	options &_studiosource;
+479  	options &_studiostimer;
+480  
+481  	/* Clear out values so we know they have been restored */
+482  	%let _studionotes=;
+483  	%let _studiosource=;
+484  	%let _studiostimer=;
+485  %mend studio_restore_wrapper;
+486  
+487  %macro studio_setup_locale(requestedLocale);
+488  	%let validlocale=%SYSFUNC(getpxlocale(&requestedlocale));
+489  	%let validlocale=%trim(&validlocale);
+490  
+491  	%if %length(&validlocale) > 0 %then
+492  		%do;
+493  			options locale=&validlocale DFLANG=LOCALE;
+494  		%end;
+495  	%else
+496  		%do;
+497  			options locale=en_US DFLANG=LOCALE;
+498  		%end;
+499  %mend;
+500  
+501  /* This macro initializes a base results path for a submission, and sets up a
+502     macro variable to access it. */
+503  %macro studio_results_directory;
+11                                                         The SAS System                      Thursday, August 18, 2022 10:30:00 PM
+
+504  	%global _results_prefix_;
+505  	%let _results_prefix_=!COMPUTESERVER_TMP_PATH/results-&SYS_COMPUTE_JOB_ID;
+506  %mend;
+507  
+508  /*
+509  This macro captures a log for a background job to the specified destination
+510  alongside any HTML results.
+511  */
+512  %macro studio_capture_background_log;
+513  
+514      /*
+515      Capture original value for syntaxcheck, and set it to nosyntaxcheck so we
+516      can capture the log even if there are errors above
+517      */
+518      %let _studiosyntaxcheck=%sysfunc(getoption(syntaxcheck));
+519  	options nosyntaxcheck;
+520  
+521  	/*
+522  	Get base URL for compute, and download the log to the _logout fileref.
+523  	*/
+524  	%let _url_template=%sysget(SAS_URL_SERVICE_TEMPLATE);
+525  	%let _url_base=%sysfunc(tranwrd(&_url_template,@k8s.service.name@,sas-compute));
+526  	proc http
+527  	    url="&_url_base./compute/sessions/&SYS_COMPUTE_SESSION_ID/jobs/&SYS_COMPUTE_JOB_ID/log"
+528          oauth_bearer = sas_services
+529          method='get'
+530  	    out=_logout;
+531  	headers 'accept'='text/plain';
+532  	quit;
+533  
+534  	/*
+535  	Restore the original value for syntaxcheck.
+536  	*/
+537  	options &_studiosyntaxcheck;
+538  %mend;
+539  
+540  DATA _NULL_;
+541  	ID=SYMGET("SYSUSERID");
+542  	CALL SYMPUT("SYSUSERNAME",ID);
+543  	RC=TSLVL('UWUUSERN','N');
+544  	_ERROR_=0;
+545  	IF (RC^=' ') THEN DO;
+546  		call execute("DATA _NULL_;NAME=USERNAME();CALL SYMPUT('SYSUSERNAME',NAME);RUN;");
+547  	END;
+548  RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: CALL EXECUTE generated line.
+1   + DATA _NULL_;NAME=USERNAME();CALL SYMPUT('SYSUSERNAME',NAME);RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+12                                                         The SAS System                      Thursday, August 18, 2022 10:30:00 PM
+
+
+549  
+550  OPTIONS TIMEZONE='GMT-04:00';
+551  %studio_setup_locale(en-US);
+552  OPTIONS VALIDVARNAME=ANY VALIDMEMNAME=EXTEND;
+553  * CENSUS API KEY * CENSUS INFORMATION AND URL *;
+554  Cas conn;
+NOTE: The session CONN connected successfully to Cloud Analytic Services sas-cas-server-default-client using port 5570. The UUID is 
+      4446e7cf-c45c-1147-b847-fd201fc06cea. The user is T.Winand@sas.com and the active caslib is CASUSER(T.Winand@sas.com).
+NOTE: The SAS option SESSREF was updated with the value CONN.
+NOTE: The SAS macro _SESSREF_ was updated with the value CONN.
+NOTE: The session is using 4 workers.
+555  %let census_api_key_path = /greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Code/Python/census_api.csv;  /*Location of
+555! your CSV file with the API key*/
+556  %let census_api_url = https://api.census.gov/data/2021/pep/population?;
+557  libname casuser cas caslib='casuser';
+NOTE: Libref CASUSER was successfully assigned as follows: 
+      Engine:        CAS 
+      Physical Name: 4446e7cf-c45c-1147-b847-fd201fc06cea
+558  /* _ENDMACROCODE_ */
+559  /* region: Generated preamble */
+560  /* Make sure the current directory is writable */
+561  data _null_;
+562      length rc 4;
+563      %let tworkloc="%sysfunc(getoption(work))";
+564      rc=dlgcdir(&tworkloc);
+565  run;
+
+NOTE: The current working directory is now 
+      "/opt/sas/viya/config/var/tmp/compsrv/default/454dd625-303d-4a97-8477-387bb3dd31eb/SAS_work781F000000BF_sas-launcher-c20e4e4c-
+      0fbd-4a28-b0d5-0aee703ac65b-j6g67".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+566  
+567  /* Setup options */
+568  title;
+569  footnote;
+570  options validvarname=any;
+571  options validmemname=extend;
+572  options dtreset date number;
+573  options device=png;
+574  
+575  /* Setup macro variables */
+576  %let syscc=0;
+577  %let _clientapp = %nrquote(%nrstr(SAS Studio));
+578  %let _clientappabbrev = %nrquote(%nrstr(Studio));
+579  %let _clientappversion=2022.1.3;
+580  %let _clientversion=;
+581  %let _sasservername=&SYSHOSTNAME;
+582  %let _sashostname=&SYSHOSTNAME;
+583  %let _sasprogramfilehost=&SYSHOSTNAME;
+584  %let _clientuserid = %nrquote(%nrstr(T.Winand@sas.com));
+585  %let _clientusername = %nrquote(%nrstr(T Winand));
+586  %let clientmachine = %nrquote(%nrstr());
+587  %let _clientmachine = %nrquote(%nrstr());
+13                                                         The SAS System                      Thursday, August 18, 2022 06:30:34 PM
+
+588  %let _clientmode = %nrquote(%nrstr(viya));
+589  %let sasworklocation="%sysfunc(getoption(work))/";
+590  filename _cwd &sasworklocation;
+591  data _null_;
+592      call symput('_sasworkingdir',pathname('_cwd'));
+593  run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+594  filename _cwd;
+NOTE: Fileref _CWD has been deassigned.
+595  %let _sasprogramfile =
+595! %nrquote(%nrstr(/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/SasStudio/Code/SAS_Program_Changes.sas));
+596  %let _baseurl = %nrquote(%nrstr(https://ssemonthly.demo.sas.com/SASStudio/));
+597  %let _execenv = %nrquote(%nrstr(SASStudio));
+598  %symdel _dataout_mime_type _dataout_name _dataout_url _dataout_table / nowarn;
+599  %let _sasws_ = %bquote(%sysfunc(getoption(work)));
+600  %let _saswstemp_ = %bquote(%sysfunc(getoption(work)));
+601  
+602  /* Detect SAS/Graph and setup graph options */
+603  data _null_;
+604      length rc $255;
+605      call symput("graphinit","");
+606      call symput("graphterm","");
+607      rc=tslvl('sasxgopt','n');
+608      _error_=0;
+609      if (rc^=' ') then do;
+610          call symput("graphinit","goptions reset=all gsfname=_gsfname;");
+611          call symput("graphterm","goptions noaccessible;");
+612      end;
+613  run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+614  data _null_;
+615      length rc 4;
+616      rc=sysprod("PRODNUM002");
+617      if (rc^=1) then do;
+618          call symput("graphinit","");
+619          call symput("graphterm","");
+620      end;
+621  run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+622  
+623  /* Setup ODS destinations */
+624  ods _all_ close;
+625  %studio_results_directory;
+14                                                         The SAS System                      Thursday, August 18, 2022 06:30:34 PM
+
+626  filename _htmlout '/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/SasStudio/Code/SAS_Program_Changes.html';
+627  filename _gsfname temp;
+628  filename _dataout "&_results_prefix_..dat";
+629  ods autonavigate off;
+630  ods graphics on;
+631  ods html5 (id=web) METATEXT='http-equiv="Content-Security-Policy" content="default-src ''none''; style-src ''unsafe-inline'';
+631! img-src data: ;"' device=png gpath="&_saswstemp_" path="&_saswstemp_" encoding=utf8 file=_htmlout
+631! (title='Results:SAS_Program_Changes.sas') style=Illuminate options(bitmap_mode='inline' outline='on' svg_mode='inline'
+631! css_prefix=".ods_&SYS_COMPUTE_JOB_ID" body_id="div_&SYS_COMPUTE_JOB_ID" );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+632  &graphinit;
+633  filename _logout '/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/SasStudio/Code/SAS_Program_Changes.log';
+634  /* endregion */
+635  
+636  /*****************************************************/
+637  /* This program introduces basic changes needed       */
+638  /* to migrate programs to Viya                       */
+639  /*****************************************************/
+640  
+641  
+642  /* PREVIOUS WINDOWS AND UNIX SAS LIBREF */
+643  /* libname oldlibw "c:\MyDemos\data"; */
+644  /* libname oldlibu "/home/sasdemo/WTW_Demo_Repo/data"; */
+645  
+646  /* MODIFIED VIYA LIBREF */
+647  libname newlibv '/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/data';
+NOTE: Libref NEWLIBV was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/data
+648  
+649  
+650  /* PREVIOUS DATA STEP USING OLD UNIX LIBREF */
+651  /* data work.cars_usa; */
+652  /*   set oldlibu.cars; */
+653  /*     where origin = "USA"; */
+654  /* run; */
+655  
+656  /* MODIFIED DATA STEP USING NEW VIYA LIBEF */
+657  data work.cars_usa;
+658    set newlibv.cars;
+659      where origin = "USA";
+660  run;
+
+NOTE: There were 147 observations read from the data set NEWLIBV.CARS.
+      WHERE origin='USA';
+NOTE: The data set WORK.CARS_USA has 147 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+661  
+662  
+663  /* LISTING REPORT */
+664  proc print data=work.cars_usa (obs=10);
+665    var origin type make model;
+666  run;
+
+15                                                         The SAS System                      Thursday, August 18, 2022 06:30:34 PM
+
+NOTE: There were 10 observations read from the data set WORK.CARS_USA.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+NOTE: A missing equal sign has been inserted after the variable name OLDPATHU.
+667  
+668  
+669  /* MODIFY HARDCODED PATHNAMES */
+670  %let oldpathu /home/sasdemo/WTW_Demo_Repo/data;
+671  %let newpathv /mnt/viya-share/homes/T.Winand@sas.com/Git_Repo/data;
+NOTE: A missing equal sign has been inserted after the variable name NEWPATHV.
+672  
+673  
+674  /* PROC IMPORT - USING OLD UNIX PATHNAME */
+675  /* proc import datafile="&oldpathu/cars1.xlsx" */
+676  /*             dbms=xlsx */
+677  /*             out=mydata.cars1 */
+678  /*             replace; */
+679  /* run; */
+680  
+681  /* PROC IMPORT - USING NEW VIYA PATHNAME */
+682  proc import datafile="&newpathv/cars1.xlsx"
+683              dbms=xlsx
+684              out=work.cars1
+685              replace;
+686  run;
+
+NOTE: One or more variables were converted because the data type is not supported by the V9 engine. For more details, run with 
+      options MSGLEVEL=I.
+NOTE: The import data set has 428 observations and 15 variables.
+NOTE: WORK.CARS1 data set was successfully created.
+NOTE: PROCEDURE IMPORT used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.11 seconds
+      
+
+687  
+688  
+689  /* %include '/home/sasdemo/WTW_Demo_Repo/code/ExampleIncludePgm.sas'; */
+690  %include '/mnt/viya-share/homes/T.Winand@sas.com/Git_Repo/SasStudio/Code/ExampleIncludePgm.sas';
+
+NOTE: There were 10 observations read from the data set SASHELP.CLASS.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+693   
+694   
+695   /* region: Generated postamble */
+696   /* Close ODS destinations */
+697   &graphterm; ;*';*";*/;run;quit;
+698   quit;run;
+699   ods html5 (id=web) close;
+700   %if %sysfunc(fileref(_gsfname)) lt 0 %then %do;
+701       filename _gsfname clear;
+16                                                         The SAS System                      Thursday, August 18, 2022 06:30:34 PM
+
+NOTE: Fileref _GSFNAME has been deassigned.
+702   %end;
+703   %studio_capture_background_log;
+
