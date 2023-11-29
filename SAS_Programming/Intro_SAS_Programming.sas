@@ -5,7 +5,7 @@
 
 /* SET SAS LIBREF */
 /* libname mydata "/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Git_Repo/data"; */
-libname mydata "/innovationlab-export/innovationlab/homes/T.Winand@sas.com/Data";
+libname mydata "/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Data";
 
 
 /* libname mydblib hadoop  */
@@ -139,7 +139,7 @@ proc datasets library=WORK noprint;
 /* EXPORT SUMMARY STATISTICS */
 proc export data=work.cars_stats
             dbms=xlsx
-            OUTfile="/innovationlab-export/innovationlab/homes/T.Winand@sas.com/Data/cars_stats.xlsx"
+            OUTfile="/greenmonthly-export/ssemonthly/homes/T.Winand@sas.com/Data/cars_stats.xlsx"
             replace;
 run;
 
