@@ -1,1 +1,0 @@
-The Lesson notebooks replicate code in each lesson shown in the course.
